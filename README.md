@@ -1,5 +1,3 @@
-# My Scholarly Article
-
 ## Development mode
 ```
 bundle install
