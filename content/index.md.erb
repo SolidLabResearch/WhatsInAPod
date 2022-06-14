@@ -5,17 +5,19 @@ title: "My Awesome Article"
 # <%= @item[:title] %>
 
 {:#authors}
-- <%= person 'John Doe', 'http://www.example.org/', 'http://www.example.org/#me' %>
+- <%= person 'Ruben Verborgh', 'https://ruben.verborgh.org/', 'https://ruben.verborgh.org/profile/#me' %>
 
 {:#affiliations}
-- {:#myaffiliation} Awesome Inc.
+- {:#idlab} IDLab,
+  Department of Electronics and Information Systems,
+  Ghent University – imec
 
 <%= section 'abstract' %>
 </header>
 
 <main>
-  <!-- Add sections by specifying their file name, excluding the '.md' suffix. -->
   <%= section 'introduction' %>
+  <%= section 'conclusion' %>
 </main>
 
 <footer></footer>
