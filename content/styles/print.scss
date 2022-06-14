@@ -1,0 +1,43 @@
+@import "lncs.scss";
+@import "shared.scss";
+@import "shared_override.scss";
+
+header {
+  .actions, .context {
+    display: none;
+  }
+}
+
+// Table of contents
+ol.index-entries {
+  margin-bottom: 0;
+}
+
+ol.index-entries[depth="0"] {
+  li {
+    font-weight: bold;
+  }
+}
+
+ol.index-entries[depth="1"] {
+  margin-bottom: 1em;
+  li {
+    font-weight: normal;
+  }
+}
+
+figure.numbered pre {
+  counter-reset: precode;
+
+  code {
+    &::before {
+      color: lightgray;
+      left: -1.75em;
+      text-align: right;
+      display: inline-block;
+      width: 1.5em;
+      content: counter(precode) " ";
+      counter-increment: precode;
+    }
+  }
+}

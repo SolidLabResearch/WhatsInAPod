@@ -1,0 +1,211 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    bibmarkdown (2.0.0)
+      citeproc-ruby
+      csl-styles
+    bibtex-ruby (6.0.0)
+      latex-decode (~> 0.0)
+    citeproc (1.0.10)
+      namae (~> 1.0)
+    citeproc-ruby (1.1.14)
+      citeproc (~> 1.0, >= 1.0.9)
+      csl (~> 1.6)
+    coderay (1.1.3)
+    colored (1.2)
+    concurrent-ruby (1.1.9)
+    cri (2.15.11)
+    csl (1.6.0)
+      namae (~> 1.0)
+      rexml
+    csl-styles (1.0.1.11)
+      csl (~> 1.0)
+    ddmemoize (1.0.0)
+      ddmetrics (~> 1.0)
+      ref (~> 2.0)
+    ddmetrics (1.0.1)
+    ddplugin (1.0.3)
+    diff-lcs (1.4.4)
+    em-websocket (0.5.3)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0)
+    eventmachine (1.2.7)
+    execjs (2.8.1)
+    ffi (1.15.4)
+    formatador (0.3.0)
+    guard (2.18.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, < 4.0)
+      lumberjack (>= 1.0.12, < 2.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.13.0)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-livereload (2.5.2)
+      em-websocket (~> 0.5)
+      guard (~> 2.8)
+      guard-compat (~> 1.0)
+      multi_json (~> 1.8)
+    guard-nanoc (2.1.9)
+      guard (~> 2.8)
+      guard-compat (~> 1.0)
+      nanoc-cli (~> 4.11, >= 4.11.14)
+      nanoc-core (~> 4.11, >= 4.11.14)
+    guard-rack (2.2.1)
+      ffi
+      guard (~> 2.3)
+      spoon
+    hamster (3.0.0)
+      concurrent-ruby (~> 1.0)
+    http_parser.rb (0.8.0)
+    i18n (1.0.1)
+      concurrent-ruby (~> 1.0)
+    json (2.6.1)
+    json_schema (0.21.0)
+    katex (0.8.0)
+      execjs (~> 2.7)
+    kramdown (2.3.1)
+      rexml
+    kramdown-math-sskatex (1.0.0)
+      kramdown (~> 2.0)
+      sskatex (>= 0.9.37)
+    latex-decode (0.3.2)
+    libv8 (3.16.14.19-x86_64-darwin-18)
+    libv8 (3.16.14.19-x86_64-linux)
+    listen (3.7.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
+    lumberjack (1.2.8)
+    method_source (1.0.0)
+    multi_json (1.15.0)
+    namae (1.1.1)
+    nanoc (4.12.3)
+      addressable (~> 2.5)
+      colored (~> 1.2)
+      nanoc-checking (~> 1.0)
+      nanoc-cli (= 4.12.3)
+      nanoc-core (= 4.12.3)
+      nanoc-deploying (~> 1.0)
+      parallel (~> 1.12)
+      tty-command (~> 0.8)
+      tty-which (~> 0.4)
+    nanoc-checking (1.0.1)
+      nanoc-cli (~> 4.11, >= 4.11.15)
+      nanoc-core (~> 4.11, >= 4.11.15)
+    nanoc-cli (4.12.3)
+      cri (~> 2.15)
+      diff-lcs (~> 1.3)
+      nanoc-core (= 4.12.3)
+      zeitwerk (~> 2.1)
+    nanoc-core (4.12.3)
+      concurrent-ruby (~> 1.1)
+      ddmemoize (~> 1.0)
+      ddmetrics (~> 1.0)
+      ddplugin (~> 1.0)
+      hamster (~> 3.0)
+      json_schema (~> 0.19)
+      slow_enumerator_tools (~> 1.0)
+      tty-platform (~> 0.2)
+      zeitwerk (~> 2.1)
+    nanoc-deploying (1.0.1)
+      nanoc-checking (~> 1.0)
+      nanoc-cli (~> 4.11, >= 4.11.15)
+      nanoc-core (~> 4.11, >= 4.11.15)
+    nenv (0.3.0)
+    nio4r (2.5.8)
+    nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
+    notiffany (0.1.3)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
+    parallel (1.21.0)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    public_suffix (4.0.6)
+    puma (5.6.4)
+      nio4r (~> 2.0)
+    racc (1.6.0)
+    rack (2.2.3)
+    rack-livereload (0.3.17)
+      rack
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+    rb-readline (0.5.5)
+    ref (2.0.0)
+    rexml (3.2.5)
+    rubypants (0.7.1)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    scholarmarkdown (2.10.1)
+      bibmarkdown (~> 2.0.0)
+      bibtex-ruby
+      citeproc-ruby (>= 1.1.6)
+      csl-styles
+      execjs
+      i18n
+      katex
+      kramdown-math-sskatex
+      latex-decode
+      puma
+      sskatex
+      therubyracer
+    shellany (0.0.1)
+    slow_enumerator_tools (1.1.0)
+    spoon (0.0.6)
+      ffi
+    sskatex (0.9.39)
+      execjs (~> 2.7)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
+    thor (1.1.0)
+    tty-color (0.6.0)
+    tty-command (0.10.1)
+      pastel (~> 0.8)
+    tty-platform (0.3.0)
+    tty-which (0.5.0)
+    unicode_utils (1.4.0)
+    w3c_validators (1.3.6)
+      json (>= 1.8)
+      nokogiri (~> 1.6)
+      rexml (~> 3.2)
+    zeitwerk (2.5.1)
+
+PLATFORMS
+  x86_64-darwin-18
+  x86_64-linux
+
+DEPENDENCIES
+  citeproc-ruby (>= 1.1.6)
+  csl-styles
+  guard-livereload
+  guard-nanoc (~> 2.1.2)
+  guard-rack
+  i18n (< 1.1)
+  kramdown
+  latex-decode
+  nanoc (~> 4.7)
+  rack
+  rack-livereload
+  rb-readline
+  rubypants
+  sass
+  scholarmarkdown
+  unicode_utils
+  w3c_validators (~> 1.3.1)
+
+BUNDLED WITH
+   2.2.22

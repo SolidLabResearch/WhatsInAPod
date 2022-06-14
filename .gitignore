@@ -1,0 +1,6 @@
+*.diff
+*.log
+*.pdf
+.sass-cache
+output
+tmp
