@@ -15,7 +15,7 @@ and compared them from the viewpoints of
 storage, publication, and query.
 <!-- Object       -->
 First, this article details
-the current understanding of Pods as a hierarchy of documents.
+the current understanding of Pods as a collection of Linked Data documents.
 Second,
 we propose a wider definition
 in which a Solid Pod is fundamentally a knowledge graph,
