@@ -1,4 +1,4 @@
-## Abstract
+## Abstract 
 <!-- Context      -->
 The Solid ecosystem provides specifications
 for the publication and consumption of decentralized permissioned data,
@@ -34,3 +34,5 @@ and the resulting performance.
 The suggested broader perspective supports Solid with
 evolving into a heterogeneous but interoperable ecosystem
 that accommodates for a multitude of data access patterns.
+
+

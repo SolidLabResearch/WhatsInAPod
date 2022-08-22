@@ -1,11 +1,12 @@
-## Problem statement
+## Problem statement # {#problem_statement}
 With the goal of facilitating the integration of data for applications over the Web, 
 the Solid protocol defines a set of open standards that can be used to interact with the data stored on a pod [TODO::cite]().
-In their proposal paper [TODO:: cite](), a read / write protocol is proposed based on either Linked Data Platform or SPARQL queries. 
+In the introduction paper [](cite:cites sambra_solid_nodate), a read / write protocol is proposed based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
 The Linked Data Platform specification defines a set of rules of HTTP operations on Web resources, providing a Web interface for interacting with resources stored on the Pod.
 The paper proposes extensions to the LDP interface in the form of globbing for combining multiple resources in a container, as well as using HTTP PUT for direct control over resource naming and location.
 
 For data retrieval, the paper argues that LDP cannot express complex data retrieval operations, and they propose leaving complex data retrieval tasks to the server would facilitate application development through an optional possibility of supporting SPARQL queries.
+THe goal being to offlad complex data retrieval tasks from the client to the server. [](cite:cites mansour_demonstration_2016)
 
 This is in line with the goal of Solid being to move the problem space for applications working with data away from API integration issues, and focus on the data through direct data integration, bypassing the API integration step.
 

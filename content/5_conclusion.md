@@ -1,4 +1,4 @@
-## Conclusion
+## Conclusion # {#conclusion}
 
 These insights are crucial to eliminate
 the dependency of Solid apps on concrete APIs

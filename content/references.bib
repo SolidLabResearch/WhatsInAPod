@@ -12,27 +12,17 @@
 @misc{solidproject,
   title   = {About {Solid} · {Solid}},
   url     = {https://solidproject.org/about},
-  urldate = {2022-06-28},
-  file    = {About Solid · Solid:/home/dexa/Zotero/storage/GXQVNA8W/about.html:text/html}
+  urldate = {2022-06-28}
 }
 
-@inproceedings{mansour_demonstration_2016,
-  address   = {Republic and Canton of Geneva, CHE},
-  series    = {{WWW} '16 {Companion}},
-  title     = {A {Demonstration} of the {Solid} {Platform} for {Social} {Web} {Applications}},
-  isbn      = {978-1-4503-4144-8},
-  url       = {https://doi.org/10.1145/2872518.2890529},
-  doi       = {10.1145/2872518.2890529},
-  abstract  = {Solid is a decentralized platform for social Web applications. In the Solid platform, users' data is managed independently of the applications that create and consume this data. Each user stores their data in a Web-accessible personal online datastore (or pod). Each user can have one or more pods from different pod providers, and can easily switch between providers. Applications access data in users' pods using well defined protocols, and a decentralized authentication and access control mechanism guarantees the privacy of the data. In this decentralized architecture, applications can operate on users' data wherever it is stored. Users control access to their data, and have the option to switch between applications at any time. We will demonstrate the utility of Solid and how it is experienced from the point of view of end users and application developers. For this, we will use a set of Solid servers and multiple Web applications that use these servers. We believe that experience with a concrete platform such as Solid is highly valuable in truly appreciating the power of a decentralized social Web.},
-  urldate   = {2022-08-21},
-  booktitle = {Proceedings of the 25th {International} {Conference} {Companion} on {World} {Wide} {Web}},
-  publisher = {International World Wide Web Conferences Steering Committee},
-  author    = {Mansour, Essam and Sambra, Andrei Vlad and Hawke, Sandro and Zereba, Maged and Capadisli, Sarven and Ghanem, Abdurrahman and Aboulnaga, Ashraf and Berners-Lee, Tim},
-  month     = apr,
-  year      = {2016},
-  keywords  = {decentralization, linked data platform (ldp), social web, sparql, webid},
-  pages     = {223--226},
-  file      = {Full Text PDF:/home/dexa/Zotero/storage/NDLF2QA7/Mansour et al. - 2016 - A Demonstration of the Solid Platform for Social W.pdf:application/pdf}
+@article{sambra_solid_nodate,
+  title    = {Solid: {A} {Platform} for {Decentralized} {Social} {Applications} {Based} on {Linked} {Data}},
+  abstract = {This paper presents Solid, a decentralized platform for social Web applications. In Solid, users’ data is managed independently of the applications that create and consume this data. The user’s data is stored in a Web-accessible personal online datastore (or pod). Solid allows users to have one or more pods from diﬀerent pod providers, while at the same time enabling users to easily switch between providers. Developers can use Solid protocols, which is based on existing W3C recommendations, for reading, writing and access control of the contents of users’ pods. In Solid architecture, applications can operate over data owned by the user or the user has access to regardless the location of this data on the Web. Users can also control access to their data, and have the option to switch between applications at any time. This is paradigm shift in integrating social features into Web applications. Our new paradigm produces a novel line of social applications. We have used Semantic Web technologies to build Solid prototypes, allowing us to demonstrate its utility through a set of applications for common day-to-day tasks. We also conduct experiments to show the scalability of the Solid prototypes.},
+  language = {en},
+  author   = {Sambra, Andrei Vlad and Mansour, Essam and Hawke, Sandro and Zereba, Maged and Greco, Nicola and Ghanem, Abdurrahman and Zagidulin, Dmitri and Aboulnaga, Ashraf and Berners-Lee, Tim},
+  keywords = {read, on topic},
+  pages    = {16},
+  annote   = {In Solid, the pod servers are application-agnostic, so that new applications can be developed without having to modify the servers. For example, even though LDP 1.0 contains nothing specific to ”social”, many of the Social Web Working Group User Stories6 can be implemented in Solid, using only LDP and application logic, with no need to change code on the server.}
 }
 
 
@@ -51,8 +41,7 @@
   month     = apr,
   year      = {2016},
   keywords  = {decentralization, linked data platform (ldp), social web, sparql, webid},
-  pages     = {223--226},
-  file      = {Full Text PDF:/home/dexa/Zotero/storage/NDLF2QA7/Mansour et al. - 2016 - A Demonstration of the Solid Platform for Social W.pdf:application/pdf}
+  pages     = {223--226}
 }
 
 
@@ -67,4 +56,20 @@
   month    = dec,
   year     = {2021},
   keywords = {interface, knowledge graph, solid, Web API}
+}
+
+
+
+@phdthesis{presbrey_linked_2014,
+  type      = {Thesis},
+  title     = {Linked data platform for web applications},
+  copyright = {M.I.T. theses are protected by copyright. They may be viewed from this source for any purpose, but reproduction or distribution in any format is prohibited without written permission. See provided URL for inquiries about permission.},
+  url       = {https://dspace.mit.edu/handle/1721.1/91861},
+  abstract  = {Most of today's web applications are tightly coupled to proprietary server backends that store and control all user data. This thesis presents Linked Data as a decentralized web app platform, eliminating vendor lock-in, and separating user data from web apps giving users control over their data and where it's stored, independent of choice of application. Linked Data architecture replaces traditional app-data silos with a universal integration platform using global identifiers, shared ontologies, and a scalable, standardized data model. We provide 3 interoperable Linked Data server implementations in PHP, Python, and Go, and evaluate their performance. Traditional filesystems and relational databases have been integrated, and several new decentralized web apps have been developed for the platform. As of May 2014, worldwide open source community members are using and contributing to these compatible apps and servers, and the design continues to be refined and standardized at the W3C. All code available at: https://github.com/linkeddata},
+  language  = {eng},
+  urldate   = {2022-08-22},
+  school    = {Massachusetts Institute of Technology},
+  author    = {Presbrey, Joe (Joseph Warren)},
+  year      = {2014},
+  note      = {Accepted: 2014-11-24T18:40:42Z}
 }

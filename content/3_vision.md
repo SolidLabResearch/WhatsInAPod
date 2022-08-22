@@ -1,4 +1,4 @@
-## The Vision
+## The Solid pod as a Knowledge Graph # {#vision}
 
 <!-- 
 The Solid paper already alluded to shortcomings of the LDP interface (globbing, a separate SPARQL interface for RDF data / metadata)
