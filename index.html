@@ -8,9 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <meta name="citation_title" content="What's in a Pod?">
+  <meta name="citation_author" content="Ruben Dedecker" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/06/15" />
+  <meta name="citation_publication_date" content="2022/08/22" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -20,6 +21,7 @@
   <h2 id="understanding-solids-decentralized-knowledge-graphs">Understanding Solid’s decentralized knowledge graphs</h2>
 
   <ul id="authors">
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://rubendedecker.be/" typeof="foaf:Person schema:Person" resource="https://rubendedecker.be/#me">Ruben Dedecker</a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a></li>
   </ul>
 
@@ -45,7 +47,7 @@ To reinstate clarity,
 <!-- Task         -->
 we examined possible interpretations of the technological underpinnings,
 and compared them from the viewpoints of
-storage, publication, and query.
+storage, publication and query.
 <!-- Object       -->
 First, this article details
 the current understanding of Pods as a collection of Linked Data documents.
@@ -77,7 +79,225 @@ that accommodates for a multitude of data access patterns.</p>
   <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Introduction</h2>
+      <p>The current Web has come a long way from it’s initial vision.
+Originally designed as a decentralized network of computers serving and retrieving data form and to the network, 
+data has become more centralized as large companies took over larger portions of the Web with services spanning billions of accounts.</p>
 
+      <p>As a response to this, the Solid project was introduced by sir. Tim Berners Lee, the inventor of the original Web<a href="">TODO:: a lot</a>.</p>
+
+      <p>Solid was introduced to the world as a platform that enables a decentralized Web of personal online datastores(PODs) <a href="">TODO:: cite</a>.
+Solid is a technology for organizing data, applications, and identities on the web by building on existing web standards <a href="">cite:inrupt.com/solid/</a>.
+It tries to provide data independence and simple yet powerful data management mechanisms.</p>
+
+      <p>Over time, as the specifications for the original vision of the project evolved.
+We notice that the dependency on the used Linked Data Platform interface,
+over which data interactions are made possible, 
+define the possibilities of the platform.</p>
+
+      <ul>
+        <li>Solid project was initialized as a Platform for decentralize data pods on the Web for Social Linked Data applications.</li>
+        <li>During its lifetime, the Solid specifications have undergone changes</li>
+        <li>The current understanding of Solid has been evolving with these changes</li>
+        <li>Need to align with the original vision</li>
+      </ul>
+    </div>
+</section>
+
+  <section id="problem-statement" inlist="" rel="schema:hasPart" resource="#problem-statement">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Problem statement</h2>
+      <p>With the goal of facilitating the integration of data for applications over the Web, 
+the Solid protocol defines a set of open standards that can be used to interact with the data stored on a pod <a href="">TODO::cite</a>.
+In their proposal paper <a href="">TODO:: cite</a>, a read / write protocol is proposed based on either Linked Data Platform or SPARQL queries. 
+The Linked Data Platform specification defines a set of rules of HTTP operations on Web resources, providing a Web interface for interacting with resources stored on the Pod.
+The paper proposes extensions to the LDP interface in the form of globbing for combining multiple resources in a container, as well as using HTTP PUT for direct control over resource naming and location.</p>
+
+      <p>For data retrieval, the paper argues that LDP cannot express complex data retrieval operations, and they propose leaving complex data retrieval tasks to the server would facilitate application development through an optional possibility of supporting SPARQL queries.</p>
+
+      <p>This is in line with the goal of Solid being to move the problem space for applications working with data away from API integration issues, and focus on the data through direct data integration, bypassing the API integration step.</p>
+
+      <p>In practice however, we see a fundamental mismatch with usage: We see different apps making local assumptions about how and where to store data on a data pod. We see optimizations that do not hold for the ecosystem <a href="">TODO::CITATION</a></p>
+
+      <p>The use of LDP as a storage medium creates bias in the data stored because of the influence of slash semantics.
+As an example: the main application providing an overview of the data stored in a Solid pod for Inrupt (the inrupt PodBrowser application), stores contacts using an overview resource stored at a set uri at <code>&amp;lt;pod_uri&amp;gt;/contacts/people.ttl</code>, from where the individual contacts can be retrieved using link-traversal by following the availabe <code>vcard:inAddressBook</code> predicates.</p>
+
+      <p>We notice this approach in a lot of applications, where the Linked Data Platform interface used to write data to a Solid Pod requires assumptions on the developer side to provide a working application.
+Where to store data on a pod? 
+How to format the data that is written?</p>
+
+      <p>As a consequence of these decisions, using the Linked Data Platform interface, reading this contact data requires the knowledge of where the data is stored, and the formatting in which the data is stored to work with the data.</p>
+
+      <p>As a consequence of using LDP for the organization of resources on a data pod, the main discovery mechanism over this interface is link traversal through the LDP interface.
+This is however a limited approach, as in case an agent tries to retrieve information stored in a public resource at at <code>&amp;lt;pod_uri&amp;gt;/private/public</code>, where the parent container <code>&amp;lt;pod_uri&amp;gt;/private/</code> is set to be private, the resource cannot be discovered unless the exact URI can be discovered through another means.</p>
+
+      <p>In their “extensions to LDP” part of the paper, they propose the “PUT” extension to LDP, with the example of a calendar application
+that uses a URI path structure based on dates (i.e., /2016/05/01/event1). A PUT request is to create a new resource called event1,
+as well as the missing month (i.e., 05) and day (i.e., 01) containers under /2016.
+Here we see again the reliance on the LDP bias (using the slash semantics as semantic information over the stored data instead of explicitly tagging the data with the information), that leads to assumptions being required to discover the data.</p>
+
+      <p>The complex data retrieval proposed through SPARQL mentions that optionally a SPARQL endpoint can be provided on a data pod, enabling more complex data queries from a pod, where rdf-resources and metadata for non-rdf resources can be exposed over the interface.
+This is to address shortcomings in the LDP interface of not being able to express complex data retrieval operations such as filtering and aggregation. Also proposed here is that pod servers may be responsible for evaluating queries spanning multiple pods by forwarding requests for additional data to other pod servers.</p>
+
+      <p>In their related work, it states:
+Solid has a strong focus on decoupling data from
+applications and in addition ensuring that applications have a simple, generic
+and well defined way to access the data stored in the users’ pods.</p>
+
+      <p>In Section 5, the paper presents the POD Management system. It defines that pods use LDP to organize data in containers that group resources with every resource and container having their own URI. A pod server should support 
+- LDP
+- patching (N3-patch, former SPARQL update)
+- access control lists (ACL), potentially to be updated to access control policies (ACP).
+- live updates
+- optionally SPARQL</p>
+
+      <p>They advise storage mechanisms for RDF data to use triple stores to facilitate querying.</p>
+
+      <p>From all this information, we infer that their approach is focused on data discovery and querying happening mainly over a SPARQL interface that has a full index of all data that is available to the agent querying over the pod and can fulfill these requirements on the server side.</p>
+
+      <h3 id="ldp-as-an-api">LDP as an API</h3>
+      <p>Additionally, we also argue that LDP is not an API: it’s a meta-API. 
+There are still an infinite amount of ways to expose knowledge over LDP. 
+We notice existing work and apps get this wrong<a href="">TODO::cite</a>.</p>
+
+      <p>Because of this, we see that the promise of Solid moving the equation from API-integration to data-integration does not hold.
+As LDP cannot be viewed as a simple API, the problem of integrating different API’s to access data from different sources 
+has been translated into requiring knowledge of different writing / storage methods to access data stored on different pods by different applications,
+leading to a different kind of API integration, without providing the data-integration that was promised.</p>
+
+      <!-- 
+
+
+------------------------------------------------------------------
+
+
+
+
+A disconnect exists between the practical notion of a Pod and the protocol that provides access to its data, creating confusion as to what exactly a Pod is and how it relates to the technical specifications.
+
+- LDP creates biases in the stored data?
+- data integration issues w LDP?
+
+
+- spec updates evolved the understanding of Solid pods
+- the technical specifications put limits on the way data can be interacted with
+- to attain the goal of replacing the API integration with data integration, have to work around the limitations of LDP or build alternative interfaces on top.
+
+
+
+
+The current state of LDP makes us think of pods as collections of Linked Data Documents
+
+We see a fundamental mismatch with usage.
+We see different apps making local assumptions and optimizations that do not hold for the ecosystem and essentially because of ACL reasons
+
+LDP creates a BIAS in the stored data? e.g. data has to be grouped at a certain location in a resource?
+Also the notion that LDP is not an API. It’s a meta-API; there are still infinity ways to expose knowledge through LDP. So existing work and apps get this wrong.
+
+-> The promise of data integration instead of API integration is not satisfied? - This was a point we came up with, however this can be (kinda) solved in the tooling used so ?
+-> ...
+
+The Mansouroriginal Solid paper already alluded to shortcomings of the LDP interface (globbing, a separate SPARQL interface for RDF data / metadata)
+-> And we will make the argument / take the position that it is more fundamental, that LDP is the problem/limitation rather than the solution. We reframe by seeing one LDP API (there are multiple!) as a possible view on the Pod, which fundamentally is a KG. 
+
+-->
+
+    </div>
+</section>
+
+  <section id="related-work" inlist="" rel="schema:hasPart" resource="#related-work">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Related work</h2>
+
+      <h3 id="solid">Solid</h3>
+
+      <h3 id="solid-type-indexing">Solid Type Indexing</h3>
+
+      <h3 id="solid-interoperability-secification-and-shape-trees">Solid-interoperability secification and Shape Trees</h3>
+
+      <h3 id="section">… ?</h3>
+    </div>
+</section>
+
+  <section id="the-vision" inlist="" rel="schema:hasPart" resource="#the-vision">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">The Vision</h2>
+
+      <!-- 
+The Solid paper already alluded to shortcomings of the LDP interface (globbing, a separate SPARQL interface for RDF data / metadata)
+-> And we will make the argument / take the position that it is more fundamental, that LDP is the problem/limitation rather than the solution. We reframe by seeing one LDP API (there are multiple!) as a possible view on the Pod, which fundamentally is a KG
+
+ -->
+
+      <p>Where the current specifications define Solid as a platform where data is managed in a RESTful way, 
+as defined by the Linked Data Platform (LDP) recommendation.</p>
+
+      <p>The vision we propose is to fundamentally consider a pod as a permissioned, hybrid Knowledge graph that can be accessed through various Web APIs.</p>
+
+      <h3 id="how-to-support-any-kind-of-api">How to support any kind of API?</h3>
+      <p>This can be done through the orthogonal building blocks provided by the Solid specifications! (WebACL, ACP, …)</p>
+
+      <h3 id="how-does-this-solve-the-api-integration-problem">How does this solve the API integration problem?</h3>
+      <p>the APIs are just a means of syncing data between systems 
+(see https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/#abstracting-away-p-4) 
+-&gt; Granted but this does not really provide the comforting words that “we will change the API-integration hell into a data-integration opportunity”.</p>
+
+      <p>cons -&gt; need to support multiple interfaces
+pros -&gt; used interface should not have influence on the exposed data, just on how it can be accessed, as the context remains the same? -&gt; something like this but requires some extra thinking?</p>
+
+      <h3 id="the-current-state-of-solid-in-this-vision">The current state of Solid in this vision</h3>
+      <p>The current state of Solid provides a practical notion of the vision, where the Knowledge Graph of a data pod is exposed over a concrete LDP API.</p>
+
+      <p>The original paper proposed an extension through the possibility of evaluating SPARQL queries over the data in the pod that is organized according the the LDP interface of the pod.
+We note that this interface is still dependent on the bias introduced by LDP (slash semantics, permissions, …), and can be seen as an optimization (was proposed as optimization kind of in the original paper).</p>
+
+      <h3 id="integrating-the-interface-in-the-data-retrieval-strategies">Integrating the interface in the data retrieval strategies</h3>
+      <p>A commonly made mistake is that the server interface should be identical to the client interface <a href="">TODO::cite and word according to Ruben blog</a>.
+At the heart of our solution is the notion that client and API abstractions can differ.</p>
+
+      <p>An example of this is that in the current notion of the knowledge graph of a data pod being exposed over LDP, a client running the comunica querying framework <a href="">TODO:: cite</a> may abstract away this interface, by providing a SPARQL querying interface that makes a translation from the SPARQL query to specific HTTP(S) queries over the data pod by following any found LDP contains relations. 
+Note however that in this setup, any public resources contained in a private container may not be discovered as no public links may be available to the public resource from the starting point of the user link traversal.</p>
+
+      <p>Where multiple initiatives <a href="">TODO:: cite - Type Index, Interop spec, …</a> try to work around these problems in the pod interface through the inclusion of extensions in the form of indexes managed by either clients or the pod server, we argue that as the pod is a permissioned knowledge graph, alternative interfaces could be used to resolve these issues. <a href="">TODO:: Make a STRONGER ARUGMENT here</a></p>
+
+      <!-- 
+
+In the original paper for Solid, there was alluded on exposing all data over a SPARQL endpoint
+
+Wat is solid?
+- is het een set van protocols?
+- is het een concept geimplementeerd met een set protocols?
+
+
+Solutions can be found through:
+
+extensions to the LDP interface:
+- in spec 
+- out of spec client managed?
+- out of spec client sided?
+
+
+
+
+### Authorization
+
+- Resources are a straightforward way of combining data triples for authorization purposes.
+- autorization systems can be adapted to work on a triple basis OR
+- other ways of combining triples in resources can be used that do not include LDP biases (slash semantics)
+ -->
+
+    </div>
+</section>
+
+  <section id="comparison" inlist="" rel="schema:hasPart" resource="#comparison">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Comparison</h2>
+
+      <p>In this section, we examine possible interpretations of the technological underpinnings,
+and compared them from the viewpoints of storage, publication and query.</p>
+
+      <h3 id="logical-document-based-interfaces">logical (document-based) interfaces</h3>
+
+      <h3 id="meta-model-based-interfaces">[meta-]model-based interfaces</h3>
     </div>
 </section>
 
@@ -85,9 +305,24 @@ that accommodates for a multitude of data access patterns.</p>
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Conclusion</h2>
 
-      <h3 id="acknowledgements">Acknowledgements</h3>
-      <p>This work has been supported by
-SolidLab Vlaanderen (Flemish Government, EWI and RRF project VV023/10).</p>
+      <p>These insights are crucial to eliminate
+the dependency of Solid apps on concrete APIs
+and local assumptions about the shape and organization of data
+and the resulting performance.</p>
+
+      <p>What we fundamentally want is to reduce local assumptions and optimizations in apps for reasons of longevity</p>
+
+      <p>I know you allude to this on your latest blogpost, 
+but will this approach not create more issues with clients not being able 
+to access stored data because of no support for the API when you just allow random APIs?</p>
+
+      <p>There needs to be a base layer of course. And some LDP interface can be a good one. But it all starts from realizing that the pod is not an API but a KG, that the API is a means to an end.</p>
+
+      <p>Data shape and organization are two facets of data storage that impact how applications can work with data on a Pod.
+Certain APIs may provide specific solutions to these question.
+Interfaces built upon a Linked Data Platform (view / interface?) of a Solid pod may provide agreed upon organizations for stored data.
+On the other hand, interfaces can as well agree upon certain data shapes for given problems.
+With this work, we do not propose any specific takeaway as to which interfaces may optimize these problems, but want to provide a framework with which these problems can be tackled in a way that is not restricted to only what the LDP interface allows.</p>
 
     </div>
 </section>
