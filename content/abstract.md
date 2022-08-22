@@ -12,7 +12,7 @@ To reinstate clarity,
 <!-- Task         -->
 we examined possible interpretations of the technological underpinnings,
 and compared them from the viewpoints of
-storage, publication, and query.
+storage, publication and query.
 <!-- Object       -->
 First, this article details
 the current understanding of Pods as a collection of Linked Data documents.
