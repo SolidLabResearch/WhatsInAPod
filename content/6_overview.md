@@ -91,7 +91,7 @@ cause::
 
 **Conclusion**
 
-- Viewing a pod as a KG does not magically solve everything.
+- Viewing a pod as a KG does not magically solve everything, but provides a thinking framework to think about and solve issues focused more on the data than the interface.
 - It does however provide a more robust framework to think about solving challenges for decentralized data pods
 - It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)
 - This vision builds upon the current implementation without any discrediting of work done, but with the hope of building on the existing specifications and ideas to solve even more challenges.
