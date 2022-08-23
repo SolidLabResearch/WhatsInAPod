@@ -94,34 +94,93 @@ that accommodates for a multitude of data access patterns.</p>
       <p><strong>intro</strong></p>
 
       <ul>
-        <li>Solid proposed as a data platform using the open Linked Data Platform spec to organize data.</li>
+        <li>Solid proposed as a data platform using the open Linked Data Platform spec to organize data.
+          <ul>
+            <li>people equate the Solid pod to the LDP interface</li>
+            <li>give a working definition</li>
+            <li>is there an agreed upon definition that is authoritive?</li>
+          </ul>
+        </li>
         <li>We see however that the use of the Linked Data Platform specification leads to a lot of ASSUMPTIONS in the organization of data on the pod.</li>
         <li>This leads to difficulties in discovery, querying, semantics? and interoperability of data.</li>
-        <li>In this paper, we propose the vision of Solid as a platform of data pods exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.</li>
+        <li>
+          <p>In this paper, we propose the vision of Solid as a platform of data pods exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.</p>
+        </li>
+        <li>Promise of Solid: Data and App independent</li>
       </ul>
 
       <p><strong>Problem statement</strong></p>
 
       <ul>
         <li>
-          <p>We see the use of the Linked Data Platform spec leads to a lot of ASSUMPTIONS in the organization of data on the pod</p>
-
+          <p>We see that the definition of a pod gets equated to the LDP interface</p>
+        </li>
+        <li>We see the use of the Linked Data Platform spec leads to localized ASSUMPTIONS in the organization of data on the pod by applications</li>
+        <li></li>
+        <li>
+          <p>Granularity is resource based through LDP.</p>
+        </li>
+        <li>Hierarchical nature of the LDP spec (same as filesystem) leads to semantics in the data location through slash semantics
           <ul>
-            <li>Hierarchical nature of the LDP spec (same as filesystem) leads to semantics in the data location through slash semantics
+            <li>e.g. original paper using slash semantics for event storage based on date</li>
+            <li>Leads to semantic context being stored in the data path (not machine readable)</li>
+            <li>WHAT DOES MEAN -&gt; consequence
               <ul>
-                <li>e.g. original paper using slash semantics for event storage based on date</li>
-                <li>Leads to semantic context being stored in the data path (not machine readable)</li>
+                <li>model situations that cannot be captured like this</li>
+                <li>example of meta-API</li>
               </ul>
             </li>
-            <li>Containers and resources lead to data stored separately (e.g. digita storing data of different applications in different containers, idem as e.g. program files on the filesystem.)
+            <li>LDP has constraints, real world data modelling has constraints, these may be orthogonal in situations and not match</li>
+            <li><strong>point 1: mismatch between hierarchy and real world</strong></li>
+            <li>putting the meaning in the data removes mismatch between semantics and data. semantics should be in the data and in the organizational structure</li>
+          </ul>
+        </li>
+        <li>Containers and resources lead to data stored separately (e.g. digita storing data of different applications in different containers, idem as e.g. program files on the filesystem.)
+          <ul>
+            <li>This leads to data separation, and implicit context being attributed to storage location (data stored at <code>/apps/solidbook/</code> is data from the <code>solidbook</code> app.)</li>
+            <li>With the advantage of facilitating permission management for applications</li>
+            <li><strong>point 2: Data hierarchy is created by applications in contrast to separation of app and data</strong></li>
+          </ul>
+        </li>
+        <li><strong>point 3: semantics encoded in things that are not data</strong>
+          <ul>
+            <li>care of ordering of points</li>
+          </ul>
+        </li>
+        <li>LDP leads to local assumptions and optimizations for applications(, at the cost of interoperability?).
+          <ul>
+            <li>We can see this clearly in the Inrupt Developer Libraries for Solid, where the developer interface only provides functionality to retrieve data for which you know both the location and the used schema, with almost no regard for data discovery.</li>
+          </ul>
+        </li>
+        <li><strong>Coupling with permission</strong>
+          <ul>
+            <li>permissioning coupled with container structure</li>
+            <li>one true hierarchy that matches with permissioning is the assumption - does not always hold</li>
+            <li>organization is ordered according to applications -&gt; applications define your permissions indirectly</li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr />
+
+      <ul>
+        <li>solid about <strong>splitting data and apps</strong></li>
+        <li>key: <strong>semantics in the data</strong></li>
+        <li>now; ldp <strong>mismatch hierarchy and real world</strong></li>
+        <li>then: <strong>hierarchy misused</strong> by applications to model things how they like - <strong>semantics outside of data</strong></li>
+        <li>even worse: applications make <strong>local optimizations</strong> and assumptions creating ecosystem thats not interoperable anymore</li>
+        <li>permissions: as permissions are tied to hierarchy, <strong>indirectly leads to applications defining your permissions.</strong></li>
+      </ul>
+
+      <hr />
+
+      <ul>
+        <li><strong>What were we trying to do</strong>
+          <ul>
+            <li>create permissioned knowledge graph
               <ul>
-                <li>This leads to data separation, and implicit context being attributed to storage location (data stored at <code>/apps/solidbook/</code> is data from the <code>solidbook</code> app.)</li>
-                <li>With the advantage of facilitating permission management for applications</li>
-              </ul>
-            </li>
-            <li>LDP leads to local assumptions and optimizations for applications(, at the cost of interoperability?).
-              <ul>
-                <li>We can see this clearly in the Inrupt Developer Libraries for Solid, where the developer interface only provides functionality to retrieve data for which you know both the location and the used schema, with almost no regard for data discovery.</li>
+                <li>all of the above is captured in this concept</li>
+                <li>issues come from the emulation of permissioned knowledge graph through LDP and not from the concept of permissioned knowledge graph</li>
               </ul>
             </li>
           </ul>
@@ -135,14 +194,45 @@ that accommodates for a multitude of data access patterns.</p>
           <ul>
             <li>In its base form, combined with access controls, it provides little to no functionality for data interoperability.</li>
             <li>The goal of Linked Data is data integration, where LDP actually still requires a lot of api-integration through assumptions or agreements between applications on certain data organizations (e.g. solid chat in mashlib, …).</li>
+            <li><strong>Ldp imposes constrainsts - leaves degrees of freedom that is used to create additional semantics not captured in the data</strong></li>
           </ul>
         </li>
       </ul>
 
-      <p><strong>Vision</strong></p>
+      <p><strong>Perspective</strong></p>
 
       <ul>
-        <li>In this paper, we propose the vision of Solid as platform of data pods containing knowledge graphs of individual data quads.</li>
+        <li>In this paper, we propose the perspective of Solid being data and app independent.</li>
+        <li>Where currently often used perspective of Solid IS LDP, or Solid is …</li>
+        <li>
+          <p>We propose the perspective of a Solid pod as permissioned knowledge graph …</p>
+        </li>
+        <li>
+          <p>if we keep seeing Solid pods as containers and resources we’re going to get stuck</p>
+        </li>
+        <li>Make sure it stays exemplifying -&gt;
+          <ul>
+            <li>Make point of SPARQL endpoint over the document proposed in paper</li>
+            <li>With this view, we can see the SPARQL endpoint as exposing the RAW data, without requiring the document organization of LDP</li>
+            <li>Dont go to deep - more of an example</li>
+          </ul>
+        </li>
+        <li>OH no - what about the API’s =&gt; Oh no, what about all the local assumptions
+          <ul>
+            <li>Solid marks transition from API based integration to data based integration</li>
+            <li>the assumptions are now in the API -&gt; we need to move the assumptions to the data and try to make them specific using semantics -&gt; this is a strong conclusion</li>
+          </ul>
+        </li>
+        <li><strong>permissions are a proxy for policies / parameters</strong>
+          <ul>
+            <li>permissioned -&gt; we can zoom this out to parameterized / policy based</li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr />
+
+      <ul>
         <li>This as a contrast to the LDP-organization currently used, that organizes data in resources.</li>
         <li>these pods can expose their internal KG over a multitude of interfaces
           <ul>
@@ -166,8 +256,31 @@ that accommodates for a multitude of data access patterns.</p>
       <p><strong>Comparison</strong></p>
 
       <ul>
-        <li>
-          <p>In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, …).</p>
+        <li>In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, …).</li>
+      </ul>
+
+      <hr />
+
+      <ul>
+        <li><strong>What do we need? -&gt; A good example</strong>
+          <ul>
+            <li>compare 2 cases -&gt; precise examples
+              <ul>
+                <li>store address book in classic solid with LDP
+                  <ul>
+                    <li>if you store this LDP API in file system -&gt; straightforward</li>
+                    <li>SPARQL endpoint -&gt; encode document in which this is stored</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>make point that query and API are separate!</strong>
+          <ul>
+            <li>suggestion of SPARQL endpoint per resource</li>
+            <li>bring some clarity to this point</li>
+          </ul>
         </li>
         <li>Storage
           <ul>
@@ -229,7 +342,26 @@ that accommodates for a multitude of data access patterns.</p>
       <p><strong>Conclusion</strong></p>
 
       <ul>
-        <li>Viewing a pod as a KG does not magically solve everything, but provides a thinking framework to think about and solve issues focused more on the data than the interface.</li>
+        <li>
+          <p>Viewing a pod as a KG does not solve issues in itself, but provides a thinking framework to think about and solve issues focused more on the data than the interface.</p>
+        </li>
+        <li>
+          <p>queries and APIs are separate - important to bring this point forward again</p>
+        </li>
+        <li>
+          <p>LDP gives us only a limited innovation surfaces</p>
+        </li>
+        <li>
+          <p>API based integration to data integration</p>
+        </li>
+        <li>
+          <p>(not for here) resources are not well defined units of data. You can see the whole pod as a single resource (all rdf data)</p>
+        </li>
+      </ul>
+
+      <hr />
+
+      <ul>
         <li>It does however provide a more robust framework to think about solving challenges for decentralized data pods</li>
         <li>It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)</li>
         <li>This vision builds upon the current implementation without any discrediting of work done, but with the hope of building on the existing specifications and ideas to solve even more challenges.</li>
