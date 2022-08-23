@@ -1,25 +1,37 @@
 ## Problem statement # {#problem_statement}
 With the goal of facilitating the integration of data for applications over the Web, 
 the Solid protocol defines a set of open standards that can be used to interact with the data stored on a pod [TODO::cite]().
-In the introduction paper [](cite:cites sambra_solid_nodate), a read / write protocol is proposed based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
-The Linked Data Platform specification defines a set of rules of HTTP operations on Web resources, providing a Web interface for interacting with resources stored on the Pod.
-The paper proposes extensions to the LDP interface in the form of globbing for combining multiple resources in a container, as well as using HTTP PUT for direct control over resource naming and location.
+The protocol to read, write and organize data on Solid data pods is (an adapted version of) the Linked Data Platform specification [](cite:cites presbrey_linked_2014). 
+The Linked Data Platform specification defines a set of rules for operations on and interactions with resources over the Web using HTTP(S).
+It defines the concepts of containers and resources to organize data, which similarly to a file system create a hierarchic storage structure of containers (~directories) containing resources (~files) and other containers.
+These resources can be non-RDF resources such as images, word documents, ... as well as RDF resources, which are a collection of RDF data formatted according to an RDF data format.
+[TODO:: maybe I should have a separate section introducing the concepts of LDP, Solid, ...?]()
+The Solid protocol adopts an adapted version of this specification, including HTTP PUT for direct control over resource naming and location.
 
-For data retrieval, the paper argues that LDP cannot express complex data retrieval operations, and they propose leaving complex data retrieval tasks to the server would facilitate application development through an optional possibility of supporting SPARQL queries.
-THe goal being to offlad complex data retrieval tasks from the client to the server. [](cite:cites mansour_demonstration_2016)
+### Linked Data Platform
 
-This is in line with the goal of Solid being to move the problem space for applications working with data away from API integration issues, and focus on the data through direct data integration, bypassing the API integration step.
+#### Data granularity
+A consequence of using this specification is that data must be organized in resources, as this is the only form of data that can be managed using Linked Data Platform. This requires applications to make local assumptions as to what constitutes a resource and how application data should be distributed over resources in a data pod. As resources are the only interface, other data structures such as databases are impossible, and must be emulated on the client side over the resources exposed by the LDP interface.
+
+#### Organizational semantics
+As resources are stored in a hierarchical way due to the nature of the Linked Data Platform specification, the organization of data in a hierarchical order may carry implicit semantics in the organization of resources on a data pod. We see this return in the original paper[](cite:cites sambra_solid_nodate), where the example is given of an application storing events using a URI path structure based on dates (i.e., /2016/05/01/event1). The problem with these localized assumptions is they do not hold for the ecosystem, and form an application specific API built on Linked Data Platform [TODO:: what more?]().
+
+#### Hierarchical bias
+The hierarchical organization of data on a pod also leads to data separation between applications. We see this with e.g. Digita [TODO::source]() providing a separate container for each app, in the same way that the `Program Files` folder provides a location for applications to store data. While this mitigates issues of overwriting data, and adds implicit context to data based on its location (at least for the application managing a certain data space), this comes at the cost of data discovery and integration [TODO:: what more?]().
+
+#### LDP as a meta-API
+We argue that the Linked Data Platform interface is not an API, but a meta-API that can organize data in an infinite amount of ways. In the current environment, applications are forced to make local assumptions, and create application-specific API's on the Solid data pods through localized assumptions that do not hold for the ecosystem. This comes at the cost of data discovery and interoperability with different applications that do not share the same assumptions.
+
+### API-integration versus data-integration
+
+As the goal for interoperability of online data spaces is to move from the paradigm of API integration to mode data integration centered approaches of data publishing, we see that Linked Data Platform in it's current state creates API integration issues for applications through localized assumptions in data organization and format / shape [TODO:: maybe also make the point of format / shape integration a bit more]().
 
 
 
-In practice however, we see a fundamental mismatch with usage: We see different apps making local assumptions about how and where to store data on a data pod. We see optimizations that do not hold for the ecosystem [TODO::CITATION]()
+The original paper proposes a solution for data discovery through providing a SPARQL interface that runs on top of the data organized in the Linked Data Platform, where every resource serves as its own SPARQL endpoint (https://github.com/nodeSolidServer/node-solid-server/issues/962) which has since been removed from the spec -> this was no solution after all so maybe this should be casually mentioned as a sidenote?
 
-The use of LDP as a storage medium creates bias in the data stored because of the influence of slash semantics.
-As an example: the main application providing an overview of the data stored in a Solid pod for Inrupt (the inrupt PodBrowser application), stores contacts using an overview resource stored at a set uri at `&lt;pod_uri&gt;/contacts/people.ttl`, from where the individual contacts can be retrieved using link-traversal by following the availabe `vcard:inAddressBook` predicates.
 
-We notice this approach in a lot of applications, where the Linked Data Platform interface used to write data to a Solid Pod requires assumptions on the developer side to provide a working application.
-Where to store data on a pod? 
-How to format the data that is written?
+<!-- 
 
 As a consequence of these decisions, using the Linked Data Platform interface, reading this contact data requires the knowledge of where the data is stored, and the formatting in which the data is stored to work with the data.
 
@@ -64,7 +76,7 @@ We notice existing work and apps get this wrong[TODO::cite]().
 Because of this, we see that the promise of Solid moving the equation from API-integration to data-integration does not hold.
 As LDP cannot be viewed as a simple API, the problem of integrating different API's to access data from different sources 
 has been translated into requiring knowledge of different writing / storage methods to access data stored on different pods by different applications,
-leading to a different kind of API integration, without providing the data-integration that was promised.
+leading to a different kind of API integration, without providing the data-integration that was promised. -->
 
 <!-- 
 

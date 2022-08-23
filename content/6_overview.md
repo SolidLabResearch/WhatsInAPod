@@ -4,7 +4,7 @@
 -----------------------------------------------
 -----------------------------------------------
 
-## OVERVIEW  
+**OVERVIEW**  
 
 -----------------------------------------------
 -----------------------------------------------
@@ -12,13 +12,15 @@
 -----------------------------------------------
 
 
-### intro
+**intro**
+
 - Solid proposed as a data platform using the open Linked Data Platform spec to organize data.
 - We see however that the use of the Linked Data Platform specification leads to a lot of ASSUMPTIONS in the organization of data on the pod.
 - This leads to difficulties in discovery, querying, semantics? and interoperability of data.
 - In this paper, we propose the vision of Solid as a platform of data pods exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.
 
-## Problem statement
+**Problem statement**
+
 - We see the use of the Linked Data Platform spec leads to a lot of ASSUMPTIONS in the organization of data on the pod
   
   - Hierarchical nature of the LDP spec (same as filesystem) leads to semantics in the data location through slash semantics 
@@ -32,12 +34,15 @@
   - LDP leads to local assumptions and optimizations for applications(, at the cost of interoperability?).
     - We can see this clearly in the Inrupt Developer Libraries for Solid, where the developer interface only provides functionality to retrieve data for which you know both the location and the used schema, with almost no regard for data discovery.
 
+cause::
+
 - LDP is a not a real API (in the same way that a file system is not a real API). It is a meta-api that allows an infinite ways to organize data.
   - In its base form, combined with access controls, it provides little to no functionality for data interoperability.
   - The goal of Linked Data is data integration, where LDP actually still requires a lot of api-integration through assumptions or agreements between applications on certain data organizations (e.g. solid chat in mashlib, ...).
 
 
-## Vision
+**Vision**
+
 - In this paper, we propose the vision of Solid as platform of data pods containing knowledge graphs of individual data quads.
 - This as a contrast to the LDP-organization currently used, that organizes data in resources.
 - these pods can expose their internal KG over a multitude of interfaces
@@ -50,7 +55,8 @@
   - As the SPARQL in the original paper does + how Jeroen handles it in the architecture paper, more links???
 
 
-## Comparison
+**Comparison**
+
 - In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, ...).
 
 
@@ -83,7 +89,8 @@
     - 
 
 
-## Conclusion
+**Conclusion**
+
 - Viewing a pod as a KG does not magically solve everything.
 - It does however provide a more robust framework to think about solving challenges for decentralized data pods
 - It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)
@@ -96,7 +103,7 @@
 -----------------------------------------------
 -----------------------------------------------
 
-## OVERVIEW END 
+**OVERVIEW END**
 
 -----------------------------------------------
 -----------------------------------------------
