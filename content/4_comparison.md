@@ -30,6 +30,8 @@ Support for non-rdf resources must always be taken into account, requiring some 
 
 
 ### Data publication comparison
+The data management interface used by a Solid pod influences how the internal data is published over the Web.
+The interface directs how data can be accessed, the granularity of 
 
 
 #### Linked data platform interfaces
@@ -49,6 +51,8 @@ provide a resource-based data organization organized according to the Linked Dat
 
 
 ### Data querying comparison
+The organizational structure of data published over the interface influences the query resolution and optimization process.
+Other differences such as the granularity with which the data can be accessed influences the querying process.
 
 #### Linked data platform interfaces
 rely for querying on their data organization, or on derived interfaces to support querying requirements.
