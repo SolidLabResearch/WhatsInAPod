@@ -1,40 +1,87 @@
 ## Problem statement # {#problem_statement}
-With the goal of facilitating the integration of data for applications over the Web,
-the Solid platform provides a set of open standards to manage and interact with data in a Personal Online Datastore (POD).
-The protocol to read, write and organize data on Solid data pods is based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
-The Linked Data Platform specification defines the operations on and interactions with resources over the Web using HTTP(S).
-It defines the concepts of containers and resources to organize data, which similarly to a file system create a hierarchic storage structure of containers (~directories) containing resources (~files) and other containers.
-These resources can be non-RDF resources such as images, word documents, ... as well as RDF resources, which are a collection of RDF data formatted according to an RDF data format.
-[TODO:: maybe I should have a separate section introducing the concepts of LDP, Solid, ...?]()
-The Solid protocol adopts an adapted version of this specification, including HTTP PUT for direct control over resource naming and location.
+To achieve the envisioned ecosystem of data integration and interoperabiltiy, the Solid project provides a platform based on a set of open standards to manage and interact with data in Personal Online Datastores (POD) [](cite:cites sambra_solid_nodate).
 
+### Solid as Linked Data Platform
+
+The protocol to read, write and organize data on Solid data PODs is based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
+This specification defines a set of rules for HTTP(S) operations on web resources to provide a read-write architecture for Linked Data on the Web. It provides an organizational structure of resources and containers, much in the same way that a file system is organized through files and directories. These resources can either be non-RDF resources storing regular files, images and more, where RDF resources store a collection of Linked Data Quads in a specified RDF format.
+
+#### A mismatch in data organization
+As the Linked Data Platform specification organizes data as containers and resources, it imposes an inherent hierarchical ordering of resources and containers in the same way that files and directories in a file system create a hierarchical ordering.
+It requires all (RDF) data to be bundled as resources and stored using the hierarchical structuring of container and resources. 
+These organizational constraints provide challenges for applications that need to store data on a Solid pod.
+
+
+However, real world data will not always be easily mapped to a structure that adheres to these constrainst.
+As event-based 
+
+As the specifications of the Solid Platform do not impose any specific limitations on how applications must interact with the Linked Data Platform interface exposed by a Solid data POD, any application (given the permission) is free to organize their data in any way they see fit.
+
+
+#### Data is bundled into resources
+As data needs to be bundeled into resources, 
+The concept of a resource does not pose any constraints on its contents. The contents can either be non-rdf, such as images, or it can container any amount of RDF data quads. 
+
+
+
+#### LDP as a meta-API
+The above problems can be derived from the essence of the Linked Data Platform interface. Where LDP can be described as an API within the scope of working with resources on an LDP server, defining how to read, write add and remove resources over HTTP(S), it should be seen as a **meta-api** from a data-modeling perspective.
+The LDP specification can represent data in an infinite amount of ways.
+It imposes constraints on the way data can be organized, by requiring data to be bundled in resources and requiring these resources to be organized in a hierarchical structure.
+On the other hand, LDP leaves degrees of freedom to where every application can through localized assumptions create their own API on top of the LDP interface.
+Through the decisions of how the data should be bundled in resources on the pod, sharing the same permissions for all data bundled in a single resource, and the decisions of the hierarchical structuring of this data on the pod, each application in essence creates their own API on top of the LDP interface of a Solid POD through local assumptions and optimizations in the organization of data.
+Additionally, in this paradigm, applications themselves are indirectly responsible for the permissions that can be set on the data in a Solid POD. As applications structure data in resources, and structure the organization of resources on a POD, users are limited in the granularity over which they can give access to data on their pod to the granularity of the resources created by the used applications. Because of the organizational structure, permissions that are shared between a container and all members (child containers and resources) of that container are also limited to the assumptions made by the application structuring the data and may not make sense for other use-cases for the same data.
+
+These consequences go against the vision of Solid providing an ecosystem where data and applications are separated and where API integration is abolished for data integration where applications and services are enabled to directly integrate existing data.
+
+<!-- 
+It puts constraints on the data - resource granularity, hierarchical structuring, but also leaves degrees of freedom used to create additional semantics not captured in the data.
+This freedom is used to create API's in the data through local assumptions creating semantics that may not be captured 
+However, if we look at the implementation these definitions differ We notice a lack of proper definition for Solid, nor a guideline for used terminology (protocol, platform, ecosystem, ...).in the data itself.
+Little support for interoperability in its base form.
+
+#### Resources are organized in a hierarchical structure using containers.
+This hierarchical structure 
+
+
+#### Resources do not impose any structure on data
+
+
+
+In this bundling of data in resources and organizing these resources in a hierarchical structure, we see a mismatch with how 
+
+In this bundling of data in resources
+
+In this hierarchical structuring of data, we see a mismatch with the structuring of real-world data.
+As applications 
+As data must be collected in resources and placed in a hiera
+ -->
 
 ### A need for definition
+Where above we posed that the Linked Data Platform specification defines an interface that promotes local assumptions and organizational structures for applications storing data on a Solid POD, we see that the line between Solid and Linked Data Platform has been blurred over time [TODO:: CITATIONS AND EXAMPLES](). 
+As no authoritive definition of Solid exists (that we know of), we find that multiple initiatives in the Solid ecosystem provide their own vision on the Solid ecosystem, which over time equates more to the idea of Solid as a Linked Data Platform  set of specifications for an online platform than as a vision for a
 
-As we search for an authoritative definition on what a Solid pod entails, we find multiple definitions:
-
-- sambra et al
-  - This paper presents Solid, a decentralized platform for social Web applications
+In the initial paper, Solid is presented as: "a decentralized platform for social Web applications" 
   
-- https://solidproject.org/ 
-  - Solid is a specification that lets people store their data securely in decentralized data stores called Pods. Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which people and applications can access it.
-  
-- https://inrupt.com/solid/
-  - Solid is a technology for organizing data, applications, and identities on the web. Solid enables richer choices for people, organizations and app developers by building on existing web standards.
+On the website of the Solid project, we find that: "Solid is a specification that lets people store their data securely in decentralized data stores called Pods. Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which people and applications can access it." [https://solidproject.org/]()
 
-We notice a lack of proper definition for Solid, nor a guideline for used terminology (protocol, platform, ecosystem, ...).
+On the Inrupt website [https://inrupt.com/solid/](), Solid is defined as "a technology for organizing data, applications, and identities on the web. Solid enables richer choices for people, organizations and app developers by building on existing web standards."
 
+We notice that where these definitions differ in the identity of Solid as a platform, technology or specification / protocol, we see that there is no specific mention of Linked Data Platform. 
+In contrast, the current specifications (WAC, ACP), research [TODO:: find something good here??]() and tooling is all focused on viewing Solid as a Linked Data Platform interface.
+[TODO:: we need more content here to prove this point]().
 
-### Solid is about splitting apps and data
-A key requirement for this is the splitting of applications and data, and the storage of semantics in the data itself.
+Because of this notion of a Solid POD being equated to the Linked Data Platform interface is exposes, in contrast to viewing this interface as a means to an end to achieve the original goal of splitting applications and data while providing semantics in the data itself, we argue that this current perspective enforces the problems that currently exist with using the Linked Data Platform specification as a base for the Solid ecosystem and limits the potential for innovation and solutions that the Solid ecosystem can bring to the Web.
 
 
+-----------------
 
-### Solid as a Linked Data Platform interface
+<!-- ### Solid as a Linked Data Platform interface
 
 LDP as a meta-API where applications are able to model their data needs.
 It puts constraints on the data - resource granularity, hierarchical structuring, but also leaves degrees of freedom used to create additional semantics not captured in the data.
-This freedom is used to create API's in the data through local assumptions creating semantics that may not be captured in the data itself.
+This freedom is used to create API's in the data through local assumptions creating semantics that may not be captured 
+However, if we look at the implementation these definitions differ We notice a lack of proper definition for Solid, nor a guideline for used terminology (protocol, platform, ecosystem, ...).in the data itself.
 Little support for interoperability in its base form.
 
 #### A mismatch between data organization and the real world
@@ -57,7 +104,7 @@ the resulting data organization on the pod dictates how permissions can be set o
 As the data is structured in resources using the hierarchical structuring of the Linked Data Platform interface,
 permission granularity over this data is limited to the size of the chosen resources, and not on individual data triples in these resources (in case of RDF resources).
 Additionally, interactions with this data is limited to the structuring of these resources, as [TODO:: what more should we put here??]().
-
+ -->
 
 
 

@@ -209,6 +209,9 @@ cause::
 - We see however that the use of the Linked Data Platform specification leads to a lot of ASSUMPTIONS in the organization of data on the pod.
 - This leads to difficulties in discovery, querying, semantics? and interoperability of data.
 - In this paper, we propose a perspective of Solid pods as exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.
+- 
+- solid about **splitting data and apps**
+- key: **semantics in the data**
 
 - Promise of Solid: Data and App independent
 
@@ -307,3 +310,13 @@ cause::
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
+
+
+- LDP creates problems with resources
+  - resources are the unit to which permissions are limited
+  - resources form a logical way of bundling data where the semantics of this bundling may not be encapsulated in the data.
+  - To other applications, resources are little black boxes with only very limited metadata.
+
+- problem with hierarchy
+- granularity
+- creating an organizational structure

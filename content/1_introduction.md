@@ -33,8 +33,21 @@ Next to this, we also notice a lack of an authoritative definition for Solid.
 
 This lack of a proper definition, combined with the evolution of the implementation of Solid, has as a consequence that people start to equate their definitions and expectations of the Solid platform and ecosystems to the implementations, [more than on the original vision of what Solid can do for the Web. TODO:: ...?]()
 
+### What is Solid
 
+The Solid project provides a platform based on a set of open standards to manage and interact with data in a Personal Online Datastore (POD) [](cite:cites sambra_solid_nodate).
+With the goal of facilitating the integration of data for applications over the Web, 
+through giving individuals control over this data through deciding access rights and choosing the applications and services allowed to interact with this data, 
+new paradigms are needed.
 
+### Separating data and applications
+To achieve an ecosystem where different applications can work with the same data, the separation between the data and the applications / services working with the data is an important premise.
+
+### Semantics and data
+A key enabler of this separation is the use of RDF and the adding of semantics to data.
+The semantic Web was introduced as an extension to the Web to make data machine-readable [](cite:cites BERNERS-LEE_HENDLER_LASSILA_2001).
+Two decades later, the standards introduced are more relevant than ever in the goal to creating ecosystems that enable data integration and interoperability for applications.
+Where large portions of the semantics of currently available data over the web are  historically stored in documentation of APIs scattered over the internet, semantics in data allow the expressiveness of storing these semantics in the data itself. Instead of requiring to read the documentation of a data source to know that `api.com/users/1234/contacs/` results in a JSON list of contacts for user 1234, the Relational Data Format (RDF) enables us to write these semantics in the data itself, where `</users/1234/> foaf:knows </users/1235>`. Irrespective of the interface exposing this data, the relation between both users can be discovered from the semantics in the data without requiring specific understanding of how the data was retrieved and the implicit semantics that were captured in the exposing API.
 
 
 
