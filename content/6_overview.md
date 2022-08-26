@@ -1,10 +1,13 @@
 
+
+<!-- 
+
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
 
-**OVERVIEW**  
+**OVERVIEW -- v1**  
 
 -----------------------------------------------
 -----------------------------------------------
@@ -40,6 +43,7 @@
       - example of meta-API
     - LDP has constraints, real world data modelling has constraints, these may be orthogonal in situations and not match
     - **point 1: mismatch between hierarchy and real world**
+
     - putting the meaning in the data removes mismatch between semantics and data. semantics should be in the data and in the organizational structure
 
   - Containers and resources lead to data stored separately (e.g. digita storing data of different applications in different containers, idem as e.g. program files on the filesystem.)
@@ -175,15 +179,122 @@ cause::
 
 - API based integration to data integration
 
-- (not for here) resources are not well defined units of data. You can see the whole pod as a single resource (all rdf data)
+- (not for here) resources are not well defined units of data. You can see the whole pod as a single resource (all rdf data).
 
 ------------
 
 - It does however provide a more robust framework to think about solving challenges for decentralized data pods
 - It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)
 - This vision builds upon the current implementation without any discrediting of work done, but with the hope of building on the existing specifications and ideas to solve even more challenges.
+ -->
+
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+
+**OVERVIEW -- v2**  
+
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+
+**intro**
+
+- Solid proposed as a data platform using the open Linked Data Platform spec to organize data.
+  - people equate the Solid pod to the LDP interface
+  - give a working definition
+  - is there an agreed upon definition that is authoritive?
+- We see however that the use of the Linked Data Platform specification leads to a lot of ASSUMPTIONS in the organization of data on the pod.
+- This leads to difficulties in discovery, querying, semantics? and interoperability of data.
+- In this paper, we propose a perspective of Solid pods as exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.
+
+- Promise of Solid: Data and App independent
 
 
+**problem statement**
+
+- solid about **splitting data and apps**
+- key: **semantics in the data**
+- now; ldp **mismatch hierarchy and real world**
+- then: **hierarchy misused** by applications to model things how they like - **semantics outside of data**
+- even worse: applications make **local optimizations** and assumptions creating ecosystem thats not interoperable anymore
+- permissions: as permissions are tied to hierarchy, **indirectly leads to applications defining your permissions.**
+
+
+
+- **What were we trying to do**
+  - create permissioned knowledge graph
+    - all of the above is captured in this concept
+    - issues come from the emulation of permissioned knowledge graph through LDP and not from the concept of permissioned knowledge graph
+
+- **cause?**: LDP is a not a real API (in the same way that a file system is not a real API). It is a meta-api that allows an infinite ways to organize data.
+  - In its base form, combined with access controls, it provides little to no functionality for data interoperability.
+  - The goal of Linked Data is data integration, where LDP actually still requires a lot of api-integration through assumptions or agreements between applications on certain data organizations (e.g. solid chat in mashlib, ...).
+  - **Ldp imposes constraints - leaves degrees of freedom that is used to create additional semantics not captured in the data**
+
+
+**perspective**
+
+- In this paper, we propose the perspective of Solid being data and app independent. 
+- Where currently often used perspective of Solid IS LDP, or Solid is ...
+- We propose the perspective of a Solid pod as permissioned knowledge graph. argue this is a goal that has been tried to achieve with LDP but we are getting stuck ... 
+
+
+- Make sure it stays exemplifying -> 
+  - Make point of SPARQL endpoint over the document proposed in paper
+  - With this view, we can see the SPARQL endpoint as exposing the RAW data, without requiring the document organization of LDP 
+  - Dont go to deep - more of an example
+
+
+- OH no - what about the API's => Oh no, what about all the local assumptions
+  - Solid marks transition from API based integration to data based integration
+  - the assumptions are now in the API -> we need to move the assumptions to the data and try to make them specific using semantics -> this is a strong conclusion
+
+- this approach allows us to regard interfaces that are better able to split data and applications, ...7
+
+- **permissions are a proxy for policies / parameters**
+  - permissioned -> we can zoom this out to parameterized / policy based
+
+- APIs could be built through modular building blocks as is the case now (LDP, WAC/ACP, Solid-OIDC)
+  - building blocks should be built with AS LITTLE INTER-DEPENDENCY AS POSSIBLE
+
+
+**comparison**
+
+- In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, ...).
+
+- **What do we need? -> A good example**
+  - compare 2 cases -> precise examples
+    - store address book in classic solid with LDP
+      - if you store this LDP API in file system -> straightforward
+      - SPARQL endpoint -> encode document in which this is stored
+
+
+- **make point that query and API are separate!**
+  - suggestion of SPARQL endpoint per resource
+  - bring some clarity to this point
+
+
+**conclusion**
+
+
+- Viewing a pod as a KG does not solve issues in itself, but provides a thinking framework to think about and solve issues focused more on the data than the interface.
+
+- queries and APIs are separate - important to bring this point forward again
+
+- LDP gives us only a limited innovation surfaces
+
+- API based integration to data integration
+
+- (not for here) resources are not well defined units of data. You can see the whole pod as a single resource (all rdf data).
+
+------------
+
+- It does however provide a more robust framework to think about solving challenges for decentralized data pods
+- It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)
+- This vision builds upon the current implementation without any discrediting of work done, but with the hope of building on the existing specifications and ideas to solve even more challenges.
 
 -----------------------------------------------
 -----------------------------------------------

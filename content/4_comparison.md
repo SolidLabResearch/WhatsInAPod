@@ -2,6 +2,26 @@
 
 In this section, we examine possible interpretations of the technological underpinnings, and compared them from the viewpoints of storage, publication and query.
 
+In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, …).
+
+### Storing events on a Pod
+A first concrete example we can give is the example of storing events on a Solid pod.
+Events are a wide-spread 
+
+We will make this comparison based on the aspects of storage of the data on the pod server, the publication of the data over the Web, and querying of data over the interface.
+
+#### Storage
+
+
+
+#### Publication
+
+
+
+#### Query
+
+**queries and APIs are separate concepts**
+
 
 ### Comparing interfaces
 A common misconception is that a server interface should be identical to the client interface [TODO::cite and word according to Ruben blog](). 

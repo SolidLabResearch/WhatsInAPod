@@ -1,14 +1,71 @@
 ## Problem statement # {#problem_statement}
-With the goal of facilitating the integration of data for applications over the Web, 
-the Solid protocol defines a set of open standards that can be used to interact with the data stored on a pod [TODO::cite]().
-The protocol to read, write and organize data on Solid data pods is (an adapted version of) the Linked Data Platform specification [](cite:cites presbrey_linked_2014). 
-The Linked Data Platform specification defines a set of rules for operations on and interactions with resources over the Web using HTTP(S).
+With the goal of facilitating the integration of data for applications over the Web,
+the Solid platform provides a set of open standards to manage and interact with data in a Personal Online Datastore (POD).
+The protocol to read, write and organize data on Solid data pods is based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
+The Linked Data Platform specification defines the operations on and interactions with resources over the Web using HTTP(S).
 It defines the concepts of containers and resources to organize data, which similarly to a file system create a hierarchic storage structure of containers (~directories) containing resources (~files) and other containers.
 These resources can be non-RDF resources such as images, word documents, ... as well as RDF resources, which are a collection of RDF data formatted according to an RDF data format.
 [TODO:: maybe I should have a separate section introducing the concepts of LDP, Solid, ...?]()
 The Solid protocol adopts an adapted version of this specification, including HTTP PUT for direct control over resource naming and location.
 
-### Linked Data Platform
+
+### A need for definition
+
+As we search for an authoritative definition on what a Solid pod entails, we find multiple definitions:
+
+- sambra et al
+  - This paper presents Solid, a decentralized platform for social Web applications
+  
+- https://solidproject.org/ 
+  - Solid is a specification that lets people store their data securely in decentralized data stores called Pods. Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which people and applications can access it.
+  
+- https://inrupt.com/solid/
+  - Solid is a technology for organizing data, applications, and identities on the web. Solid enables richer choices for people, organizations and app developers by building on existing web standards.
+
+We notice a lack of proper definition for Solid, nor a guideline for used terminology (protocol, platform, ecosystem, ...).
+
+
+### Solid is about splitting apps and data
+A key requirement for this is the splitting of applications and data, and the storage of semantics in the data itself.
+
+
+
+### Solid as a Linked Data Platform interface
+
+LDP as a meta-API where applications are able to model their data needs.
+It puts constraints on the data - resource granularity, hierarchical structuring, but also leaves degrees of freedom used to create additional semantics not captured in the data.
+This freedom is used to create API's in the data through local assumptions creating semantics that may not be captured in the data itself.
+Little support for interoperability in its base form.
+
+#### A mismatch between data organization and the real world
+is often caused by the Linked Data Platform interface being restrictive in the way data can be organized over the interface.
+The Linked Data Platform specification organizes data in a hierarchical structure, where real-world data does not always follow a hierarchical structure.
+
+
+
+#### Semantics in data organization
+in applications and 
+
+
+#### Localized assumptions and optimizations
+made by applications in the structure of data stored on a data pod leads to ...
+
+#### Applications indirectly dictate the permission structure
+in their structuring of data on the data pod.
+As applications structure data stored on the data pod, 
+the resulting data organization on the pod dictates how permissions can be set over this data.
+As the data is structured in resources using the hierarchical structuring of the Linked Data Platform interface,
+permission granularity over this data is limited to the size of the chosen resources, and not on individual data triples in these resources (in case of RDF resources).
+Additionally, interactions with this data is limited to the structuring of these resources, as [TODO:: what more should we put here??]().
+
+
+
+
+
+
+
+
+--------------------------------------------
 
 #### Data granularity
 A consequence of using this specification is that data must be organized in resources, as this is the only form of data that can be managed using Linked Data Platform. This requires applications to make local assumptions as to what constitutes a resource and how application data should be distributed over resources in a data pod. As resources are the only interface, other data structures such as databases are impossible, and must be emulated on the client side over the resources exposed by the LDP interface.
@@ -29,6 +86,7 @@ As the goal for interoperability of online data spaces is to move from the parad
 
 
 The original paper proposes a solution for data discovery through providing a SPARQL interface that runs on top of the data organized in the Linked Data Platform, where every resource serves as its own SPARQL endpoint (https://github.com/nodeSolidServer/node-solid-server/issues/962) which has since been removed from the spec -> this was no solution after all so maybe this should be casually mentioned as a sidenote?
+
 
 
 <!-- 

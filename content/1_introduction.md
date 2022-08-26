@@ -1,4 +1,13 @@
 ## Introduction # {#introduction}
+In the current state of the Web of large platforms storing enormous amounts of data in their own data silos, 
+the Solid project brings a revitalization of the concepts of data ownership and identity on the Web.
+Proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate), 
+[TODO:: more]()
+
+As the specifications evolved over the years, the definitions on what Solid actually is have evolved as well.
+
+The use of the Linked Data Platform specification as the interface to interact with the data stored on a Solid pod ...
+
 The current Web has come a long way from it's initial vision.
 Originally designed as a decentralized network of computers serving and retrieving data form and to the network, 
 data has become more centralized as data traffic converged to centralized platforms that span billions of accounts.
@@ -9,13 +18,30 @@ by building on existing web standards [TODO:: cite]().
 The Linked Data Platform specification was chosen as a way to organize data on a data pod.
 [TODO:: write some good flavour text above. Maybe yoink some from other papers]()
 
+<!-- 
 We see that in the current state, the specification has started to define the platform, where the use of Linked Data Platform to organize data on a data pod leads to local assumptions being made in applications on how data organization in a data pod should be handled.
 
-In this work, we propose the vision of Solid as a platform of data pods containing an internal Knowledge Graph that can expose this knowledge graph over a multitude of interfaces.
+In this work, we propose the vision of Solid as a platform of data pods containing an internal Knowledge Graph that can expose this knowledge graph over a multitude of interfaces. 
+-->
 
-In [](#problem_statement), we define the problem with viewing a data pod as a Linked Data Platform API, and how this leads to biases of the interface being transferred to the data stored.
-With [](#vision), we propose the merit of defining a data pod as a knowledge graph that can be exposed over a multitude of APIs.
-[](#comparison) includes a high-level comparison over the interpretations of a data pod, after which a conclusion is formulated in [](#conclusion).
+
+The goal of the Solid platform is to present a platform that separates applications and data, creating an ecosystem where multiple applications can seamlessly work with the same data [TODO::cite from somewhere? ask Ruben V?]().
+
+However, as the specifications evolved, we see an evolution in direction of Solid being equated to the specifications used to implement the vision, as opposed to the original vision of a next step for the Web to provide separation between data and applications.
+
+Next to this, we also notice a lack of an authoritative definition for Solid. 
+
+This lack of a proper definition, combined with the evolution of the implementation of Solid, has as a consequence that people start to equate their definitions and expectations of the Solid platform and ecosystems to the implementations, [more than on the original vision of what Solid can do for the Web. TODO:: ...?]()
+
+
+
+
+
+
+
+In [](#problem_statement), we define how a mismatch in organization and real-world structure of data can lead to problems through local assumptions and optimizations by applications.
+[](#vision) shows the proposed perspective of viewing Solid data pods as permissioned knowledge graphs that can be exposed over a multitude of APIs.
+In [](#comparison), we argue through comparisons of specific use-cases how interfaces influence the organization and structure of the data, and can lead to coupling between application and data through localized assumptions, after which a conclusion is formulated in [](#conclusion).
 
 
 
