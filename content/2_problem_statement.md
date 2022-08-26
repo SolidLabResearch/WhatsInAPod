@@ -109,7 +109,7 @@ Additionally, interactions with this data is limited to the structuring of these
 
 
 
-
+<!-- 
 
 
 --------------------------------------------
@@ -133,7 +133,7 @@ As the goal for interoperability of online data spaces is to move from the parad
 
 
 The original paper proposes a solution for data discovery through providing a SPARQL interface that runs on top of the data organized in the Linked Data Platform, where every resource serves as its own SPARQL endpoint (https://github.com/nodeSolidServer/node-solid-server/issues/962) which has since been removed from the spec -> this was no solution after all so maybe this should be casually mentioned as a sidenote?
-
+ -->
 
 
 <!-- 
