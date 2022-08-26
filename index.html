@@ -240,25 +240,31 @@ permission granularity over this data is limited to the size of the chosen resou
 Additionally, interactions with this data is limited to the structuring of these resources, as [TODO:: what more should we put here??]().
  -->
 
-      <hr />
+      <!-- 
 
-      <h4 id="data-granularity">Data granularity</h4>
-      <p>A consequence of using this specification is that data must be organized in resources, as this is the only form of data that can be managed using Linked Data Platform. This requires applications to make local assumptions as to what constitutes a resource and how application data should be distributed over resources in a data pod. As resources are the only interface, other data structures such as databases are impossible, and must be emulated on the client side over the resources exposed by the LDP interface.</p>
 
-      <h4 id="organizational-semantics">Organizational semantics</h4>
-      <p>As resources are stored in a hierarchical way due to the nature of the Linked Data Platform specification, the organization of data in a hierarchical order may carry implicit semantics in the organization of resources on a data pod. We see this return in the original paper<span class="references">[<a href="#ref-1">1</a>]</span>, where the example is given of an application storing events using a URI path structure based on dates (i.e., /2016/05/01/event1). The problem with these localized assumptions is they do not hold for the ecosystem, and form an application specific API built on Linked Data Platform <a href="">TODO:: what more?</a>.</p>
+--------------------------------------------
 
-      <h4 id="hierarchical-bias">Hierarchical bias</h4>
-      <p>The hierarchical organization of data on a pod also leads to data separation between applications. We see this with e.g. Digita <a href="">TODO::source</a> providing a separate container for each app, in the same way that the <code>Program Files</code> folder provides a location for applications to store data. While this mitigates issues of overwriting data, and adds implicit context to data based on its location (at least for the application managing a certain data space), this comes at the cost of data discovery and integration <a href="">TODO:: what more?</a>.</p>
+#### Data granularity
+A consequence of using this specification is that data must be organized in resources, as this is the only form of data that can be managed using Linked Data Platform. This requires applications to make local assumptions as to what constitutes a resource and how application data should be distributed over resources in a data pod. As resources are the only interface, other data structures such as databases are impossible, and must be emulated on the client side over the resources exposed by the LDP interface.
 
-      <h4 id="ldp-as-a-meta-api-1">LDP as a meta-API</h4>
-      <p>We argue that the Linked Data Platform interface is not an API, but a meta-API that can organize data in an infinite amount of ways. In the current environment, applications are forced to make local assumptions, and create application-specific API’s on the Solid data pods through localized assumptions that do not hold for the ecosystem. This comes at the cost of data discovery and interoperability with different applications that do not share the same assumptions.</p>
+#### Organizational semantics
+As resources are stored in a hierarchical way due to the nature of the Linked Data Platform specification, the organization of data in a hierarchical order may carry implicit semantics in the organization of resources on a data pod. We see this return in the original paper<span class="references">\[<a href="#ref-1">1</a>\]</span>, where the example is given of an application storing events using a URI path structure based on dates (i.e., /2016/05/01/event1). The problem with these localized assumptions is they do not hold for the ecosystem, and form an application specific API built on Linked Data Platform [TODO:: what more?]().
 
-      <h3 id="api-integration-versus-data-integration">API-integration versus data-integration</h3>
+#### Hierarchical bias
+The hierarchical organization of data on a pod also leads to data separation between applications. We see this with e.g. Digita [TODO::source]() providing a separate container for each app, in the same way that the `Program Files` folder provides a location for applications to store data. While this mitigates issues of overwriting data, and adds implicit context to data based on its location (at least for the application managing a certain data space), this comes at the cost of data discovery and integration [TODO:: what more?]().
 
-      <p>As the goal for interoperability of online data spaces is to move from the paradigm of API integration to mode data integration centered approaches of data publishing, we see that Linked Data Platform in it’s current state creates API integration issues for applications through localized assumptions in data organization and format / shape <a href="">TODO:: maybe also make the point of format / shape integration a bit more</a>.</p>
+#### LDP as a meta-API
+We argue that the Linked Data Platform interface is not an API, but a meta-API that can organize data in an infinite amount of ways. In the current environment, applications are forced to make local assumptions, and create application-specific API's on the Solid data pods through localized assumptions that do not hold for the ecosystem. This comes at the cost of data discovery and interoperability with different applications that do not share the same assumptions.
 
-      <p>The original paper proposes a solution for data discovery through providing a SPARQL interface that runs on top of the data organized in the Linked Data Platform, where every resource serves as its own SPARQL endpoint (https://github.com/nodeSolidServer/node-solid-server/issues/962) which has since been removed from the spec -&gt; this was no solution after all so maybe this should be casually mentioned as a sidenote?</p>
+### API-integration versus data-integration
+
+As the goal for interoperability of online data spaces is to move from the paradigm of API integration to mode data integration centered approaches of data publishing, we see that Linked Data Platform in it's current state creates API integration issues for applications through localized assumptions in data organization and format / shape [TODO:: maybe also make the point of format / shape integration a bit more]().
+
+
+
+The original paper proposes a solution for data discovery through providing a SPARQL interface that runs on top of the data organized in the Linked Data Platform, where every resource serves as its own SPARQL endpoint (https://github.com/nodeSolidServer/node-solid-server/issues/962) which has since been removed from the spec -> this was no solution after all so maybe this should be casually mentioned as a sidenote?
+ -->
 
       <!-- 
 
