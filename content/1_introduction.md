@@ -1,6 +1,6 @@
 ## Introduction # {#introduction}
-In the current state of the Web of large platforms storing enormous amounts of data in their own data silos, 
-the Solid project brings a revitalization of the concepts of data ownership and identity on the Web.
+In the current state of the Web of large platforms controlling enormous amounts of user data in centralized locations, hidden behind pay walls or access limiting mechanisms, 
+the Solid project aims to revitalize the concepts of identity and data ownership for the Web.
 Proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate), 
 [TODO:: more]()
 

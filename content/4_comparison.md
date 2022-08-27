@@ -4,6 +4,58 @@ In this section, we examine possible interpretations of the technological underp
 
 In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, …).
 
+
+### Managing events
+For a first comparison, we take an application that works with events.
+Given an event consisting of a timestamp, a type, and a message.
+In the Solid ecosystem, how can an application store this data on a POD?
+
+#### In the case of an LDP interface
+the application will first need to bundle the data it wants to write into resources. In the case of events or other objects with a logical structure, the straightforward approach is to create a separate resource for each event. An alternative approach could be to bundle events in a single resource, but this comes at the cost of the granularity over which permissions can be assigned to events.
+
+With the resources created, the application now wants to store them on a Solid pod.
+If the application does not have access to a location on the pod, it can start up a negotiation protocol to receive access to write data to the pod.
+With access given to the pod, the application now needs to organize the created resources in a structure that can be written over the LDP interface of data pod.
+
+A first option would be for the application to just write all resources to a single container the application has access to, together with all other application data. Combining all data in resources in a single container means the application is not making any assumptions as to the organization of data. However, in this case, the LDP interface does nothing to help the application find previously stored data, as it either has to keep an internal state in the application of where resources were stored, or check all resources on the pod until a match is found.
+
+Because of this, it is more interesting for applications to create structure in their data, as through these structures, applications can more easily retrieve written data. To create this structure, the application can create an `events` folder in their allocated data space, and store all event resources in this `<storage_space>/events/` location. Now any time the applications wants to read or write events, it can make the local assumption that all event related data *written by the application* will be stored at this `events` folder.
+
+But as the application expects to be working with large amounts of event data, it might decide that further optimizations are required. For this purpose, it might want to choose to organize the data according to one of its properties such as the timestamp of the event, or the type of the event. In this case, an event might be stored as the following resource on the pod: `<storage_space>/events/2022/01/01/event1.ttl`.
+
+We see that the events stored by the application are now structured according to the assumptions and optimizations done by the application.
+
+From a **storage** standpoint, the event data is stored on the file system of the POD server as a file, or may be stored in a graph database where the data is tagged as part of that resource, so that the resource can be reconstructed in its entirety.
+
+From a **publication** standpoint, all data of an event is published as a resource over the POD LDP interface on a location that is tied to the application-specific organization of data.
+
+From a **query** standpoint, the data must first be discovered on the pod, after which it can be queried directly through dereferencing the relevant resources or by an abstraction on the client that provides access to the data over another interface.
+Data discovery can happen using brute-force retrieval of all available resources, but is limited by the permissions an agent has over what can be viewed on the data pod. Additionally, public resources in private containers may lead to brute-force methods not discovering these resources and not including the contained data in their results.
+Options external to the LDP interface such as the Type Indexing system [TODO:: refer]() and Shape Trees [TODO:: refer]() can optimize this process, but as of yet are not mandatory in the specifications and are not required to be managed by the server [TODO:: is this true for shape trees??]().
+
+#### In the case of [meta-]model-based interfaces
+the application is not required to do additional data modeling.
+Data can be written as-is to the pod, over any available endpoint exposed by the pod.
+The received data is then stored 
+
+From a **storage** standpoint, the event data is stored in a graph-based database on the Pod server. 
+
+from a **publication** standpoint, multiple interfaces can be used 
+
+From a **query** standpoint
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Storing events on a Pod
 A first concrete example we can give is the example of storing events on a Solid pod.
 Events are a wide-spread 

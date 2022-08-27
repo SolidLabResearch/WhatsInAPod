@@ -320,3 +320,18 @@ cause::
 - problem with hierarchy
 - granularity
 - creating an organizational structure
+
+
+
+------------------------
+
+- say A pod is a knowledge graph
+- every subject in the KG should be dereferencable
+  - dereferencing would result in a Subject page for the dereferenced subject
+  - This is identical to just randomly storing data in the root with random names 
+  - >> what about data OUTSIDE of your namespace?????
+  - advertising a query endpoint???
+  
+  question
+  - do we see a pod as a DATA SOURCE? 
+  - e.g. pod is a data source KG, it may expose multiple interfaces over its internal knowledge graph.

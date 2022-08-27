@@ -34,6 +34,23 @@ Additionally, in this paradigm, applications themselves are indirectly responsib
 
 These consequences go against the vision of Solid providing an ecosystem where data and applications are separated and where API integration is abolished for data integration where applications and services are enabled to directly integrate existing data.
 
+### A need for definition
+Where above we posed that the Linked Data Platform specification defines an interface that promotes local assumptions and organizational structures for applications storing data on a Solid POD, we see that the line between Solid and Linked Data Platform has been blurred over time [TODO:: CITATIONS AND EXAMPLES](). 
+As no authoritive definition of Solid exists (that we know of), we find that multiple initiatives in the Solid ecosystem provide their own vision on the Solid ecosystem, which over time equates more to the idea of Solid as a Linked Data Platform  set of specifications for an online platform than as a vision for a
+
+In the initial paper, Solid is presented as: "a decentralized platform for social Web applications" 
+  
+On the website of the Solid project, we find that: "Solid is a specification that lets people store their data securely in decentralized data stores called Pods. Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which people and applications can access it." [https://solidproject.org/]()
+
+On the Inrupt website [https://inrupt.com/solid/](), Solid is defined as "a technology for organizing data, applications, and identities on the web. Solid enables richer choices for people, organizations and app developers by building on existing web standards."
+
+We notice that where these definitions differ in the identity of Solid as a platform, technology or specification / protocol, we see that there is no specific mention of Linked Data Platform. 
+In contrast, the current specifications (WAC, ACP), research [TODO:: find something good here??]() and tooling is all focused on viewing Solid as a Linked Data Platform interface.
+[TODO:: we need more content here to prove this point]().
+
+Because of this notion of a Solid POD being equated to the Linked Data Platform interface is exposes, in contrast to viewing this interface as a means to an end to achieve the original goal of splitting applications and data while providing semantics in the data itself, we argue that this current perspective enforces the problems that currently exist with using the Linked Data Platform specification as a base for the Solid ecosystem and limits the potential for innovation and solutions that the Solid ecosystem can bring to the Web.
+
+
 <!-- 
 It puts constraints on the data - resource granularity, hierarchical structuring, but also leaves degrees of freedom used to create additional semantics not captured in the data.
 This freedom is used to create API's in the data through local assumptions creating semantics that may not be captured 
@@ -57,26 +74,13 @@ As applications
 As data must be collected in resources and placed in a hiera
  -->
 
-### A need for definition
-Where above we posed that the Linked Data Platform specification defines an interface that promotes local assumptions and organizational structures for applications storing data on a Solid POD, we see that the line between Solid and Linked Data Platform has been blurred over time [TODO:: CITATIONS AND EXAMPLES](). 
-As no authoritive definition of Solid exists (that we know of), we find that multiple initiatives in the Solid ecosystem provide their own vision on the Solid ecosystem, which over time equates more to the idea of Solid as a Linked Data Platform  set of specifications for an online platform than as a vision for a
 
-In the initial paper, Solid is presented as: "a decentralized platform for social Web applications" 
-  
-On the website of the Solid project, we find that: "Solid is a specification that lets people store their data securely in decentralized data stores called Pods. Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which people and applications can access it." [https://solidproject.org/]()
-
-On the Inrupt website [https://inrupt.com/solid/](), Solid is defined as "a technology for organizing data, applications, and identities on the web. Solid enables richer choices for people, organizations and app developers by building on existing web standards."
-
-We notice that where these definitions differ in the identity of Solid as a platform, technology or specification / protocol, we see that there is no specific mention of Linked Data Platform. 
-In contrast, the current specifications (WAC, ACP), research [TODO:: find something good here??]() and tooling is all focused on viewing Solid as a Linked Data Platform interface.
-[TODO:: we need more content here to prove this point]().
-
-Because of this notion of a Solid POD being equated to the Linked Data Platform interface is exposes, in contrast to viewing this interface as a means to an end to achieve the original goal of splitting applications and data while providing semantics in the data itself, we argue that this current perspective enforces the problems that currently exist with using the Linked Data Platform specification as a base for the Solid ecosystem and limits the potential for innovation and solutions that the Solid ecosystem can bring to the Web.
+<!-- 
 
 
 -----------------
 
-<!-- ### Solid as a Linked Data Platform interface
+### Solid as a Linked Data Platform interface
 
 LDP as a meta-API where applications are able to model their data needs.
 It puts constraints on the data - resource granularity, hierarchical structuring, but also leaves degrees of freedom used to create additional semantics not captured in the data.
