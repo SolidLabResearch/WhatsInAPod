@@ -186,6 +186,9 @@ cause::
 - It does however provide a more robust framework to think about solving challenges for decentralized data pods
 - It enables more functionality and optimization though more workload-specific interfaces (cfr databases over a filesystem)
 - This vision builds upon the current implementation without any discrediting of work done, but with the hope of building on the existing specifications and ideas to solve even more challenges.
+
+T
+
  -->
 
 -----------------------------------------------
@@ -201,7 +204,6 @@ cause::
 -----------------------------------------------
 
 **intro**
-
 - Solid proposed as a data platform using the open Linked Data Platform spec to organize data.
   - people equate the Solid pod to the LDP interface
   - give a working definition
@@ -335,3 +337,32 @@ cause::
   question
   - do we see a pod as a DATA SOURCE? 
   - e.g. pod is a data source KG, it may expose multiple interfaces over its internal knowledge graph.
+
+
+
+
+
+
+
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+
+**OVERVIEW -- v3**  
+
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+
+**intro**
+- Solid proposes a new ecosystem, where data and application are separated.
+- Solid has goal: **splitting data and apps**
+- this has key: **semantics in the data**
+- to achieve this ecosystem, they propose a set of interfaces to make this happen
+- For read, write and interacting with data, the LDP interface is chosen as a way to organize data on a Solid pod.
+- The chosen LDP interface leads to localized application-specific assumptions and structuring of data
+- As no authoritative definition is present, the definitions for Solid are shifting from the original vision towards the sum of the used specifications 
+- In this paper, we propose a perspective of Solid pods as exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.
+- Using this perspective, we hope to steer the discussion for solid again towards a framing of Solid pods as a knowledge graph, and how the separation of applications and data can take place in this context.
