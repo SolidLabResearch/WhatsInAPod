@@ -344,6 +344,19 @@ T
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
@@ -378,23 +391,42 @@ T
 - This can lead to problems in discovery, interoperability, through a mismatch of assumptions and expectations in the data organization and because of the lack of agreement.
 - We argue that LDP with WAC / ACP is a way to emulate a permissioned knowledge graph, but in the process it incurs application biases through assumptions and optimizations, and leaves open a lot of degrees of freedom in the organization of data. This is a consequence of the choice of interface and not of the vision of Solid pod as a KG.
   
-
-
-- solid about **splitting data and apps**
-- key: **semantics in the data**
-- now; ldp **mismatch hierarchy and real world**
-- then: **hierarchy misused** by applications to model things how they like - **semantics outside of data**
-- even worse: applications make **local optimizations** and assumptions creating ecosystem thats not interoperable anymore
-- permissions: as permissions are tied to hierarchy, **indirectly leads to applications defining your permissions.**
+  
+  
 
 
 
-- **What were we trying to do**
-  - create permissioned knowledge graph
-    - all of the above is captured in this concept
-    - issues come from the emulation of permissioned knowledge graph through LDP and not from the concept of permissioned knowledge graph
+**perspective**
 
-- **cause?**: LDP is a not a real API (in the same way that a file system is not a real API). It is a meta-api that allows an infinite ways to organize data.
-  - In its base form, combined with access controls, it provides little to no functionality for data interoperability.
-  - The goal of Linked Data is data integration, where LDP actually still requires a lot of api-integration through assumptions or agreements between applications on certain data organizations (e.g. solid chat in mashlib, ...).
-  - **Ldp imposes constraints - leaves degrees of freedom that is used to create additional semantics not captured in the data**
+- Repeat the goal of Solid providing ecosystem where applications and data are separated.
+- We propose the perspective of a Solid pod as permissioned knowledge graph. 
+- argue this is a goal that has been tried to achieve with LDP but we are getting stuck ... 
+
+
+- Make sure it stays exemplifying -> 
+  - Make point of SPARQL endpoint over the document proposed in paper
+  - With this view, we can see the SPARQL endpoint as exposing the RAW data, without requiring the document organization of LDP 
+  - Dont go to deep - more of an example
+
+
+- OH no - what about the API's => Oh no, what about all the local assumptions
+  - Solid marks transition from API based integration to data based integration
+  - the assumptions are now in the API -> we need to move the assumptions to the data and try to make them specific using semantics -> this is a strong conclusion
+
+- this approach allows us to regard interfaces that are better able to split data and applications, ...7
+
+- **permissions are a proxy for policies / parameters**
+  - permissioned -> we can zoom this out to parameterized / policy based
+
+- APIs could be built through modular building blocks as is the case now (LDP, WAC/ACP, Solid-OIDC)
+  - building blocks should be built with AS LITTLE INTER-DEPENDENCY AS POSSIBLE
+
+
+
+
+
+
+**comparison**
+- event storage
+  - event stored as /events/2022/05/24/event1.ttl
+  - same as file system

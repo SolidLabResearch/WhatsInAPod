@@ -1,14 +1,34 @@
 ## Conclusion # {#conclusion}
+<!-- With this work, we propose perspective of Solid as ...  -->
+With this work, we propose the perspective of Solid as a platform serving data Pods that provide sufficient views on the data available to the entity interacting with the pod that it can be organized as a permissioned knowledge graph.
+{:.comment .reference.needed data-author="RD"}
 
-In this work, we proposed the perspective of viewing the Solid pod as a permissioned Knowledge Graph. 
-While this perspective does not in itself solve the existing issues with longevity of application interoperability in the Solid ecosystem, it provides a framework that can be used to tackle the present challenges in a way that is more dependent on the data and less dependent on the interfaces used to expose the data over the Web
-
-Where the current state of Solid as a datastore organized according to its Linked Data Platform interface limits the innovation surface through applications creating localized assumptions, 
-
-We believe this perspective provides the required framing for Solid to fully take the next step from being an ecosystem still centered around API integration through localized assumptions creating application specific interfaces through data organization over LDP, towards an ecosystem centered around data integration over well-defined interfaces  [TODO:: this and more]().
+{:.comment data-author="RD"}
+Be sure to adapt this to the final expression we come up with
 
 
-With this work, we do not propose any specific takeaway as to which interfaces may optimize the current problems of data shape and organization when building applications on top of Solid, but want to provide a framework with which these problems can be tackled in a way that is not restricted to only what the LDP interface allows.
+<!-- Argue this perspective in itself does not solve the existing difficulties in interoperability  -->
+The perspective proposed in this work does not in itself provide a solution for the difficulties faced for the Solid ecosystem to provide the separation of applications and data.
+But we argue that this perspective is necessary for solutions to be created that promote longevity in their approach to achieve this separation and provide an ecosystem centered around the concept of data-integration.
+
+<!-- Make case that LDP limits the innovation surface for Solid -->
+We argue that the current choice for the Linked Data Platform specification as the de facto interface for managing with data in a Solid pod requires developers to make localized assumptions and optimizations in applications in cases where the imposed structure of the interface do not match the real world.
+<!-- Where LDP can promote assumptions over the API -> we need to get these assumptions in the data as semantics  -->
+Where the LDP interface can promote the custom of encoding assumptions about data in the bundling of data in resources and the structuring of these resources on the pod, as if they are coding against a file system, we pose that this goes contrary to the development of an interactive ecosystem of applications and data.
+Using the proposed perspective, we hope to provide a framework that may lead to improvements in how these assumptions can be encoded in the semantics of the stored data.
+
+Maybe this should be worded a bit different?
+{:.comment data-author="RD"}
+
+<!-- The perspective continues from the current state of solid and is completely compatible with the current state -->
+We note that the proposed perspective does not go against the current state and use of Solid, but must be seen as a zoomed out attempt at providing a good framing for the issues that are being encountered working on the ecosystem.
+<!-- The goal of this work is to provide a perspective on the identity of Solid that can help in future work on the topic -->
+We do not propose any specific takeaway as to which interfaces may provide solutions for faced difficulties, but we hope that the provided perspective can focus the discussions on the topic in a frame that allows for a way to tackle difficulties in a way that is not restricted by a specific interface on the data.
+
+
+
+
+
 
 <!-- -------------------
 

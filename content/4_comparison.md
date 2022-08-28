@@ -1,23 +1,22 @@
 ## Comparison # {#comparison}
+In this section, we examine how the the proposed perspective influences the technological requirements for the Solid ecosystem, from the viewpoints of storage, publication and query.
 
-In this section, we examine possible interpretations of the technological underpinnings, and compared them from the viewpoints of storage, publication and query.
+{:.comment data-author="RD"}
+Are these three viewpoints still the most relevant?
 
-In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, …).
+The comparison consists of a hypothetical application that stores its event data on the user Solid pod.
+We make the comparison between the current state of the Solid ecosystem where the LDP interface is used to organize the data, with a scenario where the Pod knowledge is directly exposed over a SPARQL endpoint.
+For the comparison, we assume the stored events to consist of a timestamp, a type, and a message.
 
+### The Linked Data Platform interface
+In the case the application that needs to write its event data to a pod where LDP is the only interface to manage data, the application first needs to distribute the data it wants to write to the pod into separate resources that will be put on the pod (note these are technically not yet resources but collections of data to be published as resources on the Solid pod). In the case of events or other objects with a logical structure, the application developers will most likely prefer to take the approach of creating separate resource for each event. 
+An alternative approach could be to bundle events in a single resource, but this comes at the cost of the granularity over which permissions can be assigned to events.
 
-### Managing events
-For a first comparison, we take an application that works with events.
-Given an event consisting of a timestamp, a type, and a message.
-In the Solid ecosystem, how can an application store this data on a POD?
+With the data distributed into several resources, the application now wants to store them on a Solid pod.
+If the application does not have access to a location on the pod, it can start up a negotiation protocol to receive access to write data to the pod that is not in scope of this work.
+With access given to the pod, the application now needs to organize the created resources of data into a structure that can be written over the LDP interface of data pod.
 
-#### In the case of an LDP interface
-the application will first need to bundle the data it wants to write into resources. In the case of events or other objects with a logical structure, the straightforward approach is to create a separate resource for each event. An alternative approach could be to bundle events in a single resource, but this comes at the cost of the granularity over which permissions can be assigned to events.
-
-With the resources created, the application now wants to store them on a Solid pod.
-If the application does not have access to a location on the pod, it can start up a negotiation protocol to receive access to write data to the pod.
-With access given to the pod, the application now needs to organize the created resources in a structure that can be written over the LDP interface of data pod.
-
-A first option would be for the application to just write all resources to a single container the application has access to, together with all other application data. Combining all data in resources in a single container means the application is not making any assumptions as to the organization of data. However, in this case, the LDP interface does nothing to help the application find previously stored data, as it either has to keep an internal state in the application of where resources were stored, or check all resources on the pod until a match is found.
+A first option would be for the application to just write all resources to a single container the application has access to, together with all other application data. Publishing all data as resources in a single container means the application is not making any assumptions as to the organization of data. However, in this case, the LDP interface does nothing to aid the application in finding previously stored data. The application either has to keep an internal state of where resources were stored, or check the available resources on the pod until a match is found.
 
 Because of this, it is more interesting for applications to create structure in their data, as through these structures, applications can more easily retrieve written data. To create this structure, the application can create an `events` folder in their allocated data space, and store all event resources in this `<storage_space>/events/` location. Now any time the applications wants to read or write events, it can make the local assumption that all event related data *written by the application* will be stored at this `events` folder.
 
@@ -46,6 +45,8 @@ From a **query** standpoint
 
 
 
+{:.comment data-author="RD"}
+TODO:: This whole section
 
 
 
@@ -53,6 +54,8 @@ From a **query** standpoint
 
 
 
+
+<!-- 
 
 
 
@@ -144,7 +147,7 @@ How does this solve this issue?
 
 We first pose that API's are a means of syncing data between systems [TODO:: cite](), and data retrieval will always happen over an API (even direct retrieval implicates an API, as you know the location of the resource, etc ...) [TODO:: ...]().
 
-The problem with enforcing Linked Data Platform as the single meta-API for Solid is that biases and 
+The problem with enforcing Linked Data Platform as the single meta-API for Solid is that biases and  -->
 
 <!-- 
 the APIs are just a means of syncing data between systems 

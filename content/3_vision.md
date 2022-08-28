@@ -1,11 +1,56 @@
-## An alternative perspective # {#vision}
+## The Solid pod as a permissioned Knowledge Graph # {#vision}
+<!-- Repeating the premise -->
+One of the cornerstones of the Solid project remains the idea that data and applications can be separated, and through the semantics captured in the data, applications can achieve interoperability by integrating the available data without the requirement for specific APIs to give meaning to the data.
+<!-- The proposed perspective !!!! -->
+With this in mind, we propose the vision of Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph.
+[TODO:: This has to be on point! Maybe even the problem statement needs revising based on what we conclude here?]().
+
+<!-- What is a permissioned knowledge graph -->
+With the term *permissioned* knowledge graph, we express the concept of a knowledge graph, where the data contained in the knowledge graph is managed through permissions set over the data.
+A permissioned knowledge graph implies that all data 
+
+{:.comment data-author="RD"}
+This part still needs a good amount of work. This defintion needs to be on point, and a good explanation is required
+
+Note that while we use the term *permissioned* knowledge graph, as this leans close to the original proposition for Solid, we recognize that in the same way permissions are can be seen as specific implementations of policies, the concept of a permissioned knowledge graph serves as a base for more dynamic means of managing access to the Solid pod knowledge graph such as policies.
+
+
+<!-- Make the point that Solid as LDP emulates a permissioned knowledge graph, but leads to getting stuck on certain points -> problem statement -->
+In our proposed definition, the current landscape of Solid as a platform serving data pods that provide a Linked Data platform interface as a view on its internal data satisfies this perspective 
+
+<!-- Make the point that interfaces can be thought of as independent building blocks for management of data, permissions, ... -->
+In the context of viewing pods as permissioned knowledge graphs that allow for mutliple interfaces, the specifications used to provide the functionality required for the Pods on the Solid platform to operate can be seen as building blocks for the Solid ecosystem. 
+In this sense, we can view the existing specifications for Web Access Controls (WAC) [TODO::cite]() and Access Control Policies (ACP) [TODO::cite]() as two building blocks for managing permissions in the Solid ecosystem.
+Similarly, the existing LDP implementation is can be seen as an available building block that fit in the proposed perspective as an interface to manage data on a data pod.
+In this context, interfaces that serve as building blocks in the Solid ecosystem should be developed to be minimally interdependent to facilitate combining multiple different interfaces.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- 
-The Solid paper already alluded to shortcomings of the LDP interface (globbing, a separate SPARQL interface for RDF data / metadata)
--> And we will make the argument / take the position that it is more fundamental, that LDP is the problem/limitation rather than the solution. We reframe by seeing one LDP API (there are multiple!) as a possible view on the Pod, which fundamentally is a KG
 
--->
-As the current state of Solid leads towards the notion that a Solid pod is
 
 ### Permissioned Knowledge Graphs
 With the goal in mind of separating the data and applications, we propose the perspective of Solid as a permissioned knowledge graph.
@@ -57,9 +102,14 @@ Say something about integrating interfaces for authorization, data management an
 
 In this vision, a pod can be considered a permissioned, hybrid Knowledge graph that can be accessed through various Web APIs.
 
+ -->
 
 
+<!-- 
+The Solid paper already alluded to shortcomings of the LDP interface (globbing, a separate SPARQL interface for RDF data / metadata)
+-> And we will make the argument / take the position that it is more fundamental, that LDP is the problem/limitation rather than the solution. We reframe by seeing one LDP API (there are multiple!) as a possible view on the Pod, which fundamentally is a KG
 
+-->
 
 
 <!-- 
