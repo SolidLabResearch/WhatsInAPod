@@ -11,7 +11,7 @@
   <meta name="citation_author" content="Ruben Dedecker" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/08/27" />
+  <meta name="citation_publication_date" content="2022/08/28" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -79,58 +79,88 @@ that accommodates for a multitude of data access patterns.</p>
   <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Introduction</h2>
-      <p>In the current state of the Web of large platforms controlling enormous amounts of user data in centralized locations, hidden behind pay walls or access limiting mechanisms, 
-the Solid project aims to revitalize the concepts of identity and data ownership for the Web.
-Proposed in 2016 as a decentralized platform for social Web applications <span class="references">[<a href="#ref-1">1</a>]</span>, 
-<a href="">TODO:: more</a></p>
+      <p>In the current state of the Web, companies gather and store large amounts of data on centralized locations, inaccessible for the public and other companies. 
+The concepts of data control and privacy have since lost a lot of meaning, as user data is scattered over these centralized data silos with little to no opportunity for users to reuse this data.
+<!-- The Solid Proposal --> 
+Through the Solid project, Sir Tim Berners Lee, the inventor of the World Wide Web, has aimed to revitalize these concepts of identity and data ownership and privacy for the Web <span class="references">[<a href="#ref-1">1</a>]</span>.
+Proposed in 2016 as a decentralized platform for social Web applications <span class="references">[<a href="#ref-2">2</a>]</span>, Solid defines the concept of personal online datastores (pod) as online data spaces that enable the storage and management of personal data over the Web, where users control the permissions for applications and agents to interact with their data pod.
+<!-- Permissions and splitting apps and data -->
+To create such an ecosystem of a decentralized network of data pods over the Web, 
+the concept of separation of data and application is an important premise.
+<!-- Semantics are key -->
+Where historically applications can rely on implicit assumptions in the structuring, context and other semantics of data, in the context of online data stores shared by applications and users, assumptions that do not hold for the ecosystem are broken and must be captured in the semantics of the data.
+These semantics form the basis for interoperability of data between applications, as these semantics can be interpreted by other applications to reuse this existing data, where prior local assumptions required for the processing of this data may have prevented this.</p>
 
-      <p>As the specifications evolved over the years, the definitions on what Solid actually is have evolved as well.</p>
+      <!-- Solid as a set of interfaces -->
+      <p>To achieve these goals, Solid is based on a set of specifications that define the protocol to interact with Solid data pods on the Web.
+These interfaces define how to add, read and remove resources data on a Solid pod, how to authenticate and how to set permissions for data on your pod for agents and applications on the network.
+<!-- Especially the LDP interface -->
+To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification <a href="">TODO::cite</a> is used. 
+The LDP specification proposes an organizational scheme where data is bundled into resources.
+These resources are then organized in a hierarchical structure of resources and containers on the data pod.</p>
 
-      <p>The use of the Linked Data Platform specification as the interface to interact with the data stored on a Solid pod …</p>
+      <!-- That lead to application bias in the data -->
+      <p>As this organization of data in resources and the organization of these resources on the Solid pod is currently done by application, the local assumptions and optimizations made by applications in this organizational structure that is not shared by the ecosystem leads to 
+difficulty</p>
 
-      <p>The current Web has come a long way from it’s initial vision.
-Originally designed as a decentralized network of computers serving and retrieving data form and to the network, 
-data has become more centralized as data traffic converged to centralized platforms that span billions of accounts.</p>
+      <!-- Made worse by lack of authoritative definition -->
+      <p>Next to this, we also notice a lack of an authoritative definition for Solid. 
+As the solid ecosystem expands through new initiatives and industry attention is starting to pick up, the lack of an authoritative definition for Solid is starting to show as new initiatives, as the definition shifts more from the original vision towards an understanding of Solid as a sum of the currently used specifications to achieve this vision.</p>
 
-      <p>As a response to this, the Solid project was introduced by sir. Tim Berners Lee, the inventor of the original Web<a href="">TODO:: this is a weak intro</a>.
-Solid was presented as a data platform enabling a decentralized Web of personal online datastores(PODs)
-by building on existing web standards <a href="">TODO:: cite</a>.
-The Linked Data Platform specification was chosen as a way to organize data on a data pod.
-<a href="">TODO:: write some good flavour text above. Maybe yoink some from other papers</a></p>
+      <!-- We propose a new perspective -->
+      <p>With this work, we propose the perspective of viewing a Solid pod as a permissioned knowledge graph that can be exposed over the Web using a multitude of interfaces.
+We argue that the organizational structure that the Linked Data Platform specification imposes on the Solid ecosystem through its constraints and degrees of freedom for applications to structure their data, separation of application and data and hence data interoperability is limited.
+<!-- With hopes of steering discussion to original vision -->
+- Using this work, we hope to steer the discussion over Solid towards the goals of separating application and data through use of semantics in the stored data with the perspective of Solid pods as permissioned knowledge graphs that can be exposed over the Web using a multitude of interfaces.</p>
 
-      <!-- 
-We see that in the current state, the specification has started to define the platform, where the use of Linked Data Platform to organize data on a data pod leads to local assumptions being made in applications on how data organization in a data pod should be handled.
-
-In this work, we propose the vision of Solid as a platform of data pods containing an internal Knowledge Graph that can expose this knowledge graph over a multitude of interfaces. 
--->
-
-      <p>The goal of the Solid platform is to present a platform that separates applications and data, creating an ecosystem where multiple applications can seamlessly work with the same data <a href="">TODO::cite from somewhere? ask Ruben V?</a>.</p>
-
-      <p>However, as the specifications evolved, we see an evolution in direction of Solid being equated to the specifications used to implement the vision, as opposed to the original vision of a next step for the Web to provide separation between data and applications.</p>
-
-      <p>Next to this, we also notice a lack of an authoritative definition for Solid.</p>
-
-      <p>This lack of a proper definition, combined with the evolution of the implementation of Solid, has as a consequence that people start to equate their definitions and expectations of the Solid platform and ecosystems to the implementations, <a href="">more than on the original vision of what Solid can do for the Web. TODO:: …?</a></p>
-
-      <h3 id="what-is-solid">What is Solid</h3>
-
-      <p>The Solid project provides a platform based on a set of open standards to manage and interact with data in a Personal Online Datastore (POD) <span class="references">[<a href="#ref-1">1</a>]</span>.
-With the goal of facilitating the integration of data for applications over the Web, 
-through giving individuals control over this data through deciding access rights and choosing the applications and services allowed to interact with this data, 
-new paradigms are needed.</p>
-
-      <h3 id="separating-data-and-applications">Separating data and applications</h3>
-      <p>To achieve an ecosystem where different applications can work with the same data, the separation between the data and the applications / services working with the data is an important premise.</p>
-
-      <h3 id="semantics-and-data">Semantics and data</h3>
-      <p>A key enabler of this separation is the use of RDF and the adding of semantics to data.
-The semantic Web was introduced as an extension to the Web to make data machine-readable <span class="references">[<a href="#ref-2">2</a>]</span>.
-Two decades later, the standards introduced are more relevant than ever in the goal to creating ecosystems that enable data integration and interoperability for applications.
-Where large portions of the semantics of currently available data over the web are  historically stored in documentation of APIs scattered over the internet, semantics in data allow the expressiveness of storing these semantics in the data itself. Instead of requiring to read the documentation of a data source to know that <code>api.com/users/1234/contacs/</code> results in a JSON list of contacts for user 1234, the Relational Data Format (RDF) enables us to write these semantics in the data itself, where <code>&lt;/users/1234/&gt; foaf:knows &lt;/users/1235&gt;</code>. Irrespective of the interface exposing this data, the relation between both users can be discovered from the semantics in the data without requiring specific understanding of how the data was retrieved and the implicit semantics that were captured in the exposing API.</p>
-
+      <!-- Sections -->
       <p>In <a href="#problem_statement">Section 2</a>, we define how a mismatch in organization and real-world structure of data can lead to problems through local assumptions and optimizations by applications.
 <a href="#vision">Section 3</a> shows the proposed perspective of viewing Solid data pods as permissioned knowledge graphs that can be exposed over a multitude of APIs.
 In <a href="#comparison">Section 4</a>, we argue through comparisons of specific use-cases how interfaces influence the organization and structure of the data, and can lead to coupling between application and data through localized assumptions, after which a conclusion is formulated in <a href="#conclusion">Section 5</a>.</p>
+
+      <!-- 
+
+
+
+The goal of the Solid platform is to present a platform that separates applications and data, creating an ecosystem where multiple applications can seamlessly work with the same data [TODO::cite from somewhere? ask Ruben V?]().
+For such an ecosystem to exist, the concept of separation of data and application is an important premise.
+Through the separation of data and application, implicit assumptions between application and data are broken and must be captured in the semantics of the data.
+These semantics then form the basis of the interoperability of this data between applications, as other applications may now use these semantics to make sense of and reuse existing data, where prior local assumptions by applications may have prevented this.
+
+The Solid project provides a platform based on a set of open standards to manage and interact with data in a Personal Online Datastore (POD) <span class="references">\[<a href="#ref-2">2</a>\]</span>.
+With the goal of facilitating the integration of data for applications over the Web, 
+through giving individuals control over this data through deciding access rights and choosing the applications and services allowed to interact with this data, 
+new paradigms are needed.
+
+However, as the specifications evolved, we see an evolution in direction of Solid being equated to the specifications used to implement the vision, as opposed to the original vision of a next step for the Web to provide separation between data and applications. -->
+
+      <!-- A definition for Solid -->
+
+      <!-- ### Separating data and applications
+To achieve an ecosystem where different applications can work with the same data, the separation between the data and the applications / services working with the data is an important premise. -->
+
+      <!-- ### Semantics and data
+A key enabler of this separation is the use of RDF and the adding of semantics to data.
+The semantic Web was introduced as an extension to the Web to make data machine-readable <span class="references">\[<a href="#ref-3">3</a>\]</span>.
+Two decades later, the standards introduced are more relevant than ever in the goal to creating ecosystems that enable data integration and interoperability for applications.
+Where large portions of the semantics of currently available data over the web are  historically stored in documentation of APIs scattered over the internet, semantics in data allow the expressiveness of storing these semantics in the data itself. Instead of requiring to read the documentation of a data source to know that `api.com/users/1234/contacs/` results in a JSON list of contacts for user 1234, the Relational Data Format (RDF) enables us to write these semantics in the data itself, where `</users/1234/> foaf:knows </users/1235>`. Irrespective of the interface exposing this data, the relation between both users can be discovered from the semantics in the data without requiring specific understanding of how the data was retrieved and the implicit semantics that were captured in the exposing API.
+ -->
+
+      <!-- 
+1. werkt dereferencability nog?
+2. persistent URIs
+3. openlijk toegeven dat het een discussion document is
+
+bezwaren par heijs - wat doe je met blank nodes?
+blank nodes -> resource | is vrij contained
+blank nodes -> graph | goed weten wat ermee bedoeld wordt - scoping van KG - belangrijk voor updates 
+
+5. contradicting data
+
+framen als discussion
+
+wat als - perspective
+ -->
 
     </div>
 </section>
@@ -138,11 +168,11 @@ In <a href="#comparison">Section 4</a>, we argue through comparisons of specifi
   <section id="problem_statement" inlist="" rel="schema:hasPart" resource="#problem_statement">
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Problem statement</h2>
-      <p>To achieve the envisioned ecosystem of data integration and interoperabiltiy, the Solid project provides a platform based on a set of open standards to manage and interact with data in Personal Online Datastores (POD) <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+      <p>To achieve the envisioned ecosystem of data integration and interoperabiltiy, the Solid project provides a platform based on a set of open standards to manage and interact with data in Personal Online Datastores (POD) <span class="references">[<a href="#ref-2">2</a>]</span>.</p>
 
       <h3 id="solid-as-linked-data-platform">Solid as Linked Data Platform</h3>
 
-      <p>The protocol to read, write and organize data on Solid data PODs is based on the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-3">3</a>]</span>. 
+      <p>The protocol to read, write and organize data on Solid data PODs is based on the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-4">4</a>]</span>. 
 This specification defines a set of rules for HTTP(S) operations on web resources to provide a read-write architecture for Linked Data on the Web. It provides an organizational structure of resources and containers, much in the same way that a file system is organized through files and directories. These resources can either be non-RDF resources storing regular files, images and more, where RDF resources store a collection of Linked Data Quads in a specified RDF format.</p>
 
       <h4 id="a-mismatch-in-data-organization">A mismatch in data organization</h4>
@@ -252,7 +282,7 @@ Additionally, interactions with this data is limited to the structuring of these
 A consequence of using this specification is that data must be organized in resources, as this is the only form of data that can be managed using Linked Data Platform. This requires applications to make local assumptions as to what constitutes a resource and how application data should be distributed over resources in a data pod. As resources are the only interface, other data structures such as databases are impossible, and must be emulated on the client side over the resources exposed by the LDP interface.
 
 #### Organizational semantics
-As resources are stored in a hierarchical way due to the nature of the Linked Data Platform specification, the organization of data in a hierarchical order may carry implicit semantics in the organization of resources on a data pod. We see this return in the original paper<span class="references">\[<a href="#ref-1">1</a>\]</span>, where the example is given of an application storing events using a URI path structure based on dates (i.e., /2016/05/01/event1). The problem with these localized assumptions is they do not hold for the ecosystem, and form an application specific API built on Linked Data Platform [TODO:: what more?]().
+As resources are stored in a hierarchical way due to the nature of the Linked Data Platform specification, the organization of data in a hierarchical order may carry implicit semantics in the organization of resources on a data pod. We see this return in the original paper<span class="references">\[<a href="#ref-2">2</a>\]</span>, where the example is given of an application storing events using a URI path structure based on dates (i.e., /2016/05/01/event1). The problem with these localized assumptions is they do not hold for the ecosystem, and form an application specific API built on Linked Data Platform [TODO:: what more?]().
 
 #### Hierarchical bias
 The hierarchical organization of data on a pod also leads to data separation between applications. We see this with e.g. Digita [TODO::source]() providing a separate container for each app, in the same way that the `Program Files` folder provides a location for applications to store data. While this mitigates issues of overwriting data, and adds implicit context to data based on its location (at least for the application managing a certain data space), this comes at the cost of data discovery and integration [TODO:: what more?]().
@@ -391,7 +421,7 @@ The Solid paper already alluded to shortcomings of the LDP interface (globbing, 
       <p>In this context, we can view the current state of Solid as pods that expose their internal knowledge graph over building blocks for authorization (WAC / ACP), data management and querying (LDP) and authentication (Solid-OIDC).
 In this context, interface building blocks in the ecosystem should try to be minimally interdependent, to promote reuse over multiple interfaces for other components of Solid.</p>
 
-      <p>As a practical example, where the original paper advertised SPARQL as a possible interface to optimize querying on top of the Linked Data Platform data management layer <span class="references">[<a href="#ref-1">1</a>]</span>, we propose that a SPARQL endpoint may serve as a querying and data management interface on top of the knowledge graph, requiring new building blocks to be researched for authorization over such an interface.</p>
+      <p>As a practical example, where the original paper advertised SPARQL as a possible interface to optimize querying on top of the Linked Data Platform data management layer <span class="references">[<a href="#ref-2">2</a>]</span>, we propose that a SPARQL endpoint may serve as a querying and data management interface on top of the knowledge graph, requiring new building blocks to be researched for authorization over such an interface.</p>
 
       <hr />
 
@@ -400,7 +430,7 @@ In this context, interface building blocks in the ecosystem should try to be min
       <p>With this work, we argue that it is not per se the interface of Linked Data Platform that is the cause of issues, but the notion that a Solid pod must adhere to the notion of being an online data space that organizes data as resources over a Linked Data Platform interface.
 We pose that the assumptions described above that stem from the use of this organizational structure and the limitations it poses on the data it stores.</p>
 
-      <p>We propose the vision of Solid as a platform serving data pods that organize data as a Knowledge Graph <span class="references">[<a href="#ref-4">4</a>]</span> <span class="references">[<a href="#ref-5">5</a>]</span>.</p>
+      <p>We propose the vision of Solid as a platform serving data pods that organize data as a Knowledge Graph <span class="references">[<a href="#ref-5">5</a>]</span> <span class="references">[<a href="#ref-6">6</a>]</span>.</p>
 
       <p>A network of Solid pods can be seen as a decentralized knowledge graph.</p>
 
@@ -553,7 +583,7 @@ As data discovery is hindered by local assumptions made by applications in the o
 The inclusion of optional SPARQL support in the first iterations of the Solid specification <a href="">TODO::cite</a> supports this.</p>
 
       <h4 id="meta-model-based-interfaces-2">[meta-]model-based interfaces</h4>
-      <p>require the client to discover the exposed interface, and adopt the querying strategy accordingly. A practical example of this is the comunica querying framework, that can adapt its querying strategy according to the datasource interface <span class="references">[<a href="#ref-6">6</a>]</span>.
+      <p>require the client to discover the exposed interface, and adopt the querying strategy accordingly. A practical example of this is the comunica querying framework, that can adapt its querying strategy according to the datasource interface <span class="references">[<a href="#ref-7">7</a>]</span>.
 Querying performance and evaluation is dependent on the exposed interface.
 Assumptions on the shape of data contained in the internal knowledge graph still provide the same challenges, but the organizational structure of data should be abstracted away for clients working with and querying the data.</p>
 
@@ -607,16 +637,18 @@ with the goal of reducing local assumptions and optimizations in apps for reason
 <h2 id="references">References</h2>
 <dl class="references">
   <dt id="ref-1">[1]</dt>
-  <dd resource="#sambra_solid_nodate" typeof="schema:Article">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. 16</dd>
+  <dd resource="https://solid.mit.edu/" typeof="schema:CreativeWork"><a href="https://solid.mit.edu/">https:/​/​solid.mit.edu/</a></dd>
   <dt id="ref-2">[2]</dt>
-  <dd resource="#BERNERS-LEE_HENDLER_LASSILA_2001" typeof="schema:Article">BERNERS-LEE, T.I.M., HENDLER, J.A.M.E.S., LASSILA, O.R.A.: THE SEMANTIC WEB. Scientific American. 284, 34–43 (2001).</dd>
+  <dd resource="#sambra_solid_nodate" typeof="schema:Article">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. 16</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.(J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
+  <dd resource="#BERNERS-LEE_HENDLER_LASSILA_2001" typeof="schema:Article">BERNERS-LEE, T.I.M., HENDLER, J.A.M.E.S., LASSILA, O.R.A.: THE SEMANTIC WEB. Scientific American. 284, 34–43 (2001).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd resource="https://dx.doi.org/10.1007/978-3-030-37439-6_1" typeof="schema:Chapter">Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., Wahler, A.: Introduction: What Is a Knowledge Graph? In: Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., and Wahler, A. (eds.) Knowledge Graphs: Methodology, Tools and Selected Use Cases. pp. 1–10. Springer International Publishing, Cham (2020). doi:10.1007/978-3-030-37439-6_1</dd>
+  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.(J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
+  <dd resource="https://dx.doi.org/10.1007/978-3-030-37439-6_1" typeof="schema:Chapter">Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., Wahler, A.: Introduction: What Is a Knowledge Graph? In: Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., and Wahler, A. (eds.) Knowledge Graphs: Methodology, Tools and Selected Use Cases. pp. 1–10. Springer International Publishing, Cham (2020). doi:10.1007/978-3-030-37439-6_1</dd>
   <dt id="ref-6">[6]</dt>
+  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
+  <dt id="ref-7">[7]</dt>
   <dd resource="https://dx.doi.org/10.1007/978-3-030-00668-6_15" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: A Modular SPARQL Query Engine for the Web. In: Vrandečić, D., Bontcheva, K., Suárez-Figueroa, M.C., Presutti, V., Celino, I., Sabou, M., Kaffee, L.-A., and Simperl, E. (eds.) The Semantic Web – ISWC 2018. pp. 239–255. Springer International Publishing, Cham (2018). doi:10.1007/978-3-030-00668-6_15</dd>
 </dl>
 </section>
