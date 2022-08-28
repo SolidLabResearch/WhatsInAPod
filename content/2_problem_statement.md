@@ -1,12 +1,15 @@
 ## Problem statement # {#problem_statement}
-To achieve the envisioned ecosystem of data integration and interoperabiltiy, the Solid project provides a platform based on a set of open standards to manage and interact with data in Personal Online Datastores (POD) [](cite:cites sambra_solid_nodate).
+<!-- Solid requires splitting of apps and data through semantics -->
+To achieve the envisioned ecosystem of data integration and interoperability, the Solid ecosystem relies on the premise that it is possible to separate applications and data in a meaningful way, so that applications working with the same data in a pod are made interoperable by adding semantics to the stored data in such a way that the data becomes usable for all applications without requiring a specific interface and documentation to interact with stored data [TODO:: cite Ruben V blog]().
 
 ### Solid as Linked Data Platform
+<!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
 
 The protocol to read, write and organize data on Solid data PODs is based on the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014). 
 This specification defines a set of rules for HTTP(S) operations on web resources to provide a read-write architecture for Linked Data on the Web. It provides an organizational structure of resources and containers, much in the same way that a file system is organized through files and directories. These resources can either be non-RDF resources storing regular files, images and more, where RDF resources store a collection of Linked Data Quads in a specified RDF format.
 
 #### A mismatch in data organization
+<!-- applications are required to make localized optimizations -->
 As the Linked Data Platform specification organizes data as containers and resources, it imposes an inherent hierarchical ordering of resources and containers in the same way that files and directories in a file system create a hierarchical ordering.
 It requires all (RDF) data to be bundled as resources and stored using the hierarchical structuring of container and resources. 
 These organizational constraints provide challenges for applications that need to store data on a Solid pod.

@@ -366,3 +366,35 @@ T
 - As no authoritative definition is present, the definitions for Solid are shifting from the original vision towards the sum of the used specifications 
 - In this paper, we propose a perspective of Solid pods as exposing an internal Knowledge Graph supporting multiple interfaces (such as LDP and SPARQL) over their internal Knowledge Graph.
 - Using this perspective, we hope to steer the discussion for solid again towards a framing of Solid pods as a knowledge graph, and how the separation of applications and data can take place in this context.
+
+
+
+**problem statement**
+- The vision of Solid is splitting application and data, made possible by adding the required semantics to the data.
+- We see that the proposed LDP specification leads to a mismatch between the imposed bundling of data in resources and putting the resources in a hierarchy <-> real world: data organization between applications does not always make sense
+- We see applications (being required to) create localized assumptions and optimizations in the structuring of their data over the LDP interface, leaving semantics outside of the data.
+- this structuring also impacts the granularity and organizational possibility for permissions to be set over this data
+- We see this as a consequence of LDP, being an API on the sense of resources, being a meta-API. It puts constraints on the organization of data in resources and hierarchical ordering, but apart from this leaves many degrees of freedom, enough so that every application can structure their data in a way that leads to a specific API over the data based on localized assumptions and optimizations.
+- This can lead to problems in discovery, interoperability, through a mismatch of assumptions and expectations in the data organization and because of the lack of agreement.
+- We argue that LDP with WAC / ACP is a way to emulate a permissioned knowledge graph, but in the process it incurs application biases through assumptions and optimizations, and leaves open a lot of degrees of freedom in the organization of data. This is a consequence of the choice of interface and not of the vision of Solid pod as a KG.
+  
+
+
+- solid about **splitting data and apps**
+- key: **semantics in the data**
+- now; ldp **mismatch hierarchy and real world**
+- then: **hierarchy misused** by applications to model things how they like - **semantics outside of data**
+- even worse: applications make **local optimizations** and assumptions creating ecosystem thats not interoperable anymore
+- permissions: as permissions are tied to hierarchy, **indirectly leads to applications defining your permissions.**
+
+
+
+- **What were we trying to do**
+  - create permissioned knowledge graph
+    - all of the above is captured in this concept
+    - issues come from the emulation of permissioned knowledge graph through LDP and not from the concept of permissioned knowledge graph
+
+- **cause?**: LDP is a not a real API (in the same way that a file system is not a real API). It is a meta-api that allows an infinite ways to organize data.
+  - In its base form, combined with access controls, it provides little to no functionality for data interoperability.
+  - The goal of Linked Data is data integration, where LDP actually still requires a lot of api-integration through assumptions or agreements between applications on certain data organizations (e.g. solid chat in mashlib, ...).
+  - **Ldp imposes constraints - leaves degrees of freedom that is used to create additional semantics not captured in the data**
