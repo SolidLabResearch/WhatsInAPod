@@ -9,7 +9,10 @@
   
   <meta name="citation_title" content="What's in a Pod?">
   <meta name="citation_author" content="Ruben Dedecker" />
+  <meta name="citation_author" content="Wout Slabbinck" />
   <meta name="citation_author" content="Ruben Verborgh" />
+  <meta name="citation_author" content="Jesse Wright" />
+  <meta name="citation_author" content="Pieter Colpaert" />
   
   <meta name="citation_publication_date" content="2022/08/28" />
 </head>
@@ -22,7 +25,10 @@
 
   <ul id="authors">
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://rubendedecker.be/" typeof="foaf:Person schema:Person" resource="https://rubendedecker.be/#me">Ruben Dedecker</a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Wout Slabbinck</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Jesse Wright</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Pieter Colpaert</a></li>
   </ul>
 
   <ul id="affiliations">
@@ -168,14 +174,17 @@ wat als - perspective
   <section id="problem_statement" inlist="" rel="schema:hasPart" resource="#problem_statement">
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Problem statement</h2>
-      <p>To achieve the envisioned ecosystem of data integration and interoperabiltiy, the Solid project provides a platform based on a set of open standards to manage and interact with data in Personal Online Datastores (POD) <span class="references">[<a href="#ref-2">2</a>]</span>.</p>
+      <!-- Solid requires splitting of apps and data through semantics -->
+      <p>To achieve the envisioned ecosystem of data integration and interoperability, the Solid ecosystem relies on the premise that it is possible to separate applications and data in a meaningful way, so that applications working with the same data in a pod are made interoperable by adding semantics to the stored data in such a way that the data becomes usable for all applications without requiring a specific interface and documentation to interact with stored data <a href="">TODO:: cite Ruben V blog</a>.</p>
 
       <h3 id="solid-as-linked-data-platform">Solid as Linked Data Platform</h3>
+      <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
 
       <p>The protocol to read, write and organize data on Solid data PODs is based on the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-4">4</a>]</span>. 
 This specification defines a set of rules for HTTP(S) operations on web resources to provide a read-write architecture for Linked Data on the Web. It provides an organizational structure of resources and containers, much in the same way that a file system is organized through files and directories. These resources can either be non-RDF resources storing regular files, images and more, where RDF resources store a collection of Linked Data Quads in a specified RDF format.</p>
 
       <h4 id="a-mismatch-in-data-organization">A mismatch in data organization</h4>
+      <!-- applications are required to make localized optimizations -->
       <p>As the Linked Data Platform specification organizes data as containers and resources, it imposes an inherent hierarchical ordering of resources and containers in the same way that files and directories in a file system create a hierarchical ordering.
 It requires all (RDF) data to be bundled as resources and stored using the hierarchical structuring of container and resources. 
 These organizational constraints provide challenges for applications that need to store data on a Solid pod.</p>
