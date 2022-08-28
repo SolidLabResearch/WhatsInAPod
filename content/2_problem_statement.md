@@ -36,7 +36,7 @@ These consequences go against the vision of Solid providing an ecosystem where d
 
 ### A need for definition
 Where above we posed that the Linked Data Platform specification defines an interface that promotes local assumptions and organizational structures for applications storing data on a Solid POD, we see that the line between Solid and Linked Data Platform has been blurred over time [TODO:: CITATIONS AND EXAMPLES](). 
-As no authoritive definition of Solid exists (that we know of), we find that multiple initiatives in the Solid ecosystem provide their own vision on the Solid ecosystem, which over time equates more to the idea of Solid as a Linked Data Platform  set of specifications for an online platform than as a vision for a
+As no authoritive definition of Solid exists, we find that multiple initiatives in the Solid ecosystem provide their own vision on the Solid ecosystem, which over time equates more to the idea of Solid as a Linked Data Platform  set of specifications for an online platform than as a vision for a
 
 In the initial paper, Solid is presented as: "a decentralized platform for social Web applications" 
   
