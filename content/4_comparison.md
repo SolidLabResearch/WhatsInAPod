@@ -45,53 +45,39 @@ A Solid pod exposing its internal knowledge graph over a SPARQL endpoint interfa
 <!-- No need for data division and organization -->
 An agent interacting with the data stored on a Solid pod over a SPARQL endpoint interface, 
 the application is not required to change the organizational structure of the data. 
-Any data graph used by the application can be written to the Solid pod without requiring additional data organization.
+In this case, the application can directly write its internal knowledge graph of events to the Solid pod without requiring additional data organization.
 
 <!-- No requirement for optimizations -->
 As the application storing its data on a Solid Pod cannot really organize the data being written in specific ways over the SPARQL endpoint interface, it can only change the data graph that the application is working with.
-This means that any optimizations or local assumptions that the application wants to make over its data, must be encoded in the semantics of the data in the internal knowledge graph itself.
+To be able to find all events, and order them on a timestamp, the application now must make sure that this type and timestamp data is contained in the data itself. Now, on querying the Solid pod knowledge graph, it can use these semantics of the data stored to retrieve all subjects of the type Event, and order them according to their timestamp values.
+Any optimizations or local assumptions that the application wants to make over its data, must be encoded in the semantics of the data in the Solid pod knowledge graph itself.
 
 <!-- Need for additional interfaces for dereferencing -->
-
+A downside of exposing data over interfaces using an endpoint is that the ability to dereference data on a Solid pod might become impossible. 
+As we create event entites in the Solid pod knowledge graph, we want these events to be dereferencable by applications on the Web to discover more information, or discover any interfaces exposing this data.
+The original introduction of Solid [](cite:cites sambra_solid_nodate) proposed that Solid servers may offer optional support for SPARQL as a query interface for the Pod, where the SPARQL interface works on top of the underlying organization of data in resources and containers and the LDP interface provides the functionality for organizing and managing the data and their URIs.
+But we can think of other solutions to managing data on a Solid pod.
+When viewing a Solid pod as a permissioned knowledge graph, we can for example use subject pages [TODO::cite]() as a solution where dereferencing a URI in the knowledge graph leads to a dynamically generated resource containing all data that is linked to the requested subject.
+In the case of our example, when dereferencing the URI of an event, the Solid pod may provide an interface that automatically generates all relevant triples for this event.
+Note that depending on the interfaces used, the property of symmetric reading and writing, where data being written to a location can be read from the same location and the other way around may not hold.
 
 <!-- Use of hypermedia links -->
-
+The interface available to interact with data stored on a Solid pod should be discoverable through hypermedia links in the form of link headers.
 
 <!-- conclusion -->
-We see that the events stored by the application are now structured according to the assumptions and optimizations done by the application.
+We conclude that use of a SPARQL endpoint interface to organize data on a Solid pod may lead to developers writing assumptions and optimizations for their application to work with the data as semantic information in the data itself, leading to an environment where data has a higher degree of interoperability between applications [TODO:: can I state this?](). On the other hand, we see that in the case of a SPARQL endpoint, additional challenges are created including requiring additional functionality to allow dereferencing of stored data, as well as the loss of symmetric read and write.
 
-From a **storage** standpoint, the event data is stored on the file system of the POD server as a file, or may be stored in a graph database where the data is tagged as part of that resource, so that the resource can be reconstructed in its entirety.
-
-From a **publication** standpoint, all data of an event is published as a resource over the POD LDP interface on a location that is tied to the application-specific organization of data.
-
-From a **query** standpoint, the data must first be discovered on the pod, after which it can be queried directly through dereferencing the relevant resources or by an abstraction on the client that provides access to the data over another interface.
-Data discovery can happen using brute-force retrieval of all available resources, but is limited by the permissions an agent has over what can be viewed on the data pod. Additionally, public resources in private containers may lead to brute-force methods not discovering these resources and not including the contained data in their results.
-Options external to the LDP interface such as the Type Indexing system [TODO:: refer]() and Shape Trees [TODO:: refer]() can optimize this process, but as of yet are not mandatory in the specifications and are not required to be managed by the server [TODO:: is this true for shape trees??]().
+From a **storage** standpoint, 
 
 
-
-From a **storage** standpoint, the event data is stored in a graph-based database on the Pod server. 
-
-from a **publication** standpoint, multiple interfaces can be used 
-
-From a **query** standpoint
+From a **publication** standpoint,
 
 
-
-{:.comment data-author="RD"}
-TODO:: This whole section
-
-
-
-
-
+From a **query** standpoint, 
 
 
 
 <!-- 
-
-
-
 ### Storing events on a Pod
 A first concrete example we can give is the example of storing events on a Solid pod.
 Events are a wide-spread 
