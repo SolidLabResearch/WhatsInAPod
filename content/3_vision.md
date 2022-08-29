@@ -5,32 +5,35 @@ The concept of the separation between application and data made possible by the 
 The current implementation and lack of authoritative definition for Solid is shifting the understanding of the Solid ecosystem and may cause limitations in the development of long term solutions to the problems faced with with the realization of the ecosystem.
 <!-- The proposed perspective !!!! -->
 To frame the understanding of Solid in a place that is closed to its core premise, we take the perspective that a Solid Pod is fundamentally a permissioned hybrid knowledge graph, exposed through Web APIs. 
-Multiple Solid Pods together form a decentralized, permissioned, hybrid knowledge graph.
+In this perspective, we can view a network of multiple Solid Pods as decentralized, permissioned, hybrid knowledge graph.
 
 Make sure we agree on this perspective
 {:.comment data-author="RD"}
 
-<!-- Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph. -->
+<!-- 
+Jesse proposal:
+
+Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph.
+-->
 
 
 <!-- What is a permissioned knowledge graph -->
-With the term *permissioned* knowledge graph, we express the concept of a knowledge graph, where the data contained in the knowledge graph is managed through permissions set over the data.
-A permissioned knowledge graph implies that all data 
+With the term *permissioned* knowledge graph, we express the that the Solid pod knowledge graph enables managing the available permissions of the stored data.
+The definition of a knowledge graph that is exposed through Web APIs opens up the notion of supporting any Web API that can expose knowledge graphs over the Web, 
+and makes clear that any interface used to interact with a Solid pod should be a means to an end and not define and limit the innovation surface of the ecosystem.
 
-{:.comment data-author="RD"}
-This part still needs a good amount of work. This defintion needs to be on point, and a good explanation is required
-
-Note that while we use the term *permissioned* knowledge graph, as this leans close to the original proposition for Solid, we recognize that in the same way permissions are can be seen as specific implementations of policies, the concept of a permissioned knowledge graph serves as a base for more dynamic means of managing access to the Solid pod knowledge graph such as policies.
-
-
+Note that where we use the term *permissioned* knowledge graph, we make this choice as this leans close to the original proposition for Solid. 
+We recognize that in the same way permissions are can be seen as specific implementations of policies, 
+the concept of a permissioned knowledge graph serves as a base for more dynamic means of managing access to the Solid pod knowledge graph such as policies.
 <!-- Make the point that Solid as LDP emulates a permissioned knowledge graph, but leads to getting stuck on certain points -> problem statement -->
-In our proposed definition, the current landscape of Solid as a platform serving data pods that provide a Linked Data platform interface as a view on its internal data satisfies this perspective 
+In the frame of the proposed perspective, we view the current state of the Solid ecosystem as a specific implementation of the perspective, where the Linked Data platform takes the form of one of the available interfaces to interact with the Solid Pod.
 
 <!-- Make the point that interfaces can be thought of as independent building blocks for management of data, permissions, ... -->
-In the context of viewing pods as permissioned knowledge graphs that allow for mutliple interfaces, the specifications used to provide the functionality required for the Pods on the Solid platform to operate can be seen as building blocks for the Solid ecosystem. 
-In this sense, we can view the existing specifications for Web Access Controls (WAC) [TODO::cite]() and Access Control Policies (ACP) [TODO::cite]() as two building blocks for managing permissions in the Solid ecosystem.
-Similarly, the existing LDP implementation is can be seen as an available building block that fit in the proposed perspective as an interface to manage data on a data pod.
-In this context, interfaces that serve as building blocks in the Solid ecosystem should be developed to be minimally interdependent to facilitate combining multiple different interfaces.
+In the context of this perspective, 
+we can define the specifications that act as the interfaces to interact with a Solid pod as building blocks for the Solid ecosystem.
+This is in line with the current trend of authorization specifications such as Web Access Controls (WAC) [TODO::cite]() and Access Control Policies (ACP) [TODO::cite]() being exchangeable building blocks for the ecosystem.
+Similarly, the existing LDP implementation is can be seen as an available building block for the interface to manage data on a Solid pod.
+These building blocks in the Solid ecosystem should be developed to be minimally interdependent to facilitate their reuse in different contexts.
 
 
 
