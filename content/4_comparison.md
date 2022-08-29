@@ -4,6 +4,10 @@ In this section, we examine how the the proposed perspective influences the tech
 {:.comment data-author="RD"}
 Are these three viewpoints still the most relevant?
 
+
+{:.comment data-author="RD"}
+This part has to be achievable in 2 pages. I need some help with this still
+
 The comparison consists of a hypothetical application that stores its event data on the user Solid pod.
 We make the comparison between the current state of the Solid ecosystem where the LDP interface is used to organize the data, with a scenario where the Pod knowledge is directly exposed over a SPARQL endpoint.
 For the comparison, we assume the stored events to consist of a timestamp, a type, and a message.

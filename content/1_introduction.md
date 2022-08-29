@@ -15,7 +15,7 @@ These semantics then form the basis for interoperability between data and applic
 To create such an ecosystem, Solid is based on a set of specifications that define how users and applications can interact with Solid pods on the Web.
 For the core requirements of authentication, authorization, data access and more, these specifications express the implementation of these core concepts of the vision for the ecosystem.
 <!-- Especially the LDP interface -->
-To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [TODO::cite]() was proposed. 
+To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [](cite:cites Presbrey_2014) was chosen. 
 The LDP specification dictates an organizational scheme where data is bundled into resources and these resources are then organized in a hierarchical structure of resources and containers on the data pod.
 It then provides an interface that can be used to interact with these resources over the Web.
 This provides a similar interface to how file systems organize data as files in a hierarchical ordering of files and directories.
@@ -57,7 +57,7 @@ In [](#comparison), we compare the different viewpoints through a practical exam
 
 
 
-The goal of the Solid platform is to present a platform that separates applications and data, creating an ecosystem where multiple applications can seamlessly work with the same data [TODO::cite from somewhere? ask Ruben V?]().
+The goal of the Solid platform is to present a platform that separates applications and data, creating an ecosystem where multiple applications can seamlessly work with the same data [cite from somewhere? ask Ruben V?]().
 For such an ecosystem to exist, the concept of separation of data and application is an important premise.
 Through the separation of data and application, implicit assumptions between application and data are broken and must be captured in the semantics of the data.
 These semantics then form the basis of the interoperability of this data between applications, as other applications may now use these semantics to make sense of and reuse existing data, where prior local assumptions by applications may have prevented this.

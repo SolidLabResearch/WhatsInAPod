@@ -1,6 +1,6 @@
 ## Problem statement # {#problem_statement}
 <!-- Solid requires splitting of apps and data through semantics -->
-To achieve the envisioned ecosystem of data integration and interoperability, Solid relies on the premise that it is possible to separate applications and data in a meaningful way, so that different applications can work with the same data stored in a Solid pod. The key here is that the semantics of the stored data can help applications to discover the data they need in a pod, and can reuse, adapt and work with this data without requiring the integration of a new interface for every new data source they want to interact with. [TODO:: cite Ruben V blog]().
+To achieve the envisioned ecosystem of data integration and interoperability, Solid relies on the premise that it is possible to separate applications and data in a meaningful way, so that different applications can work with the same data stored in a Solid pod. The key here is that the semantics of the stored data can help applications to discover the data they need in a pod, and can reuse, adapt and work with this data without requiring the integration of a new interface for every new data source they want to interact with [](cite:cites rubenv_reflections_2021). 
 
 ### The LDP interface
 <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
@@ -15,7 +15,7 @@ This situation leads us to the following problems we witness in the current Soli
 (ii) the imposed hierarchical structure may not conform to real-world requirements for the structuring of data. This may encourage local assumptions in the application to model this data, where these assumptions should be captured in the semantics of the data itself. 
 (iii) as the LDP interface leaves a lot of freedom in how data can be written to the pod, and because of the similarities between the LDP interface and a file system, developers are allowed to encode local assumptions and optimizations of the storing of data in the organizational structure of data as can be done on file systems. Where these assumptions do not hold for the rest of the ecosystem, this leads to problems with interoperability or loss of optimizations by this information not being stored in the semantics of the data.
 
-<!-- We see this as a consequence of LDP certain restrictions, but also leaving a lot of degrees of freedom, leavind developers free to use a Solid pod as a remote file system -->
+<!-- We see this as a consequence of LDP certain restrictions, but also leaving a lot of degrees of freedom, leaving developers free to use a Solid pod as a remote file system -->
 We notice that a common source for the problems stated above can be derived from the Linked Data Platform interface behaving as an interface that applications can us to encode their own interfaces on top through local assumptions and optimizations that are not shared by the rest of the ecosystem.
 This makes the core premise of the Solid ecosystem more difficult, as the requirement for separating applications and data is adding sufficient semantic information to the data in the ecosystem so that it becomes interoperable for other applications in the ecosystem.
 As the Linked Data Platform specification provides an interface that does not promote these concepts, it limits the innovation surface of the solutions that can be developed for long term sustainability of the ecosystem.
@@ -23,11 +23,14 @@ Where Solid can mark the transition from classic ecosystems with applications re
 
 ### A lack of definition
 As the Solid project evolved over time, we start to notice that the lack of an authoritative definition for Solid (that we know of) has had the consequence that the understanding of what Solid has started to shift.
-From being initially described as "*a decentralized platform for social Web applications*" [](cite:cites sambra_solid_nodate) [TODO:: full citation style????](), over time initiatives within the Solid ecosystem started providing their own definitions as to what Solid is based on their vision of the ecosystem.
-On the Solid project [TODO::reference - https://solidproject.org/]() website, we find that "*Solid is a specification that lets people store their data securely in decentralized data stores called Pods.*".
-The Inrupt website [TODO::reference - https://inrupt.com/solid/]() states that "*Solid is a technology for organizing data, applications, and identities on the web.*".
+From being initially described as "*a decentralized platform for social Web applications*" [](cite:cites sambra_solid_nodate), over time initiatives within the Solid ecosystem started providing their own definitions as to what Solid is based on their vision of the ecosystem.
+On the Solid project (https://solidproject.org/) website, we find that "*Solid is a specification that lets people store their data securely in decentralized data stores called Pods.*".
+The Inrupt website (https://inrupt.com/solid/) states that "*Solid is a technology for organizing data, applications, and identities on the web.*".
 As these definitions start to diverge in terms of terminology and viewpoint, we fear that the definition of the Solid ecosystem may become more tied to the specifications used to implement its goals and miss the original promise of an interoperable ecosystem for applications and data.
 
+
+How do I do a full citation style for the part of: the initial description in (sambra et al.)[] . And additionally how do we give the references through footnotes? I heard this cant be done - do i do it inline?
+{:.comment data-author="RD"}
 
 
 <!-- 
