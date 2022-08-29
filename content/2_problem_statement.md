@@ -1,26 +1,99 @@
-## Problem statement # {#problem_statement}
+## A Solid pod as an LDP interface # {#problem_statement}
 <!-- Solid requires splitting of apps and data through semantics -->
-To achieve the envisioned ecosystem of data integration and interoperability, Solid relies on the premise that it is possible to separate applications and data in a meaningful way, so that different applications can work with the same data stored in a Solid pod. The key here is that the semantics of the stored data can help applications to discover the data they need in a pod, and can reuse, adapt and work with this data without requiring the integration of a new interface for every new data source they want to interact with [](cite:cites rubenv_reflections_2021). 
+To achieve the envisioned ecosystem of data integration and interoperability, 
+Solid relies on the premise that it is possible to separate applications and data in a meaningful way, 
+so that different applications can be interoperable through the semantics stored in the data. 
+To achieve this envisioned ecosystem, the Solid project has chosen for the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014) specification to define the protocol of how applications can interact with data on a Solid pod. 
+This specification defines a platform that organizes data using the concepts of resources and containers, similar to how a file system defines a platform that organizes data using files and directories.
+It also defines the protocol to create, read, modify and delete these resources and organize them in the hierarchical structure of resources and containers.
+Similar to files on a file system, the definition of what constitutes these resources is very loose and generally take the form of either a resource containing a set of statements in RDF (RDF resource) and other resources that do not contain RDF such as images (non-RDF resources).
 
-### The LDP interface
+### A mismatch between LDP and the envisioned ecosystem
 <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
-As the specification chosen to define the protocol to interact with data stored on a Solid pod, the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014) holds a central role in the current Solid ecosystem in enabling the promise of data interoperability. 
-The specification organizes data using the concepts of resources and containers and defining the protocol to create, read, modify and delete these resources and organize them in a hierarchical structure of resources and containers.
-The definition of what constitutes these resources is very loose, and they take the form of either RDF resources containing an RDF data graph in an RDF format, or non-RDF resources such as images.
+Where LDP has the appearance of a simple interface to make data interoperable over the Web using HTTP(S) protocols, 
+it incurs some essential flaws in the way it restricts the way data can be stored over the interface, 
+as well as in the degrees of freedom it leaves open for applications to encode semantic information in the application logic through the structuring of data over the interface.
+
+<!-- Flaws -->
+We can easily define four major flaws in the context a two simple applications: a *contact list application* and a *birthday list application*, that are built on top of the Solid ecosystem where pods expose their data using LDP:
+<!-- hierarchy -->
+
+(i) There is no single way to organize data in a hierarchy. 
+Data graphs can be modeled in an infinite amount of ways using LDP, by distributing a data graph over different resources and by structuring these resources in different ways over the LDP hierarchy. 
+In our example, the contact list application can encode their contacts as separate resources for each contact in its data graph, after which it adds these resources in the LDP hierarchy. 
+In this hierarchy, the birthday list application has no option but traversing the entire LDP hierarchy to look for contact data, 
+as the data can be stored anywhere and is entirely dictated by the logic in the contact application and the LDP hierarchy.
+
+<!-- mismatch in hierarchy -->
+(ii) Different application can disagree in how the same data should be organized in the hierarchy.
+Where the contact list application and the birthday list application work on the same data, 
+the applications may have different assumptions on how this data should be organized.
+The contact list application may assume that contact data should be organized as separate resources, 
+where for each contact extra information such as birth dates is stored in an separate extra resource.
+In contrast, our birthday list application assumes all contact information should be stored in a single resource.
+Because of these assumptions the birthday list application may decide, after navigating the entire LDP hierarchy,
+that the contact information it found just does not include birth date information.
+In this example, because of the mismatch in assumptions between the applications, data interoperability cannot not achieved.
+
+<!-- hierarchy for permission -->
+(iii) In the current Solid ecosystem, the permission structure is linked to the data granularity and hierarchy.
+The current Solid ecosystem has two specifications that can be used to manage authorization of data on a Solid pod.
+There are two specifications that can be used to manage permissions on a Solid pod: the Web Access Controls specification (WAC) [](cite:cites WAC) and the Access Control Policy (ACP) [](cite:cites ACP) specification.
+Both specifications limit the granularity with which permissions can be set on data to individual resources.
+In the LDP hierarchy, this means that applications and the pod owner are limited in how they can set permissions over their data
+by the structuring chosen by the application writing the data to the Solid pod.
+In our example, the contact application may decide to separate all information of each contact as separate resources.
+This way, the application and the pod owner can have very fine-grained control over the permissions set over the data.
+The birthday list application is not that concerned with this, and decides to just write a single resource for every contact it has.
+We see that even more assumptions may break here, as even with access to the contact, the birthday list application may assume it has access to the contact birth date, which may not be the case.
+Additionally, the contact information may assume it is sharing only partial information by sharing a contact, while this data was actually written by the birthday list application that just dumps all contact information in a single resource!
+In this example, we see how the authorization mechanisms in the Solid ecosystems make problems worse as even more assumptions need to be made in applications.
+
+<!-- hierarchy for optimization -->
+(iv) Finally, applications may choose to make local assumptions for optimization purposes.
+As the contact list application may want to prepare itself in case a users adds thousands of contacts, 
+the application may optimize the way it stores is data on a Solid pod to improve queries for data.
+The application may create a *contacts* container, in which creates resources for every letter of the alphabet, 
+in which it stores all contact data of contacts whose name property begins with that letter of the alphabet.
+In contrast, the birthday list application may create a separate hierarchy for each month of the year, 
+over which it stores its resources.
+Where both applications try to optimize queries for their application,
+their structuring of the data become incompatible and may actively make queries for other applications worse than when just writing all data to a single resource,
+because the assumptions that the applications take in their optimization of the structuring of the data that they query do not hold for all applications in the Solid ecosystem.
+
+
+<!-- We see this as a consequence of LDP certain restrictions, but also leaving a lot of degrees of freedom, leaving developers free to use a Solid pod as a remote file system -->
+The common source of these problems can be found in applications using the the LDP interface of a Solid pod to encode their own interface through the structuring of their data on the Solid pod.
+In these instances, applications are not really using LDP as an interface, but as a tool to define their own views on their data on the Solid pod.
+By encoding these local assumptions and optimizations in the application logic and the LDP interface, 
+the resulting data often lacks the required semantic information to be interoperable for applications in the ecosystem.
+In this way, the LDP interface of a Solid Pod limits the innovation surface of the ecosystem, as in many cases it fails to get the assumptions encoded in the application logic and the LDP interface as semantic information in the data stored on the Solid pod.
+
+We find that the optimizations done by applications to solve problems in the LDP hierarchy they work with, 
+lead to solutions that are either localized in the application logic and LDP interface, 
+or lead to solutions based on encoding more semantic information in the LDP interface, 
+such as agreeing to store contact information in the */contacts/*  container, 
+that miss the long term goals for the Solid ecosystem.
+
+
+<!-- 
+----------------------------
+OLD STUFF
+----------------------------
+ -->
+
 
 <!-- applications are required to make localized assumptions and optimizations to read and write data on a Solid pod over LDP -->
-The LDP interface restricts the way applications can store data by requiring the bundling of data into resources and the organization of these resources in a hierarchical structure. The responsibility of this organization of data lies entirely with the applications.
+<!-- The LDP interface restricts the way applications can store data by requiring the bundling of data into resources and the organization of these resources in a hierarchical structure. The responsibility of this organization of data lies entirely with the applications.
 This situation leads us to the following problems we witness in the current Solid ecosystem:
 (i) as the authorization mechanisms for Solid limit the expressiveness of permissions to the granularity of resources and containers, applications indirectly dictate the structure over which the user can control access to this data.
 (ii) the imposed hierarchical structure may not conform to real-world requirements for the structuring of data. This may encourage local assumptions in the application to model this data, where these assumptions should be captured in the semantics of the data itself. 
 (iii) as the LDP interface leaves a lot of freedom in how data can be written to the pod, and because of the similarities between the LDP interface and a file system, developers are allowed to encode local assumptions and optimizations of the storing of data in the organizational structure of data as can be done on file systems. Where these assumptions do not hold for the rest of the ecosystem, this leads to problems with interoperability or loss of optimizations by this information not being stored in the semantics of the data.
 
-<!-- We see this as a consequence of LDP certain restrictions, but also leaving a lot of degrees of freedom, leaving developers free to use a Solid pod as a remote file system -->
-We notice that a common source for the problems stated above can be derived from the Linked Data Platform interface behaving as an interface that applications can us to encode their own interfaces on top through local assumptions and optimizations that are not shared by the rest of the ecosystem.
-This makes the core premise of the Solid ecosystem more difficult, as the requirement for separating applications and data is adding sufficient semantic information to the data in the ecosystem so that it becomes interoperable for other applications in the ecosystem.
-As the Linked Data Platform specification provides an interface that does not promote these concepts, it limits the innovation surface of the solutions that can be developed for long term sustainability of the ecosystem.
-Where Solid can mark the transition from classic ecosystems with applications relying on API-integration to gather data from different sources to a new type of ecosystem where applications focus on integrating data exposed over a variety of different interfaces, made possible by the available semantics present in the data.
+ -->
 
+
+<!-- 
 ### A lack of definition
 As the Solid project evolved over time, we start to notice that the lack of an authoritative definition for Solid (that we know of) has had the consequence that the understanding of what Solid has started to shift.
 From being initially described as "*a decentralized platform for social Web applications*" [](cite:cites sambra_solid_nodate), over time initiatives within the Solid ecosystem started providing their own definitions as to what Solid is based on their vision of the ecosystem.
@@ -30,14 +103,8 @@ As these definitions start to diverge in terms of terminology and viewpoint, we 
 
 
 How do I do a full citation style for the part of: the initial description in (sambra et al.)[] . And additionally how do we give the references through footnotes? I heard this cant be done - do i do it inline?
-{:.comment data-author="RD"}
+{:.comment data-author="RD"} -->
 
-
-<!-- 
-----------------------------
-OLD STUFF
-----------------------------
- -->
 
 
 
@@ -170,7 +237,7 @@ and well defined way to access the data stored in the users’ pods.
 In Section 5, the paper presents the POD Management system. It defines that pods use LDP to organize data in containers that group resources with every resource and container having their own URI. A pod server should support 
 - LDP
 - patching (N3-patch, former SPARQL update)
-- access control lists (ACL), potentially to be updated to access control policies (ACP).
+- access control lists (ACL), potentially to be updated to access control policy(ACP).
 - live updates
 - optionally SPARQL
 

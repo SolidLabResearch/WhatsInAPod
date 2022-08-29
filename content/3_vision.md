@@ -31,7 +31,7 @@ In the frame of the proposed perspective, we view the current state of the Solid
 <!-- Make the point that interfaces can be thought of as independent building blocks for management of data, permissions, ... -->
 In the context of this perspective, 
 we can define the specifications that act as the interfaces to interact with a Solid pod as building blocks for the Solid ecosystem.
-This is in line with the current trend of authorization specifications such as Web Access Controls (WAC) [](cite:cites WAC) and Access Control Policies (ACP) [](cite:cites ACP) being exchangeable building blocks for the ecosystem.
+This is in line with the current trend of authorization specifications such as Web Access Controls (WAC) [](cite:cites WAC) and Access Control Policy (ACP) [](cite:cites ACP) being exchangeable building blocks for the ecosystem.
 Similarly, the existing LDP implementation is can be seen as an available building block for the interface to manage data on a Solid pod.
 These building blocks in the Solid ecosystem should be developed to be minimally interdependent to facilitate their reuse in different contexts.
 
