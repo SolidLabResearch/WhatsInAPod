@@ -427,27 +427,22 @@ T
 
 
 
-
 **comparison**
-- event storage
-  - event stored as /events/2022/05/24/event1.ttl
-  - same as file system
+
+- In this step, we compare the frameworks of thinking about Solid as a collection of resources exposed over Linked Data Platform, compared to Solid as a Knowledge Graph exposed over a [meta-]model-based interfaces (SPARQL, TPF, ...).
+
+- **What do we need? -> A good example**
+  - compare 2 cases -> precise examples
+    - store address book in classic solid with LDP
+      - if you store this LDP API in file system -> straightforward
+      - SPARQL endpoint -> encode document in which this is stored
+
+
+- **make point that query and API are separate!**
+  - suggestion of SPARQL endpoint per resource
+  - bring some clarity to this point
 
 
 
 
 
-
-
-
-
-
---------------------------------------
---------------------------------------
---------------------------------------
---------------------------------------
-Concerns 
---------------------------------------
---------------------------------------
---------------------------------------
---------------------------------------

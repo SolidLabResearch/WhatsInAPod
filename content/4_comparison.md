@@ -3,19 +3,24 @@ In this section, we examine how the the proposed perspective influences the tech
 
 {:.comment data-author="RD"}
 Are these three viewpoints still the most relevant?
+Not really agreeing with this statement anymore -> maybe also adapt abstract
 
 
 {:.comment data-author="RD"}
-This part has to be achievable in 2 pages. I need some help with this still
+This part has to be achievable in 2 pages. I need some help with this 
 
-The comparison consists of a hypothetical application that stores its event data on the user Solid pod.
-We make the comparison between the current state of the Solid ecosystem where the LDP interface is used to organize the data, with a scenario where the Pod knowledge is directly exposed over a SPARQL endpoint.
-For the comparison, we assume the stored events to consist of a timestamp, a type, and a message.
+To compare the perspectives of a Solid pod in the current ecosystem as a Linked Data Platform interface with the perspective of a Solid pod as a permissioned hybrid knowledge graph that can support any number and type of Web APIs, we set up the following comparison.
+We compare an application, storing event data on a user Solid pod.
+For the comparison, we look at the current state of the Solid ecosystem where the LDP interface is used to organize the data, and compare this with a scenario where an application discoveres a Solid pod exposes a SPARQL endpoint interface that can be dynamically discovered.
+For the comparison, we assume that an event consists of a timestamp, a type, and a message.
 
 ### The Linked Data Platform interface
 <!-- divide the data in resources -->
-In the case the application that needs to write its event data to a pod where LDP is the only interface to manage data, the application first needs to distribute the data it wants to write to the pod into separate resources that will be put on the pod (note these are technically not yet resources but collections of data to be published as resources on the Solid pod). In the case of events or other objects with a logical structure, the application developers will most likely prefer to take the approach of creating separate resource for each event. 
-An alternative approach could be to bundle events in a single resource, but this comes at the cost of the granularity over which permissions can be assigned to events.
+In the current Solid ecosystem, an application working with a Solid pod knows the Solid pod exposes a Linked Data Platform interface to manage data.
+To write its data to the pod, the application first needs to decode how to structure its internal data as resources.
+To structure the events contained in its internal knowledge graph, the application can take the approach of dividing the events as a separate resource for each event. 
+In this case, each event can have its own permissions, as setting permissions in the current ecosystem is limited to resources and containers.
+Alternatively, the application might want to bundle multiple events as single larger resources to speed up retrieval. This however comes at the price of not being able to set individual permissions for individual events!
 
 <!-- finding place to write the data -->
 With the data distributed into several resources, the application now wants to store them on a Solid pod.
@@ -80,9 +85,10 @@ From a **publication** standpoint,
 From a **query** standpoint, 
 
 
+Note that not all technology used in this comparison is yet available
+
 {:.comment data-author="RD"}
 TODO:: finish this part fully. Waiting for feedback
-
 
 
 <!-- 

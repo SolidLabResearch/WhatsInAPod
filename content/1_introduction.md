@@ -1,7 +1,7 @@
 ## Introduction # {#introduction}
 In the current ecosystem of the Web where data is mainly stored in centralized data silos exposed over APIs, applications are reliant on integrating various interfaces to work with the data available on the Web.
 <!-- The Solid Proposal --> 
-With the Solid project, Sir Tim Berners Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central [](cite:cites Solid).
+With the Solid project, Sir Tim Berners-Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central [](cite:cites Solid).
 Proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate), Solid defines the concept of personal online datastores (pod) as online data spaces that enable the storage and management of personal data over the Web, creating an ecosystem of interoperability between applications and data where users are in control of how their data is shared on the Web.
 <!-- Permissions and splitting apps and data -->
 To create such an ecosystem,
