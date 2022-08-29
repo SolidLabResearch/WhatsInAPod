@@ -1,9 +1,18 @@
 ## The Solid pod as a permissioned Knowledge Graph # {#vision}
 <!-- Repeating the premise -->
-One of the cornerstones of the Solid project remains the idea that data and applications can be separated, and through the semantics captured in the data, applications can achieve interoperability by integrating the available data without the requirement for specific APIs to give meaning to the data.
+The concept of the separation between application and data made possible by the capture of semantics in the data itself forms the premise for the proposed Solid ecosystem.
+<!-- The current problem in 2 sentences -->
+The current implementation and lack of authoritative definition for Solid is shifting the understanding of the Solid ecosystem and may cause limitations in the development of long term solutions to the problems faced with with the realization of the ecosystem.
 <!-- The proposed perspective !!!! -->
-With this in mind, we propose the vision of Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph.
-[TODO:: This has to be on point! Maybe even the problem statement needs revising based on what we conclude here?]().
+To frame the understanding of Solid in a place that is closed to its core premise, we take the perspective that a Solid Pod is fundamentally a permissioned hybrid knowledge graph, exposed through Web APIs. 
+Multiple Solid Pods together form a decentralized, permissioned, hybrid knowledge graph.
+
+Make sure we agree on this perspective
+{:.comment data-author="RD"}
+
+<!-- THE PERSPECTIVE -->
+Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph.
+
 
 <!-- What is a permissioned knowledge graph -->
 With the term *permissioned* knowledge graph, we express the concept of a knowledge graph, where the data contained in the knowledge graph is managed through permissions set over the data.
