@@ -76,6 +76,10 @@ From a **publication** standpoint,
 From a **query** standpoint, 
 
 
+{:.comment data-author="RD"}
+TODO:: finish this part fully. Waiting for feedback
+
+
 
 <!-- 
 ### Storing events on a Pod

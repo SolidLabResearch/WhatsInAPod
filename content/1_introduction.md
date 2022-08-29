@@ -20,8 +20,8 @@ The LDP specification proposes an organizational scheme where data is bundled in
 These resources are then organized in a hierarchical structure of resources and containers on the data pod.
 
 <!-- That lead to application bias in the data -->
-As this organization of data in resources and the organization of these resources on the Solid pod is currently done by application, the local assumptions and optimizations made by applications in this organizational structure that is not shared by the ecosystem leads to 
-difficulty
+As this organization of data in resources and the organization of these resources on the Solid pod is currently done by application, this leads to local local assumptions and optimizations made by applications.
+The applications are free to encode these biases in the organizational structure of the data being stored, instead of in the semantics of the data. Because these biases are not shared by the rest of the ecosystem, this can lead to problems in interoperability as other applications now may lack the necessary context to work with this data, as this is not encoded in the semantics of the data itself.
 
 <!-- Made worse by lack of authoritative definition -->
 Next to this, we also notice a lack of an authoritative definition for Solid. 
