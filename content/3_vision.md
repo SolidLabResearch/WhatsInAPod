@@ -10,8 +10,7 @@ Multiple Solid Pods together form a decentralized, permissioned, hybrid knowledg
 Make sure we agree on this perspective
 {:.comment data-author="RD"}
 
-<!-- THE PERSPECTIVE -->
-Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph.
+<!-- Solid as a platform serving data Pods that provide sufficient views on the data **available to the entity interacting with the pod** that it can be organized as a permissioned knowledge graph. -->
 
 
 <!-- What is a permissioned knowledge graph -->
