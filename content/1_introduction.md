@@ -1,44 +1,47 @@
 ## Introduction # {#introduction}
-In the current state of the Web, companies gather and store large amounts of data on centralized locations, inaccessible for the public and other companies. 
-The concepts of data control and privacy have since lost a lot of meaning, as user data is scattered over these centralized data silos with little to no opportunity for users to reuse this data.
+In the current ecosystem of the Web where data is mainly stored in centralized data silos exposed over APIs, applications are reliant on integrating various interfaces to work with the data available on the Web.
 <!-- The Solid Proposal --> 
-Through the Solid project, Sir Tim Berners Lee, the inventor of the World Wide Web, has aimed to revitalize these concepts of identity and data ownership and privacy for the Web [](cite:cites Solid).
-Proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate), Solid defines the concept of personal online datastores (pod) as online data spaces that enable the storage and management of personal data over the Web, where users control the permissions for applications and agents to interact with their data pod.
+With the Solid project, Sir Tim Berners Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central [](cite:cites Solid).
+Proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate), Solid defines the concept of personal online datastores (pod) as online data spaces that enable the storage and management of personal data over the Web, creating an ecosystem of interoperability between applications and data where users are in control of how their data is shared on the Web.
 <!-- Permissions and splitting apps and data -->
-To create such an ecosystem of a decentralized network of data pods over the Web, 
+To create such an ecosystem,
 the concept of separation of data and application is an important premise.
 <!-- Semantics are key -->
-Where historically applications can rely on implicit assumptions in the structuring, context and other semantics of data, in the context of online data stores shared by applications and users, assumptions that do not hold for the ecosystem are broken and must be captured in the semantics of the data.
-These semantics form the basis for interoperability of data between applications, as these semantics can be interpreted by other applications to reuse this existing data, where prior local assumptions required for the processing of this data may have prevented this.
+Where historically applications often rely on implicit context of retrieved data through contextual information in the API over which data is published, the formed ecosystem is based on the integration of interfaces exposing the data to give semantic meaning to the data through the implicit context of the interface exposing this data.
+In the context of online data spaces where data and applications are interoperable, instead of encoding this context in the interfaces exposing the data, this context must be the semantics of the data.
+These semantics then form the basis for interoperability between data and applications, as applications can now retrieve this data over any suitable interface, and work with the data as the required context information can be discovered from the semantics captured in the data itself.
 
 <!-- Solid as a set of interfaces -->
-To achieve these goals, Solid is based on a set of specifications that define the protocol to interact with Solid data pods on the Web.
-These interfaces define how to add, read and remove resources data on a Solid pod, how to authenticate and how to set permissions for data on your pod for agents and applications on the network.
+To create such an ecosystem, Solid is based on a set of specifications that define how users and applications can interact with Solid pods on the Web.
+For the core requirements of authentication, authorization, data access and more, these specifications express the implementation of these core concepts of the vision for the ecosystem.
 <!-- Especially the LDP interface -->
-To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [TODO::cite]() is used. 
-The LDP specification proposes an organizational scheme where data is bundled into resources.
-These resources are then organized in a hierarchical structure of resources and containers on the data pod.
+To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [TODO::cite]() was proposed. 
+The LDP specification dictates an organizational scheme where data is bundled into resources and these resources are then organized in a hierarchical structure of resources and containers on the data pod.
+It then provides an interface that can be used to interact with these resources over the Web.
+This provides a similar interface to how file systems organize data as files in a hierarchical ordering of files and directories.
 
 <!-- That lead to application bias in the data -->
-As this organization of data in resources and the organization of these resources on the Solid pod is currently done by application, this leads to local local assumptions and optimizations made by applications.
-The applications are free to encode these biases in the organizational structure of the data being stored, instead of in the semantics of the data. Because these biases are not shared by the rest of the ecosystem, this can lead to problems in interoperability as other applications now may lack the necessary context to work with this data, as this is not encoded in the semantics of the data itself.
+The use of LDP as the interface for applications to interact with the data stored on a Solid pod, the organization of data in resources and the organization of these resources on the Solid pod the responsibility of the application. 
+Applications working with file systems historically have often encoded specific context of their data through local assumptions in the structuring of their data in files and the organization of these files on the file system. This has lead to an ecosystem on computers where the interoperability of data between applications is very limited. We currently see this same problem happening in the Solid ecosystem, where applications are free to encode their biases biases in the organization of their data on the Solid pod over the LDP interface, instead of capturing these biases as semantics in the data. 
+Because these biases are not shared by the rest of the ecosystem, this can lead to problems in interoperability, that even when data is presented in a Linked Data format, important context of the application is captured in local assumptions of the application and not in the semantics of the data.
 
 <!-- Made worse by lack of authoritative definition -->
 Next to this, we also notice a lack of an authoritative definition for Solid. 
-As the solid ecosystem expands through new initiatives and industry attention is starting to pick up, the lack of an authoritative definition for Solid is starting to show as new initiatives, as the definition shifts more from the original vision towards an understanding of Solid as a sum of the currently used specifications to achieve this vision.
+As the solid ecosystem expands through new initiatives and industry attention, the lack of an authoritative definition for Solid is starting to show as new initiatives, as the definition shifts from an ecosystem promoting interoperability between applications and data, towards the understanding of Solid as a sum of the currently used specifications to achieve this vision.
 
 
 
 <!-- We propose a new perspective -->
 With this work, we propose the perspective of viewing a Solid pod as a permissioned knowledge graph that can be exposed over the Web using a multitude of interfaces.
-We argue that the organizational structure that the Linked Data Platform specification imposes on the Solid ecosystem through its constraints and degrees of freedom for applications to structure their data, separation of application and data and hence data interoperability is limited.
+We argue that the increasing influence of LDP as the system for the organization and interface for data stored on a Solid pod leads to an understanding of Solid where applications can code against pods as file systems through the constraints and degrees of freedom the LDP interface affords, where context can be encoded in the organizational structures instead of in the semantics of the data.
+
 <!-- With hopes of steering discussion to original vision -->
 - Using this work, we hope to steer the discussion over Solid towards the goals of separating application and data through use of semantics in the stored data with the perspective of Solid pods as permissioned knowledge graphs that can be exposed over the Web using a multitude of interfaces.
 
 <!-- Sections -->
-In [](#problem_statement), we define how a mismatch in organization and real-world structure of data can lead to problems through local assumptions and optimizations by applications.
-[](#vision) shows the proposed perspective of viewing Solid data pods as permissioned knowledge graphs that can be exposed over a multitude of APIs.
-In [](#comparison), we argue through comparisons of specific use-cases how interfaces influence the organization and structure of the data, and can lead to coupling between application and data through localized assumptions, after which a conclusion is formulated in [](#conclusion).
+In [](#problem_statement), we define how the use of LDP can lead to problems through the organization of data on Solid pods.
+[](#vision) provides our proposed perspective of how viewing Solid data pods as permissioned knowledge graphs that can be exposed over a multitude of APIs can provide a framing of Solid that can lead to better long term solutions.
+In [](#comparison), we compare the different viewpoints through a practical example, after which a conclusion is formulated in [](#conclusion).
 
 
 
