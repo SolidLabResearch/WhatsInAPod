@@ -33,6 +33,6 @@ and the resulting performance.
 <!-- Perspectives -->
 The suggested broader perspective supports Solid with
 evolving into a heterogeneous but interoperable ecosystem
-that accommodates for a multitude of data access patterns.
+that accommodates a multitude of data access patterns.
 
 

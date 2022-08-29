@@ -1,6 +1,6 @@
 ## Problem statement # {#problem_statement}
 <!-- Solid requires splitting of apps and data through semantics -->
-To achieve the envisioned ecosystem of data integration and interoperability, Solid relies on the premise that it is possible to separate applications and data in a meaningful way, so that different applications can work with the same data stored in a Solid pod. The key here is that the semantics of the stored data can help applications to discover the data they need in a pod, and can reuse, adapt and work with this data without requiring the integration of a new interface for every new data source they want to interact with. [TODO:: cite Ruben V blog]().
+To achieve the envisioned ecosystem of data integration and interoperability, Solid relies on the premise that it is possible to separate applications and data in a meaningful way so that different applications can work with the same data stored in a Solid pod. The key here is that the semantics of the stored data can help applications to discover the data they need in a pod, and can reuse, adapt and work with this data without requiring the integration of a new interface for every new data source they want to interact with. [TODO:: cite Ruben V blog]().
 
 ### The LDP interface
 <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
