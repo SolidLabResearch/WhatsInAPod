@@ -14,7 +14,7 @@
   <meta name="citation_author" content="Jesse Wright" />
   <meta name="citation_author" content="Pieter Colpaert" />
   
-  <meta name="citation_publication_date" content="2022/08/28" />
+  <meta name="citation_publication_date" content="2022/08/29" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -196,9 +196,8 @@ This leads to a number of issues:
       <p>We view that the above difficulties for applications working with Solid pods over the Linked Data Platform interface can be derived from the Linked Data Platform interface behaving as an interface where applications can define their own interface on top of LDP as to how they interact with their data in ways that are not shared by the rest of the Solid ecosystem and that are not semantically described in the stored data.
 These findings make the core premise of the Solid ecosystem providing separation between applications and data more difficult, as the requirement for applications to add sufficient semantic information to their data to make it interoperable within the ecosystem can easily be bypassed by applications, missing the original vision for Solid as an  where data and applications are separated and where Solid marks the transition from an API-integration ecosystem where applications needing to integrate APIs to gain access to different data sources to an ecosystem of data-integration where applications can integrate data from different data sources through the available semantics in the data.</p>
 
-      <!-- We argue that this problem is exasterbated by the lack of authoritative definition for Solid, leading to multiple interpretations and developers essentially missing the point and using it as a file system.  -->
-      <p>### A lack of definition
-As the specifications for Solid evolved over time, we noticed that because of a lack of authoritative definition for Solid (that we know of), the definition for what Solid is started to shift.
+      <h3 id="a-lack-of-definition">A lack of definition</h3>
+      <p>As the specifications for Solid evolved over time, we noticed that because of a lack of authoritative definition for Solid (that we know of), the definition for what Solid is started to shift.
 From being initially described as “<em>a decentralized platform for social Web applications</em>” <span class="references">[<a href="#ref-2">2</a>]</span> <a href="">TODO:: full citation style????</a>, over time initiatives within the Solid ecosystem started providing their own definitions as to what Solid is based on their vision of the ecosystem.
 On the Solid project <a href="">TODO::reference - https://solidproject.org/</a> website, we find that “<em>Solid is a specification that lets people store their data securely in decentralized data stores called Pods.</em>”.
 The Inrupt website <a href="">TODO::reference - https://inrupt.com/solid/</a> states that “<em>Solid is a technology for organizing data, applications, and identities on the web.</em>”.</p>
@@ -523,19 +522,25 @@ We make the comparison between the current state of the Solid ecosystem where th
 For the comparison, we assume the stored events to consist of a timestamp, a type, and a message.</p>
 
       <h3 id="the-linked-data-platform-interface">The Linked Data Platform interface</h3>
+      <!-- divide the data in resources -->
       <p>In the case the application that needs to write its event data to a pod where LDP is the only interface to manage data, the application first needs to distribute the data it wants to write to the pod into separate resources that will be put on the pod (note these are technically not yet resources but collections of data to be published as resources on the Solid pod). In the case of events or other objects with a logical structure, the application developers will most likely prefer to take the approach of creating separate resource for each event. 
 An alternative approach could be to bundle events in a single resource, but this comes at the cost of the granularity over which permissions can be assigned to events.</p>
 
+      <!-- finding place to write the data -->
       <p>With the data distributed into several resources, the application now wants to store them on a Solid pod.
 If the application does not have access to a location on the pod, it can start up a negotiation protocol to receive access to write data to the pod that is not in scope of this work.
 With access given to the pod, the application now needs to organize the created resources of data into a structure that can be written over the LDP interface of data pod.</p>
 
+      <!-- organize the resources on the pod -->
       <p>A first option would be for the application to just write all resources to a single container the application has access to, together with all other application data. Publishing all data as resources in a single container means the application is not making any assumptions as to the organization of data. However, in this case, the LDP interface does nothing to aid the application in finding previously stored data. The application either has to keep an internal state of where resources were stored, or check the available resources on the pod until a match is found.</p>
 
+      <!-- need for structuring -->
       <p>Because of this, it is more interesting for applications to create structure in their data, as through these structures, applications can more easily retrieve written data. To create this structure, the application can create an <code>events</code> folder in their allocated data space, and store all event resources in this <code>&lt;storage_space&gt;/events/</code> location. Now any time the applications wants to read or write events, it can make the local assumption that all event related data <em>written by the application</em> will be stored at this <code>events</code> folder.</p>
 
+      <!-- need for optimizations -->
       <p>But as the application expects to be working with large amounts of event data, it might decide that further optimizations are required. For this purpose, it might want to choose to organize the data according to one of its properties such as the timestamp of the event, or the type of the event. In this case, an event might be stored as the following resource on the pod: <code>&lt;storage_space&gt;/events/2022/01/01/event1.ttl</code>.</p>
 
+      <!-- conclusion -->
       <p>We see that the events stored by the application are now structured according to the assumptions and optimizations done by the application.</p>
 
       <p>From a <strong>storage</strong> standpoint, the event data is stored on the file system of the POD server as a file, or may be stored in a graph database where the data is tagged as part of that resource, so that the resource can be reconstructed in its entirety.</p>
@@ -546,10 +551,33 @@ With access given to the pod, the application now needs to organize the created 
 Data discovery can happen using brute-force retrieval of all available resources, but is limited by the permissions an agent has over what can be viewed on the data pod. Additionally, public resources in private containers may lead to brute-force methods not discovering these resources and not including the contained data in their results.
 Options external to the LDP interface such as the Type Indexing system <a href="">TODO:: refer</a> and Shape Trees <a href="">TODO:: refer</a> can optimize this process, but as of yet are not mandatory in the specifications and are not required to be managed by the server <a href="">TODO:: is this true for shape trees??</a>.</p>
 
-      <h4 id="in-the-case-of-meta-model-based-interfaces">In the case of [meta-]model-based interfaces</h4>
-      <p>the application is not required to do additional data modeling.
-Data can be written as-is to the pod, over any available endpoint exposed by the pod.
-The received data is then stored</p>
+      <h4 id="model-based-interfaces-sparql">model-based interfaces (SPARQL)</h4>
+      <p>In the case of model-based interfaces, we take the well known example of the SPARQL endpoint <a href="">TODO::cite</a>.
+A Solid pod exposing its internal knowledge graph over a SPARQL endpoint interface does not impose any requirements on structuring of the data <a href="">TODO:: this is correct right??</a>.</p>
+
+      <!-- No need for data division and organization -->
+      <p>An agent interacting with the data stored on a Solid pod over a SPARQL endpoint interface, 
+the application is not required to change the organizational structure of the data. 
+Any data graph used by the application can be written to the Solid pod without requiring additional data organization.</p>
+
+      <!-- No requirement for optimizations -->
+      <p>As the application storing its data on a Solid Pod cannot really organize the data being written in specific ways over the SPARQL endpoint interface, it can only change the data graph that the application is working with.
+This means that any optimizations or local assumptions that the application wants to make over its data, must be encoded in the semantics of the data in the internal knowledge graph itself.</p>
+
+      <!-- Need for additional interfaces for dereferencing -->
+
+      <!-- Use of hypermedia links -->
+
+      <!-- conclusion -->
+      <p>We see that the events stored by the application are now structured according to the assumptions and optimizations done by the application.</p>
+
+      <p>From a <strong>storage</strong> standpoint, the event data is stored on the file system of the POD server as a file, or may be stored in a graph database where the data is tagged as part of that resource, so that the resource can be reconstructed in its entirety.</p>
+
+      <p>From a <strong>publication</strong> standpoint, all data of an event is published as a resource over the POD LDP interface on a location that is tied to the application-specific organization of data.</p>
+
+      <p>From a <strong>query</strong> standpoint, the data must first be discovered on the pod, after which it can be queried directly through dereferencing the relevant resources or by an abstraction on the client that provides access to the data over another interface.
+Data discovery can happen using brute-force retrieval of all available resources, but is limited by the permissions an agent has over what can be viewed on the data pod. Additionally, public resources in private containers may lead to brute-force methods not discovering these resources and not including the contained data in their results.
+Options external to the LDP interface such as the Type Indexing system <a href="">TODO:: refer</a> and Shape Trees <a href="">TODO:: refer</a> can optimize this process, but as of yet are not mandatory in the specifications and are not required to be managed by the server <a href="">TODO:: is this true for shape trees??</a>.</p>
 
       <p>From a <strong>storage</strong> standpoint, the event data is stored in a graph-based database on the Pod server.</p>
 
