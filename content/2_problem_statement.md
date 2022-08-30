@@ -11,13 +11,13 @@ Similar to files on a file system, the definition of what constitutes these reso
 ### A mismatch between LDP and the envisioned ecosystem
 <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
 Where LDP has the appearance of a simple interface to make data interoperable over the Web using HTTP(S) protocols, 
-it incurs some essential flaws in the way it restricts the way data can be stored over the interface, 
-as well as in the degrees of freedom it leaves open for applications to encode semantic information in the application logic through the structuring of data over the interface.
+it leads to a mismatch with the envisioned ecosystem in the way it restricts the way data can be stored over the interface, 
+as well as in the degrees of freedom it leaves open for applications to encode semantic information in the application logic and the interface.
 
-<!-- Flaws -->
-We can easily define four major flaws in the context a two simple applications: a *contact list application* and a *birthday list application*, that are built on top of the Solid ecosystem where pods expose their data using LDP:
-<!-- hierarchy -->
+<!-- mismatch -->
+We can define four points where we see a clear mismatch in the context of two simple applications: a *contact list application* and a *birthday list application*, that are built on top of the Solid ecosystem where pods expose their data using LDP:
 
+<!-- orgization -->
 (i) There is no single way to organize data in a hierarchy. 
 Data graphs can be modeled in an infinite amount of ways using LDP, by distributing a data graph over different resources and by structuring these resources in different ways over the LDP hierarchy. 
 In our example, the contact list application can encode their contacts as separate resources for each contact in its data graph, after which it adds these resources in the LDP hierarchy. 
