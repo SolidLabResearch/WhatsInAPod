@@ -14,7 +14,7 @@
   <meta name="citation_author" content="Jesse Wright" />
   <meta name="citation_author" content="Pieter Colpaert" />
   
-  <meta name="citation_publication_date" content="2022/08/29" />
+  <meta name="citation_publication_date" content="2022/08/30" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -196,13 +196,13 @@ Similar to files on a file system, the definition of what constitutes these reso
       <h3 id="a-mismatch-between-ldp-and-the-envisioned-ecosystem">A mismatch between LDP and the envisioned ecosystem</h3>
       <!-- LDP leads to mismatch between the restrictions imposed on how data can be stored, and the real world  -->
       <p>Where LDP has the appearance of a simple interface to make data interoperable over the Web using HTTP(S) protocols, 
-it incurs some essential flaws in the way it restricts the way data can be stored over the interface, 
-as well as in the degrees of freedom it leaves open for applications to encode semantic information in the application logic through the structuring of data over the interface.</p>
+it leads to a mismatch with the envisioned ecosystem in the way it restricts the way data can be stored over the interface, 
+as well as in the degrees of freedom it leaves open for applications to encode semantic information in the application logic and the interface.</p>
 
-      <!-- Flaws -->
-      <p>We can easily define four major flaws in the context a two simple applications: a <em>contact list application</em> and a <em>birthday list application</em>, that are built on top of the Solid ecosystem where pods expose their data using LDP:
-<!-- hierarchy --></p>
+      <!-- mismatch -->
+      <p>We can define four points where we see a clear mismatch in the context of two simple applications: a <em>contact list application</em> and a <em>birthday list application</em>, that are built on top of the Solid ecosystem where pods expose their data using LDP:</p>
 
+      <!-- orgization -->
       <p>(i) There is no single way to organize data in a hierarchy. 
 Data graphs can be modeled in an infinite amount of ways using LDP, by distributing a data graph over different resources and by structuring these resources in different ways over the LDP hierarchy. 
 In our example, the contact list application can encode their contacts as separate resources for each contact in its data graph, after which it adds these resources in the LDP hierarchy. 
