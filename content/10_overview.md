@@ -358,7 +358,7 @@ T
 
 
 
-
+<!-- 
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
@@ -442,7 +442,170 @@ T
   - suggestion of SPARQL endpoint per resource
   - bring some clarity to this point
 
+ -->
 
 
 
 
+
+
+**Questions::**
+
+ch02.
+
+
+(i) There is no single way to organize data in a hierarchy. 
+
+-> granted data can be organized in infinite # ways over a hierarchy.
+My question is: are we organizing data as a hierarchy, or as a graph?
+data can inter-reference between resources.
+you can query the pod by extracting ALL available RDF data and converting it in graph representation, you don't have to but you kinda can.
+
+What data / semantics are ACTUALLY lost here? A good example?
+what semantics are often encoded by an application in the LDP hierarchy?
+
+THe point we need to be able to make here is to say that THERE IS NO GOOD WAY to convert this hierarchical structure to 
+
+Can we make the point that LDP inhibits the inclusion of Semantic information in the pod data graph, as they remain stuck in the interface / application logic.
+
+
+Optimizations encode semantic meaning over the interface? -> 
+shape trees and type index also encode this in the data graph itself
+
+
+Pod is a Knowledge Graph
+Addressable subjects (e.g. those within the namespace of your pod) are abstracted as resources.
+these resources contain a sub-knowledge graph.
+
+What is exactly the point we are making
+
+LDP wordt fout gebruikt door developers?
+
+en LDP leid tot problemen met de opsplitsing in resource?
+
+permissioned KNowledge Graph -> mismatch very difficult to make without duplication -> no synchronization
+
+
+
+
+
+Version 4:
+----------------------------------
+
+**Intro: Solid vision**
+
+
+
+
+
+
+
+**Solid pod as an LDP hierarchy of Linked Data Documents**
+
+argumentations:
+
+- Problem in the permission structure of LDP 
+  - application bias leads to permission granularity and assumption mismatch
+
+- Problem in optimizations:
+  - optimizations are currently done in hierarchy of data instead of in semantics
+    - **We can make the point that this is not a problem, as it does not change the data per se for other applications and does not per se make it worse?**
+    - **not even sure we can make this point**
+
+
+I think in the current 
+
+
+
+
+
+I think we might need to rescope the vision of the What's in a pod paper from the notion of 
+
+- Solid envisioned ecosystem
+  - goal: separation of apps and data
+  - key: semantics in our data
+  - enables: data integration instead of interface integration
+
+- Mismatch between LDP interface and Solid vision
+  1. world is not a hierarchy - no single way to organize in a hierarchy
+     - *counter argument: LDP hierarchy does not inherently influence the KG of the data pod? the resulting KG will still be the same as the original graph even distributed over resources?*
+  2. different apps might disagree - hierarchy might mismatch
+     - *counter argument: LDP *
+  3. reason for differences: mismatch in assumptions in structuring data in resources w.r.t. permissions
+     - very valid point
+  4. reason for differences: local optimizations through assumptions in app and interface for query.
+     - *counter argument: again these do not appear in the KG created of the LDP interface.  *
+
+  Main problem I have with this point is that we equate LDP with the vision that some applications have of LDP as Linked Data Documents.
+  If you have the vision of we should work with the LDP data as a KG, these problems disappear -> is this really a mismatch in interface? or is this a mismatch in understanding?
+
+
+- 
+
+
+what we need
+
+
+- Intro: Solid envisioned ecosystem
+  - goal: separation of apps and data
+  - key: semantics in our data
+  - enables: data integration instead of interface integration
+
+- Solid as LDP hierarchy of Linked Data Documents
+  - cause: 
+    - lack of understanding of the ecosystem. 
+    - lack of definition provided by ecosystem.
+    - lack of tooling that guides developers to the envisioned ecosystem
+  - consequence: 
+    - assumptions in applications and interface
+    - no interoperability
+    - no understanding for the view of EXTRA semantic enrichment for data, they could as well be writing JSON because of lack of vision
+
+- Solid as LDP hierarchy that can be interpreted as Knowledge graph
+  - You can view the LDP hierarchy as a knowledge graph with resources as subgraphs / you can yeet all resources together as a KG.
+  - Make the point viewing the resources in the LDP hierarchy of Solid pod as a KG -> we solve A LOT of interop problems.
+    - hierarchical mismatches? -> no problem its a graph
+    - different apps different organization -> no problem the resulting graph should be same if data is same
+    - ...
+  - BUT: We run into some leftover semantic difficulties: is interface part of the KG? 
+    - The timestamp for resources for example can be important - this is encoded in the interface
+    - The problem of knowing where to look to update / remove a statement in the pod knowledge graph requires keeping context of where statements are being made - consequence of the interface
+  - LDP requires additional support for optimization (shape trees / type index), that EITHER have to be handled server side, or its client side but you cannot really trust the results as not all applications may maintain these indexes?
+  - Additionally, we still have the massive issue of a mismatch (here we can use it I think) in the handling of permissions. 
+
+- Solid as a Knowledge Graph
+  - this is the final viewpoint we converge at
+  - We notice that the viewpoint of Solid as LDP hierarchy that can be interpreted as Knowledge graph solves a lot of problems
+  - We notice that leftover problems are not really interoperability (can we say this?) - but are mainly question of leftover semantics of the interface + the BIG issue of permissions.
+  - We notice that optimization surface of LDP is limited: either adapt the interface, or rely on applications or you have to make your own optimizations - Even original paper brought these issues forward.
+  - Because of all this, final viewpoint is that in eventuality, the ecosystem should converge to the notion of a Solid pod being permissioned knowledge graph that can support any kind of Web APIs (, and should not rely too heavy on LDP as centerpiece? - did we make this point enough?)
+
+- Conclusion
+  - ...
+
+
+
+
+
+
+What are the points we want to bring:
+
+
+**Intro**
+
+The Web is not made for interoperability.
+Solid promises ecosystem of data privacy and application interoperability.
+
+what are the key drivers behind such an ecosystem.
+
+**The current state**
+To achieve this vision, Solid proposes the use of a set of specifications to create this envisioned ecosystem of interoperability. 
+
+
+
+
+
+
+
+
+A pod is a way to manage identities and data on the Web.

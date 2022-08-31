@@ -17,7 +17,7 @@ as well as in the degrees of freedom it leaves open for applications to encode s
 <!-- mismatch -->
 We can define four points where we see a clear mismatch in the context of two simple applications: a *contact list application* and a *birthday list application*, that are built on top of the Solid ecosystem where pods expose their data using LDP:
 
-<!-- orgization -->
+<!-- organization -->
 (i) There is no single way to organize data in a hierarchy. 
 Data graphs can be modeled in an infinite amount of ways using LDP, by distributing a data graph over different resources and by structuring these resources in different ways over the LDP hierarchy. 
 In our example, the contact list application can encode their contacts as separate resources for each contact in its data graph, after which it adds these resources in the LDP hierarchy. 
@@ -25,7 +25,7 @@ In this hierarchy, the birthday list application has no option but traversing th
 as the data can be stored anywhere and is entirely dictated by the logic in the contact application and the LDP hierarchy.
 
 <!-- mismatch in hierarchy -->
-(ii) Different application can disagree in how the same data should be organized in the hierarchy.
+(ii) Different applications can disagree in how the same data should be organized in the hierarchy.
 Where the contact list application and the birthday list application work on the same data, 
 the applications may have different assumptions on how this data should be organized.
 The contact list application may assume that contact data should be organized as separate resources, 
@@ -35,8 +35,9 @@ Because of these assumptions the birthday list application may decide, after nav
 that the contact information it found just does not include birth date information.
 In this example, because of the mismatch in assumptions between the applications, data interoperability cannot not achieved.
 
+
 <!-- hierarchy for permission -->
-(iii) In the current Solid ecosystem, the permission structure is linked to the data granularity and hierarchy.
+(iii) The permission structure is linked to the data granularity and hierarchy.
 The current Solid ecosystem has two specifications that can be used to manage authorization of data on a Solid pod.
 There are two specifications that can be used to manage permissions on a Solid pod: the Web Access Controls specification (WAC) [](cite:cites WAC) and the Access Control Policy (ACP) [](cite:cites ACP) specification.
 Both specifications limit the granularity with which permissions can be set on data to individual resources.
@@ -50,7 +51,7 @@ Additionally, the contact information may assume it is sharing only partial info
 In this example, we see how the authorization mechanisms in the Solid ecosystems make problems worse as even more assumptions need to be made in applications.
 
 <!-- hierarchy for optimization -->
-(iv) Finally, applications may choose to make local assumptions for optimization purposes.
+(iv) Applications may choose to make local assumptions for optimization purposes.
 As the contact list application may want to prepare itself in case a users adds thousands of contacts, 
 the application may optimize the way it stores is data on a Solid pod to improve queries for data.
 The application may create a *contacts* container, in which creates resources for every letter of the alphabet, 

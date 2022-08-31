@@ -1,4 +1,38 @@
 ## The Solid vision # {#introduction}
+
+
+<!-- Why data on the Web being distributed over centralized data silos is BAD :( -->
+
+<!-- Solid envisions an ecosystem of users having control over data and privacy, and where data interoperability is the standard not the exception -->
+
+<!-- The KEY driver here is the separation of applications and data. Applications run everywhere. the data is in your pod -->
+
+<!-- Semantics in data enable the ecosystem to  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 In the current ecosystem of the Web where data is mainly stored in centralized data silos exposed over APIs, applications are reliant on integrating various interfaces to work with the data available on the Web.
 <!-- The Solid Proposal --> 
 With the Solid project, Sir Tim Berners-Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central [](cite:cites Solid).

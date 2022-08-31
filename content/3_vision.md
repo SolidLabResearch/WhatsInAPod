@@ -1,4 +1,65 @@
-## The Solid pod as a permissioned Knowledge Graph # {#vision}
+## Interpreting the Solid pod as a permissioned Knowledge Graph # {#vision}
+
+### Explain what we do - what is this concept?
+
+
+*Herein we adopt an inclusive definition, where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities. The graph of data (aka data graph) conforms to a graph-based data model, which may be a directed edge-labelled graph, a property graph, etc.*
+
+
+<!-- Explain the consequences -->
+### A better match for the ecosystem
+
+
+Looking back at the mismatches we noticed examining the Solid ecosystem of Solid pods as an LDP hierarchy (Solid as LDP),
+we now can examine what happens when we look at these problems from the interpretation of Solid pods as fundamentally being a permissioned Knowledge Graph (Solid as KG):
+
+<!-- the world is not a hierarchy -->
+(i) There is no single way to organize data in a hierarchy. 
+Where Solid as LDP imposes its LDP hierarchy on the way data is modeled over the interface,
+the interpretation of Solid as KG does not impose these constraints.
+The Solid as KG interpretation implicates that we can create any hierarchy over the data in the Solid pod.
+As the organization of data is not restricted to the API, any application can decide their view of the world 
+and encode the accompanying assumptions in the way they query this knowledge graph over the interfaces they use to interact with the Solid pod knowledge graph.
+
+<!-- different hierarchies for same data -->
+(ii) Different applications can disagree in how the same data should be organized in the hierarchy.
+This follows from the previous point, as the Solid as KG interpretation does not impose any hierarchy over the data in the Solid pod.
+Any application is free to structure the available data in a hierarchy of choice 
+and there is no need for applications to agree on any hierarchy for the same data.
+
+<!-- hierarchy and permissioning / granularity -->
+(iii) The permission structure is linked to the data granularity and hierarchy.
+Permissions and policies should follow from this. - caveat - resources can still exist on level of API but not on the level of KG.
+[TODO:: make this point a bit better?]()
+
+
+<!-- optimizations through hierarchy -->
+(iv) Applications may choose to make local assumptions for optimization purposes.
+We can see that where Solid over LDP entices
+optimization through data semantics and APIs instread of orgnization of data over an interface.
+
+
+1. world is not hierarchy
+- no problem, we have the graph we can get any hierarchy that we want.
+We can create a virtual API that maps /events/ to a SPARQL query -> any application can choose how to view the world / data, organization of data is not restricted to the API. No need to agree.
+
+2. different hierarchies of same trueths -> flows from the first point.
+
+3. issue wth permissioning -> flows from first point. Permisisons and policies should follow from this. - caveat - resources can still exist on level of API but not on the level of KG.
+
+4. optimizations - optimization through data semantics and APIs instread of orgnization of data over an interface.
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Repeating the premise -->
 The concept of the separation between application and data made possible by the capture of semantics in the data itself forms the premise for the proposed Solid ecosystem.
 <!-- The current problem in 2 sentences -->

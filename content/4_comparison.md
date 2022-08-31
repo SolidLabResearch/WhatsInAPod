@@ -85,7 +85,7 @@ From a **publication** standpoint,
 From a **query** standpoint, 
 
 
-Note that not all technology used in this comparison is yet available
+Note that not all technology used in this comparison is yet available 
 
 {:.comment data-author="RD"}
 TODO:: finish this part fully. Waiting for feedback
