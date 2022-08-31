@@ -1,38 +1,41 @@
 ## Abstract 
 <!-- Context      -->
-The Solid ecosystem provides specifications
-for the publication and consumption of decentralized permissioned data,
-stored across multiple locations called <q>Pods</q>.
+The Solid vision aims to make data independent of applications
+through specifications for publishing and consuming permissioned data,
+which is stored decentrally across large numbers of locations called <q>Pods</q>.
 <!-- Need         -->
-A disconnect exists between the practical notion of a Pod
-and the protocol that provides access to its data,
-creating confusion as to what exactly a Pod is
-and how it relates to the technical specifications.
-To reinstate clarity,
+The current interpretation of a Pod as
+a collection of Linked Data documents
+falls short in realizing this vision of independence,
+leading to fundamental interoperability and query problems.
+Furthermore,
+the broader vision for Solid
+is confounded with the concrete HTTP interface to Pods today,
+leading to a narrower solution space for these problems.
 <!-- Task         -->
-we examined possible interpretations of the technological underpinnings,
-and compared them from the viewpoints of
-storage, publication and query.
+We examined the mismatch between the vision
+and its currently prevalent interpretation,
+and constructed a wider interpretation of a Pod as a knowledge graph
+that provides improved opportunities for
+storage, publication, and query.
 <!-- Object       -->
-First, this article details
-the current understanding of Pods as a collection of Linked Data documents.
-Second,
-we propose a wider definition
-in which a Solid Pod is fundamentally a knowledge graph,
+In this article,
+we contrast the existing and proposed interpretations
+in terms of how they realize the Solid vision.
+We argue that a Solid Pod is fundamentally a knowledge graph,
 which can be accessed through various Web APIs
 that act as views in a database sense.
 <!-- Findings     -->
-We argue that the latter zoomed-out perspective
-enables accessing and querying knowledge within Pods
+We show that our zoomed-out interpretation
+provides improved opportunities for
+storage, publication and query of decentralized data
 in more flexible and sustainable ways.
 <!-- Conclusion   -->
 These insights are crucial to reduce
-the dependency of Solid apps on concrete APIs
+the dependency of Solid apps on implicit API semantics
 and local assumptions about the shape and organization of data
 and the resulting performance.
 <!-- Perspectives -->
-The suggested broader perspective supports Solid with
-evolving into a heterogeneous but interoperable ecosystem
-that accommodates for a multitude of data access patterns.
-
-
+The suggested broader interpretation supports Solid with
+is evolution into a heterogeneous yet interoperable ecosystem
+that accommodates a multitude of read/write data access patterns.
