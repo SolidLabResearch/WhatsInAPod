@@ -1,4 +1,4 @@
-## Interpreting the Solid pod as a permissioned Knowledge Graph # {#vision}
+## Interpreting the Solid pod as a permissioned Knowledge Graph # {#graphcentric}
 
 ### Explain what we do - what is this concept?
 

@@ -1,4 +1,4 @@
-## A Solid pod as an LDP interface # {#problem_statement}
+## A Solid pod as an LDP interface # {#documentcentric}
 <!-- Solid requires splitting of apps and data through semantics -->
 To achieve the envisioned ecosystem of data integration and interoperability, 
 Solid relies on the premise that it is possible to separate applications and data in a meaningful way, 

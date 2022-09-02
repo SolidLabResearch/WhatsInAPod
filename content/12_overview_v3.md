@@ -110,18 +110,3 @@
   
 
 
-
-<!-- 
-
-
--------------------------
-
-- Solid as a Knowledge Graph -  a required interpretation for longevity of the ecosystem
-  - this is the final viewpoint we converge at
-  - We notice that the viewpoint of Solid as LDP hierarchy that can be interpreted as Knowledge graph solves a lot of problems
-  - We notice that leftover problems are not really interoperability (can we say this?) - but are mainly question of leftover semantics of the interface + the BIG issue of permissions.
-  - We notice that optimization surface of LDP is limited: either adapt the interface, or rely on applications or you have to make your own optimizations - Even original paper brought these issues forward.
-  - Because of all this, final viewpoint is that in eventuality, the ecosystem should converge to the notion of a Solid pod being permissioned knowledge graph that can support any kind of Web APIs (, and should not rely too heavy on LDP as centerpiece? - did we make this point enough?)
-
-
--->
