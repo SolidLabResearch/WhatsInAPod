@@ -35,7 +35,7 @@
 
 In the current ecosystem of the Web where data is mainly stored in centralized data silos exposed over APIs, applications are reliant on integrating various interfaces to work with the data available on the Web.
 <!-- The Solid Proposal --> 
-With the Solid project, Sir Tim Berners-Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central [](cite:cites Solid).
+With the Solid project, Sir Tim Berners-Lee, the inventor of the World Wide Web, has aimed to revitalize the Web by proposing an ecosystem where applications and data are made interoperable through semantics, and where the concepts of identity, data ownership and privacy for the Web are central.
 Solid was proposed in 2016 as a decentralized platform for social Web applications [](cite:cites sambra_solid_nodate).
 It defines the concept of personal online datastores (pod) as online data spaces that enable the storage and management of personal data over the Web, 
 creating an ecosystem promoting interoperability between applications and user data stored on these Solid pods, 
@@ -54,7 +54,7 @@ interoperability no longer requires integrating these assumptions in the applica
 To create such an ecosystem, Solid is based on a set of specifications that define how users and applications can interact with Solid pods on the Web.
 For the core requirements of authentication, authorization, data access and more, these specifications express the implementation of these core concepts of the vision for the ecosystem.
 <!-- Especially the LDP interface -->
-To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [](cite:cites Presbrey_2014) was chosen. 
+To interface with the data stored on a Solid pod, the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014) was chosen. 
 The LDP specification dictates an organizational scheme where data is bundled into resources and these resources are then organized in a hierarchical structure of resources and containers on the data pod.
 It then provides an interface that can be used to interact with these resources over the Web.
 This provides a similar interface to how file systems organize data as files in a hierarchical ordering of files and directories.
@@ -117,7 +117,7 @@ To achieve an ecosystem where different applications can work with the same data
 
 <!-- ### Semantics and data
 A key enabler of this separation is the use of RDF and the adding of semantics to data.
-The semantic Web was introduced as an extension to the Web to make data machine-readable [](cite:cites BERNERS-LEE_HENDLER_LASSILA_2001).
+The semantic Web was introduced as an extension to the Web to make data machine-readable [](cite:cites semanticweb).
 Two decades later, the standards introduced are more relevant than ever in the goal to creating ecosystems that enable data integration and interoperability for applications.
 Where large portions of the semantics of currently available data over the web are  historically stored in documentation of APIs scattered over the internet, semantics in data allow the expressiveness of storing these semantics in the data itself. Instead of requiring to read the documentation of a data source to know that `api.com/users/1234/contacs/` results in a JSON list of contacts for user 1234, the Relational Data Format (RDF) enables us to write these semantics in the data itself, where `</users/1234/> foaf:knows </users/1235>`. Irrespective of the interface exposing this data, the relation between both users can be discovered from the semantics in the data without requiring specific understanding of how the data was retrieved and the implicit semantics that were captured in the exposing API.
  -->
