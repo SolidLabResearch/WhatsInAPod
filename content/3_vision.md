@@ -10,7 +10,7 @@ that where document sharing as a basis provides a limited innovation surface,
 the goal of the ecosystem is to achieve the sharing of data,
 independently of in which document this data is stored.
 
-This leads us to propose the definition of the Solid pod as *fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs."*.
+This leads us to propose the definition of the Solid pod as *fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs*.
 <!-- permissioned -->
 With the term *permissioned*, we express the ability to manage permissions over any individual nodes and relation in the knowledge graph.
 Note that we use this term to lean close to the current proposition for user control in Solid, 
