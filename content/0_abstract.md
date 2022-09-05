@@ -7,7 +7,7 @@ across multiple autonomous locations called <q>pods</q>.
 <!-- Need         -->
 This envisaged independence is not fully realized
 by the current document-centric interpretation
-wherein a pod is solely a collection of Linked Data documents,
+wherein a pod is solely a hierarchy of Linked Data documents,
 leading to fundamental interoperability and query problems.
 Furthermore,
 the broader longterm vision for Solid is confounded
