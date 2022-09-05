@@ -120,7 +120,7 @@ the shortcomings of the LDP interface in terms of
 querying were already mentioned. Originally these proposed
 the inclusion of extensions to the used LDP specification,
 as well as an optional SPARQL interface for the Solid pod 
-to resolve these issues.
+to resolve these issues [](cite:cites sambra_solid_nodate).
 This perspective of the Solid pod document hierarchy as a 
 Knowledge Graph solves a lot of issues in terms of interoperability,
 as the organization of data in the document hierarchy does not matter
@@ -142,6 +142,10 @@ we still run into limitations caused by the document hierarchy of the Solid pod.
 Where the problem of the data organization is mitigated, 
 as other applications are free to ignore this perspective,
 the incentive to add semantic enrichment to written data is low.
+The distillation process is also dependent on client interpretation
+as to how to build the knowledge graph on top of the exposed LDP interface,
+where applications may want to rely on information only available
+over the LDP interface such as resource timestamps
 As this perspective only uses the knowledge graph 
 in a query context, writing data to the pod still requires
 the wrapping of this data in arbitrary document structures,

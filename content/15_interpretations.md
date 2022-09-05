@@ -1,4 +1,4 @@
-# Possible interpretations of A Solid Pod as a Knowledge Graph
+# Possible interpretations of A Solid pod as a Knowledge Graph
 
 ## A list of possible interpretations of a Solid pod
 

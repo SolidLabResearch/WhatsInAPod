@@ -473,7 +473,7 @@ Optimizations encode semantic meaning over the interface? ->
 shape trees and type index also encode this in the data graph itself
 
 
-Pod is a Knowledge Graph
+pod is a Knowledge Graph
 Addressable subjects (e.g. those within the namespace of your pod) are abstracted as resources.
 these resources contain a sub-knowledge graph.
 
