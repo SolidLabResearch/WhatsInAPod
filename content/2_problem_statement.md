@@ -62,52 +62,52 @@ With the current Solid ecosystem delivering the specifications as is,
 based on an interpretation of the Solid vision as an document-centric ecosystem,
 developers are left with many degrees of freedom in their interpretation of the ecosystem,
 and how data should be stored in the document structure of the Solid pods.
-
-
-To develop applications that are robust and built for longevity,
-applications can try to use these available concepts and implementations
-to provide local solutions and optimizations for these concepts that may not be shared by the rest of the ecosystem.
-
+To develop an ecosystem on these specifications that is centered around the concepts of interoperability 
+and user control, applications are forced to integrate the concepts of the Solid vision using the 
+available specifications in a way that they assume will conform to these requirements,
+where local solutions and optimizations lead to assumptions that are not necessarily shared by the rest of the ecosystem.
 
 <!-- This proposes Solid as a document-centric ecosystem. -->
-Where two applications A and B may work with the same data,
-both applications may make totally different assumptions of how to structure this data in documents,
-and where in the hierarchy to store these documents.
-By arbitrarily allowing applications to write data to the Solid pod,
-problems in terms of discovering written data, 
-multiple applications writing documents to the same location,
-applications or users overwriting or moving data from other applications
-and other interoperability challenges are commonplace.
-In this ecosystem, currently applications are limited in interoperability 
-based on their own effort do actively discover more data stored in documents on the pod,
-taking care of not overwriting data of other applications and more, 
-calling for local assumptions and solutions in these applications 
-that may not be shared by the whole ecosystem.
+In a practical example of this concept, we take two applications in this ecosystem
+that work with the same type of data, such as contact information, and both write this data to the Solid pod.
+<!-- hierarchy mismatch -->
+Both applications may make totally different assumptions of how they structure their contact data in documents,
+and where they store these documents in the pod document hierarchy.
+Because of this, both applications may not know other contact information is available on the pod,
+or even if they scout the Solid pod for additional data, the structuring of the other contact information
+may be different in structure to a point that it has become unreadable for the other application 
+that holds the assumption that contact data should be structured differently.
+<!-- writing same location -->
+In case both applications want to forcibly write to the same location,
+e.g. a container `/contacts/` on the pod, 
+they can create problems with overwriting data, 
+or may just create extra documents in this container
+that follow different rules to data structuring,
+creating issues or even crashing other applications that hold specific assumptions 
+to the structuring of data on the Solid pod.
+<!-- permission management -->
+Additionally, the management of permissions is also indirectly connected to the applications writing data to the Solid pod.
+As authorization systems are tied to the document hierarchy of the Solid pod,
+the sharing of this data is limited to the created document structure by applications.
+As one application might split its contact information in different documents, 
+creating a more granular system for sharing parts of contact information,
+the other application might assume the whole contact to be a single document on the pod.
+This creates issues where one application given access to data by another application leads to 
+a mismatch in data sharing, as either not enough data is shared, as the assumption that all data for a contact
+should be contained in a single resource does not hold,
+or inversely it creates the situation where an app that only requests the name and WebID values for your contacts
+now must get access to either all or none of the available information on these contacts, 
+as contacts are stored as a single document containing all information on that contact.
+This mismatch in the granularity of data, combined with the assumptions of applications in the generation of these data documents,
+leads to problems in the sharing of data, and limits the control users can exercise on this data.
 
-Additionally, the management of permissions forms an additional challenge for applications in the ecosystem.
-Where the current authorization systems in the ecosystem are based on the document hierarchy of the Solid pod,
-the sharing of data between to and between applications should be managed under user control.
-However, the control users have over these permissions is limited to the granularity of the documents containing the data,
-which can be generated by the applications working with the Solid pod.
-Concretely: a contacts application keeps your contacts and all their information stored on your Solid pod,
-but stores all this information in a separate document per contact in the pod.
-A new chat application you start to use now wants to find your existing contacts to invite them for a chat.
-It looks at a the documents available to the application
-that it may suspect to contain relevant information that may have been discovered through other methods
-and ask user permission to read these documents containing what it assumes to be contact information.
-If the user now allows the chat application to see these contact, 
-the user inadvertently has shared *all* the information they have on these contacts with the application,
-as there is no granularity in which the user can only share the name or WebID of their contact.
-This mismatch in assumptions in how applications distribute data in resources
-can lead to problems with sharing too much information, or not enough information,
-as the sharing of resources is limited to the document structure of the Solid pod.
-
-The above described ecosystem, dominated by the perspective of a document sharing system
-invites the assumptions associated with document-centric systems such as the file system.
-These systems are characterized by assumptions encoded in application logic and document structure,
-that are not encoded in the data and may not be shared by the whole ecosystem.
-It provides an innovation surface for the ecosystem that is limited to the capabilities of
-the document-centric nature of the ecosystem and the interfaces exposed by the Solid pods.
+The above described ecosystem, defined by the interperatation of Solid as a document-centric ecosystem,
+invites problems in interoperability between applications,
+as data granularity is limited to documents generated by assumptions in application logic,
+and the hierarchical organization of these documents on the Solid pod invite assumptions
+to the structuring of data on the Solid pod.
+It provides an innovation surface that is limited by the capabilities of the document-centric 
+interpretation and design for the ecosystem and the interfaces exposed by the Solid pods.
 
 
 
