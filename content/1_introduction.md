@@ -1,54 +1,64 @@
 ## The Solid vision # {#introduction}
 <!-- problem: your data being everywhere, no control very limited interoperability -->
-In the current Web ecosystem, the concepts of data ownership and privacy have lost a lot of meaning with user data being captured by corporations in walled data silos.
-In this system, the user neither has the control nor the knowledge to manage how their data is being used online. [TODO:: good citation]()
+In the current Web 2.0 ecosystem, 
+the concepts of data ownership and privacy have lost a lot of meaning,
+as data that is often user generated is stored in centralized data silos
+which is often out of user control.
+In this system, the user neither has the control nor the knowledge of to how their data is used in the online space [](cite:cites berners2009socially).
 <!-- Solid: a vision for a better Web -->
-As a response to this, the Solid project [TODO:: cite]() was created with the aim of revitalizing the Web.
+As a response to this, the Solid project was created with the aim of revitalizing the Web [](cite:cites sambra_solid_nodate).
 Where centralized data silos create an ecosystem of limited integration, limited availability and limited innovation,
-Tim Berners-Lee’s Solid brings a new vision for the Web.
+Tim Berners-Lee’s Solid brings a new vision for an ecosystem on the Web,
+based on the concepts of application interoperability and user control.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
-An ecosystem that empowers integration and innovation through the separation of data away from services and applications, 
-where users are put back in control of their data.
+An ecosystem that empowers integration and innovation 
+through the separation of applications and data 
+that puts users back in control of their data[](cite:cites berners2009socially).
+
+<!-- the Solid pod -->
 Introducing the concept of the personal online datastore (pod), 
-the Solid pod forms the foundation of the ecosystem as a decentralized network of data,
-where applications integrate data from the available sources in the decentralized network,
-in contrast to the traditional Web where applications integrate data through APIs exposed by centralized data silos [TODO:: cite reflections of knowledge](). 
+the Solid pod forms the foundation of the ecosystem as 
+a storage space where users are in control of their data,
+creating a decentralized network of Solid pods
+where applications can integrate data through user consent,
+in contrast to the Web 2.0 architecture where applications are required to integrate data 
+through APIs exposed by centralized data silos,
+and user control is at the mercy of the platform maintaining the user data [TODO:: good citation](). 
+
 <!-- key for achieving requirement: capture semantics in the data -->
-Where essential information for applications to work with data
-is traditionally often encoded in assumptions of the application
-or in the semantics of specific interfaces [TODO:: cite? sources?],
-the envisioned ecosystem relies on the availability of this information
-encoded in the semantics of the available data.
-<!-- enables: data integration instead of interface integration -->
-Through the transition from semantics encoded in interfaces and application assumptions,
-an ecosystem is created based on the separation of data and applications.
+A key component for achieving this decentralized ecosystem 
+of separation of application from data 
+is the capturing of required semantic information in the data itself,
+so that applications can work with the data independent 
+of the origin and API over which the data is retrieved.
+This in contrast to the current Web 2.0 architecture,
+where necessary semantics for the data are often provided out of band,
+through agreements in the ecosystem or documentation of a specific APIs
+that applications need to integrate in their application logic.
+In this way, the Solid ecosystem marks a transition
+from a Web ecosystem of API integration towards
+a Web ecosystem centered around data integration [](cite:cites rubenv_reflections_2021).
 
 <!-- Now this vision has to be made a reality -->
-From the envisioning of an ecosystem that can form the next step for the Web,
-a challenge is posed in how these concepts interoperability and innovation can be 
-captured in specific systems for the Web. [TODO:: wording choice?]()
+From the vision of this ecosystem, 
+a challenge is now presented for the Web in how these concepts
+can be captured in specific specifications that can 
+create this envisioned ecosystem for the Web.
 <!-- The vision is room for many interpretations -->
-As the vision proposed above is broad in terms of concepts,
-the understanding of these concepts be equally divided.
-
-{:.comment data-author="RD"}
-Where the vision for interoperability can be understood as the ability for applications to seamlessly integrate data from multiple sources,
-others may understand this concept as simply the sharing documents over the Web.
-
+As the proposed vision is is based on broad concepts,
+the realization of these concepts can take many different forms.
 <!-- there is no authoritative definition -->
-Additionally, there is currently no authoritative definition for Solid, nor the concept of the Solid pod.
-Because of this, initiatives in the Solid ecosystem currently work on definitions for the ecosystem
-that are a reflection of their interpretation of the vision and their understanding of the current ecosystem.
-<!-- leads to misunderstandings that confuse the product of the Solid pod with the envisioned ecosystem. -->
-This leads to a rapidly evolving ecosystem, 
-where individual assumptions are made that are not shared by the ecosystem,
-and where proposed solutions may lack longevity in the context of the evolving ecosystem.
-<!-- work proposition -->
-In this work, 
-we describe two interpretations of the Solid pod in the envisioned ecosystem.
-in [](#documentcentric), we describe the document-centric interpretation that is supported by the current implementation, 
-as well as an evolution of the ecosystem towards a more graph-centric perspective.
-In [](#graphcentric), we describe a graph-centric of the Solid Pod as fundamentally a permissioned, hybrid knowledge graph
-as a necessary interpretation to expand the innovation surface for the ecosystem.
-[](#comparison) provides a comparison on the consequences of the chosen interpretation on the ecosystem,
-after which we bring our conclusions in [](#conclusion)
+With no authoritative definition currently available for Solid,
+the understanding of the ecosystem is not always shared in the ecosystem,
+leading to misunderstandings and mismatching of the existing systems and application assumptions.
+
+With this work,
+we describe the two main interpretations of the Solid ecosystem we discern today. 
+In [](#documentcentric), we describe the document-centric interpretation of the ecosystem,
+the current focus on this interpretation in the majority of implementations,
+and the shortcomings in terms of interoperability.
+Next, we describe the graph-centric interpretation of the Solid ecosysten in [](#graphcentric),
+where we propose the definition of the Solid Pod being fundamentally a permissioned, hybrid knowledge graph
+as a necessary interpretation to expand the innovation potential for the ecosystem.
+In [](#comparison), we compare the two interpretations and their consequences for the ecosystem, 
+after which we bring our conclusions in [](#conclusion).
