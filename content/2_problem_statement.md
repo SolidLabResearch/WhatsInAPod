@@ -21,7 +21,7 @@ by managing the permissions of the documents stored on their data pod.
 This way, the envisioned Solid ecosystem is presented as a document-centric ecosystem
 where interoperability is based on integration of the available documents by applications in the network
 and user control is maintained on the document level through the management of permissions.
-This interpretation of the ecosystem is supported by the current version of the Solid specification [TODO::cite]()
+This interpretation of the ecosystem is supported by the current version of the Solid specification [](cite:cites Solid_protocol)
 through the introduction of *slash semantics*,
 where the hierarchical relationships between documents and their parent container is defined
 through the slash (/) characters in their URIs.

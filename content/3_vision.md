@@ -16,7 +16,7 @@ as well as proposing an optional SPARQL interface for the data stored on the Sol
 This 
 However, in later versions of the specification [TODO::search version and reason??](),
 this optional SPARQL interface was dropped.
-We did notice a come-back of the concept in the form of an optional QPF-endpoint that is made available for ESS. [TODO::write out]
+We did notice a come-back of the concept in the form of an optional QPF-endpoint that is made available for ESS. [TODO::write out]()
 we strongly feel the requirement of the perspective of the Solid pod as a Knowledge Graph.
 
 
