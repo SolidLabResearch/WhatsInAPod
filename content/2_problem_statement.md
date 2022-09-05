@@ -133,7 +133,7 @@ as this distillation process can happen fully on the client side.
 Recently, the Enterprise Solid Server implementation by Inrupt 
 provided another implementation of this concept
 by including an optional QPF-endpoint interface 
-for the Solid pods hosted over their server implementation. [TODO::citation](). 
+for the Solid pods hosted over their server implementation. [](cite:cites solid_qpf). 
 
 <!-- Still has problems -->
 However, even with this perspective on the Solid pod, 
