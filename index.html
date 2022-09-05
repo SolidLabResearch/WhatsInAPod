@@ -191,7 +191,7 @@ by managing the permissions of the documents stored on their data pod.
 This way, the envisioned Solid ecosystem is presented as a document-centric ecosystem
 where interoperability is based on integration of the available documents by applications in the network
 and user control is maintained on the document level through the management of permissions.
-This interpretation of the ecosystem is supported by the current version of the Solid specification <a href="">TODO::cite</a>
+This interpretation of the ecosystem is supported by the current version of the Solid specification <span class="references">[<a href="#ref-4">4</a>]</span>
 through the introduction of <em>slash semantics</em>,
 where the hierarchical relationships between documents and their parent container is defined
 through the slash (/) characters in their URIs.</p>
@@ -206,7 +206,7 @@ are based on the notion of working with data as documents. -->
 
       <!-- read/write interface  -->
       <p>The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-4">4</a>]</span> was introduced.
+an adaptation of the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-5">5</a>]</span> was introduced.
 This LDP interface represents the authoritative organization of documents on the Solid pod as a
 hierarchical organization of resources (documents) and containers.
 Apart from the restriction of representing data as documents, 
@@ -218,7 +218,7 @@ as documents on the pod.</p>
       <!--  The authorization interface -->
       <p>Similarly, the current authorization mechanisms for the Solid pod are based on the document structure of the pod.
 There are currently two specifications that are being used to manage authorization in the Solid ecosystem:
-the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-5">5</a>]</span> and the Access Control Policy (ACP) <span class="references">[<a href="#ref-6">6</a>]</span> specification.
+the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-6">6</a>]</span> and the Access Control Policy (ACP) <span class="references">[<a href="#ref-7">7</a>]</span> specification.
 Where both specifications differ in their handling of permissions,
 both work on top of the notion of the Solid pod being a document hierarchy,
 where the granularity through which data sharing can be managed
@@ -344,7 +344,7 @@ as well as proposing an optional SPARQL interface for the data stored on the Sol
 This 
 However, in later versions of the specification <a href="">TODO::search version and reason??</a>,
 this optional SPARQL interface was dropped.
-We did notice a come-back of the concept in the form of an optional QPF-endpoint that is made available for ESS. [TODO::write out]
+We did notice a come-back of the concept in the form of an optional QPF-endpoint that is made available for ESS. <a href="">TODO::write out</a>
 we strongly feel the requirement of the perspective of the Solid pod as a Knowledge Graph.</p>
 
       <h3 id="deriving-the-knowledge-graph-from-the-current-document-hierarchy">Deriving the Knowledge graph from the current document hierarchy</h3>
@@ -465,7 +465,7 @@ In the frame of the proposed perspective, we view the current state of the Solid
       <!-- Make the point that interfaces can be thought of as independent building blocks for management of data, permissions, ... -->
       <p>In the context of this perspective, 
 we can define the specifications that act as the interfaces to interact with a Solid pod as building blocks for the Solid ecosystem.
-This is in line with the current trend of authorization specifications such as Web Access Controls (WAC) <span class="references">[<a href="#ref-5">5</a>]</span> and Access Control Policy (ACP) <span class="references">[<a href="#ref-6">6</a>]</span> being exchangeable building blocks for the ecosystem.
+This is in line with the current trend of authorization specifications such as Web Access Controls (WAC) <span class="references">[<a href="#ref-6">6</a>]</span> and Access Control Policy (ACP) <span class="references">[<a href="#ref-7">7</a>]</span> being exchangeable building blocks for the ecosystem.
 Similarly, the existing LDP implementation is can be seen as an available building block for the interface to manage data on a Solid pod.
 These building blocks in the Solid ecosystem should be developed to be minimally interdependent to facilitate their reuse in different contexts.</p>
 
@@ -514,7 +514,7 @@ With this work, we propose the view of Solid as being data and application indep
 With this work, we argue that it is not per se the interface of Linked Data Platform that is the cause of issues, but the notion that a Solid pod must adhere to the notion of being an online data space that organizes data as resources over a Linked Data Platform interface.
 We pose that the assumptions described above that stem from the use of this organizational structure and the limitations it poses on the data it stores.
 
-We propose the vision of Solid as a platform serving data pods that organize data as a Knowledge Graph <span class="references">\[<a href="#ref-7">7</a>\]</span> <span class="references">\[<a href="#ref-3">3</a>\]</span>.
+We propose the vision of Solid as a platform serving data pods that organize data as a Knowledge Graph <span class="references">\[<a href="#ref-8">8</a>\]</span> <span class="references">\[<a href="#ref-3">3</a>\]</span>.
 
 A network of Solid pods can be seen as a decentralized knowledge graph. 
 
@@ -796,7 +796,7 @@ As data discovery is hindered by local assumptions made by applications in the o
 The inclusion of optional SPARQL support in the first iterations of the Solid specification [TODO::cite]() supports this.
 
 #### [meta-]model-based interfaces
-require the client to discover the exposed interface, and adopt the querying strategy accordingly. A practical example of this is the comunica querying framework, that can adapt its querying strategy according to the datasource interface <span class="references">\[<a href="#ref-8">8</a>\]</span>.
+require the client to discover the exposed interface, and adopt the querying strategy accordingly. A practical example of this is the comunica querying framework, that can adapt its querying strategy according to the datasource interface <span class="references">\[<a href="#ref-9">9</a>\]</span>.
 Querying performance and evaluation is dependent on the exposed interface.
 Assumptions on the shape of data contained in the internal knowledge graph still provide the same challenges, but the organizational structure of data should be abstracted away for clients working with and querying the data.
 
@@ -890,14 +890,16 @@ with the goal of reducing local assumptions and optimizations in apps for reason
   <dt id="ref-3">[3]</dt>
   <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
+  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K.: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
+  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
+  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://dx.doi.org/10.1007/978-3-030-37439-6_1" typeof="schema:Chapter">Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., Wahler, A.: Introduction: What Is a Knowledge Graph? In: Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., and Wahler, A. (eds.) Knowledge Graphs: Methodology, Tools and Selected Use Cases. pp. 1–10. Springer International Publishing, Cham (2020). doi:10.1007/978-3-030-37439-6_1</dd>
+  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
   <dt id="ref-8">[8]</dt>
+  <dd resource="https://dx.doi.org/10.1007/978-3-030-37439-6_1" typeof="schema:Chapter">Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., Wahler, A.: Introduction: What Is a Knowledge Graph? In: Fensel, D., Şimşek, U., Angele, K., Huaman, E., Kärle, E., Panasiuk, O., Toma, I., Umbrich, J., and Wahler, A. (eds.) Knowledge Graphs: Methodology, Tools and Selected Use Cases. pp. 1–10. Springer International Publishing, Cham (2020). doi:10.1007/978-3-030-37439-6_1</dd>
+  <dt id="ref-9">[9]</dt>
   <dd resource="https://dx.doi.org/10.1007/978-3-030-00668-6_15" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: A Modular SPARQL Query Engine for the Web. In: Vrandečić, D., Bontcheva, K., Suárez-Figueroa, M.C., Presutti, V., Celino, I., Sabou, M., Kaffee, L.-A., and Simperl, E. (eds.) The Semantic Web – ISWC 2018. pp. 239–255. Springer International Publishing, Cham (2018). doi:10.1007/978-3-030-00668-6_15</dd>
 </dl>
 </section>
