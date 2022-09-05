@@ -151,16 +151,15 @@ And finally, the management of permissions is still
 tied to the document hierarchy of the Solid pod, and cannot be
 defined in terms of the individual statements in the data.
 
-
 The current innovation surface for the Solid ecosystem is far from reached.
-Both through innovations in the Solid panels on novel interoperability 
-mechanisms [](cite:cites interop), as well as external research such as 
-GDPR compliance of the authorization mechanisms [](cite:cites Debackere_Colpaert_Taelman_Verborgh_2022)
-these new innovations and industry attention create a rapidly evolving ecosystem.
-However, we feel that the current document-centric interpretation of the Solid ecosystem,
-while enabling a lot of interoperability over the Web,
-falls short of its inherent potential.
-Where the sharing of data through pods can enable the next step
-towards a Web where data and applications are separated,
-the choice to pose Solid as a document-authoritative ecosystem
-ends up limiting aspects of the ecosystem and constraining innovation.
+Both through innovations steered by the solid community such as application interoperability [](cite:cites interop),
+as well as through external research such as 
+GDPR compliance of the authorization mechanisms [](cite:cites Debackere_Colpaert_Taelman_Verborgh_2022),
+new innovations and industry attention create a rapidly evolving ecosystem.
+However, in the current document-centric ecosystem,
+these innovations are constrained by the document hierarchy of the Solid pods they operate on,
+and may fall short of their inherent potential.
+Because of this, we feel that a shift in perspective is necessary 
+for the Solid ecosystem to evolve in a way that promotes longevity 
+in their solutions, and a way that maximizes the innovations 
+we can build on the ecosystem.
