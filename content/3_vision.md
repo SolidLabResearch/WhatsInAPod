@@ -8,7 +8,7 @@ constrained by its document-centric interpretation.
 This leads us to conclude, 
 that where document sharing as a basis provides a limited innovation surface,
 the goal of the ecosystem is to achieve the sharing of data,
-independently of in which document this data is stored.
+which should not be limited by any single document hierarchy.
 
 This leads us to propose the definition of the Solid pod as *fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs*.
 <!-- permissioned -->

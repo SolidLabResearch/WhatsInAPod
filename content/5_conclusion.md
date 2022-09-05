@@ -1,5 +1,5 @@
 ## Conclusion # {#conclusion}
-<span class="todo">Emphasize that the existing Solid Protocol (LDP+WAC) remains untouched! That both the existing and proposed interpretation are implemented with the same spec. What changes is below the boundary of the spec, namely the role the spec (LDP) plays on the server.</span>
+<!-- <span class="todo">Emphasize that the existing Solid Protocol (LDP+WAC) remains untouched! That both the existing and proposed interpretation are implemented with the same spec. What changes is below the boundary of the spec, namely the role the spec (LDP) plays on the server.</span> -->
 
 <!-- Reflection on the current ecosystem -->
 In the current Solid ecosystem,

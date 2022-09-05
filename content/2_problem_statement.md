@@ -53,17 +53,20 @@ the applications can indirectly control the granularity of permissions on the us
 ### Application interoperability in the document-centric ecosystem
 <!-- Interoperability problems -->
 With the current Solid ecosystem delivering the specifications as is, 
-based on an interpretation of the Solid vision as an document-centric ecosystem,
-developers are left with many degrees of freedom in their interpretation of the ecosystem,
-and how data should be stored in the document structure of the Solid pods.
-To develop an ecosystem on these specifications that is centered around the concepts of interoperability 
-and user control, applications are forced to integrate the concepts of the Solid vision using the 
-available specifications in a way that they assume will conform to these requirements,
-where local solutions and optimizations lead to assumptions that are not necessarily shared by the rest of the ecosystem.
+developers are left with many degrees of freedom in their interpretation 
+of the ecosystem and how they can support it in their applications.
+Where concepts of interoperability and user control are central in the Solid vision,
+in their implementation in the current specifications they are very dependent
+on how applications decide to integrate them.
+Where the LDP interface of a Solid pod enables some forms of interoperability,
+it also allows the application to use the Solid pod as a remote document management system.
+Similarly, the authorization interfaces enable users to manage the permissions 
+of the documents on their Solid pod, they are limited by how applications
+decide to structure their data as documents on the user pod.
 
 <!-- This proposes Solid as a document-centric ecosystem. -->
-In a practical example of this concept, we take two applications in this ecosystem
-that work with the same type of data, such as contact information, and both write this data to the Solid pod.
+In a practical example, we examine two applications that manage contact information,
+and write their data to the user Solid pod.
 <!-- hierarchy mismatch -->
 Both applications may make totally different assumptions of how they structure their contact data in documents,
 and where they store these documents in the pod document hierarchy.
