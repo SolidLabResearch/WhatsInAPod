@@ -109,7 +109,51 @@ to the structuring of data on the Solid pod.
 It provides an innovation surface that is limited by the capabilities of the document-centric 
 interpretation and design for the ecosystem and the interfaces exposed by the Solid pods.
 
+### A distilled knowledge graph representation
+<!-- The docuemnt-centric vision as a KG -->
+To improve upon these problems, 
+we clearly see initiatives trying to reconcile the 
+document-centric nature of the ecosystem with the perspective
+of treating the data stored in these documents as a Knowledge Graph.
+Back in the early iterations of the Solid protocol,
+the shortcomings of the LDP interface in terms of 
+querying were already mentioned. Originally these proposed
+the inclusion of extensions to the used LDP specification,
+as well as an optional SPARQL interface for the Solid pod 
+to resolve these issues.
+This perspective of the Solid pod document hierarchy as a 
+Knowledge Graph solves a lot of issues in terms of interoperability,
+as the organization of data in the document hierarchy does not matter
+for the knowledge graph distilled from these documents enables
+applications to work directly on the data itself without 
+requiring any assumptions of the data organization in the document
+hierarchy of the Solid pod.
+The provision of an endpoint is also not a core requirement, 
+as this distillation process can happen fully on the client side.
+Recently, the Enterprise Solid Server implementation by Inrupt 
+provided another implementation of this concept
+by including an optional QPF-endpoint interface 
+for the Solid pods hosted over their server implementation. [TODO::citation](). 
 
+<!-- Still has problems -->
+However, even with this perspective on the Solid pod, 
+where the document organization of the data in the Solid pod is ignored,
+we still run into limitations caused by the document hierarchy of the Solid pod.
+Where the problem of the data organization is mitigated, 
+as other applications are free to ignore this perspective,
+the incentive to add semantic enrichment to written data is low.
+As this perspective only uses the knowledge graph 
+in a query context, writing data to the pod still requires
+the wrapping of this data in arbitrary document structures,
+and may incur problems for other applications when writing to common
+containers or documents.
+And finally, the management of permissions is still
+tied to the document hierarchy of the Solid pod, and cannot be
+defined in terms of the individual statements in the data.
+
+Although this perspective resolves interoperability issues faced by the ecosystem,
+these and other issues caused by the document hierarchy of the Solid pod
+still limit the innovation surface of the ecosystem, even in this perspective.
 
 <!-- 
 ### A graph-based understanding
