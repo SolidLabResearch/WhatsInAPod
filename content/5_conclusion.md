@@ -2,17 +2,25 @@
 <span class="todo">Emphasize that the existing Solid Protocol (LDP+WAC) remains untouched! That both the existing and proposed interpretation are implemented with the same spec. What changes is below the boundary of the spec, namely the role the spec (LDP) plays on the server.</span>
 
 <!-- With this work, we propose perspective of Solid as ...  -->
-With this work, we proposed the perspective that a Solid Pod is fundamentally a permissioned hybrid knowledge graph, exposed through Web APIs. 
+With this work, we proposed the interpretation of the Solid pod being fundamentally a permissioned, hybrid knowledge graph, exposed through Web APIs. 
 <!-- Argue this perspective in itself does not solve the existing difficulties in interoperability  -->
-To create the envisioned ecosystem, where through semantic enrichment the separation of applications and data can be accomplished, 
-we argue that this perspective is necessary to develop meaningful solutions that promote longevity in their approach.
+To create the envisioned ecosystem, 
+where we can move assumptions captured in the application logic and the document structure
+into the semantics of the data itself,
+we argue that this interpretation is necessary to develop meaningful solutions that promote longevity in their approach.
 <!-- Make case that LDP limits the innovation surface for Solid -->
-We argue that the current attitude of the Linked Data Platform specification being central to the notion of what constitutes a Solid pod 
-promotes a development process of applications making local assumptions and optimizations in their data organization, 
-leading to difficulties in creation of the envisioned ecosystem.
+We argue that the current document-centric interpretation of the Solid ecosystem,
+where the Linked Data Platform specification is central to the notion of what constitutes a Solid pod,
+promotes a development process of applications making local assumptions and optimizations through the organization of data in the document hierarchy,
+creating difficulties for interoperability within the envisioned ecosystem.
+Here, the interpretation of the Solid pod as a permissioned, hybrid knowledge graph,
+provides a wider innovation surface, that still retains full compatibility with the existing Solid protocol,
+which can run on top of this Knowledge Graph interpretation as one of the possible interfaces
+that can be offered on top of the Solid pod Knowledge Graph,
+instead of the document hierarchy forming the authoritative organization of data in the Solid pod.
 <!-- Where LDP can promote assumptions over the API -> we need to get these assumptions in the data as semantics  -->
-Additionally, we argue that the current lack of an authoritative definition for what a Solid pod is leads to 
-a shift in understanding of the original vision of an ecosystem of application and data interoperability to an
+Additionally, we argue that the current lack of an authoritative definition for what a Solid pod is
+leads to  [TODO:: here]() understanding of the original vision of an ecosystem of application and data interoperability to an
 ecosystem defined as the sum of its specifications, limiting the potential innovation surface of the ecosystem 
 to the specific choice of specifications.
 <!-- The perspective continues from the current state of solid and is completely compatible with the current state -->

@@ -1,4 +1,84 @@
 ## Comparison # {#comparison}
+<!-- We make a comparison -->
+In this section of the paper, 
+we compare the technological underpinnings of the proposed 
+interpretations of the Solid ecosystem defined above 
+in terms of storage, publication, query.
+<!-- exploring the technical limitations of the proposed ecosystem interpretations -->
+[TODO:: more info etc ...]()
+
+<!-- We build our comparison on two applications -->
+We base the comparison on two applications that are working in the Solid ecosystem.
+The first application is a contact-list-application, that manages user contact information.
+The second application is a chat application for work.
+[TODO:: more]()
+
+### The document-centric Solid ecosystem
+
+<!-- Both applications want to store contact information -->
+First, we look at the case of the document-centric interpretation of the Solid ecosystem.
+In this ecosystem, applications have store their data as resources on the Solid pod.
+In the current implementation of the ecosystem, the LDP interface exposed by the pod 
+imposes no restrictions other than data requiring to be stored as documents in the 
+LDP hierarchy.
+
+<!-- distributing the data over resources -->
+In this document-centric interpretation of the Solid ecosystem
+the pod implementation requires the applications to interact
+with the document structure on the Solid pod.
+Any application requiring the storage of data must then first organize its data into a document structure that can be written to the pod.
+
+<!-- finding place to write the data -->
+After the organization of the data into documents, the application must find a location on the pod to store the data.
+If the application does not have access to a location on the pod, it can start up a negotiation protocol to receive access to write data to the pod that is not in scope of this work.]
+This is one of the goals of the Application Interoperabiltiy working group [TODO:: cite of leave out?]() is currently working on.
+With access to a location on the pod, the application can now write its documents to the internal document structure of the Solid pod.
+
+<!-- storage -->
+In terms of **storage**, the document-centric interpretation of Solid sees the documents as the ground truth of the data stored in the Solid pod.
+Therefore, the retention of the information in the document such as formatting, comments and more may be as important as the data that can be stored in the document.
+For this, the most backend storage component is a file system.
+Additionally, metadata can be stored as files on this file system, or can be generated from a (graph) database or similar solutions.
+
+<!-- publication -->
+In terms of publication
+
+
+
+#### A practical example
+<!-- organize the resources on the pod -->
+A first option would be for the application to just write all resources to a single container the application has access to, together with all other application data. Publishing all data as resources in a single container means the application is not making any assumptions as to the organization of data. However, in this case, the LDP interface does nothing to aid the application in finding previously stored data. The application either has to keep an internal state of where resources were stored, or check the available resources on the pod until a match is found.
+
+<!-- need for structuring -->
+Because of this, it is more interesting for applications to create structure in their data, as through these structures, applications can more easily retrieve written data. To create this structure, the application can create an `events` folder in their allocated data space, and store all event resources in this `<storage_space>/events/` location. Now any time the applications wants to read or write events, it can make the local assumption that all event related data *written by the application* will be stored at this `events` folder.
+
+<!-- need for optimizations -->
+But as the application expects to be working with large amounts of event data, it might decide that further optimizations are required. For this purpose, it might want to choose to organize the data according to one of its properties such as the timestamp of the event, or the type of the event. In this case, an event might be stored as the following resource on the pod: `<storage_space>/events/2022/01/01/event1.ttl`.
+
+<!-- conclusion -->
+We see that the events stored by the application are now structured according to the assumptions and optimizations done by the application.
+
+From a **storage** standpoint, the event data is stored on the file system of the POD server as a file, or may be stored in a graph database where the data is tagged as part of that resource, so that the resource can be reconstructed in its entirety.
+
+From a **publication** standpoint, all data of an event is published as a resource over the POD LDP interface on a location that is tied to the application-specific organization of data.
+
+From a **query** standpoint, the data must first be discovered on the pod, after which it can be queried directly through dereferencing the relevant resources or by an abstraction on the client that provides access to the data over another interface.
+Data discovery can happen using brute-force retrieval of all available resources, but is limited by the permissions an agent has over what can be viewed on the data pod. Additionally, public resources in private containers may lead to brute-force methods not discovering these resources and not including the contained data in their results.
+Options external to the LDP interface such as the Type Indexing system [TODO:: refer]() and Shape Trees [TODO:: refer]() can optimize this process, but as of yet are not mandatory in the specifications and are not required to be managed by the server [TODO:: is this true for shape trees??]().
+
+
+### Results
+[TODO:: explain comparison]().
+In terms of **storage**, 
+
+
+### The graph centric ecosystem
+
+
+
+
+
+
 In this section, we examine how the the proposed perspective influences the technological requirements for the Solid ecosystem, from the viewpoints of storage, publication and query.
 
 {:.comment data-author="RD"}

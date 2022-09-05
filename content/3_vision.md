@@ -1,13 +1,71 @@
-## Interpreting the Solid pod as a permissioned Knowledge Graph # {#graphcentric}
+## The Solid pod as a permissioned Knowledge Graph # {#graphcentric}
+In the previous section we outlined the current state of the Solid ecosystem,
+and the consequences of the current interpretation of the ecosystem
+as a document-centric system where the Solid pod takes the role 
+of a permissioned document hierarchy.
+We outlined the issues with interoperability, permission structure
+and general scenarios where issues arise from assumptions in the application logic
+and document hierarchy that are not shared by the entire ecosystem.
 
-### Explain what we do - what is this concept?
+To improve upon the interoperability that can be achieved through the separation of application and data,
+we feel that the perspective is shifting towards the view of a Solid pod as a Knowledge Graph.
+However, we not that this is not a novel concept, as it was present in the original dissemination [TODO::cite]()
+and specification for Solid. Herein, the shortcomings of the proposed LDP interface for *resolving complex queries*
+over the data in the Solid pod was entertained, proposing extensions to the LDP interface,
+as well as proposing an optional SPARQL interface for the data stored on the Solid pod.
+This 
+However, in later versions of the specification [TODO::search version and reason??](),
+this optional SPARQL interface was dropped.
+We did notice a come-back of the concept in the form of an optional QPF-endpoint that is made available for ESS. [TODO::write out]
+we strongly feel the requirement of the perspective of the Solid pod as a Knowledge Graph.
 
 
-*Herein we adopt an inclusive definition, where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities. The graph of data (aka data graph) conforms to a graph-based data model, which may be a directed edge-labelled graph, a property graph, etc.*
+### Deriving the Knowledge graph from the current document hierarchy
+With the requirement of understanding the Solid pod as a Knowledge Graph
+to solve interoperability issues in the ecosystem,
+the most straightforward perspective is to see the document hierarchy of the Solid pod
+as the authoritative source for data, and the Knowledge Graph as a derived entity from these documents.
 
+With this perspective, a lot of application interoperability issues are being solved.
+As applications can view the knowledge graph
+
+However, as the ecosystem is currently developed around a document-centric notion,
+we see that the perspective of the pod as a knowledge graph is still constrained
+by it being a derived view on a document authoritative system:
+(i) There is no clear definition of how a knowledge graph should be distilled from the documents on the data pod.
+
+(ii) The permission structure is still tied to the documents in the pod that form the ground truth for the data stored on the Solid pod.
+
+(iii) Innovations required for both knowledge graph and document-centric interpretations of the ecosystem are constrained to the document system.
+
+(iv) Assumptions encoded in the document structure and application logic are not captured in the data.
+
+(v) The derived KG representation cannot be directly written to, as all statements have to be wrapped in a document to fit in the Solid pod document hierarchy.
+
+
+This shows that even though we can improve upon interop, we still bring problems with us.
 
 <!-- Explain the consequences -->
-### A better match for the ecosystem
+### Interpreting the Solid pod as fundamentally being a permissioned, hybrid knowledge graph.
+As with the derivation of the knowledge graph from the document hierarchy of the Solid pod,
+we limit the innovation surface from the ecosystem to the capabilities of the document structure
+that we showed is limited in terms ,
+a fundamental shift in interpretation is needed.
+We propose the interpretation of the Solid pod as *fundamentally* a permissioned, hybrid knowledge graph.
+
+
+*Herein we adopt an inclusive definition, 
+where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world,
+whose nodes represent entities of interest and whose edges represent relations between these entities. 
+The graph of data (aka data graph) conforms to a graph-based data model, 
+which may be a directed edge-labelled graph, a property graph, etc.*
+
+
+<!-- permissioned -->
+
+<!-- hybdid -->
+
+<!-- knowledge grap -->
 
 
 Looking back at the mismatches we noticed examining the Solid ecosystem of Solid pods as an LDP hierarchy (Solid as LDP),
