@@ -53,27 +53,27 @@ Canberra ACT 2601, AU</p>
       <p>The Solid vision aims to make data independent of applications
 through technical specifications,
 which detail how to publish and consume permissioned data
-across multiple autonomous locations called <q>Pods</q>.
+across multiple autonomous locations called <q>pods</q>.
 <!-- Need         -->
 This envisaged independence is not fully realized
 by the current document-centric interpretation
-wherein a Pod is solely a collection of Linked Data documents,
+wherein a pod is solely a collection of Linked Data documents,
 leading to fundamental interoperability and query problems.
 Furthermore,
 the broader longterm vision for Solid is confounded
-with the concrete HTTP interface to Pods today,
+with the concrete HTTP interface to pods today,
 leading to a narrower solution space for these problems.
 <!-- Task         -->
 We examined the mismatch between the vision
 and the prevalent document-centric interpretation,
 and propose a graph-centric interpretation
-wherein a Pod is fundamentally a knowledge graph.
+wherein a pod is fundamentally a knowledge graph.
 <!-- Object       -->
 In this article,
 we contrast the existing and proposed interpretations
 in terms of how they realize the Solid vision.
 We argue that the knowledge-centric interpretation
-improves Pod access through different Web APIs
+improves pod access through different Web APIs
 that act as views in a database sense.
 <!-- Findings     -->
 We show that our zoomed-out interpretation
@@ -103,27 +103,25 @@ that accommodates a multitude of read/write data access patterns.</p>
       <p>In the current Web 2.0 ecosystem, 
 the concepts of data ownership and privacy have lost a lot of meaning,
 as data that is often user generated is stored in centralized data silos
-which is often out of user control.
-In this system, the user neither has the control nor the knowledge of to how their data is used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
+which are rarely under direct user control.
+In this system, the user neither has the control nor the knowledge to manage how their data is being used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
 <!-- Solid: a vision for a better Web -->
 As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
-Where centralized data silos create an ecosystem of limited integration, limited availability and limited innovation,
-Tim Berners-Lee’s Solid brings a new vision for an ecosystem on the Web,
-based on the concepts of application interoperability and user control.
+Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
+Tim Berners-Lee’s Solid brings a new vision for an ecosystem on the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
-An ecosystem that empowers integration and innovation 
-through the separation of applications and data 
-that puts users back in control of their data<span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+Based on the premise of separating applications and data,
+the envisioned ecosystem aims to facilitate integration of data and 
+bring new opportunities for innovation <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
 
       <!-- the Solid pod -->
-      <p>Introducing the concept of the personal online datastore (pod), 
-the Solid pod forms the foundation of the ecosystem as 
-a storage space where users are in control of their data,
-creating a decentralized network of Solid pods
-where applications can integrate data through user consent,
-in contrast to the Web 2.0 architecture where applications are required to integrate data 
-through APIs exposed by centralized data silos,
-and user control is at the mercy of the platform maintaining the user data <a href="">TODO:: good citation</a>.</p>
+      <p>It introduces the concept of the personal online datastore (pod)
+as an online data space where users are in full control of their data.
+These pods form the foundation for the decentralized Solid ecosystem,
+where applications can integrate data from a user Solid pod through user consent.
+This is in contrast to the Web 2.0 architecture where
+the integration of APIs exposed by centralized data silos forms the basis of the ecosystem,
+and user control is at the mercy of the platforms maintaining the user data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
 
       <!-- key for achieving requirement: capture semantics in the data -->
       <p>A key component for achieving this decentralized ecosystem 
@@ -133,17 +131,16 @@ so that applications can work with the data independent
 of the origin and API over which the data is retrieved.
 This in contrast to the current Web 2.0 architecture,
 where necessary semantics for the data are often provided out of band,
-through agreements in the ecosystem or documentation of a specific APIs
-that applications need to integrate in their application logic.
+through agreements in the ecosystem or documentation of specific APIs
+that applications need to integrate in their logic.
 In this way, the Solid ecosystem marks a transition
 from a Web ecosystem of API integration towards
 a Web ecosystem centered around data integration <span class="references">[<a href="#ref-3">3</a>]</span>.</p>
 
       <!-- Now this vision has to be made a reality -->
       <p>From the vision of this ecosystem, 
-a challenge is now presented for the Web in how these concepts
-can be captured in specific specifications that can 
-create this envisioned ecosystem for the Web.
+the challenge is now presented in how these concepts
+can be captured in specifications for the Web.
 <!-- The vision is room for many interpretations -->
 As the proposed vision is is based on broad concepts,
 the realization of these concepts can take many different forms.
@@ -152,16 +149,15 @@ With no authoritative definition currently available for Solid,
 the understanding of the ecosystem is not always shared in the ecosystem,
 leading to misunderstandings and mismatching of the existing systems and application assumptions.</p>
 
-      <p>With this work,
-we describe the two main interpretations of the Solid ecosystem we discern today. 
-In <a href="#documentcentric">Section 2</a>, we describe the document-centric interpretation of the ecosystem,
-the current focus on this interpretation in the majority of implementations,
-and the shortcomings in terms of interoperability.
-Next, we describe the graph-centric interpretation of the Solid ecosysten in <a href="#graphcentric">Section 3</a>,
-where we propose the definition of the Solid Pod being fundamentally a permissioned, hybrid knowledge graph
-as a necessary interpretation to expand the innovation potential for the ecosystem.
-In <a href="#comparison">Section 4</a>, we compare the two interpretations and their consequences for the ecosystem, 
-after which we bring our conclusions in <a href="#conclusion">Section 5</a>.</p>
+      <p>With this work, we describe two interpretations of the Solid ecosystem.
+In <a href="#documentcentric">Section 2</a>, we describe the interpretation of the Solid vision as a document-centric ecosystem,
+which is the current understanding on which the current Solid ecosystem is based,
+and the limitations this brings for the ecosystem.
+In response, we present the interpretation for Solid as a an graph-centric interpretation of the Solid ecosystem in <a href="#graphcentric">Section 3</a>
+as a zoomed-out perspective of the current ecosystem. 
+We describe how this perspective creates a broader base for innovation,
+by expanding upon the current state of the ecosystem.
+Finally, we present our conclusions in <a href="#conclusion">Section 4</a>.</p>
 
     </div>
 </section>
@@ -290,7 +286,7 @@ the shortcomings of the LDP interface in terms of
 querying were already mentioned. Originally these proposed
 the inclusion of extensions to the used LDP specification,
 as well as an optional SPARQL interface for the Solid pod 
-to resolve these issues.
+to resolve these issues <span class="references">[<a href="#ref-2">2</a>]</span>.
 This perspective of the Solid pod document hierarchy as a 
 Knowledge Graph solves a lot of issues in terms of interoperability,
 as the organization of data in the document hierarchy does not matter
@@ -312,6 +308,10 @@ we still run into limitations caused by the document hierarchy of the Solid pod.
 Where the problem of the data organization is mitigated, 
 as other applications are free to ignore this perspective,
 the incentive to add semantic enrichment to written data is low.
+The distillation process is also dependent on client interpretation
+as to how to build the knowledge graph on top of the exposed LDP interface,
+where applications may want to rely on information only available
+over the LDP interface such as resource timestamps
 As this perspective only uses the knowledge graph 
 in a query context, writing data to the pod still requires
 the wrapping of this data in arbitrary document structures,
@@ -340,15 +340,18 @@ we can build on the ecosystem.</p>
   <section id="graphcentric" inlist="" rel="schema:hasPart" resource="#graphcentric">
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">The Solid pod as a permissioned Knowledge Graph</h2>
-      <p>In the previous section, we outlined the most common interpretation 
+      <p>In the previous section, we outlined the current interpretation 
 of Solid as a document-centric ecosystem, where the Solid pod takes the role 
 of a permissioned document hierarchy. We demonstrated that even when querying
 the Solid pod as a Knowledge graph, interoperability in the ecosystem is still
 constrained by its document-centric interpretation.</p>
 
-      <p>This conclusion lead us to <a href="">TODO:: this</a>.</p>
+      <p>This leads us to conclude, 
+that where document sharing as a basis provides a limited innovation surface,
+the goal of the ecosystem is to achieve the sharing of data,
+independently of in which document this data is stored.</p>
 
-      <p>Therefore, we propose the definition of <em>the Solid pod as fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs.”</em>.
+      <p>This leads us to propose the definition of the Solid pod as <em>fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs.”</em>.
 <!-- permissioned -->
 With the term <em>permissioned</em>, we express the ability to manage permissions over any individual nodes and relation in the knowledge graph.
 Note that we use this term to lean close to the current proposition for user control in Solid, 
@@ -369,11 +372,9 @@ which may be a directed edge-labelled graph, a property graph, etc.</em>”
 And finally, the definition states that this knowledge graph can be exposed using any suitable Web API,
 so that we do not constrain the possibilities of the ecosystem to the capabilities of any specific API.</p>
 
-      <p class="comment" data-author="RD">Ruben V, can you specifically reread the above section to make sure I did not mess up?</p>
-
       <h3 id="a-fundamentally-different-interpretation">A fundamentally different interpretation</h3>
       <!-- The interpretation -->
-      <p>With the proposed definition, we want to provide a shift in interpretation from the ecosystem.
+      <p>With the proposed definition, we want to provide a zoomed-out perspective on the current state of the Solid ecosystem.
 Where in the current ecosystem, the document hierarchy of a Solid pod is constraining factor,
 it can instead be perceived as one of the many possible interfaces
 that can be constructed over the internal knowledge graph of the Solid pod.
@@ -385,39 +386,33 @@ In this ecosystem, the innovation surface is no longer constrained by a single
 document hierarchy that forms the authoritative source for the data on the Solid pod, 
 but by a knowledge graph that can be exposed over any suitable API and over which you can construct any number of document hierarchies.</p>
 
-      <!-- advantages  -->
-      <p>In this interpretation of the ecosystem
-any application can write their data to the pod knowledge graph.
-Where in a document structure, implications of which application wrote which data is often
-captured in the semantics of the location of a document in the hierarchy,
-a knowledge-graph based model requires the semantics of these interactions to be captured in the data.
-This way, users can</p>
-
-      <p>In terms of control, the knowledge graph definition of the Solid pod 
-does not impose any restriction on the modeling and management
-of these permissions on the internal data graph.</p>
-
-      <p><span class="todo">expand this advantages section.</span></p>
-
       <!-- The current Solid protocol as a KG -->
-      <p>We note that the proposed interpretation of the Solid ecosystem 
+      <p>Note that this interpretation of the ecosystem 
 does not invalidate the current Solid protocol.
 It however changes the implication of the exposed LDP interface of the Solid pod
-from the authoritative source of data, to an interface over the internal 
-knowledge graph held by the Solid pod.
-Here, the documents in the LDP hierarchy can provide 
-views on the internal data, over which the permission mechanisms
-can be retasked to manage controls over specific views 
-on the internal knowledge graph, instead of 
-managing views over arbitrary data documents 
-generated by applications.</p>
+from the authoritative source of data, 
+to an interface over the internal knowledge graph of pod.
+Where in the current ecosystem 
+permissions are defined based on the document hierarchy of the LDP interface,
+in the zoomed-out perspective,
+the document hierarchy of the LDP interface 
+is based on the permissions set on the data in the knowledge graph.
+By generating the documents over the internal knowledge graph, 
+the interface can only include data for which adequate permissions are given.
+In this way, the current protocols are reused,
+but their position in the ecosystem is updated to better reflect their function 
+as interfaces for the data on the Solid pod.</p>
 
-    </div>
-</section>
-
-  <section id="comparison" inlist="" rel="schema:hasPart" resource="#comparison">
-<div datatype="rdf:HTML" property="schema:description">
-      <h2 property="schema:name">Comparison</h2>
+      <!-- advantages  -->
+      <p>Where this zoomed-out perspective of the ecosystem
+gives the opportunity to reuse existing interfaces
+in a context better reflecting their function,
+it is also open to the addition of new interfaces over the Solid pod.
+Where the Solid protocol used to provide an optional SPARQL interface <span class="references">[<a href="#ref-2">2</a>]</span>,
+and the current Inrupt pod implementation proposes an optional QPF-interface <span class="references">[<a href="#ref-10">10</a>]</span>,
+the zoomed-out perspective proposed that together with LDP, these are but some 
+of the infinite possible interfaces that can be used to expose the knowledge graph
+of a Solid pod.</p>
 
     </div>
 </section>
@@ -427,43 +422,45 @@ generated by applications.</p>
       <h2 property="schema:name">Conclusion</h2>
       <p><span class="todo">Emphasize that the existing Solid Protocol (LDP+WAC) remains untouched! That both the existing and proposed interpretation are implemented with the same spec. What changes is below the boundary of the spec, namely the role the spec (LDP) plays on the server.</span></p>
 
-      <!-- With this work, we propose perspective of Solid as ...  -->
-      <p>With this work, we proposed the interpretation of the Solid pod being fundamentally a permissioned, hybrid knowledge graph, exposed through Web APIs. 
-<!-- Argue this perspective in itself does not solve the existing difficulties in interoperability  -->
-To create the envisioned ecosystem, 
-where we can move assumptions captured in the application logic and the document structure
-into the semantics of the data itself,
-we argue that this zoomed out perspective is necessary to develop meaningful solutions that promote longevity in their approach.
-<!-- Make case that LDP limits the innovation surface for Solid -->
-We argue that the current document-centric interpretation of the Solid ecosystem,
-where the Linked Data Platform specification is central to the notion of what constitutes a Solid pod,
-promotes a development process of applications making local assumptions and optimizations over the document hierarchy of the Solid pod.
-<!-- How do we impove -->
-In contrast, the interpretation of the Solid pod as a permissioned, hybrid knowledge graph,
-provides a wider innovation surface, that builds upon the current ecosystem without invalidating the protocols in place. 
-<!-- A practical example -->
-By changing the role of the LDP interface
-from defining the authoritative organization of data 
-to providing an interface over an internal knowledge graph,
-we can construct any hierarchy over the data suitable for the application,
-and are not limited by assumptions of other applications when writing their data.
-This way, we change the interface from a limiting factor of the ecosystem,
-to enabling interoperability by not restricting the internal data to a single hierarchy.
-<!-- An enabler of innovation -->
-Through this zoomed out perspective on the role of the Solid pod in the Solid ecosystem, 
-we hope to inspire the reader to think along for the innovations that this interpretation of the ecosystem enables,
-and to view the current ecosystem as a subset of the possible innovations that Solid can enable.</p>
+      <!-- Reflection on the current ecosystem -->
+      <p>In the current Solid ecosystem,
+the common interpretation of the ecosystem has moved towards a document-centric vision,
+where the Linked Data Platform interface is central to the notion of what constitutes a Solid pod.
+It creates a limited space for innovation,
+by constraining the interoperability and user control of data
+to the document hierarchy on the Solid pod.</p>
 
-      <!-- The perspective continues from the current state of solid and is completely compatible with the current state -->
-      <p>We note again that this interpretation proposed in this work does not go against the current Solid protocol,
-and should be viewed as an attempt to zoom out the current perspective on Solid,
-and provide a framing of the ecosystem that promotes solutions aimed at interoperability and the longevity of the ecosystem.
-<!-- The goal of this work is to provide a perspective on the identity of Solid that can help in future work on the topic -->
-We do not propose any specific takeaway as to which interfaces may provide solutions for faced difficulties, 
-but we hope that the ideas proposed can form the base of new discussions and solutions to tackle the difficulties faced by the ecosystem.</p>
+      <!-- With this work, we propose perspective of Solid as ...  -->
+      <p>With this work, we proposed the interpretation of the Solid pod 
+being fundamentally a permissioned, hybrid knowledge graph, 
+exposed through Web APIs.</p>
+
+      <!-- what does it do -->
+      <p>Through this zoomed-out perspective of the ecosystem
+we define an innovation space that is not constrained 
+by specific protocols, but that can build upon the current 
+protocols to provide more general solutions for the 
+challenges faced by the ecosystem.</p>
+
+      <!-- how does it build -->
+      <p>By reframing the current protocols for managing data (LDP) 
+and authorization (WAC/ACP) into interfaces exposing an 
+internal knowledge graph of the Solid pod,
+we can re-use these protocols in a new setting.
+By shifting the understanding from a data graph 
+created over a document system,
+towards a document system,
+dynamically created over a data graph,
+we can fundamentally shift the understanding of the ecosystem
+towards a graph-centric interpretation.</p>
+
+      <p>Though we do not propose any specific takeaway as to which interfaces 
+may be better suited to provide solutions in the current ecosystem,
+we invite the reader to think along in how this zoomed-out perspective of the ecosystem
+can lead to better solutions to the problems faced by the ecosystem today.</p>
 
       <p><br />
-What’s in a Pod? <em>It’s in the eye of the beholder</em>, not in the constraints of an interface.</p>
+What’s in a pod? <em>It’s in the eye of the beholder</em>, not in the constraints of an interface.</p>
 
     </div>
 </section>
@@ -500,6 +497,8 @@ What’s in a Pod? <em>It’s in the eye of the beholder</em>, not in the constr
   <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., Pavlik, elf: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
   <dt id="ref-9">[9]</dt>
   <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
+  <dt id="ref-10">[10]</dt>
+  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
 </dl>
 </section>
 </footer>
