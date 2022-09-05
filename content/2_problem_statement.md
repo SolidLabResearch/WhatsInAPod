@@ -110,7 +110,7 @@ It provides an innovation surface that is limited by the capabilities of the doc
 interpretation and design for the ecosystem and the interfaces exposed by the Solid pods.
 
 ### A distilled knowledge graph representation
-<!-- The docuemnt-centric vision as a KG -->
+<!-- The document-centric vision as a KG -->
 To improve upon these problems, 
 we clearly see initiatives trying to reconcile the 
 document-centric nature of the ecosystem with the perspective
@@ -151,6 +151,16 @@ And finally, the management of permissions is still
 tied to the document hierarchy of the Solid pod, and cannot be
 defined in terms of the individual statements in the data.
 
-Although this perspective resolves interoperability issues faced by the ecosystem,
-these and other issues caused by the document hierarchy of the Solid pod
-still limit the innovation surface of the ecosystem, even in this perspective.
+
+The current innovation surface for the Solid ecosystem is far from reached.
+Both through innovations in the Solid panels on novel interoperability 
+mechanisms [](cite:cites interop), as well as external research such as 
+GDPR compliance of the authorization mechanisms [](cite:cites Debackere_Colpaert_Taelman_Verborgh_2022)
+these new innovations and industry attention create a rapidly evolving ecosystem.
+However, we feel that the current document-centric interpretation of the Solid ecosystem,
+while enabling a lot of interoperability over the Web,
+falls short of its inherent potential.
+Where the sharing of data through pods can enable the next step
+towards a Web where data and applications are separated,
+the choice to pose Solid as a document-authoritative ecosystem
+ends up limiting aspects of the ecosystem and constraining innovation.

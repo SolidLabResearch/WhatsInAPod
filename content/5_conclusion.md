@@ -27,8 +27,6 @@ to enabling interoperability by not restricting the internal data to a single hi
 Through this zoomed out perspective on the role of the Solid pod in the Solid ecosystem, 
 we hope to inspire the reader to think along for the innovations that this interpretation of the ecosystem enables,
 and to view the current ecosystem as a subset of the possible innovations that Solid can enable.
-What's in a Pod? *It's in the eye of the beholder*, not in the constraints of an interface.
-
 
 <!-- The perspective continues from the current state of solid and is completely compatible with the current state -->
 We note again that this interpretation proposed in this work does not go against the current Solid protocol,
@@ -38,6 +36,7 @@ and provide a framing of the ecosystem that promotes solutions aimed at interope
 We do not propose any specific takeaway as to which interfaces may provide solutions for faced difficulties, 
 but we hope that the ideas proposed can form the base of new discussions and solutions to tackle the difficulties faced by the ecosystem.
 
-
+<br>
+What's in a Pod? *It's in the eye of the beholder*, not in the constraints of an interface.
 
 
