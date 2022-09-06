@@ -12,7 +12,7 @@ the separation of application and data in the ecosystem is approached
 from the perspective of the Solid pods as a document storage system.
 The Solid pod manages all data as documents in a hierarchical structure 
 of documents and containers, similar to how a file system organizes data
-as files ad directories.
+as files and directories.
 Structured data can be stored on the Solid pod by 
 converting it to a document in an RDF format,
 and storing this document on the Solid pod.
@@ -126,7 +126,7 @@ It limits the innovations surface
 to the capabilities of the document hierarchy
 of its Solid pods.
 
-### A distilled knowledge graph representation
+### A distilled knowledge graph interpretation
 <!-- The document-centric vision as a KG -->
 To improve upon these problems, 
 we see attempts at reconciling the document hierarchy

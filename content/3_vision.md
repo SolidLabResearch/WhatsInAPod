@@ -72,8 +72,6 @@ only to set permissions for the subset of data in a document for which this is a
 as they cannot be used to manage permissions for single data entries in a document.
 
 
-
-
 <!-- conclusion -->
 The attempts to improve queries on top 
 of the current Solid ecosystem 
@@ -84,15 +82,21 @@ for a knowledge-graph interpretation
 of the Solid pod in at least a query perspective.
 We conclude that where the current Solid protocol,
 built on the LDP and WAC/ACP specifications,
-tries to emulate a permissioned knowledge graph
-but falls short of its intended goals.
-Where the document hierarchy fails to capture the
-essence of the free sharing of structured data on the Web
-and ends up being a limiting factor for the ecosystem,
-the interpretation of the Solid pod as a knowledge graph
-frames the current ecosystem and future innovations
-in a system where data is the central focus
-and interfaces are a means to an end.
+tries to emulate a permissioned knowledge graph,
+it falls short of the intended goals.
+Through the zoomed-out perspective of the Solid pod
+as a knowledge graph exposed over Web APIs, 
+we shift the focus back to the data itself
+and reframe the interfaces as a means to an end.
+
+
+<!-- Make point that a document FUNDAMENTALLY is built on application assumptions -->
+
+<!-- Synthese: perfect naast elkaar leven -->
+
+<!-- Make harsher point maybe -->
+
+<!-- Mkae point van Comparible on READ - problems of writing and management for data are problematic on document structure -->
 
 
 
