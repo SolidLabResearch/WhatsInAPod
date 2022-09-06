@@ -39,6 +39,6 @@ we invite the reader to think along in how this zoomed-out perspective of the ec
 can lead to better solutions to the problems faced by the ecosystem today.
 
 <br>
-What's in a pod? *It's in the eye of the beholder*, not in the constraints of an interface.
+What's in a pod? *It's in the eye of the beholder*, not in the constraints of the interface.
 
 
