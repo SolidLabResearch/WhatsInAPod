@@ -134,15 +134,20 @@ leading to further mismatched assumptions between applications.
 
 
 <!-- #### enriching data through semantics -->
-An important second aspect storage alone fails to capture
-is the requirement for data to be *independent* of applications,
-through capturing important semantic information in the data itself.
-The current implementation offers some specific features 
-for documents that are tagged as only containing RDF data.
-These RDF-documents support additional functionality for 
-PATCH requests to update the documents without overwriting them.
-There is also the requirement for all auxiliary resources to be
-stored in an RDF format.
+In addition to separating apps and data,
+the data must also be independent of the application.
+In the case of Solid, applications can store their information
+in an RDF formatted document on the pod.
+These documents provide additional functionality
+for the updating of data through PATCH requests.
+However the document structure does 
+invite applications to place assumptions
+in the data based on the context of the document.
+Where an application will see a profile in a 
+document in a location that they assume to be
+their space on the pod, they may assume
+that profile to be from their app, instead
+of encoding these semantics in the data itself.
 
 ### A shift in interpretation
 In this document-centric interpretation,
