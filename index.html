@@ -106,38 +106,37 @@ that accommodates a multitude of read/write data access patterns.</p>
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">The Solid vision</h2>
         <!-- problem: your data being everywhere, no control very limited interoperability -->
-        <p>In the current Web 2.0 ecosystem, 
-data ownership and privacy have lost a lot of ground.
-Data that is often user generated is stored far away in centralized data silos
-and is rarely under direct user control.
-In this system, the user neither has the control nor the knowledge to manage how their data is being used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
+        <p>On today’s Web,
+data privacy and control have lost a lot of ground.
+User-generated data is often stored far away in centralized data silos,
+in which people have neither the control nor the knowledge to manage how their data is being used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
 <!-- Solid: a vision for a better Web -->
 As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
 Tim Berners-Lee’s Solid brings a course correction for the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
 Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping users in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
 
         <!-- the Solid pod -->
-        <p>It introduces the concept of the personal online datastore (pod)
-as an online data space for users to control and manage their data on the Web.
+        <p>Solid introduces the concept of a <em>pod</em>
+as an online data space for people to control and manage their data on the Web.
 These pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from the user Solid pod,
-after receiving permission from the user.
-This is in contrast to the Web 2.0 architecture where
+from which applications can directly integrate data from the user’s Solid pod,
+after receiving their permission.
+This is in contrast to current Web applications, where
 this data first had to be collected in a centralized location,
 after which the platform-specific API had to be integrated,
 where all the while user control is at the mercy of the platforms maintaining the data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
 
         <!-- key for achieving requirement: capture semantics in the data -->
-        <p>A key premise for enabling the separation of application and data
+        <p>A key premise to enable the separation of data and application
 is the capture of semantic information in the data itself.
 This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the Resource Description Framework (RDF) <span class="references">[<a href="#ref-3">3</a>]</span>, that provides an infrastructure that enables the capture of this semantic information in the data.
-This again stands in contrast to the current Web 2.0 architecture,
+requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-3">3</a>]</span>, that provides an infrastructure that enables the capture of this semantic information in the data.
+This again stands in contrast to the current Web APIs,
 where data is often served in formats that require additional semantics to be captured in the documentation of the API.
-In this way, the Solid ecosystem marks a transition
+In this way, the Solid ecosystem aims to start a transition
 from a Web ecosystem of API integration towards
 a Web ecosystem centered around data integration <span class="references">[<a href="#ref-4">4</a>]</span>.</p>
 
@@ -146,18 +145,17 @@ a Web ecosystem centered around data integration <span class="references">[<a hr
 the challenge now presents itself in how these concepts
 can be captured in specifications for the Web.
 <!-- The vision is room for many interpretations -->
-The proposed vision is is based on broad concepts of interoperability
+The proposed vision is based on broad concepts of interoperability
 and user control, so the realization of these concepts can take many different forms.
 <!-- there is no authoritative definition -->
-As there is no authoritative definition currently available for Solid,
-the current initiatives and specifications defining the ecosystem are based on specific interpretations of the Solid vision, and how this can be translated into specifications for the Web.</p>
+As there is no authoritative definition available for Solid,
+current initiatives and specifications defining the ecosystem are based on specific interpretations of the Solid vision.</p>
 
-        <p>In <a href="#documentcentric">Section 2</a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the Solid ecosystem is based.
+        <p>In <a href="#documentcentric">Section 2</a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the current Solid ecosystem is based.
 In response to the limitations of this interpretation, 
 we present a zoomed-out perspective of a graph-centric interpretation of the Solid ecosystem in <a href="#graphcentric">Section 3</a>.
 We describe how this perspective creates a broader base for innovation,
-by expanding upon the current state of the ecosystem.
-Finally, we present our conclusions in <a href="#conclusion">Section 4</a>.</p>
+by expanding upon the current state of the ecosystem.</p>
 
       </div>
 </section>
@@ -524,7 +522,7 @@ What’s in a pod? <em>It’s in the eye of the beholder</em>, not in the constr
   <dt id="ref-2">[2]</dt>
   <dd resource="#sambra_solid_nodate" typeof="schema:Article">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. 16</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="#miller1998introduction" typeof="schema:Article">Miller, E.: An introduction to the resource description framework. D-lib Magazine. (1998).</dd>
+  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M.: RDF 1.1: Concepts and Abstract Syntax. World Wide Web Consortium, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
   <dt id="ref-4">[4]</dt>
   <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
   <dt id="ref-5">[5]</dt>
