@@ -107,56 +107,100 @@ that accommodates a multitude of read/write data access patterns.</p>
         <h2 property="schema:name">The Solid vision</h2>
         <!-- problem: your data being everywhere, no control very limited interoperability -->
         <p>In the current Web 2.0 ecosystem, 
-data ownership and privacy have lost a lot of ground.
-Data that is often user generated is stored far away in centralized data silos
-and is rarely under direct user control.
-In this system, the user neither has the control nor the knowledge to manage how their data is being used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
+user data is often stored far away in centralized data silos,
+hidden away behind the interfaces of large data platforms
+and rarely under direct user control.
+In this system, the user lacks both the control and the knowledge to manage their data in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
 <!-- Solid: a vision for a better Web -->
 As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
-Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
+Where the current Web is characterized by limited integration, availability and control of data,
 Tim Berners-Lee’s Solid brings a course correction for the Web.
-<!-- ecosystem goal: control over data, interoperability over applications and data -->
-Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping users in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+<!-- a decentralized vision -->
+It defines the vision for a decentralized ecosystem
+where users are in control of their data in the online space
+and centralized data platforms are replaced
+by a decentralized network of smaller data sources.
+<!-- enabled through data integration -->
+In this ecosystem, the integration of specific APIs
+provides no scalability, and the ecosystem shifts
+away from API-integration, towards a more scalable
+ecosystem based on data-integration <span class="references">[<a href="#ref-3">3</a>]</span>].</p>
 
-        <!-- the Solid pod -->
-        <p>It introduces the concept of the personal online datastore (pod)
-as an online data space for users to control and manage their data on the Web.
-These pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from the user Solid pod,
-after receiving permission from the user.
-This is in contrast to the Web 2.0 architecture where
-this data first had to be collected in a centralized location,
-after which the platform-specific API had to be integrated,
-where all the while user control is at the mercy of the platforms maintaining the data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+        <!-- separation of application and data -->
+        <p>In the current Web 2.0 ecosystem, applications manage data storage,
+leading to centralized data silos with limited user control.
+In contrast, the Solid vision is built on the notion
+of the separation of applications and data on the Web.
+In this vision, users can guide applications in where to 
+retrieve and store their data, moving the data away
+from centralized data silos into user-managed data spaces.</p>
+
+        <!-- data under user control -->
+        <p>Through this externalizing of data storage and retrieval
+into user-managed space, users can be put in control
+of their data in the online space.
+From here, users are now free to share
+their data over the Web with other applications
+and users at will.</p>
 
         <!-- key for achieving requirement: capture semantics in the data -->
-        <p>A key premise for enabling the separation of application and data
-is the capture of semantic information in the data itself.
-This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the Resource Description Framework (RDF) <span class="references">[<a href="#ref-3">3</a>]</span>, that provides an infrastructure that enables the capture of this semantic information in the data.
-This again stands in contrast to the current Web 2.0 architecture,
-where data is often served in formats that require additional semantics to be captured in the documentation of the API.
-In this way, the Solid ecosystem marks a transition
-from a Web ecosystem of API integration towards
-a Web ecosystem centered around data integration <span class="references">[<a href="#ref-4">4</a>]</span>.</p>
+        <p>The current Web 2.0 ecosystem does not support this process.
+Currently, applications are reliant on the integration of APIs to 
+learn the semantics of the data returned over the API.
+This leads to scaling issues when working with multiple data sources,
+as this requires the application to integrate multiple APIs over which
+data is retrieved.
+In contrast, the Solid vision for the Web envisions applications
+integrating data from large numbers of data sources,
+where this limited scaling is not an option.
+To enable this Solid ecosystem,
+semantics must be captured outside of the API and application logic,
+an in the data itself.
+To enable this vision, the Resource Description 
+Framework (RDF) <span class="references">[<a href="#ref-4">4</a>]</span> was introduced.
+This framework provides the infrastructure required 
+to capture semantics in the structuring of the data itself.</p>
+
+        <!-- the Solid pod - user control -->
+        <p>As a summation of the vision for a new Web ecosystem,
+based on the concepts of separation of application and data,
+user control of their data in the online space
+and the encoding of semantic information in the data itself,
+the concept of the Solid pod takes form.
+Introduced as the personal online datastore (pod),
+the pod is provides the backend over which the separation 
+of application and data is achieved.
+By storing user data on their personal pod,
+it is in a space they can manage and control 
+and from where they can share their data over the Web.
+It provides support semantically enriched RDF data
+to enable applications to integrate data of many pods at once.
+As such, it serves as the backbone 
+on which the current re-decentralization 
+of the Web is built <span class="references">[<a href="#ref-5">5</a>]</span>.</p>
 
         <!-- Now this vision has to be made a reality -->
-        <p>From the vision of this ecosystem, 
-the challenge now presents itself in how these concepts
-can be captured in specifications for the Web.
+        <p>From this vision,
+the challenge now presents itself in to capture 
+these concepts as specifications for the Web.
 <!-- The vision is room for many interpretations -->
-The proposed vision is is based on broad concepts of interoperability
-and user control, so the realization of these concepts can take many different forms.
+As the vision is broad in its concepts,
+the realization of these concepts 
+is largely based on interpretation
+and can take many forms.
 <!-- there is no authoritative definition -->
-As there is no authoritative definition currently available for Solid,
-the current initiatives and specifications defining the ecosystem are based on specific interpretations of the Solid vision, and how this can be translated into specifications for the Web.</p>
+With no authoritative definition available,
+the current implementations for the ecosystem
+are based on shared interpretations of the vision
+that may end up being a limiting factor for future innovation.</p>
 
-        <p>In <a href="#documentcentric">Section 2</a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the Solid ecosystem is based.
-In response to the limitations of this interpretation, 
-we present a zoomed-out perspective of a graph-centric interpretation of the Solid ecosystem in <a href="#graphcentric">Section 3</a>.
-We describe how this perspective creates a broader base for innovation,
-by expanding upon the current state of the ecosystem.
+        <p>In <a href="#documentcentric">Section 2</a>, we describe the interpretation 
+of the Solid as a document-centric ecosystem as currently
+the central focus, and how its imposed document hierarchy limits innovation.
+As a response, in <a href="#graphcentric">Section 3</a> we present a zoomed-out perspective of the ecosystem
+where the Solid pod is interpreted as fundamentally being a knowledge graph.
+We explore how this definition fundamentally expands upon the ecosystem
+and creates a broader base for innovation.
 Finally, we present our conclusions in <a href="#conclusion">Section 4</a>.</p>
 
       </div>
@@ -166,130 +210,168 @@ Finally, we present our conclusions in <a href="#conclusion">Section 4</a>.</p>
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">The Solid pod as a permissioned document hierarchy</h2>
         <!-- The first interpretation we look at is document-centric. -->
-        <p>The envisioned Solid ecosystem in its current state is not well defined, 
-and leaves room for different interpretations of the concepts proposed in its vision.
-In this section, we present the general understanding of Solid
-as a document-centric ecosystem, where the Solid pod is fundamentally understood
-as a permissioned document hierarchy.</p>
+        <p>The current focus of the Solid the Solid ecosystem
+is based on the interpretation of the vision in
+an ecosystem that is centered on the exchange of documents,
+as is the case for the current Web.</p>
 
-        <!-- data and files stored as documents on the pod -->
-        <p>In this interpretation,
-the separation of application and data in the ecosystem is approached 
-from the perspective of the Solid pods as a document storage system.
-The Solid pod manages all data as documents in a hierarchical structure 
-of documents and containers, similar to how a file system organizes data
-as files and directories.
-Structured data can be stored on the Solid pod by 
-converting it to a document in an RDF format,
-and storing this document on the Solid pod.
-Similarly, other non-RDF documents can be stored in the 
-Solid pod document hierarchy.
-These documents are then exposed over the Web by the Solid pod.
-In this way, the ecosystem achieves the separation of application and data
-by storing the application data as (non-)RDF documents on the Solid pod.
-User control is maintained on the document level through the management of permissions.
-This interpretation of the Solid pod as fundamentally a document hierarchy is
-further supported in the concept of <em>slash semantics</em> in the current version of the Solid protocol <span class="references">[<a href="#ref-5">5</a>]</span>,
-where the hierarchical relationships between documents and their parent container are 
-explicitly defined through the slash (/) characters in their URIs.</p>
+        <!-- The Role of the Solid pod -->
+        <p>In this system, the role of the Solid pod
+becomes that of a document management system.
+The Solid pod becomes fundamentally 
+a permissioned document hierarchy,
+where user data is stored as documents
+that can be managed and shared by the user.
+In this way, it is similar to a remote file system
+that the user and application can use to store documents.
+This concept is made explicit in the Solid protocol <span class="references">[<a href="#ref-6">6</a>]</span>
+though the inclusion of <em>slash semantics</em>, 
+where the slash (/) characters in the URIs
+of documents and containers represent their
+position in the document hierarchy.</p>
 
-        <!-- read/write interface  -->
-        <p>The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-6">6</a>]</span> was introduced.
-This LDP interface provides a direct view on the document organization
-of data on the Solid pod. It defines the terminology of the document structure
-as a hierarchy of resources (documents) and containers
-and defines the set of valid HTTP(s) operations on this hierarchy.
-<!--  The authorization interface -->
-Authorization for the Solid pod is similarly based on the document structure of the pod.
-There are currently two specifications that are used to manage authorization in the Solid ecosystem:
-the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-7">7</a>]</span> 
-and the Access Control Policy (ACP) <span class="references">[<a href="#ref-8">8</a>]</span> specification.
-Where both specifications differ in their handling of permissions,
-both work on top of the notion of the Solid pod being a document hierarchy,
-where the granularity through which data sharing can be managed
-is defined by the granularity of data in the documents on the Solid pod.
-As these documents can be managed by applications, 
-the applications indirectly define the granularity 
-of control users have over their data.</p>
+        <!-- The separation of app and data -->
+        <p>To enable the separation of application
+and data, users and applications must be able
+to store and interact with their data on their pod.
+For this, an adaptation of the Linked Data Platform (LDP) 
+specification <span class="references">[<a href="#ref-7">7</a>]</span> was introduced.
+This LDP interface provides a direct
+view on the authoritative structure
+of data as documents on the pod.
+It defines the hierarchical document structure
+as relations of resources (documents) and containers,
+similar to files and directories on a file system.
+The user can then use the set of HTTP(s) operations 
+provided by the specification to interact with the documents.
+`
+<!-- user control -->
+In this system, authorization for the Solid pod
+is similarly based on the document structure of the pod.
+There are two available specifications: 
+the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-8">8</a>]</span> 
+and the Access Control Policy (ACP) <span class="references">[<a href="#ref-9">9</a>]</span> specification.
+Both enable user control in the permissions they can control
+for both the documents and the containers (directories) in the pod document hierarchy.
+In broad terms, these allow the user 
+(or application if given permission) to control
+which actors can read, write edit and control
+these documents and containers in the Solid pod.</p>
 
-        <h3 id="interoperability-in-a-document-centric-ecosystem">Interoperability in a document-centric ecosystem</h3>
-        <!-- Interoperability problems -->
-        <p>The current Solid protocol <span class="references">[<a href="#ref-5">5</a>]</span> provides these specifications as is, 
-developers are left with many degrees of freedom in their interpretation 
-of how to build on this ecosystem.
-Where concepts of interoperability and user control are central in the Solid vision,
-their current implementation makes them very dependent
-on how applications decide to integrate them.
-Where the LDP interface of a Solid pod 
-enables some forms of interoperability,
-applications are free to use it
-as a remote document management system.
-Similarly, the authorization interfaces 
-enable users to manage the permissions,
-but in a way that is limited to how applications
-store their data as documents on the pod.</p>
+        <!-- the encoding of semantics -->
+        <p>The final concept we are look at here is the 
+ability for applications to encode 
+semantic information in their data.
+itself  to encode semantics into the
+data on a Solid pod is made possible by the 
+distinction between RDF-documents and non-RDF documents.
+Documents stored in an RDF format are handled by the 
+pod as data documents. They support the updating of
+data in the document via HTTP(S) PATCH and mark 
+their presence for applications as data documents.
+Data can be stored in other formats, but these 
+formats such as JSON usually do not include enough
+context for other applications to work with this data.</p>
 
-        <!-- This proposes Solid as a document-centric ecosystem. -->
-        <p>In a practical example, we examine a set of problems 
-faced by two applications  that manage contact information 
-in an RDF format on the user Solid pod.</p>
+        <h3 id="the-problem-of-assumptions-in-applications">The problem of assumptions in applications</h3>
+        <!-- problem statement -->
+        <p>The current Solid ecosystem 
+is still very limited in scale,
+and only span a handful of working solutions 
+and prototypes <a href="">TODO::cite??</a>.
+However, even on this limited scale,
+we can perceive how the current interpretation
+of the vision for the Web as a document-centric ecosystem
+leads to mismatched expectations <a href="">TODO::wording</a>.</p>
 
-        <!-- hierarchy mismatch -->
-        <p>(i) Both applications can make totally different assumptions 
-on how they structure their contact data as documents in the pod hierarchy.
-This can results in both applications not being aware of 
-the others data being available on the pod.
-Additionally, even if they scout the pod for additional data, 
-the way the applications structure their contact information entries
-as documents on the pod may not conform to the assumptions made by 
-other applications in the ecosystem.
-The document hierarchy does not inherently provide interoperability
-of data of applications.
-This requires either additional interfaces and agreements
-or a different interpretation of the documents by applications.
-<!-- writing same location --></p>
+        <!-- #### the separation of application and data -->
+        <!-- mismatch in storage -->
+        <p>The current implementation of the Solid pod
+provides a way for users to control the storage
+of their personal data on the Web.
+However, as it bases itself on a document hierarchy
+for data storage, we end up in a situation that
+invites local assumptions of applications.
+Applications in the current ecosystem often require
+additional information for integrating data data.
+They include in their application logic that the
+<code>/contacts/</code> folder contains documents with contact information,
+or how the <code>/contacts/</code> URI returns contacts of the current user.
+This information is not available in the data itself, 
+but is encoded in the context of its retrieval over 
+specific interfaces or from specific documents.
+In the same way, the degrees of freedom left open
+by the LDP interface allows applications to encode 
+their data in any way they please over the interface.</p>
 
-        <p>(ii) Issues arise when both applications 
-want to write to the same location in the document hierarchy.
-Where storing contact information in a <code>/contacts/</code> container 
-on the pod makes sense, this can create problems 
-where different applications may overwrite data of other applications.
-Assumptions on the structuring of contact information 
-can also become problematic, as application storage locations
-can overlap and documents written to containers used by other applications
-may break assumptions and crash applications.
-<!-- permission management --></p>
+        <p>Assumptions can be encoded in how data is transformed into separate
+documents or how these documents are structured in the pod hierarchy. 
+Through this document system and its ability to encode assumptions,
+the ecosystem is easy to adopt for applications,
+but results in a tight coupling between applications and their
+published data on the pod. Integrating data from many 
+pods in such an environment may again require the
+integration of all these assumptions, bringing us back 
+to the current situation.
+Solutions are being developed to work around the limitations
+of the current document-centric implementation, 
+such as the TypeIndex specification <a href="">TODO::cite</a>.
+However, these are often still too focused on solving
+problems created by the design choices of the implementation,
+rather than being a natural consequence of the envisioned ecosystem.</p>
 
-        <p>(iii) The permission management system may cause wrong assumptions by applications.
-As permissions are directly tied to specific documents in the hierarchy,
-they limit the granularity of control that users have.
-One application may try to optimize this, 
-by storing their data in small resources 
-that can be individually permissioned.
-The other application may decide to write 
-their contact information as just 
-one single resource on the pod.
-As assumptions here do not match,
-when sharing contact information with other applications,
-the user now either has granular control, 
-or it has to give access to all the information of a contact,
-depending on the application that wrote the data.
-Similarly, applications sharing the data may assume 
-that contact information is stored in a granular way,
-and may wrongly share contact information that 
-has all the information visible because of 
-wrong assumptions on the data structuring.
-These assumptions limit user control over their data
-and problems in interoperability with other applications.</p>
+        <!-- #### user control -->
+        <!-- mismatch of user control -->
+        <p>In terms of user control in the ecosystem,
+the current authorization systems are restricted to 
+the documents and containers of the Solid pod document hierarchy.
+This limits user control of their data to the
+documents over which this data is spread.
+Additionally, the granularity is now indirectly
+controlled by how applications decide to store
+user data on their Solid pod as documents.
+Because of this, applications may try 
+to optimize their data structuring for 
+maximum control over specific data,
+where others might just write everything as one document.
+Next to problems with user control,
+applications are now invited to encode 
+additional assumptions as to how the control
+of the data should managed in the document structure.
+This exacerbates the problem of local decisions 
+leading to further mismatched assumptions between applications.</p>
 
-        <p>We see that in the above ecosystem, 
-defined by the interpretation of Solid as a document-centric ecosystem,
-interoperability still faces a lot of hurdles as
-problems arise from assumptions made by applications.
-It limits the innovations surface
-to the capabilities of the document hierarchy
-of its Solid pods.</p>
+        <!-- #### enriching data through semantics -->
+        <p>An important second aspect storage alone fails to capture
+is the requirement for data to be <em>independent</em> of applications,
+through capturing important semantic information in the data itself.
+The current implementation offers some specific features 
+for documents that are tagged as only containing RDF data.
+These RDF-documents support additional functionality for 
+PATCH requests to update the documents without overwriting them.
+There is also the requirement for all auxiliary resources to be
+stored in an RDF format.</p>
+
+        <h3 id="a-shift-in-interpretation">A shift in interpretation</h3>
+        <p>In this document-centric interpretation,
+we see the requirement of a more data-focused
+vision appearing through multiple initiatives.
+Native to the Solid LDP specification,
+documents containing only RDF data are
+provided with additional functionality to update
+the contained data without changing the resources.
+Other optimizations try to work around the
+limitations of the LDP interface by providing
+other query interfaces over the Solid pod.
+An optional SPARQL interface for the Solid pod
+was originally included in the Solid specification <span class="references">[<a href="#ref-2">2</a>]</span>/
+Similarly, the Enterprise Solid Server <a href="">TODO::cite</a>
+provides an optional Quad Pattern Fragements 
+endpoint interface to their Solid pods.
+These additional interfaces clearly show 
+an interest in moving the ecosystem to be less 
+document focused, and put the querying of data 
+more central in the process.</p>
 
         <h3 id="a-distilled-knowledge-graph-interpretation">A distilled knowledge graph interpretation</h3>
         <!-- The document-centric vision as a KG -->
@@ -304,7 +386,7 @@ and an optional SPARQL interface could be provided
 by the Solid pod to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
 also started providing an optional QPF-endpoint interface
-over the documents in their Solid pods. <span class="references">[<a href="#ref-9">9</a>]</span>. 
+over the documents in their Solid pods. <span class="references">[<a href="#ref-10">10</a>]</span>. 
 In this perspective of the Solid pod document hierarchy
 as a knowledge graph, the document organization is no longer
 a limiting factor for interoperability.
@@ -341,8 +423,8 @@ Even in its current small scale,
 the ecosystem is limited in interoperability 
 and user control of their data.
 New innovations in the ecosystem
-such as the application interoperability specification <span class="references">[<a href="#ref-10">10</a>]</span>
-and research in the possibility for GDPR compliance <span class="references">[<a href="#ref-11">11</a>]</span>
+such as the application interoperability specification <span class="references">[<a href="#ref-11">11</a>]</span>
+and research in the possibility for GDPR compliance <span class="references">[<a href="#ref-12">12</a>]</span>
 are limited by the imposed document structure,
 and have to work around these limitations.</p>
 
@@ -382,7 +464,7 @@ any number of parameters can be retained for the individual nodes and relations 
 in the form of blobs, for which metadata can be maintained in the knowledge graph.
 <!-- knowledge grap -->
 For the term <em>knowledge graph</em>, 
-we adopt the definition proposed in <span class="references">[<a href="#ref-12">12</a>]</span>:
+we adopt the definition proposed in <span class="references">[<a href="#ref-13">13</a>]</span>:
 “<em>Herein we adopt an inclusive definition, 
 where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world,
 whose nodes represent entities of interest and whose edges represent relations between these entities. 
@@ -433,7 +515,7 @@ as they cannot be used to manage permissions for single data entries in a docume
         <p>The attempts to improve queries on top 
 of the current Solid ecosystem 
 through optional SPARQL <span class="references">[<a href="#ref-2">2</a>]</span> 
-or QPF <span class="references">[<a href="#ref-9">9</a>]</span> interfaces,
+or QPF <span class="references">[<a href="#ref-10">10</a>]</span> interfaces,
 demonstrates the requirement
 for a knowledge-graph interpretation
 of the Solid pod in at least a query perspective.
@@ -453,6 +535,8 @@ and reframe the interfaces as a means to an end.</p>
         <!-- Make harsher point maybe -->
 
         <!-- Mkae point van Comparible on READ - problems of writing and management for data are problematic on document structure -->
+
+        <!-- rdf is first class citizen, non-rdf documents are supported as second class citizens over which metadata can be ecoded in the pod KG. second class as they do not add semantics -->
 
       </div>
 </section>
@@ -524,24 +608,26 @@ What’s in a pod? <em>It’s in the eye of the beholder</em>, not in the constr
   <dt id="ref-2">[2]</dt>
   <dd resource="#sambra_solid_nodate" typeof="schema:Article">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. 16</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="#miller1998introduction" typeof="schema:Article">Miller, E.: An introduction to the resource description framework. D-lib Magazine. (1998).</dd>
-  <dt id="ref-4">[4]</dt>
   <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
+  <dt id="ref-4">[4]</dt>
+  <dd resource="#miller1998introduction" typeof="schema:Article">Miller, E.: An introduction to the resource description framework. D-lib Magazine. (1998).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K.: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
+  <dd resource="https://ruben.verborgh.org/articles/redecentralizing-the-web/" typeof="schema:CreativeWork"><a href="https://ruben.verborgh.org/articles/redecentralizing-the-web/">https:/​/​ruben.verborgh.org/articles/redecentralizing-the-web/</a> (2019).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
+  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K.: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
+  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
+  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
   <dt id="ref-9">[9]</dt>
-  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
   <dt id="ref-10">[10]</dt>
-  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., Pavlik, elf: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
+  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
   <dt id="ref-11">[11]</dt>
-  <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
+  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., Pavlik, elf: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
   <dt id="ref-12">[12]</dt>
+  <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
+  <dt id="ref-13">[13]</dt>
   <dd resource="#hogan2021knowledge" typeof="schema:Article">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G.D., Gutierrez, C., Kirrane, S., Gayo, J.E.L., Navigli, R., Neumaier, S., others: Knowledge graphs. ACM Computing Surveys (CSUR). 54, 1–37 (2021).</dd>
 </dl>
 </section>
