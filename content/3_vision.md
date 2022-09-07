@@ -102,7 +102,7 @@ and reframe the interfaces as a means to an end.
 
 
 
-
+<!-- rdf is first class citizen, non-rdf documents are supported as second class citizens over which metadata can be ecoded in the pod KG. second class as they do not add semantics -->
 
 
 
