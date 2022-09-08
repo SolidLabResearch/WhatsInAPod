@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'nanoc', '~> 4.7'
 
-gem 'scholarmarkdown'
+gem 'scholarmarkdown', '~> 3.0'
 
 # text processing
 gem 'kramdown'
@@ -23,7 +23,7 @@ group :development do
   gem 'guard-nanoc', '~> 2.1.2'
   gem 'guard-rack'
   gem 'guard-livereload'
-  gem 'rack'
+  gem 'rack', '~> 2.0'
   gem 'rack-livereload'
   gem 'wdm', '>= 0.1.0' if Gem.win_platform?
   gem 'rb-readline'
