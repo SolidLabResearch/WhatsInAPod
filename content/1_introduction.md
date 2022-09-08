@@ -9,27 +9,54 @@ As a response to this, the Solid project was created with the aim of revitalizin
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
 Tim Berners-Lee’s Solid brings a course correction for the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
-Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data [](cite:cites berners2009socially).
+The Solid vision presents a vision for the Web,
+where centralized data silos are replaced
+by a decentralized network of user data stores [](cite:cites rubenv_innovation_2020).
+To support this envisioned ecosystem for the Web,
+the ecosystem must support some of the core principles
+required to enable this vision:
+
+<!-- separate app and storage -->
+(i) A first requirement is the separation of applications from data storage [](cite:cites berners2009socially).
+This concept captures the need for users
+to be able to steer the storage of user data
+away from centralized silos on the Web, into a data 
+space on the Web that they can control.
+
+<!-- independence through RDF -->
+(ii) Next, as data is separated, it should also be *independent*
+from the application [](cite:cites berners2009socially). This is a requirement for other applications
+to reuse this data in an open ecosystem.
+A key driver here is the use of the [Resource Description Framework (RDF)](cite:cites RDF). 
+Where currently, semantics are often encoded
+in application logic and interfaces on the Web,
+RDF provides the infrastructure required to capture
+these semantics in the data itself.
+
+<!-- user control -->
+(iii) Finally, users should be in control
+of how their personal data can be used on the Web [](cite:cites berners2009socially).
+By moving user data away from centralized silos
+into a space the user can directly manage,
+we can give back the control of personal 
+data to the user.
+
 
 <!-- the Solid pod -->
-Solid introduces the concept of a _pod_
-as an online data space for people to control and manage their data on the Web.
+As a culmination of these and other concepts
+in the Solid vision, the concept of a _pod_ takes shape:
+a personal online datastore where people can store
+and control their data on the Web, 
+both in RDF and non RDF formats.
 These pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from the user's Solid pod,
-after receiving their permission.
-This is in contrast to current Web applications, where
-this data first had to be collected in a centralized location,
-after which the platform-specific API had to be integrated,
-where all the while user control is at the mercy of the platforms maintaining the data [](cite:cites berners2009socially). 
+from which applications can directly integrate 
+user data with adequate permissions given.
 
-<!-- key for achieving requirement: capture semantics in the data -->
-A key premise to enable the separation of data and application
-is the capture of semantic information in the data itself.
-This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the [Resource Description Framework (RDF)](cite:cites RDF), that provides an infrastructure that enables the capture of this semantic information in the data.
-This again stands in contrast to the current Web APIs,
-where data is often served in formats that require additional semantics to be captured in the documentation of the API.
+This envisioned ecosystem provides solutions
+for the current Web, where integration happens
+through the semantics of the API and where
+data and the control thereof are at the
+mercy of the data platform.
 In this way, the Solid ecosystem aims to start a transition
 from a Web ecosystem of API integration towards
 a Web ecosystem centered around data integration [](cite:cites rubenv_reflections_2021).

@@ -110,3 +110,31 @@
   
 
 
+
+
+
+
+
+
+---------------------------------
+- separation of app and data
+- semantics in data
+- user control
+
+
+in document structure: 
+- separation is NOT achieved
+- semantics captured in documents
+- user control IS limited
+
+in graph query
+- separation still not achieved
+- document semantics cause lack of required semantics
+- user control STILL limited
+
+fundamentally graph
+- separation  is achieved, interface independence is required.
+  - must be captured in tooling
+- semantics that can be queried SHOULD be captured in data
+- user control can be modelled in an infinite amount of ways over the data
+
