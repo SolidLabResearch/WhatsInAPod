@@ -115,30 +115,56 @@ As a response to this, the Solid project was created with the aim of revitalizin
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
 Tim Berners-Lee’s Solid brings a course correction for the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
-Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+The Solid vision presents a vision for the Web,
+where centralized data silos are replaced
+by a decentralized network of user data stores <span class="references">[<a href="#ref-3">3</a>]</span>.
+To support this envisioned ecosystem for the Web,
+the ecosystem must support some of the core principles
+required to enable this vision:</p>
+
+        <!-- separate app and storage -->
+        <p>(i) A first requirement is the separation of applications from data storage <span class="references">[<a href="#ref-1">1</a>]</span>.
+This concept captures the need for users
+to be able to steer the storage of user data
+away from centralized silos on the Web, into a data 
+space on the Web that they can control.</p>
+
+        <!-- independence through RDF -->
+        <p>(ii) Next, as data is separated, it should also be <em>independent</em>
+from the application <span class="references">[<a href="#ref-1">1</a>]</span>. This is a requirement for other applications
+to reuse this data in an open ecosystem.
+A key driver here is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-4">4</a>]</span>. 
+Where currently, semantics are often encoded
+in application logic and interfaces on the Web,
+RDF provides the infrastructure required to capture
+these semantics in the data itself.</p>
+
+        <!-- user control -->
+        <p>(iii) Finally, users should be in control
+of how their personal data can be used on the Web <span class="references">[<a href="#ref-1">1</a>]</span>.
+By moving user data away from centralized silos
+into a space the user can directly manage,
+we can give back the control of personal 
+data to the user.</p>
 
         <!-- the Solid pod -->
-        <p>Solid introduces the concept of a <em>pod</em>
-as an online data space for people to control and manage their data on the Web.
+        <p>As a culmination of these and other concepts
+in the Solid vision, the concept of a <em>pod</em> takes shape:
+a personal online datastore where people can store
+and control their data on the Web, 
+both in RDF and non RDF formats.
 These pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from the user’s Solid pod,
-after receiving their permission.
-This is in contrast to current Web applications, where
-this data first had to be collected in a centralized location,
-after which the platform-specific API had to be integrated,
-where all the while user control is at the mercy of the platforms maintaining the data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+from which applications can directly integrate 
+user data with adequate permissions given.</p>
 
-        <!-- key for achieving requirement: capture semantics in the data -->
-        <p>A key premise to enable the separation of data and application
-is the capture of semantic information in the data itself.
-This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-3">3</a>]</span>, that provides an infrastructure that enables the capture of this semantic information in the data.
-This again stands in contrast to the current Web APIs,
-where data is often served in formats that require additional semantics to be captured in the documentation of the API.
+        <p>This envisioned ecosystem provides solutions
+for the current Web, where integration happens
+through the semantics of the API and where
+data and the control thereof are at the
+mercy of the data platform.
 In this way, the Solid ecosystem aims to start a transition
 from a Web ecosystem of API integration towards
-a Web ecosystem centered around data integration <span class="references">[<a href="#ref-4">4</a>]</span>.</p>
+a Web ecosystem centered around data integration <span class="references">[<a href="#ref-5">5</a>]</span>.</p>
 
         <!-- Now this vision has to be made a reality -->
         <p>From the vision of this ecosystem, 
@@ -187,13 +213,13 @@ In this way, the ecosystem achieves the separation of application and data
 by storing the application data as (non-)RDF documents on the Solid pod.
 User control is maintained on the document level through the management of permissions.
 This interpretation of the Solid pod as fundamentally a document hierarchy is
-further supported in the concept of <em>slash semantics</em> in the current version of the Solid protocol <span class="references">[<a href="#ref-5">5</a>]</span>,
+further supported in the concept of <em>slash semantics</em> in the current version of the Solid protocol <span class="references">[<a href="#ref-6">6</a>]</span>,
 where the hierarchical relationships between documents and their parent container are 
 explicitly defined through the slash (/) characters in their URIs.</p>
 
         <!-- read/write interface  -->
         <p>The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-6">6</a>]</span> was introduced.
+an adaptation of the Linked Data Platform (LDP) specification <span class="references">[<a href="#ref-7">7</a>]</span> was introduced.
 This LDP interface provides a direct view on the document organization
 of data on the Solid pod. It defines the terminology of the document structure
 as a hierarchy of resources (documents) and containers
@@ -201,8 +227,8 @@ and defines the set of valid HTTP(s) operations on this hierarchy.
 <!--  The authorization interface -->
 Authorization for the Solid pod is similarly based on the document structure of the pod.
 There are currently two specifications that are used to manage authorization in the Solid ecosystem:
-the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-7">7</a>]</span> 
-and the Access Control Policy (ACP) <span class="references">[<a href="#ref-8">8</a>]</span> specification.
+the Web Access Controls specification (WAC) <span class="references">[<a href="#ref-8">8</a>]</span> 
+and the Access Control Policy (ACP) <span class="references">[<a href="#ref-9">9</a>]</span> specification.
 Where both specifications differ in their handling of permissions,
 both work on top of the notion of the Solid pod being a document hierarchy,
 where the granularity through which data sharing can be managed
@@ -213,7 +239,7 @@ of control users have over their data.</p>
 
         <h3 id="interoperability-in-a-document-centric-ecosystem">Interoperability in a document-centric ecosystem</h3>
         <!-- Interoperability problems -->
-        <p>The current Solid protocol <span class="references">[<a href="#ref-5">5</a>]</span> provides these specifications as is, 
+        <p>The current Solid protocol <span class="references">[<a href="#ref-6">6</a>]</span> provides these specifications as is, 
 developers are left with many degrees of freedom in their interpretation 
 of how to build on this ecosystem.
 Where concepts of interoperability and user control are central in the Solid vision,
@@ -302,7 +328,7 @@ and an optional SPARQL interface could be provided
 by the Solid pod to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
 also started providing an optional QPF-endpoint interface
-over the documents in their Solid pods. <span class="references">[<a href="#ref-9">9</a>]</span>. 
+over the documents in their Solid pods. <span class="references">[<a href="#ref-10">10</a>]</span>. 
 In this perspective of the Solid pod document hierarchy
 as a knowledge graph, the document organization is no longer
 a limiting factor for interoperability.
@@ -339,8 +365,8 @@ Even in its current small scale,
 the ecosystem is limited in interoperability 
 and user control of their data.
 New innovations in the ecosystem
-such as the application interoperability specification <span class="references">[<a href="#ref-10">10</a>]</span>
-and research in the possibility for GDPR compliance <span class="references">[<a href="#ref-11">11</a>]</span>
+such as the application interoperability specification <span class="references">[<a href="#ref-11">11</a>]</span>
+and research in the possibility for GDPR compliance <span class="references">[<a href="#ref-12">12</a>]</span>
 are limited by the imposed document structure,
 and have to work around these limitations.</p>
 
@@ -380,7 +406,7 @@ any number of parameters can be retained for the individual nodes and relations 
 in the form of blobs, for which metadata can be maintained in the knowledge graph.
 <!-- knowledge grap -->
 For the term <em>knowledge graph</em>, 
-we adopt the definition proposed in <span class="references">[<a href="#ref-12">12</a>]</span>:
+we adopt the definition proposed in <span class="references">[<a href="#ref-13">13</a>]</span>:
 “<em>Herein we adopt an inclusive definition, 
 where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world,
 whose nodes represent entities of interest and whose edges represent relations between these entities. 
@@ -431,7 +457,7 @@ as they cannot be used to manage permissions for single data entries in a docume
         <p>The attempts to improve queries on top 
 of the current Solid ecosystem 
 through optional SPARQL <span class="references">[<a href="#ref-2">2</a>]</span> 
-or QPF <span class="references">[<a href="#ref-9">9</a>]</span> interfaces,
+or QPF <span class="references">[<a href="#ref-10">10</a>]</span> interfaces,
 demonstrates the requirement
 for a knowledge-graph interpretation
 of the Solid pod in at least a query perspective.
@@ -518,28 +544,30 @@ What’s in a pod? <em>It’s in the eye of the beholder</em>, not in the constr
 <h2 id="references">References</h2>
 <dl class="references">
   <dt id="ref-1">[1]</dt>
-  <dd resource="#berners2009socially" typeof="schema:Article">Berners-Lee, T.: Socially aware cloud storage. Notes on web design, Aug. 17, (2009).</dd>
+  <dd resource="https://www.w3.org/DesignIssues/CloudStorage.html" typeof="schema:Article">Berners-Lee, T.: Socially aware cloud storage. Notes on web design, Aug. 17, (2009).</dd>
   <dt id="ref-2">[2]</dt>
   <dd resource="#sambra_solid_nodate" typeof="schema:Article">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. 16</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M.: RDF 1.1: Concepts and Abstract Syntax. World Wide Web Consortium, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
+  <dd resource="https://ruben.verborgh.org/blog/2020/12/07/a-data-ecosystem-fosters-sustainable-innovation/" typeof="schema:CreativeWork">Verborgh, R.: A data ecosystem fosters sustainable innovation. <a href="https://ruben.verborgh.org/blog/2020/12/07/a-data-ecosystem-fosters-sustainable-innovation/">https:/​/​ruben.verborgh.org/blog/2020/12/07/a-data-ecosystem-fosters-sustainable-innovation/</a> (2020).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
+  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M.: RDF 1.1: Concepts and Abstract Syntax. World Wide Web Consortium, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K.: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
+  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
+  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K.: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
+  <dd resource="https://dspace.mit.edu/handle/1721.1/91861" typeof="schema:Thesis">Presbrey, J.W.: Linked data platform for web applications. <a href="https://dspace.mit.edu/handle/1721.1/91861">https:/​/​dspace.mit.edu/handle/1721.1/91861</a> (2014).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
+  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Web Access Control (WAC). World Wide Web Consortium, <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a></dd>
   <dt id="ref-9">[9]</dt>
-  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Access Control Policy (ACP). World Wide Web Consortium, <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a></dd>
   <dt id="ref-10">[10]</dt>
-  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., Pavlik, elf: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
+  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
   <dt id="ref-11">[11]</dt>
-  <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
+  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., Pavlik, elf: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
   <dt id="ref-12">[12]</dt>
+  <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
+  <dt id="ref-13">[13]</dt>
   <dd resource="#hogan2021knowledge" typeof="schema:Article">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G.D., Gutierrez, C., Kirrane, S., Gayo, J.E.L., Navigli, R., Neumaier, S., others: Knowledge graphs. ACM Computing Surveys (CSUR). 54, 1–37 (2021).</dd>
 </dl>
 </section>
