@@ -362,6 +362,10 @@ main {
 
 header {
   text-align: center;
+
+  h2 {
+    margin-top: 0;
+  }
 }
 
 #authors {
@@ -372,6 +376,7 @@ header {
 
   li {
     display: inline;
+    white-space: nowrap;
 
     &:not(:last-child) {
       &::after {

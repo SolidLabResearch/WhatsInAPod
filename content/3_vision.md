@@ -1,4 +1,4 @@
-## The Solid pod as a permissioned Knowledge Graph # {#graphcentric}
+## The proposed graph-centric interpretation
 In the previous section, we outlined the current interpretation 
 of Solid as a document-centric ecosystem, where the Solid pod takes the role 
 of a permissioned document hierarchy. We demonstrated that even when querying

@@ -1,4 +1,4 @@
-## The Solid pod as a permissioned document hierarchy # {#documentcentric}
+## The current document-centric interpretation
 <!-- The first interpretation we look at is document-centric. -->
 The envisioned Solid ecosystem in its current state is not well defined, 
 and leaves room for different interpretations of the concepts proposed in its vision.

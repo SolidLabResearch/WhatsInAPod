@@ -10,7 +10,7 @@ Where the current system of centralized data silos create an ecosystem of limite
 Tim Berners-Lee’s Solid brings a course correction for the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
 Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data [](cite:cites berners2009socially).
+the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data [](cite:cites berners2009socially).
 
 <!-- the Solid pod -->
 Solid introduces the concept of a _pod_
@@ -21,7 +21,7 @@ after receiving their permission.
 This is in contrast to current Web applications, where
 this data first had to be collected in a centralized location,
 after which the platform-specific API had to be integrated,
-where all the while user control is at the mercy of the platforms maintaining the data [](cite:cites berners2009socially). 
+where all the while user control is at the mercy of the platforms maintaining the data [](cite:cites berners2009socially). 
 
 <!-- key for achieving requirement: capture semantics in the data -->
 A key premise to enable the separation of data and application
@@ -32,7 +32,7 @@ This again stands in contrast to the current Web APIs,
 where data is often served in formats that require additional semantics to be captured in the documentation of the API.
 In this way, the Solid ecosystem aims to start a transition
 from a Web ecosystem of API integration towards
-a Web ecosystem centered around data integration [](cite:cites rubenv_reflections_2021).
+a Web ecosystem centered around data integration [](cite:cites rubenv_reflections_2021).
 
 <!-- Now this vision has to be made a reality -->
 From the vision of this ecosystem, 
