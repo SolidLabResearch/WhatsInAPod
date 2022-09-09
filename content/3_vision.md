@@ -1,14 +1,12 @@
 ## The proposed graph-centric interpretation
-In the previous section, we outlined the current interpretation 
-of Solid as a document-centric ecosystem, where the Solid pod takes the role 
-of a permissioned document hierarchy. We demonstrated that even when querying
-the Solid pod as a Knowledge graph, interoperability in the ecosystem is still
-constrained by its document-centric interpretation.
 
-Where an ecosystem built on the sharing of documents on the Web
+Because of the limitations of the document-centric interpretation of the Solid ecosystem,
+we feel that a shift in perspective is necessary 
+to evolve in a way that promotes longevity.
+Whereas an ecosystem built on document sharing
 provides a limited surface for innovation,
-an ecosystem built on the sharing of data,
-not limited to a specific document hierarchy
+an ecosystem built on data sharing
+not constrained to a specific API
 provides more opportunities for innovation.
 
 This leads us to propose the definition of the Solid pod as *fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs*.

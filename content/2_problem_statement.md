@@ -138,57 +138,49 @@ which would be unnecessary overhead for the other apps.
 To improve upon these problems, 
 we see attempts at reconciling the document hierarchy
 of the Solid pod with the interpretation as a knowledge graph.
-Already in the early iterations of the Solid protocol,
-the shortcomings of the LDP interface in terms of 
-querying were already mentioned [](cite:cites sambra_solid_nodate).
-To combat this, extensions to the LDP specification were proposed,
-and an optional SPARQL interface could be provided
-by the Solid pod to enable more complex data retrieval.
+Shortcomings of the LDP interface for querying
+were already mentioned in early iterations of the Solid protocol [](cite:cites sambra_solid_nodate),
+with solutions hinting at per-document SPARQL endpoints
+to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
-also started providing an optional QPF-endpoint interface
-over the documents in their Solid pods. [](cite:cites solid_qpf). 
-In this perspective of the Solid pod document hierarchy
-as a knowledge graph, the document organization is no longer
-a limiting factor for interoperability.
-Applications can query directly on the (RDF) data that is present
-in these documents, even though this data may be spread across 
-hundreds of documents with different organizations of data in the pod.
+started providing an optional RDF quad-based interface [](cite:cites solid_qpf). 
+In this perspective of the Solid pod document hierarchy as a knowledge graph,
+the document organization should no longer
+be a limiting factor for interoperability.
+Applications can query directly RDF data,
+even though this data may be spread across 
+multiple documents with different organizations within the pod.
 This perspective of a Solid pod as a knowledge graph is also 
 not limited to the server, as this distillation process
 from document hierarchy to knowledge graph
-can happen fully on the client side over the LDP interface.
+could happen fully on the client side via the LDP interface.
 
 <!-- Still has problems -->
 However, even with this perspective on the Solid pod, 
-where the document organization of the Solid pod is ignored,
+which tries to ignore the document organization of the Solid pod,
 we still run into its limitations:
-(i) The problem of the organization of data
-is removed, but other applications coding assumptions against the 
-document hierarchy are still limited in interoperability, 
+
+1. The solution only impacts clients going through this optional interface,
+whereas other applications coding assumptions against the 
+document hierarchy are still limited in their interoperability, 
 and do not share the incentive to write rich semantic data to the pod.
-(ii) Writing data is still constrained to the document hierarchy,
+2. Writing data is still constrained to the document hierarchy,
 as all data must be stored in the context of a document on the pod.
 This maintains the problems of writing to common
 documents and containers.
-(iii) The distillation process from document hierarchy to knowledge graph
+3. The distillation process from document hierarchy to knowledge graph
 is open to client interpretation, and may be limited by client understanding
-or include interface-specific information such as document last modified information.
-(iv) The management of permissions is still
+or include interface-specific information.
+4. The management of permissions is still
 tied to the document hierarchy of the Solid pod, and cannot be
 defined in terms of the individual statements in the data.
 
-Where the current innovation surface for the Solid ecosystem is far from reached,
+Where the current innovation surface for the Solid ecosystem still leaves options,
 we already feel the constraints imposed by the document hierarchy limiting the options.
-Even in its current small scale, 
-the ecosystem is limited in interoperability 
-and user control of their data.
+Even at its currently small scale, 
+the ecosystem's interoperability and user control are constrained.
 New innovations in the ecosystem
-such as the application interoperability specification [](cite:cites interop)
-and research in the possibility for GDPR compliance [](cite:cites Debackere_Colpaert_Taelman_Verborgh_2022)
+such as the [application interoperability specification](cite:cites interop)
+and [research on GDPR compliance](cite:cites Debackere_Colpaert_Taelman_Verborgh_2022)
 are limited by the imposed document structure,
 and have to work around these limitations.
-
-Because of this, we feel that a shift in perspective is necessary 
-for the Solid ecosystem to evolve in a way that promotes longevity 
-in their solutions, and a way that maximizes the innovations 
-we can build on the ecosystem.
