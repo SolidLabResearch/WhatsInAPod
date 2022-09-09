@@ -301,60 +301,54 @@ which would be unnecessary overhead for the other apps.</p>
         <p>To improve upon these problems, 
 we see attempts at reconciling the document hierarchy
 of the Solid pod with the interpretation as a knowledge graph.
-Already in the early iterations of the Solid protocol,
-the shortcomings of the LDP interface in terms of 
-querying were already mentioned <span class="references">[<a href="#ref-2">2</a>]</span>.
-To combat this, extensions to the LDP specification were proposed,
-and an optional SPARQL interface could be provided
-by the Solid pod to enable more complex data retrieval.
+Shortcomings of the LDP interface for querying
+were already mentioned in early iterations of the Solid protocol <span class="references">[<a href="#ref-2">2</a>]</span>,
+with solutions hinting at per-document SPARQL endpoints
+to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
-also started providing an optional QPF-endpoint interface
-over the documents in their Solid pods. <span class="references">[<a href="#ref-9">9</a>]</span>. 
-In this perspective of the Solid pod document hierarchy
-as a knowledge graph, the document organization is no longer
-a limiting factor for interoperability.
-Applications can query directly on the (RDF) data that is present
-in these documents, even though this data may be spread across 
-hundreds of documents with different organizations of data in the pod.
+started providing an optional RDF quad-based interface <span class="references">[<a href="#ref-9">9</a>]</span>. 
+In this perspective of the Solid pod document hierarchy as a knowledge graph,
+the document organization should no longer
+be a limiting factor for interoperability.
+Applications can query directly RDF data,
+even though this data may be spread across 
+multiple documents with different organizations within the pod.
 This perspective of a Solid pod as a knowledge graph is also 
 not limited to the server, as this distillation process
 from document hierarchy to knowledge graph
-can happen fully on the client side over the LDP interface.</p>
+could happen fully on the client side via the LDP interface.</p>
 
         <!-- Still has problems -->
         <p>However, even with this perspective on the Solid pod, 
-where the document organization of the Solid pod is ignored,
-we still run into its limitations:
-(i) The problem of the organization of data
-is removed, but other applications coding assumptions against the 
-document hierarchy are still limited in interoperability, 
-and do not share the incentive to write rich semantic data to the pod.
-(ii) Writing data is still constrained to the document hierarchy,
+which tries to ignore the document organization of the Solid pod,
+we still run into its limitations:</p>
+
+        <ol>
+          <li>The solution only impacts clients going through this optional interface,
+whereas other applications coding assumptions against the 
+document hierarchy are still limited in their interoperability, 
+and do not share the incentive to write rich semantic data to the pod.</li>
+          <li>Writing data is still constrained to the document hierarchy,
 as all data must be stored in the context of a document on the pod.
 This maintains the problems of writing to common
-documents and containers.
-(iii) The distillation process from document hierarchy to knowledge graph
+documents and containers.</li>
+          <li>The distillation process from document hierarchy to knowledge graph
 is open to client interpretation, and may be limited by client understanding
-or include interface-specific information such as document last modified information.
-(iv) The management of permissions is still
+or include interface-specific information.</li>
+          <li>The management of permissions is still
 tied to the document hierarchy of the Solid pod, and cannot be
-defined in terms of the individual statements in the data.</p>
+defined in terms of the individual statements in the data.</li>
+        </ol>
 
-        <p>Where the current innovation surface for the Solid ecosystem is far from reached,
+        <p>Where the current innovation surface for the Solid ecosystem still leaves options,
 we already feel the constraints imposed by the document hierarchy limiting the options.
-Even in its current small scale, 
-the ecosystem is limited in interoperability 
-and user control of their data.
+Even at its currently small scale, 
+the ecosystem’s interoperability and user control are constrained.
 New innovations in the ecosystem
-such as the application interoperability specification <span class="references">[<a href="#ref-10">10</a>]</span>
-and research in the possibility for GDPR compliance <span class="references">[<a href="#ref-11">11</a>]</span>
+such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solid.github.io/data-interoperability-panel/specification/">application interoperability specification</a> <span class="references">[<a href="#ref-10">10</a>]</span>
+and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://hdl.handle.net/1854/LU-8752108">research on GDPR compliance</a> <span class="references">[<a href="#ref-11">11</a>]</span>
 are limited by the imposed document structure,
 and have to work around these limitations.</p>
-
-        <p>Because of this, we feel that a shift in perspective is necessary 
-for the Solid ecosystem to evolve in a way that promotes longevity 
-in their solutions, and a way that maximizes the innovations 
-we can build on the ecosystem.</p>
 
       </div>
 </section>
@@ -362,16 +356,14 @@ we can build on the ecosystem.</p>
   <section id="the-proposed-graph-centric-interpretation" inlist="" rel="schema:hasPart" resource="#the-proposed-graph-centric-interpretation">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">The proposed graph-centric interpretation</h2>
-        <p>In the previous section, we outlined the current interpretation 
-of Solid as a document-centric ecosystem, where the Solid pod takes the role 
-of a permissioned document hierarchy. We demonstrated that even when querying
-the Solid pod as a Knowledge graph, interoperability in the ecosystem is still
-constrained by its document-centric interpretation.</p>
 
-        <p>Where an ecosystem built on the sharing of documents on the Web
+        <p>Because of the limitations of the document-centric interpretation of the Solid ecosystem,
+we feel that a shift in perspective is necessary 
+to evolve in a way that promotes longevity.
+Whereas an ecosystem built on document sharing
 provides a limited surface for innovation,
-an ecosystem built on the sharing of data,
-not limited to a specific document hierarchy
+an ecosystem built on data sharing
+not constrained to a specific API
 provides more opportunities for innovation.</p>
 
         <p>This leads us to propose the definition of the Solid pod as <em>fundamentally being a permissioned, hybrid knowledge graph, exposed through Web APIs</em>.
