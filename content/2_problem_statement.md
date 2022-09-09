@@ -1,4 +1,4 @@
-## The current document-centric interpretation
+## Current document-centric interpretation
 <!-- The first interpretation we look at is document-centric. -->
 The envisioned Solid ecosystem in its current state is not well defined, 
 leaving room for different interpretations of the proposed concepts.
@@ -133,7 +133,7 @@ The dating app might want the document per contact
 to include all exchanged messages,
 which would be unnecessary overhead for the other apps.
 
-### Distilled knowledge graph interpretation
+### Limited knowledge graph interpretation
 <!-- The document-centric vision as a KG -->
 To improve upon these problems, 
 we see attempts at reconciling the document hierarchy

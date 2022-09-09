@@ -31,7 +31,7 @@ Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
 Proposals typically focus on making API semantics explicit [](cite:citesAsPotentialSolution ShapeTrees,TypeIndexes),
-yet they inevitably inherit the abstraction's breaking points.
+yet they inevitably inherit the abstraction's mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.
 
@@ -39,13 +39,15 @@ We observe that the document-centric interpretation
 seems to act as a proxy for a more fundamental concept,
 namely a permissioned, hybrid knowledge graph
 that accommodates data as well as documents.
-In our proposed graph-centric interpretation,
-document interfaces such as those that exist today
-are considered specialized views of an underlying richer source of truth,
-affording more flexibility—and hence independence—in
+Our proposed graph-centric interpretation
+put this concept at the heart of each pod,
+and considers document interfaces such as those that exist today
+as specialized views of an underlying richer source of truth.
+This affords more flexibility—and hence independence—in
 how multiple apps can interact with the same graph data.
 Crucially,
-this also broadens the solution space for innovation.
+this also broadens the solution space
+to tackle interoperability challenges.
 We are no longer confined to working around inherent LDP-level problems,
 but can create solutions at the knowledge graph level
 and mint associated API views tailored to the needs and constraints
@@ -60,38 +62,48 @@ We thereby shift the understanding
 from a data graph instantiated from a document organization,
 to a dynamically instantiated document interface over a data graph,
 paving the way for fundamentally graph-centric data management within Solid.
+Through the zoomed-out perspective of the pod
+as a knowledge graph exposed over Web APIs, 
+we refocus on the data itself
+and reframe the interfaces as means to an end.
 
-Importantly,
-consequences from this different interpretation are not purely conceptual or theoretical.
+Consequences from interpretation differences are not purely conceptual or theoretical.
 For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
 A concrete consequence manifests itself
-in a current [_quad-centric_ API](cito:citesAsEvidence solid_qpf),
+in the current [Quad Pattern Fragments API](cito:citesAsEvidence solid_qpf),
 meant to facilitate complex queries over a pod.
-The API exposes RDF quads,
-whose graph component is the URI
-on which they happen to appear in the _document_ API---ironically
-imposing some of the same LDP constraints
-on an API that is supposed to mitigate them.
-In a graph-centric interpretation of the pod,
-document URIs are instead ephemeral artifacts of one particular API view
+This _quad-centric_ API offers pattern-based access to RDF quads,
+whose graph component is defined as
+the URI where the _document-centric_ API happens to expose them.
+Ironically,
+the server thereby imposes some of the same LDP constraints and mismatches
+on the very API that is supposed to mitigate them.
+This happens because the additional API is built on top of the LDP-based API,
+which this interpretation considers to _be_ the pod.
+In a graph-centric interpretation,
+the pod is instead a knowledge graph with multiple APIs as views.
+Document URIs are ephemeral artifacts of one particular API
 that carry no meaning in the graph,
-nor for other views or apps.
+nor in other views or apps.
+Therefore,
+a Quad Pattern Fragments API within the graph-centric interpretation
+would never use the document URL from another API as fourth quad component.
 
 We stress that the document-centric as well as the graph-centric interpretation
 are supported by the current Solid specifications,
 notably the [Solid Protocol](cite:citesAsSourceDocument Solid_protocol),
 which is a testament to both the orthogonality of the specification
-and the compatibility of graph-centricity.
+and the vision compatibility of graph-centricity.
 Specifically,
 the graph-centric interpretation of the Solid vision
 still embraces document-based access as a core building block for APIs.
-What changes is the role played by the document access interface:
+What changes is the role played by the document hierarchy:
 rather than the one absolute source of truth of a pod,
 we recognize more value in seeing it as one of many views
 into a much more elaborate knowledge graph,
 for which APIs act as a vessel.
 Therefore,
 what is in a pod is essentially in the eye of the beholder:
-all depends on which view has the best fit for a specific purpose.
+all depends on which view offers the best fit for a specific purpose.
