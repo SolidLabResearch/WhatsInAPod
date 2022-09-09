@@ -400,59 +400,25 @@ so that the possibilities of the ecosystem are not constrained by the capabiliti
         <h3 id="one-pod-multiple-views">One pod, multiple views</h3>
         <!-- The interpretation -->
         <p>With the proposed definition, we want to provide a zoomed-out perspective on the current state of the Solid ecosystem.
-By interpreting the role of RDF documents on a pod 
-as an arbitrary set of data of the pod knowledge graph
-in the context of a single document URI, 
-a space is provided where functionality can be
-built directly on the knowledge graph of the pod
-through additional interfaces that are not 
-constrained by a specific documents structure.</p>
+Where in the current ecosystem, the document hierarchy of a Solid pod is a constraining factor,
+it can instead be perceived as one of the many possibilities
+of representing the internal knowledge graph of a pod.
+By shifting the interpretation of the document hierarchy from the authoritative source
+to a representation on the data in the Solid pod, we can construct any number of hierarchies 
+over the pod knowledge graph.
+These can be built on the Solid pod server, or can be created at the client
+over the APIs the pod exposes.</p>
 
-        <p>In this space, aspects such as querying, 
-permission management and data provenance 
-are tackled at the data level.
-This permission and provenance information
-can then directly be captured in the semantics 
-of the data in the pod knowledge graph.
-Over this data, interfaces can be constructed
-that are not limited by their ability
-to map functionality on an arbitrary document structure.
-With this zoomed out perspective,
-processes can target individual data points,
-more interfaces can be included in the ecosystem
-and data and its captured semantics can be made
-directly accessible to the ecosystem.
-This greatly increases the space over which
-we can innovate in the Solid ecosystem.</p>
-
-        <p>As now the LDP interface no longer dictates
-the document hierarchy on the pod, 
-but provides a possible representation
-of the internal knowledge graph. 
-The mismatches described in the previous section
-can now easily be resolved by providing 
-each app with a different LDP-based, permissioned API.
+        <p>The mismatches described in the previous section
+can easily be resolved by providing each app with a different LDP-based, permissioned API.
 That way, the modeling, permission, and optimization constraints
 of different apps are not in conflict.
 Modeling concerns of a single app can be alleviated
 by exposing the same data through multiple hierarchies,
 since “duplicates” are simply different views of the same resource.</p>
 
-        <!-- conclusion -->
-        <!-- We find that the zoomed out perspective provides a reframing
-of the current Solid protocol into a wider solution space for the ecosystem. 
-Where the current protocol captures these concepts on a document level,
-these 
-By capturing these concepts that are currently executed on a document level
-at the data level, the protocols provide a mapping in how 
-such a knowledge graph data space can be managed.
-In this way, zooming out the perspective
-provides a clear insight in how we can tackle
-the problems faced in the decentralized network
-at the data level. -->
-
         <!-- The current Solid protocol as a KG -->
-        <!-- The graph-based interpretation
+        <p>The graph-based interpretation
 does not obsolete the Solid Protocol.
 It changes the role
 of the LDP interface from maintaining the Solid pod document hierarchy
@@ -464,16 +430,16 @@ the permissions set in the knowledge graph.
 By only including data in documents for which permissions are set,
 we can reuse the current protocols 
 but shift their position in the ecosystem to better 
-reflect their function as an interface on the data in a pod.
+reflect their function as an interface on the data in a pod.</p>
 
-However, not all translations are seamless.
+        <p>However, not all translations are seamless.
 Where a knowledge graph can be distilled from a document hierarchy,
 the inverse operation require additional semantics,
 such as the use of named graphs in the data of the pod knowledge graph,
 as is currently proposed for the optional query interfaces of the Solid pods.
 Similarly, the current authorization protocols in their current state can be reused
 only to set permissions for the subset of data in a document for which this is allowed,
-as they cannot be used to manage permissions for single data entries in a document. -->
+as they cannot be used to manage permissions for single data entries in a document.</p>
 
         <!-- Make point that a document FUNDAMENTALLY is built on application assumptions -->
 
