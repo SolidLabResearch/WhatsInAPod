@@ -181,7 +181,8 @@ main {
     font-style: italic;
   }
   code, code strong, samp, samp strong, pre, kbd, button {
-  font-family:monospace;
+  font-family:"Courier New", Courier, monospace;
+  font-size: .95em;
   }
   code strong, samp strong {
   font-weight:bold;

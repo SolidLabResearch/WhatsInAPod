@@ -24,10 +24,10 @@ after which the platform-specific API had to be integrated,
 where all the while user control is at the mercy of the platforms maintaining the data [](cite:cites berners2009socially). 
 
 <!-- key for achieving requirement: capture semantics in the data -->
-A key premise to enable the separation of data and application
+A precondition to the separation of data and application
 is the capture of semantic information in the data itself.
 This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the [Resource Description Framework (RDF)](cite:cites RDF), that provides an infrastructure that enables the capture of this semantic information in the data.
+requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the [Resource Description Framework (RDF)](cite:cites RDF), which provides an infrastructure for the capture of this semantic information in the data.
 This again stands in contrast to the current Web APIs,
 where data is often served in formats that require additional semantics to be captured in the documentation of the API.
 In this way, the Solid ecosystem aims to start a transition

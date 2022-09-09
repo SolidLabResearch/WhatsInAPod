@@ -57,22 +57,6 @@
   keywords = {interface, knowledge graph, solid, Web API}
 }
 
-
-
-@phdthesis{presbrey_linked_2014,
-  type      = {Thesis},
-  title     = {Linked data platform for web applications},
-  copyright = {M.I.T. theses are protected by copyright. They may be viewed from this source for any purpose, but reproduction or distribution in any format is prohibited without written permission. See provided URL for inquiries about permission.},
-  url       = {https://dspace.mit.edu/handle/1721.1/91861},
-  abstract  = {Most of today's web applications are tightly coupled to proprietary server backends that store and control all user data. This thesis presents Linked Data as a decentralized web app platform, eliminating vendor lock-in, and separating user data from web apps giving users control over their data and where it's stored, independent of choice of application. Linked Data architecture replaces traditional app-data silos with a universal integration platform using global identifiers, shared ontologies, and a scalable, standardized data model. We provide 3 interoperable Linked Data server implementations in PHP, Python, and Go, and evaluate their performance. Traditional filesystems and relational databases have been integrated, and several new decentralized web apps have been developed for the platform. As of May 2014, worldwide open source community members are using and contributing to these compatible apps and servers, and the design continues to be refined and standardized at the W3C. All code available at: https://github.com/linkeddata},
-  language  = {eng},
-  urldate   = {2022-08-22},
-  school    = {Massachusetts Institute of Technology},
-  author    = {Presbrey, Joseph Warren},
-  year      = {2014},
-  note      = {Accepted: 2014-11-24T18:40:42Z}
-}
-
 @incollection{fensel_introduction_2020,
   address    = {Cham},
   title      = {Introduction: {What} {Is} a {Knowledge} {Graph}?},
@@ -122,17 +106,34 @@
   url       = {http://ceur-ws.org/Vol-1184/ldow2014_paper_04.pdf}
 }
 
+@techreport{LDP,
+  title       = {Linked Data Platform~1.0},
+  editor      = {Speicher, Steve and Arwe, John and Malhotra, Ashok},
+  year        = 2015,
+  month       = feb,
+  day         = 26,
+  type        = {Recommendation},
+  institution = {World Wide Web Consortium},
+  url         = {https://www.w3.org/TR/ldp/}
+}
+
 @techreport{WAC,
   title       = {Web Access Control (WAC)},
+  editor      = {Sarven Capadisli},
+  year        = 2022,
+  month       = 7,
+  day         = 5,
   type        = {Editor’s Draft},
-  institution = {World Wide Web Consortium},
   url         = {https://solid.github.io/web-access-control-spec/}
 }
 
 @techreport{ACP,
   title       = {Access Control Policy (ACP)},
+  editor      = {Matthieu Bosquet},
+  year        = 2022,
+  month       = 5,
+  day         = 18,
   type        = {Editor’s Draft},
-  institution = {World Wide Web Consortium},
   url         = {https://solid.github.io/authorization-panel/acp-specification/}
 }
 
@@ -141,7 +142,7 @@
   title       = {RDF~1.1: Concepts and Abstract Syntax},
   type        = {Recommendation},
   institution = {World Wide Web Consortium},
-  author      = {Cyganiak, Richard and Wood, David and Lanthaler, Markus},
+  editor      = {Cyganiak, Richard and Wood, David and Lanthaler, Markus},
   month       = feb,
   year        = 2014,
   url         = {https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/}
@@ -172,7 +173,7 @@
 
 @techreport{Solid_protocol,
   title  = {Solid Protocol},
-  author = {Capadisli, Sarven and Berners-Lee, Tim and Verborgh, Ruben and Kjernsmo, Kjetil},
+  editor = {Capadisli, Sarven and Berners-Lee, Tim and Verborgh, Ruben and Kjernsmo, Kjetil},
   month  = dec,
   year   = 2021,
   url    = {https://solidproject.org/TR/2021/protocol-20211217}
@@ -198,13 +199,12 @@
   url         = {https://solid.github.io/type-indexes/}
 }
 
-
  @inproceedings{Debackere_Colpaert_Taelman_Verborgh_2022,
   title     = {A policy-oriented architecture for enforcing consent in solid},
   rights    = {I have transferred the copyright for this publication to the publisher},
   isbn      = {978-1-4503-9130-6},
   url       = {http://hdl.handle.net/1854/LU-8752108},
-  doi       = {10.1145/3487553.3524630},
+  doi.bak   = {10.1145/3487553.3524630},
   booktitle = {WWW ’22 Companion, Proceedings},
   publisher = {Association for Computing Machinery (ACM)},
   author    = {Debackere, Laurens and Colpaert, Pieter and Taelman, Ruben and Verborgh, Ruben},
@@ -221,7 +221,7 @@
 }
 
  @techreport{interop,
-  author = {Bingham, Justin and Prud'hommeaux, Eric and Pavlik, elf},
+  editor = {Bingham, Justin and Prud'hommeaux, Eric and {elf Pavlik}},
   year   = 2022,
   month  = apr,
   title  = {Solid Application Interoperability},

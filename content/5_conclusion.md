@@ -51,8 +51,11 @@ but can create solutions at the knowledge graph level
 and mint associated API views tailored to the needs and constraints
 of specific applications and use cases.
 The same app can seamlessly interact
-via different read and write interfaces
-to a pod, when it is indeed a knowledge graph.
+via different read and write interfaces to a pod,
+depending on what it is optimizing for.
+This also opens the door for authorization
+with different granularities beyond the scope of
+one specific LDP interface's document organization.
 We thereby shift the understanding
 from a data graph instantiated from a document organization,
 to a dynamically instantiated document interface over a data graph,
@@ -63,9 +66,12 @@ consequences from this different interpretation are not purely conceptual or the
 For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
-The concrete consequence is that a current [_quad-centric_ API](cito:citesAsEvidence solid_qpf)
-exposes RDF quads whose graph component
-is the URI on which they happen to appear in the _document_ API---ironically
+A concrete consequence manifests itself
+in a current [_quad-centric_ API](cito:citesAsEvidence solid_qpf),
+meant to facilitate complex queries over a pod.
+The API exposes RDF quads,
+whose graph component is the URI
+on which they happen to appear in the _document_ API---ironically
 imposing some of the same LDP constraints
 on an API that is supposed to mitigate them.
 In a graph-centric interpretation of the pod,

@@ -1,132 +1,139 @@
 ## The current document-centric interpretation
 <!-- The first interpretation we look at is document-centric. -->
 The envisioned Solid ecosystem in its current state is not well defined, 
-and leaves room for different interpretations of the concepts proposed in its vision.
-In this section, we present the general understanding of Solid
-as a document-centric ecosystem, where the Solid pod is fundamentally understood
+leaving room for different interpretations of the proposed concepts.
+The currently prevailing understanding of Solid
+is that of a _document-centric ecosystem_,
+where a pod is fundamentally interpreted
 as a permissioned document hierarchy.
-
-<!-- data and files stored as documents on the pod -->
-In this interpretation,
-the separation of application and data in the ecosystem is approached 
-from the perspective of the Solid pods as a document storage system.
-The Solid pod manages all data as documents in a hierarchical structure 
-of documents and containers, similar to how a file system organizes data
+The separation of application and data is approached
+from the perspective of Solid pods as a document storage system.
+The pod manages all data as documents in a hierarchical structure of containers,
+similar to how a file system organizes data
 as files and directories.
-Structured data can be stored on the Solid pod by 
-converting it to a document in an RDF format,
-and storing this document on the Solid pod.
-Similarly, other non-RDF documents can be stored in the 
-Solid pod document hierarchy.
-These documents are then exposed over the Web by the Solid pod.
-In this way, the ecosystem achieves the separation of application and data
-by storing the application data as (non-)RDF documents on the Solid pod.
-User control is maintained on the document level through the management of permissions.
-This interpretation of the Solid pod as fundamentally a document hierarchy is
-further supported in the concept of *slash semantics* in the current version of the Solid protocol [](cite:cites Solid_protocol),
-where the hierarchical relationships between documents and their parent container are 
-explicitly defined through the slash (/) characters in their URIs.
 
+Structured data is exposed over HTTP as a document with an RDF representation,
+which is typically (although not observably through the HTTP interface)
+materialized next to non-RDF resources in a document-oriented backend.
+The separation of application and data is realized
+by storing data within documents in the pod
+rather than in the application itself.
+User control is maintained on via document-level permission management.
+This document-centric interpretation is
+further supported via the concept of *slash semantics*
+in the current version of the [Solid Protocol](cite:citesAsSourceDocument Solid_protocol),
+where the hierarchical relationships between documents and their parent container are 
+explicitly defined through slash characters (`/`) in their URLs.
 
 <!-- read/write interface  -->
 The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the Linked Data Platform (LDP) specification [](cite:cites presbrey_linked_2014) was introduced.
-This LDP interface provides a direct view on the document organization
-of data on the Solid pod. It defines the terminology of the document structure
-as a hierarchy of resources (documents) and containers
-and defines the set of valid HTTP(s) operations on this hierarchy.
+an adaptation of the [_Linked Data Platform (LDP) specification_](cite:citesAsSourceDocument LDP) was derived.
+LDP is a protocol that enables defining custom document interfaces,
+and serves to provide a direct view on the document organization of a Solid pod.
 <!--  The authorization interface -->
-Authorization for the Solid pod is similarly based on the document structure of the pod.
-There are currently two specifications that are used to manage authorization in the Solid ecosystem:
-the Web Access Controls specification (WAC) [](cite:cites WAC) 
-and the Access Control Policy (ACP) [](cite:cites ACP) specification.
-Where both specifications differ in their handling of permissions,
-both work on top of the notion of the Solid pod being a document hierarchy,
+Authorization is similarly based on the document structure,
+and can be realized via
+[_Web Access Controls (WAC)_](cite:citesAsSourceDocument WAC) 
+or [_Access Control Policy (ACP)_](cite:citesAsSourceDocument ACP).
+Whereas these specifications differ in their handling of permissions,
+both assume the notion of the pod as a document hierarchy,
 where the granularity through which data sharing can be managed
 is defined by the granularity of data in the documents on the Solid pod.
-As these documents can be managed by applications, 
-the applications indirectly define the granularity 
-of control users have over their data.
 
-### Interoperability in a document-centric ecosystem
+### Interoperability challenges
 <!-- Interoperability problems -->
-The current Solid protocol [](cite:cites Solid_protocol) provides these specifications as is, 
-developers are left with many degrees of freedom in their interpretation 
-of how to build on this ecosystem.
-Where concepts of interoperability and user control are central in the Solid vision,
-their current implementation makes them very dependent
-on how applications decide to integrate them.
-Where the LDP interface of a Solid pod 
-enables some forms of interoperability,
-applications are free to use it
-as a remote document management system.
-Similarly, the authorization interfaces 
-enable users to manage the permissions,
-but in a way that is limited to how applications
-store their data as documents on the pod.
+Since the Solid protocol does not constrain the API exposed through LDP,
+app developers are left with many degrees of freedom.
+This makes the Solid vision's central concepts of interoperability and control
+dependent on application-specific choices.
 
 <!-- This proposes Solid as a document-centric ecosystem. -->
-In a practical example, we examine a set of problems 
-faced by two applications  that manage contact information 
-in an RDF format on the user Solid pod.
+Let us examine conflicts that arise
+via three common applications that use similar data
+but impose different demands on an LDP interface to that data.
+The first is an **address book app**
+where the user views and edits
+all details of their professional contacts.
+The second is a **birthday app**,
+which lets the user message people on their birthday.
+The third is a **dating app**
+that allows the user to interact with people
+on a photo and first-name basis.
+To exemplify real-world consequences,
+we strive to give each app minimal access.
+The address book can access all personal fields for non-dating contacts;
+the birthday app can see name, birthdate, and messaging details of all contacts;
+the dating app can access first name, profile picture,
+and messaging details of dating contacts.
+We use these to illustrate that even simple examples
+can easily expose four kinds of mismatches
+within a interpretation where the pod _is_ the document hierarchy:
 
 <!-- hierarchy mismatch -->
-(i) Both applications can make totally different assumptions 
-on how they structure their contact data as documents in the pod hierarchy.
-This can results in both applications not being aware of 
-the others data being available on the pod.
-Additionally, even if they scout the pod for additional data, 
-the way the applications structure their contact information entries
-as documents on the pod may not conform to the assumptions made by 
-other applications in the ecosystem.
-The document hierarchy does not inherently provide interoperability
-of data of applications.
-This requires either additional interfaces and agreements
+**(i) Internal API modeling mismatches.**
+Each app needs to define a single consistent hierarchy
+to serialize their data,
+which does not reflect the complex nature of real-world organization.
+For instance,
+the contact app could organize people in categories
+such as `/contacts/work/` and `/contacts/sports/`,
+which leads to duplication when your colleague
+is also a member of your amateur football team.
+Hierarchical organizations are thus constrained
+in their ability to uniquely represent the real world.
+
+**(ii) External API modeling mismatches.**
+Apps can make vastly different assumptions 
+on how they structure contact data.
+The document hierarchy does not inherently provide interoperability;
+this requires either additional interfaces and agreements
 or a different interpretation of the documents by applications.
-<!-- writing same location -->
+The contacts and birthday apps would need
+to store information in the same `/contacts/` container.
+Failure to do so would result in apps not being aware of 
+the others' data being available on the pod.
+Even if they do,
+their preferences regarding the organization of that container might vary.
+Different contexts might form the basis for address book organization,
+whereas the birthday app does not understand
+the difference between a colleague or family member,
+and would hence not know where to write.
+It might instead organize people by birthday month,
+which in turn would be nonsensical to the address book.
 
-(ii) Issues arise when both applications 
-want to write to the same location in the document hierarchy.
-Where storing contact information in a `/contacts/` container 
-on the pod makes sense, this can create problems 
-where different applications may overwrite data of other applications.
-Assumptions on the structuring of contact information 
-can also become problematic, as application storage locations
-can overlap and documents written to containers used by other applications
-may break assumptions and crash applications.
-<!-- permission management -->
-
-(iii) The permission management system may cause wrong assumptions by applications.
+**(iii) Permission mismatches.**
+The coupling of permissions to document organization
+provides the main mechanism of control,
+but it is based on the flawed assumption
+that only one hierarchy exists to organize information.
 As permissions are directly tied to specific documents in the hierarchy,
-they limit the granularity of control that users have.
-One application may try to optimize this, 
-by storing their data in small resources 
-that can be individually permissioned.
-The other application may decide to write 
-their contact information as just 
-one single resource on the pod.
-As assumptions here do not match,
-when sharing contact information with other applications,
-the user now either has granular control, 
-or it has to give access to all the information of a contact,
-depending on the application that wrote the data.
+the granularity of user control is limited.
+For the birthday and dating apps,
+address information should _not_ be part of the contact document;
+in contrast, the contacts app
+would put all contact details into a single document
+to apply the same permissioning rules.
+As the assumptions do not match,
+the user becomes torn between overly granular control
+or giving apps too much access.
 Similarly, applications sharing the data may assume 
-that contact information is stored in a granular way,
-and may wrongly share contact information that 
-has all the information visible because of 
-wrong assumptions on the data structuring.
-These assumptions limit user control over their data
-and problems in interoperability with other applications.
+that contact fields are stored in a granular way,
+and may wrongly share too many contact details.
 
-We see that in the above ecosystem, 
-defined by the interpretation of Solid as a document-centric ecosystem,
-interoperability still faces a lot of hurdles as
-problems arise from assumptions made by applications.
-It limits the innovations surface
-to the capabilities of the document hierarchy
-of its Solid pods.
+**(iv) Local optimization mismatches.**
+Current Solid apps are commonly seen
+trying to optimize the document-based API
+for access patterns that are specific to their needs.
+For the contacts app,
+one document per contact might be beneficial.
+The birthday app might find it more optimal
+to have a single document with names and birthdates,
+or perhaps one document per month.
+The dating app might want the document per contact
+to include all exchanged messages,
+which would be unnecessary overhead for the other apps.
 
-### A distilled knowledge graph interpretation
+### Distilled knowledge graph interpretation
 <!-- The document-centric vision as a KG -->
 To improve upon these problems, 
 we see attempts at reconciling the document hierarchy
