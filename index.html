@@ -315,8 +315,10 @@ The coupling of permissions to document organization
 provides the main mechanism of control,
 but it is based on the flawed assumption
 that only one hierarchy exists to organize information.
-As permissions are directly tied to specific documents in the hierarchy,
-the granularity of user control is limited.
+As permissions are directly tied to specific documents,
+the granularity of user control is limited;
+and so is that of <span property="schema:citation http://purl.org/spar/cito/describes" resource="https://dx.doi.org/10.1145/1060745.1060835"><a href="https://www2005.org/cdrom/docs/p613.pdf"><em>provenance</em> and <em>trust</em></a></span> <span class="references">[<a href="#ref-14">14</a>]</span>,
+which seem to be implicitly tied to the notion of a document.
 For the birthday and dating apps,
 address information should <em>not</em> be part of the contact document;
 in contrast, the contacts app
@@ -352,7 +354,7 @@ were already mentioned in early iterations of the Solid protocol <span class="r
 with solutions hinting at per-document SPARQL endpoints
 to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
-started providing an optional RDF quad-based interface <span class="references">[<a href="#ref-14">14</a>]</span>. 
+started providing an optional RDF quad-based interface <span class="references">[<a href="#ref-15">15</a>]</span>. 
 In this perspective of the Solid pod document hierarchy as a knowledge graph,
 the document organization should no longer
 be a limiting factor for interoperability.
@@ -391,8 +393,8 @@ we already feel the constraints imposed by the document hierarchy limiting the o
 Even at its currently small scale, 
 the ecosystem’s interoperability and user control are constrained.
 New innovations in the ecosystem
-such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solid.github.io/data-interoperability-panel/specification/">application interoperability specification</a> <span class="references">[<a href="#ref-15">15</a>]</span>
-and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://hdl.handle.net/1854/LU-8752108">research on GDPR compliance</a> <span class="references">[<a href="#ref-16">16</a>]</span>
+such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solid.github.io/data-interoperability-panel/specification/">application interoperability specification</a> <span class="references">[<a href="#ref-16">16</a>]</span>
+and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://hdl.handle.net/1854/LU-8752108">research on GDPR compliance</a> <span class="references">[<a href="#ref-17">17</a>]</span>
 are limited by the imposed document structure,
 and have to work around these limitations.</p>
 
@@ -413,7 +415,7 @@ not constrained to a specific (implicit or explicit) API
 provides more opportunities for innovation.
 Attempts to improve queryablity
 through optional <a property="schema:citation http://purl.org/spar/cito/cites" href="http://emansour.com/research/lusail/solid_protocols.pdf">SPARQL</a> <span class="references">[<a href="#ref-2">2</a>]</span> 
-or <a property="schema:citation http://purl.org/spar/cito/cites" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">quad-based</a> <span class="references">[<a href="#ref-14">14</a>]</span> interfaces,
+or <a property="schema:citation http://purl.org/spar/cito/cites" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">quad-based</a> <span class="references">[<a href="#ref-15">15</a>]</span> interfaces,
 demonstrate the desire
 for a knowledge-graph interpretation
 from at least a query perspective.</p>
@@ -427,7 +429,7 @@ This understanding of the Solid pod shifts the premise from data contained in do
         <ul>
           <li><em>Permissioned</em> expresses the ability to manage permissions over any individual nodes or relation in the knowledge graph.
 Rather than being narrowly restricted to basic read/write/control permissions,
-the underlying knowledge graph could express more complex <a property="schema:citation http://purl.org/spar/cito/describes" href="https://content.iospress.com/download/semantic-web/sw289?id=semantic-web%2Fsw289">usage policies</a> <span class="references">[<a href="#ref-17">17</a>]</span>.
+the underlying knowledge graph could express more complex <a property="schema:citation http://purl.org/spar/cito/describes" href="https://content.iospress.com/download/semantic-web/sw289?id=semantic-web%2Fsw289">usage policies</a> <span class="references">[<a href="#ref-18">18</a>]</span>.
 Even more widely,
 rather than just permissioned or policy-aware,
 data could in general be <em>parameterized</em>
@@ -436,7 +438,7 @@ such that any number of parameters can be retained for nodes and relations in th
           <li><em>Hybrid</em> emphasizes that the knowledge graph can store any kind of data (images, videos, etc.) as nodes in the knowledge graph 
 in the form of blobs, possibly with associated metadata.
 <!-- knowledge graph --></li>
-          <li><em>Knowledge graph</em> is to be interpreted following an inclusive definition <span class="references">[<a href="#ref-18">18</a>]</span> as
+          <li><em>Knowledge graph</em> is to be interpreted following an inclusive definition <span class="references">[<a href="#ref-19">19</a>]</span> as
 “<em>a graph of data intended to accumulate and convey knowledge of the real world,
 whose nodes represent entities of interest and whose edges represent relations between these entities.</em>”</li>
         </ul>
@@ -491,7 +493,7 @@ reflect their function as an interface to the data in a pod.</p>
 While a knowledge graph can be distilled by merging documents in a hierarchy,
 the inverse operation requires explicit view definitions and semantics,
 detailing for instance the use of named graphs
-(as is currently proposed for an <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">optional query interface</a> <span class="references">[<a href="#ref-14">14</a>]</span>).
+(as is currently proposed for an <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">optional query interface</a> <span class="references">[<a href="#ref-15">15</a>]</span>).
 Similarly, the current authorization mechanisms
 only apply to documents,
 so different mechanisms are necessary to express policies
@@ -584,7 +586,7 @@ For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
 A concrete consequence manifests itself
-in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-14">14</a>]</span>,
+in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-15">15</a>]</span>,
 meant to facilitate complex queries over a pod.
 This <em>quad-centric</em> API offers pattern-based access to RDF quads,
 whose graph component is defined as
@@ -664,14 +666,16 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-13">[13]</dt>
   <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
   <dt id="ref-14">[14]</dt>
-  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dd resource="https://dx.doi.org/10.1145/1060745.1060835" typeof="schema:Article">Carroll, J.J., Bizer, C., Hayes, P., Stickler, P.: Named Graphs, Provenance and Trust. In: Proceedings of the 14th International Conference on World Wide Web. pp. 613–622. Association for Computing Machinery, New York, NY, USA (2005). doi:10.1145/1060745.1060835</dd>
   <dt id="ref-15">[15]</dt>
-  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., elf Pavlik eds: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
+  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
   <dt id="ref-16">[16]</dt>
-  <dd resource="http://hdl.handle.net/1854/LU-8752108" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022).</dd>
+  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., elf Pavlik eds: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
   <dt id="ref-17">[17]</dt>
-  <dd resource="https://content.iospress.com/download/semantic-web/sw289?id=semantic-web%2Fsw289" typeof="schema:Article">Kirrane, S., Villata, S., d’Aquin, M.: Privacy, security and policies: A review of problems and solutions with Semantic Web technologies. Semantic Web. 9, 153–161 (2018).</dd>
+  <dd resource="http://hdl.handle.net/1854/LU-8752108" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022).</dd>
   <dt id="ref-18">[18]</dt>
+  <dd resource="https://content.iospress.com/download/semantic-web/sw289?id=semantic-web%2Fsw289" typeof="schema:Article">Kirrane, S., Villata, S., d’Aquin, M.: Privacy, security and policies: A review of problems and solutions with Semantic Web technologies. Semantic Web. 9, 153–161 (2018).</dd>
+  <dt id="ref-19">[19]</dt>
   <dd resource="#hogan2021knowledge" typeof="schema:Article">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G.D., Gutierrez, C., Kirrane, S., Gayo, J.E.L., Navigli, R., Neumaier, S., others: Knowledge graphs. ACM Computing Surveys (CSUR). 54, 1–37 (2021).</dd>
 </dl>
 </section>
