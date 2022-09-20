@@ -23,7 +23,7 @@ This understanding of the Solid pod shifts the premise from data contained in do
 <!-- permissioned -->
 - *Permissioned* expresses the ability to manage permissions over any individual nodes or relation in the knowledge graph.
   Rather than being narrowly restricted to basic read/write/control permissions,
-  the underlying knowledge graph could express more complex [usage policies](cite:describes kirrane2018policies).
+  the underlying knowledge graph could express more complex [usage policies](cite:describes kirrane2018policies,Debackere_Colpaert_Taelman_Verborgh_2022).
   Even more widely,
   rather than just permissioned or policy-aware,
   data could in general be *parameterized*
