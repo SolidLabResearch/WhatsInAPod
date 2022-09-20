@@ -10,7 +10,7 @@ However, we argue in this article that the simplicity
 afforded by a hierarchical document collection
 stems from shortcuts taken by applications,
 which are burrowing their own ad-hoc APIs with implicit semantics
-into the LDP container meta-model.
+into the container meta-model.
 This hinders the Solid promise of data and application independence:
 while the data itself contains explicit semantics that can be interpreted by apps,
 the organization of that data is such that it its storage and retrieval
