@@ -1,4 +1,4 @@
-## Proposed graph-centric interpretation
+## Proposed graph-centric interpretation {#graph-centric}
 
 Because of the limitations of the document-centric interpretation of the Solid ecosystem,
 we feel that a shift in perspective is necessary 

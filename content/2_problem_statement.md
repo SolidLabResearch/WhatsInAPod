@@ -1,51 +1,95 @@
-## Current document-centric interpretation
+## Current document-centric interpretation {#document-centric}
 <!-- The first interpretation we look at is document-centric. -->
-The envisioned Solid ecosystem in its current state is not well defined, 
-leaving room for different interpretations of the proposed concepts.
 The currently prevailing understanding of Solid
 is that of a _document-centric ecosystem_,
-where a pod is fundamentally interpreted
-as a permissioned document hierarchy.
-The separation of application and data is approached
-from the perspective of Solid pods as a document storage system.
-The pod manages all data as documents in a hierarchical structure of containers,
+where a pod is considered to be entirely defined
+as a permissioned hierarchy of documents and containers.
+The pod manages data as a document storage system,
 similar to how a file system organizes data
 as files and directories.
-
-Structured data is exposed over HTTP as a document with an RDF representation,
-which is typically (although not observably through the HTTP interface)
-materialized next to non-RDF resources in a document-oriented backend.
+Structured data is exposed through RDF documents,
+which are typically (although not observably for applications)
+materialized next to non-RDF resources in a document-based backend.
 The separation of application and data is realized
-by storing data within documents in the pod
-rather than in the application itself.
+by storing data in documents inside the pod on a separate server,
+of which applications are clients.
 User control is maintained on via document-level permission management.
-This document-centric interpretation is
-further supported via the concept of *slash semantics*
-in the current version of the [Solid Protocol](cite:citesAsSourceDocument Solid_protocol),
-where the hierarchical relationships between documents and their parent container are 
-explicitly defined through slash characters (`/`) in their URLs.
 
-<!-- read/write interface  -->
-The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the [_Linked Data Platform (LDP) specification_](cite:citesAsSourceDocument LDP) was derived.
-LDP is a protocol that enables defining custom document interfaces,
-and serves to provide a direct view on the document organization of a Solid pod.
+### The Solid Protocol
+
+On a specification level,
+client access to the server-side document structure
+is governed by the [_Solid Protocol_](cite:citesAsSourceDocument Solid_protocol).
+Derived from the [_Linked Data Platform (LDP)_ specification](cite:citesAsSourceDocument LDP),
+the Solid Protocol is a _client–server specification_
+that augments the [_HyperText Transfer Protocol (HTTP)_](cite:citesAsSourceDocument HTTP)
+with agreements for accessing and manipulating generic containers and documents
+in a [permissioned way](cite:citesAsSourceDocument WAC),
+additionally detailing the modification of [RDF documents](cite:citesAsSourceDocument Solid_protocol) specifically.
+It thereby enables defining custom document interfaces,
+and provides a direct view on the document organization of a pod.
 <!--  The authorization interface -->
 Authorization is similarly based on the document structure,
 and can be realized via
 [_Web Access Controls (WAC)_](cite:citesAsSourceDocument WAC) 
 or [_Access Control Policy (ACP)_](cite:citesAsSourceDocument ACP).
-Whereas these specifications differ in their handling of permissions,
-both assume the notion of the pod as a document hierarchy,
+Even though WAC and ACP differ in their handling of permissions,
+both assume a document hierarchy,
 where the granularity through which data sharing can be managed
-is defined by the granularity of data in the documents on the Solid pod.
+is defined by the granularity of data in the documents on the pod.
+
+Like HTTP and LDP,
+the [Solid Protocol](cite:citesAsSourceDocument Solid_protocol)
+thus only defines generic rules
+to interact with individual resources identified by a URL,
+and does not constrain how data is modeled or structured
+across these resources.
+More formally,
+it defines a [protocol](cite:describes Pautasso2014)
+consisting of interaction constraints,
+but it does not define an [API](cite:describes Pautasso2014)
+with specific expectations
+of what resources are exposed by this protocol.
+For example,
+the Solid Protocol provides *slash semantics*
+to indicate hierarchical relationships between documents and their parent container
+via slash characters (`/`) in their URL,
+but it does not impose any specific container identifiers or contents.
+
+Instead,
+concrete APIs within this protocol
+are de facto created and managed by individual applications.
+These will assume that specific contents are to be found
+in hard-coded locations such as `/movies/` or `/private/`
+(in the latter case even coupling the document organization structure
+ of a pod to its permissioning system).
+The structure and semantics of these ad-hoc APIs are usually undocumented,
+leading to implicit application-to-application contracts.
+So-called _client–client specifications_ are underway
+to constrain APIs for specific use cases,
+such as for [personal profiles](cite:citesAsEvidence WebIDProfile).
+However,
+continuing this line of work
+would imply the creation of such specifications
+for every domain model,
+given that Solid aims to function for arbitrary kinds of data.
+As such,
+[other efforts](cite:citesAsPotentialSolution ShapeTrees,TypeIndexes)
+instead try to address the problem generically
+within the bounds of the document-oriented protocol,
+by making some of the document structure of the pod explicit to clients.
+
 
 ### Interoperability challenges
 <!-- Interoperability problems -->
-Since the Solid protocol does not constrain the API exposed through LDP,
+Since the Solid protocol
+leaves the definition of the API up to individual applications,
 app developers are left with many degrees of freedom.
-This makes the Solid vision's central concepts of interoperability and control
-dependent on application-specific choices.
+The resulting implicit API semantics endangers the application/data separation,
+because the accessibility of the data then depends
+on the assumptions made by certain apps.
+This cause the Solid vision's central concepts of interoperability and control
+to depend on local, application-specific decisions.
 
 <!-- This proposes Solid as a document-centric ecosystem. -->
 Let us examine conflicts that arise
