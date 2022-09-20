@@ -150,8 +150,10 @@ The coupling of permissions to document organization
 provides the main mechanism of control,
 but it is based on the flawed assumption
 that only one hierarchy exists to organize information.
-As permissions are directly tied to specific documents in the hierarchy,
-the granularity of user control is limited.
+As permissions are directly tied to specific documents,
+the granularity of user control is limited;
+and so is that of [_provenance_ and _trust_](cite:describes ProvenanceTrust),
+which seem to be implicitly tied to the notion of a document.
 For the birthday and dating apps,
 address information should _not_ be part of the contact document;
 in contrast, the contacts app
