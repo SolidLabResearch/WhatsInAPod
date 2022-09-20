@@ -63,14 +63,16 @@ across multiple autonomous locations called <q>pods</q>.
 <!-- Need         -->
 The current document-centric interpretation of Solid,
 wherein a pod is solely a hierarchy of Linked Data documents,
-cannot fully realize this envisaged independence,
-leading to fundamental interoperability problems
+cannot fully realize this envisaged independence.
+Applications are left to define their own APIs
+within the Solid Protocol,
+which leads to fundamental interoperability problems
 and the need for associated workarounds.
 The broader longterm vision for Solid is confounded
 with the concrete HTTP interface to pods today,
 leading to a narrower solution space to address these core issues.
 <!-- Task         -->
-We examined the mismatch between the vision
+We examine the mismatch between the vision
 and the prevalent document-centric interpretation,
 and propose a reconciliatory graph-centric interpretation
 wherein a pod is fundamentally a knowledge graph.
@@ -79,7 +81,7 @@ In this article,
 we contrast the existing and proposed interpretations
 in terms of how they support the Solid vision.
 We argue that the knowledge-centric interpretation
-improves pod access through different Web APIs
+can improve pod access through different Web APIs
 that act as views in a database sense.
 <!-- Findings     -->
 We show that our zoomed-out interpretation
@@ -106,13 +108,13 @@ that accommodates a multitude of read/write data access patterns.</p>
         <h2 property="schema:name">The Solid vision</h2>
         <!-- problem: your data being everywhere, no control very limited interoperability -->
         <p>On today’s Web,
-data privacy and control have lost a lot of ground.
-User-generated data is often stored far away in centralized data silos,
-in which people have neither the control nor the knowledge to manage how their data is being used in the online space <span class="references">[<a href="#ref-1">1</a>]</span>.
+data privacy and control have lost ground.
+User-generated data is stored in centralized data silos,
+in which people have neither the control nor the knowledge to manage how their data is being used <span class="references">[<a href="#ref-1">1</a>]</span>.
 <!-- Solid: a vision for a better Web -->
-As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
+As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
-Tim Berners-Lee’s Solid brings a course correction for the Web.
+Solid brings a course correction for the Web.
 <!-- ecosystem goal: control over data, interoperability over applications and data -->
 Based on the separation of applications and data on the Web,
 the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
@@ -140,75 +142,119 @@ from a Web ecosystem of API integration towards
 a Web ecosystem centered around data integration <span class="references">[<a href="#ref-4">4</a>]</span>.</p>
 
         <!-- Now this vision has to be made a reality -->
-        <p>From the vision of this ecosystem, 
-the challenge now presents itself in how these concepts
-can be captured in specifications for the Web.
+        <p>Starting from the vision of this ecosystem,
+the challenge is to capture its concepts
+in specifications for the Web.
 <!-- The vision is room for many interpretations -->
-The proposed vision is based on broad concepts of interoperability
-and user control, so the realization of these concepts can take many different forms.
+The vision is based on broad concepts of interoperability
+and user control,
+so the realization can take different forms.
 <!-- there is no authoritative definition -->
-As there is no authoritative definition available for Solid,
+As there is no authoritative definition for Solid,
 current initiatives and specifications defining the ecosystem are based on specific interpretations of the Solid vision.</p>
 
-        <p>In <a href="#documentcentric"></a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the current Solid ecosystem is based.
+        <p>In <a href="#document-centric">Section 2</a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the current Solid ecosystem is based.
 In response to the limitations of this interpretation, 
-we present a zoomed-out perspective of a graph-centric interpretation of the Solid ecosystem in <a href="#graphcentric"></a>.
+we present a zoomed-out perspective of a graph-centric interpretation of the Solid ecosystem in <a href="#graph-centric">Section 3</a>.
 We describe how this perspective creates a broader base for innovation,
 by expanding upon the current state of the ecosystem.</p>
 
       </div>
 </section>
 
-  <section id="current-document-centric-interpretation" inlist="" rel="schema:hasPart" resource="#current-document-centric-interpretation">
+  <section id="document-centric" inlist="" rel="schema:hasPart" resource="#document-centric">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Current document-centric interpretation</h2>
         <!-- The first interpretation we look at is document-centric. -->
-        <p>The envisioned Solid ecosystem in its current state is not well defined, 
-leaving room for different interpretations of the proposed concepts.
-The currently prevailing understanding of Solid
+        <p>The currently prevailing understanding of Solid
 is that of a <em>document-centric ecosystem</em>,
-where a pod is fundamentally interpreted
-as a permissioned document hierarchy.
-The separation of application and data is approached
-from the perspective of Solid pods as a document storage system.
-The pod manages all data as documents in a hierarchical structure of containers,
+where a pod is considered to be entirely defined
+as a permissioned hierarchy of documents and containers.
+The pod manages data as a document storage system,
 similar to how a file system organizes data
-as files and directories.</p>
-
-        <p>Structured data is exposed over HTTP as a document with an RDF representation,
-which is typically (although not observably through the HTTP interface)
-materialized next to non-RDF resources in a document-oriented backend.
+as files and directories.
+Structured data is exposed through RDF documents,
+which are typically (although not observably for applications)
+materialized next to non-RDF resources in a document-based backend.
 The separation of application and data is realized
-by storing data within documents in the pod
-rather than in the application itself.
-User control is maintained on via document-level permission management.
-This document-centric interpretation is
-further supported via the concept of <em>slash semantics</em>
-in the current version of the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-5">5</a>]</span>,
-where the hierarchical relationships between documents and their parent container are 
-explicitly defined through slash characters (<code>/</code>) in their URLs.</p>
+by storing data in documents inside the pod on a separate server,
+of which applications are clients.
+User control is maintained on via document-level permission management.</p>
 
-        <!-- read/write interface  -->
-        <p>The enable users and applications to create and interact with documents stored on the Solid pod,
-an adaptation of the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://www.w3.org/TR/ldp/"><em>Linked Data Platform (LDP) specification</em></a> <span class="references">[<a href="#ref-6">6</a>]</span> was derived.
-LDP is a protocol that enables defining custom document interfaces,
-and serves to provide a direct view on the document organization of a Solid pod.
+        <h3 id="the-solid-protocol">The Solid Protocol</h3>
+
+        <p>On a specification level,
+client access to the server-side document structure
+is governed by the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217"><em>Solid Protocol</em></a> <span class="references">[<a href="#ref-5">5</a>]</span>.
+Derived from the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://www.w3.org/TR/ldp/"><em>Linked Data Platform (LDP)</em> specification</a> <span class="references">[<a href="#ref-6">6</a>]</span>,
+the Solid Protocol is a <em>client–server specification</em>
+that augments the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://www.rfc-editor.org/rfc/rfc9110"><em>HyperText Transfer Protocol (HTTP)</em></a> <span class="references">[<a href="#ref-7">7</a>]</span>
+with agreements for accessing and manipulating generic containers and documents
+in a <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solid.github.io/web-access-control-spec/">permissioned way</a> <span class="references">[<a href="#ref-8">8</a>]</span>,
+additionally detailing the modification of <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">RDF documents</a> <span class="references">[<a href="#ref-5">5</a>]</span> specifically.
+It thereby enables defining custom document interfaces,
+and provides a direct view on the document organization of a pod.
 <!--  The authorization interface -->
 Authorization is similarly based on the document structure,
 and can be realized via
-<a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solid.github.io/web-access-control-spec/"><em>Web Access Controls (WAC)</em></a> <span class="references">[<a href="#ref-7">7</a>]</span> 
-or <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solid.github.io/authorization-panel/acp-specification/"><em>Access Control Policy (ACP)</em></a> <span class="references">[<a href="#ref-8">8</a>]</span>.
-Whereas these specifications differ in their handling of permissions,
-both assume the notion of the pod as a document hierarchy,
+<a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solid.github.io/web-access-control-spec/"><em>Web Access Controls (WAC)</em></a> <span class="references">[<a href="#ref-8">8</a>]</span> 
+or <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solid.github.io/authorization-panel/acp-specification/"><em>Access Control Policy (ACP)</em></a> <span class="references">[<a href="#ref-9">9</a>]</span>.
+Even though WAC and ACP differ in their handling of permissions,
+both assume a document hierarchy,
 where the granularity through which data sharing can be managed
-is defined by the granularity of data in the documents on the Solid pod.</p>
+is defined by the granularity of data in the documents on the pod.</p>
+
+        <p>Like HTTP and LDP,
+the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-5">5</a>]</span>
+thus only defines generic rules
+to interact with individual resources identified by a URL,
+and does not constrain how data is modeled or structured
+across these resources.
+More formally,
+it defines a <span property="schema:citation http://purl.org/spar/cito/describes" resource="https://dx.doi.org/10.1007/978-1-4614-7518-7_2"><a href="https://doi.org/10.1007/978-1-4614-7518-7_2">protocol</a></span> <span class="references">[<a href="#ref-10">10</a>]</span>
+consisting of interaction constraints,
+but it does not define an <span property="schema:citation http://purl.org/spar/cito/describes" resource="https://dx.doi.org/10.1007/978-1-4614-7518-7_2"><a href="https://doi.org/10.1007/978-1-4614-7518-7_2">API</a></span> <span class="references">[<a href="#ref-10">10</a>]</span>
+with specific expectations
+of what resources are exposed by this protocol.
+For example,
+the Solid Protocol provides <em>slash semantics</em>
+to indicate hierarchical relationships between documents and their parent container
+via slash characters (<code>/</code>) in their URL,
+but it does not impose any specific container identifiers or contents.</p>
+
+        <p>Instead,
+concrete APIs within this protocol
+are de facto created and managed by individual applications.
+These will assume that specific contents are to be found
+in hard-coded locations such as <code>/movies/</code> or <code>/private/</code>
+(in the latter case even coupling the document organization structure
+ of a pod to its permissioning system).
+The structure and semantics of these ad-hoc APIs are usually undocumented,
+leading to implicit application-to-application contracts.
+So-called <em>client–client specifications</em> are underway
+to constrain APIs for specific use cases,
+such as for <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://solid.github.io/webid-profile/">personal profiles</a> <span class="references">[<a href="#ref-11">11</a>]</span>.
+However,
+continuing this line of work
+would imply the creation of such specifications
+for every domain model,
+given that Solid aims to function for arbitrary kinds of data.
+As such,
+<a property="schema:citation http://purl.org/spar/cito/citesAsPotentialSolution" href="https://shapetrees.org/TR/specification/">other efforts</a> <span class="references">[<a href="#ref-12">12</a>, <a href="#ref-13">13</a>]</span>
+instead try to address the problem generically
+within the bounds of the document-oriented protocol,
+by making some of the document structure of the pod explicit to clients.</p>
 
         <h3 id="interoperability-challenges">Interoperability challenges</h3>
         <!-- Interoperability problems -->
-        <p>Since the Solid protocol does not constrain the API exposed through LDP,
+        <p>Since the Solid protocol
+leaves the definition of the API up to individual applications,
 app developers are left with many degrees of freedom.
-This makes the Solid vision’s central concepts of interoperability and control
-dependent on application-specific choices.</p>
+The resulting implicit API semantics endangers the application/data separation,
+because the accessibility of the data then depends
+on the assumptions made by certain apps.
+This cause the Solid vision’s central concepts of interoperability and control
+to depend on local, application-specific decisions.</p>
 
         <!-- This proposes Solid as a document-centric ecosystem. -->
         <p>Let us examine conflicts that arise
@@ -306,7 +352,7 @@ were already mentioned in early iterations of the Solid protocol <span class="r
 with solutions hinting at per-document SPARQL endpoints
 to enable more complex data retrieval.
 More recently, the Enterprise Solid Server implementation by Inrupt 
-started providing an optional RDF quad-based interface <span class="references">[<a href="#ref-9">9</a>]</span>. 
+started providing an optional RDF quad-based interface <span class="references">[<a href="#ref-14">14</a>]</span>. 
 In this perspective of the Solid pod document hierarchy as a knowledge graph,
 the document organization should no longer
 be a limiting factor for interoperability.
@@ -345,15 +391,15 @@ we already feel the constraints imposed by the document hierarchy limiting the o
 Even at its currently small scale, 
 the ecosystem’s interoperability and user control are constrained.
 New innovations in the ecosystem
-such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solid.github.io/data-interoperability-panel/specification/">application interoperability specification</a> <span class="references">[<a href="#ref-10">10</a>]</span>
-and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://hdl.handle.net/1854/LU-8752108">research on GDPR compliance</a> <span class="references">[<a href="#ref-11">11</a>]</span>
+such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solid.github.io/data-interoperability-panel/specification/">application interoperability specification</a> <span class="references">[<a href="#ref-15">15</a>]</span>
+and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://hdl.handle.net/1854/LU-8752108">research on GDPR compliance</a> <span class="references">[<a href="#ref-16">16</a>]</span>
 are limited by the imposed document structure,
 and have to work around these limitations.</p>
 
       </div>
 </section>
 
-  <section id="proposed-graph-centric-interpretation" inlist="" rel="schema:hasPart" resource="#proposed-graph-centric-interpretation">
+  <section id="graph-centric" inlist="" rel="schema:hasPart" resource="#graph-centric">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Proposed graph-centric interpretation</h2>
 
@@ -367,7 +413,7 @@ not constrained to a specific API
 provides more opportunities for innovation.
 Attempts to improve queryablity
 through optional SPARQL <span class="references">[<a href="#ref-2">2</a>]</span> 
-or <a property="schema:citation http://purl.org/spar/cito/cites" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">quad-based</a> <span class="references">[<a href="#ref-9">9</a>]</span> interfaces,
+or <a property="schema:citation http://purl.org/spar/cito/cites" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">quad-based</a> <span class="references">[<a href="#ref-14">14</a>]</span> interfaces,
 demonstrate the requirement
 for a knowledge-graph interpretation
 from at least a query perspective.</p>
@@ -389,7 +435,7 @@ in the form of blobs, possibly with associated metadata.</p>
 
         <!-- knowledge grap -->
         <p>For the term <em>knowledge graph</em>, 
-we adopt an inclusive definition <span class="references">[<a href="#ref-12">12</a>]</span>,
+we adopt an inclusive definition <span class="references">[<a href="#ref-17">17</a>]</span>,
 “<em>where we view a knowledge graph as a graph of data intended to accumulate and convey knowledge of the real world,
 whose nodes represent entities of interest and whose edges represent relations between these entities.</em>”</p>
 
@@ -486,7 +532,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-13">13</a>, <a href="#ref-14">14</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-12">12</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -528,7 +574,7 @@ For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
 A concrete consequence manifests itself
-in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
+in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-14">14</a>]</span>,
 meant to facilitate complex queries over a pod.
 This <em>quad-centric</em> API offers pattern-based access to RDF quads,
 whose graph component is defined as
@@ -594,21 +640,27 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-6">[6]</dt>
   <dd resource="https://www.w3.org/TR/ldp/" typeof="schema:CreativeWork">Speicher, S., Arwe, J., Malhotra, A. eds: Linked Data Platform 1.0. World Wide Web Consortium, <a href="https://www.w3.org/TR/ldp/">https:/​/​www.w3.org/TR/ldp/</a> (2015).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Capadisli, S. ed: Web Access Control (WAC). <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a> (2022).</dd>
+  <dd resource="https://www.rfc-editor.org/rfc/rfc9110" typeof="schema:CreativeWork">Fielding, R.T., Nottingham, M., Reschke, J. eds: HTTP Semantics. Internet Engineering Task Force, <a href="https://www.rfc-editor.org/rfc/rfc9110">https:/​/​www.rfc-editor.org/rfc/rfc9110</a> (2022).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Bosquet, M. ed: Access Control Policy (ACP). <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a> (2022).</dd>
+  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Capadisli, S. ed: Web Access Control (WAC). <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a> (2022).</dd>
   <dt id="ref-9">[9]</dt>
-  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Bosquet, M. ed: Access Control Policy (ACP). <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a> (2022).</dd>
   <dt id="ref-10">[10]</dt>
-  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., elf Pavlik eds: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
+  <dd resource="https://dx.doi.org/10.1007/978-1-4614-7518-7_2" typeof="schema:CreativeWork">Pautasso, C.: RESTful Web Services: Principles, Patterns, Emerging Technologies. In: Bouguettaya, A., Sheng, Q.Z., and Daniel, F. (eds.) Web Services Foundations. pp. 31–51. Springer, New York, NY (2014). doi:10.1007/978-1-4614-7518-7_2</dd>
   <dt id="ref-11">[11]</dt>
-  <dd resource="http://hdl.handle.net/1854/LU-8752108" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022).</dd>
+  <dd resource="https://solid.github.io/webid-profile/" typeof="schema:CreativeWork">Balseiro, V., Turdean, T., Zucker, J. eds: Solid WebID Profile. <a href="https://solid.github.io/webid-profile/">https:/​/​solid.github.io/webid-profile/</a> (2022).</dd>
   <dt id="ref-12">[12]</dt>
-  <dd resource="#hogan2021knowledge" typeof="schema:Article">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G.D., Gutierrez, C., Kirrane, S., Gayo, J.E.L., Navigli, R., Neumaier, S., others: Knowledge graphs. ACM Computing Surveys (CSUR). 54, 1–37 (2021).</dd>
-  <dt id="ref-13">[13]</dt>
   <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
-  <dt id="ref-14">[14]</dt>
+  <dt id="ref-13">[13]</dt>
   <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
+  <dt id="ref-14">[14]</dt>
+  <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dt id="ref-15">[15]</dt>
+  <dd resource="https://solid.github.io/data-interoperability-panel/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E., elf Pavlik eds: Solid Application Interoperability. <a href="https://solid.github.io/data-interoperability-panel/specification/">https:/​/​solid.github.io/data-interoperability-panel/specification/</a> (2022).</dd>
+  <dt id="ref-16">[16]</dt>
+  <dd resource="http://hdl.handle.net/1854/LU-8752108" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022).</dd>
+  <dt id="ref-17">[17]</dt>
+  <dd resource="#hogan2021knowledge" typeof="schema:Article">Hogan, A., Blomqvist, E., Cochez, M., d’Amato, C., Melo, G.D., Gutierrez, C., Kirrane, S., Gayo, J.E.L., Navigli, R., Neumaier, S., others: Knowledge graphs. ACM Computing Surveys (CSUR). 54, 1–37 (2021).</dd>
 </dl>
 </section>
 </footer>
