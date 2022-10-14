@@ -1,4 +1,6 @@
 ## Conclusion # {#conclusion}
+<span class="todo">Discuss transition from RPC to REST to graph?</span>
+
 Different interpretations of the Solid vision
 come with different abilities to support that vision.
 The dominant document-centric interpretation,
