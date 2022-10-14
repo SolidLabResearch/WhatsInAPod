@@ -106,58 +106,81 @@ that supports the diverging read/write data access patterns of different use cas
   <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">The Solid vision</h2>
-        <!-- problem: your data being everywhere, no control very limited interoperability -->
-        <p>On today’s Web,
-data privacy and control have lost ground.
+        <!-- Introduction of Solid -->
+        <p>Data privacy and control have lost ground on today’s Web.
 User-generated data is stored in centralized data silos,
 in which people have neither the control nor the knowledge to manage how their data is being used <span class="references">[<a href="#ref-1">1</a>]</span>.
-<!-- Solid: a vision for a better Web -->
-As a response to this, the Solid project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>]</span>.
+As a response to this, the <em>Solid</em> project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>, <a href="#ref-3">3</a>]</span>.
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
 Solid brings a course correction for the Web.
-<!-- ecosystem goal: control over data, interoperability over applications and data -->
-Based on the separation of applications and data on the Web,
-the vision defines an ecosystem that facilitates the integration of data in applications, while keeping people in direct control of their data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+Based on the <em>separation of data and applications</em>,
+the vision defines an ecosystem that facilitates the integration of data in different applications, while keeping people in direct control of their data.</p>
 
         <!-- the Solid pod -->
-        <p>Solid introduces the concept of a <em>pod</em>
-as an online data space for people to control and manage their data on the Web.
-These pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from the user’s Solid pod,
+        <p>To this end,
+Solid introduces the concept of a <em>pod</em>
+as an online data space for an individual to control and manage their data on the Web.
+Together, these pods form a decentralized Solid ecosystem,
+from which applications can directly integrate data from a person’s Solid pod,
 after receiving their permission.
-This is in contrast to current Web applications, where
+This contrasts with current Web applications, where
 this data first had to be collected in a centralized location,
 after which the platform-specific API had to be integrated,
-where all the while user control is at the mercy of the platforms maintaining the data <span class="references">[<a href="#ref-1">1</a>]</span>.</p>
+where all the while user control is at the mercy of the platforms maintaining the data.</p>
 
         <!-- key for achieving requirement: capture semantics in the data -->
         <p>A precondition to the separation of data and application
-is the capture of semantic information in the data itself.
-This way, applications can interpret the data without 
-requiring specific knowledge encoded in the API over which the data is retrieved. A key driver here is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-3">3</a>]</span>, which provides an infrastructure for the capture of this semantic information in the data.
-This again stands in contrast to the current Web APIs,
-where data is often served in formats that require additional semantics to be captured in the documentation of the API.
-In this way, the Solid ecosystem aims to start a transition
-from a Web ecosystem of API integration towards
-a Web ecosystem centered around data integration <span class="references">[<a href="#ref-4">4</a>]</span>.</p>
+is the capture of semantic information in the data itself,
+such that it can be reused in different contexts.
+Semantics allow applications to interpret data without 
+requiring specific knowledge encoded in the API over which the data is retrieved.
+A key driver is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-4">4</a>]</span>,
+which provides an infrastructure for the capture of this semantic information.
+This again contrasts with current Web APIs,
+where data is served in formats that require additional semantics to be captured in the documentation of the API.
+By shifting the focus from the API to the data,
+the Solid ecosystem aims to transition the Web
+from an ecosystem of API integration towards
+an ecosystem of data integration <span class="references">[<a href="#ref-5">5</a>]</span>.</p>
 
-        <!-- Now this vision has to be made a reality -->
-        <p>Starting from the vision of this ecosystem,
-the challenge is to capture its concepts
-in specifications for the Web.
-<!-- The vision is room for many interpretations -->
-The vision is based on broad concepts of interoperability
-and user control,
-so the realization can take different forms.
-<!-- there is no authoritative definition -->
-As there is no authoritative definition for Solid,
-current initiatives and specifications defining the ecosystem are based on specific interpretations of the Solid vision.</p>
+        <!-- The problem: no API-independence -->
+        <p>Unfortunately, we observe a significant gap between theory and practice:
+current Solid apps do not succeed in API-independent reuse of data
+across use cases.
+Rather than only relying on the data and its semantics,
+apps resort to implicit knowledge
+about how this data is structured across documents in a pod’s API.
+Furthermore,
+different use cases impose conflicting requirements
+on that structure in order to satisfy their constraints.
+As such,
+application developer struggle to make sustainable decisions
+on how to structure data for reuse,
+since their individual choices impact the interoperability of the entire ecosystem.</p>
 
-        <p>In <a href="#document-centric"></a>, we describe the interpretation of the Solid vision as a document-centric ecosystem, which is the understanding on which most of the current Solid ecosystem is based.
-In response to the limitations of this interpretation, 
-we present a zoomed-out perspective of a graph-centric interpretation of the Solid ecosystem in <a href="#graph-centric"></a>.
-We describe how this perspective creates a broader base for innovation,
-by expanding upon the current state of the ecosystem.</p>
+        <!-- Article purpose -->
+        <p>In this article,
+we identify the root cause of this interoperability problem
+as the mismatch between Solid’s current single hierarchical API
+and the modeling requirements of real-world use cases.
+We describe the properties of this document-centric interpretation on a Pod,
+and introduce a graph-centric interpretation
+that can bridge differences between use cases.
+We compare both interpretations,
+explain the consequences for concrete Solid implementations,
+and argue why we consider the graph-centric interpretation
+a more sustainable candidate to realize the Solid vision
+of data and application independence under control of the user.</p>
+
+      </div>
+</section>
+
+  <section>
+<div datatype="rdf:HTML" property="schema:description">
+        <p><span class="todo">preliminary definitions of protocol, api, etc</span>
+<span class="todo">important concepts: resource, document, etc.</span>
+<span class="todo">preliminary definitions of Solid pod</span>
+<span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
 
       </div>
 </section>
@@ -165,10 +188,12 @@ by expanding upon the current state of the ecosystem.</p>
   <section id="conclusion" inlist="" rel="schema:hasPart" resource="#conclusion">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Conclusion</h2>
+        <p><span class="todo">Discuss transition from RPC to REST to graph?</span></p>
+
         <p>Different interpretations of the Solid vision
 come with different abilities to support that vision.
 The dominant document-centric interpretation,
-specified by the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-5">5</a>]</span>
+specified by the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-6">6</a>]</span>
 as an LDP derivative with per-document access control,
 has the benefit of being conceptually simple
 and hence developer-friendly.
@@ -196,7 +221,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-6">6</a>, <a href="#ref-7">7</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-7">7</a>, <a href="#ref-8">8</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -238,7 +263,7 @@ For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
 A concrete consequence manifests itself
-in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-8">8</a>]</span>,
+in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
 meant to facilitate complex queries over a pod.
 This <em>quad-centric</em> API offers pattern-based access to RDF quads,
 whose graph component is defined as
@@ -259,7 +284,7 @@ would never use the document URL from another API as fourth quad component.</p>
 
         <p>We stress that the document-centric as well as the graph-centric interpretation
 are supported by the current Solid specifications,
-notably the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-5">5</a>]</span>,
+notably the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-6">6</a>]</span>,
 which is a testament to both the orthogonality of the specification
 and the vision compatibility of graph-centricity.
 Specifically,
@@ -292,20 +317,22 @@ all depends on which view offers the best fit for a specific purpose.</p>
 <h2 id="references">References</h2>
 <dl class="references">
   <dt id="ref-1">[1]</dt>
-  <dd resource="#berners2009socially" typeof="schema:Article">Berners-Lee, T.: Socially aware cloud storage. Notes on web design, Aug. 17, (2009).</dd>
+  <dd resource="https://www.w3.org/DesignIssues/CloudStorage.html" typeof="schema:CreativeWork">Berners-Lee, T.: Socially aware cloud storage. <a href="https://www.w3.org/DesignIssues/CloudStorage.html">https:/​/​www.w3.org/DesignIssues/CloudStorage.html</a> (2009).</dd>
   <dt id="ref-2">[2]</dt>
   <dd resource="http://emansour.com/research/lusail/solid_protocols.pdf" typeof="schema:CreativeWork">Sambra, A.V., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid: A Platform for Decentralized Social Applications Based on Linked Data. <a href="http://emansour.com/research/lusail/solid_protocols.pdf">http:/​/​emansour.com/research/lusail/solid_protocols.pdf</a> (2016).</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M. eds: RDF 1.1: Concepts and Abstract Syntax. World Wide Web Consortium, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
+  <dd resource="https://ruben.verborgh.org/articles/redecentralizing-the-web/" typeof="schema:Chapter">Verborgh, R.: Re-decentralizing the Web, for good this time. In: Seneviratne, O. and Hendler, J. (eds.) Linking the World’s Information: A Collection of Essays on the Work of Sir Tim Berners-Lee. ACM (2022).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
+  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M. eds: RDF 1.1: Concepts and Abstract Syntax. World Wide Web Consortium, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K. eds: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
+  <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
+  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K. eds: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
+  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
   <dt id="ref-8">[8]</dt>
+  <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
+  <dt id="ref-9">[9]</dt>
   <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
 </dl>
 </section>
