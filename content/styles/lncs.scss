@@ -181,8 +181,7 @@ main {
     font-style: italic;
   }
   code, code strong, samp, samp strong, pre, kbd, button {
-  font-family:"Courier New", Courier, monospace;
-  font-size: .95em;
+  font-family:monospace;
   }
   code strong, samp strong {
   font-weight:bold;
@@ -363,10 +362,6 @@ main {
 
 header {
   text-align: center;
-
-  h2 {
-    margin-top: 0;
-  }
 }
 
 #authors {
@@ -377,7 +372,6 @@ header {
 
   li {
     display: inline;
-    white-space: nowrap;
 
     &:not(:last-child) {
       &::after {
@@ -411,7 +405,6 @@ header {
 }
 
 dl.references {
-  font-size: .9em;
   counter-reset: reference;
 
   dt {
