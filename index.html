@@ -250,8 +250,13 @@ on top of HTTP (or a specialization thereof, such as the Solid Protocol).</li>
           <li><dfn id="dfn-authentication">Authentication</dfn>
 means identifying the agent making a request to a Web API.
             <ul>
+              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328"><dfn id="dfn-webid">WebID</dfn></a> <span class="references">[<a href="#ref-9">9</a>]</span>
+is an HTTP URL that identifies an agent.
+When dereferenced,
+it leads to a <dfn id="dfn-profile-document">profile document</dfn>
+describing various agent details.</li>
               <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328"><dfn id="dfn-solid-oidc">Solid-OIDC</dfn></a> <span class="references">[<a href="#ref-9">9</a>]</span>
-identifies agents by a URL called a WebID.</li>
+establishes some authoritative identification of an agent by a specific WebID.</li>
             </ul>
           </li>
           <li><dfn id="dfn-authorization">Authorization</dfn>
@@ -346,6 +351,7 @@ by the following hierarchy and the contents of its documents:</p>
                   <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
                   <li>RDF document <code>amal.ttl</code></li>
                   <li>RDF document <code>lucian.ttl</code></li>
+                  <li>…</li>
                 </ul>
               </li>
               <li>container <code>private/</code>
@@ -353,11 +359,14 @@ by the following hierarchy and the contents of its documents:</p>
                   <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
                   <li>container <code>medical-records/</code>
                     <ul>
+                      <li>non-RDF document <code>2022-09-15.pdf</code></li>
                       <li>non-RDF document <code>2022-10-15.pdf</code></li>
+                      <li>…</li>
                     </ul>
                   </li>
                 </ul>
               </li>
+              <li>…</li>
             </ul>
           </li>
         </ul>
@@ -370,10 +379,101 @@ is allowed to access the container <code>https:/​/​sasha.pod/private/</code>
 and below.</p>
 
         <h3 id="practical-usage">Practical usage</h3>
+        <p>The above document-centric definition of a pod
+leaves several degrees of freedom
+as to how the pod is structured
+and how the resulting structure is interpreted.
+We now describe how today’s Solid apps
+fill those degrees of freedom in practice.</p>
+
+        <h4 id="structure-of-the-main-web-api">Structure of the main Web API</h4>
+        <p>Importantly,
+the current <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/">Solid technical reports</a> <span class="references">[<a href="#ref-12">12</a>]</span>
+do not impose any specific container structure onto a pod
+beyond the presence of a root container <code>/</code>.
+Some past <a href="https://github.com/solid/solid-spec/blob/master/recommendations-server.md">suggestions</a>
+(such as <code>/profile</code>, <code>/inbox/</code>, and <code>/settings/</code> containers)
+are present as defaults in certain server implementations.
+Since these are not standardized across the ecosystem,
+their presence is not enforced by the server,
+and as such cannot be relied upon.</p>
+
+        <p>As a consequence,
+client-side applications have to define their own (sub-)API
+within the URL space available through the Solid Protocol,
+by defining a certain container structure
+and data distribution across documents within this structure.
+Regarding container structure,
+we observe two kinds of behavior:</p>
+
+        <ul>
+          <li>Some apps use <strong>hard-coded paths</strong>
+to certain containers (e.g., <code>/contacts/</code>)
+or documents (e.g., <code>/profile/card</code>).</li>
+          <li>Some apps use <strong>link traversal</strong>,
+meaning they find the URLs of documents and containers
+by following links from the user’s WebID profile document
+and/or via <a property="schema:citation http://purl.org/spar/cito/citesAsExample" href="https://solid.github.io/type-indexes/">another index</a> <span class="references">[<a href="#ref-13">13</a>]</span>.</li>
+        </ul>
+
+        <p>We also observe <em>hybrid behavior</em>,
+for instance where an initial path is obtained via traversal
+(e.g., <code>/private/medical/</code>),
+and deeper relative paths are hardcoded
+(e.g., <code>/private/medical/2022/10/</code>).
+In particular,
+link traversal is bootstrapped via hardcoded paths:
+if no link exists to the certain kind of data,
+then a specific document is created at a hardcoded path
+and then linked from a profile or index for future usage.</p>
+
+        <h4 id="alternative-web-apis-to-the-pod">Alternative Web APIs to the pod</h4>
+        <p>Given that data under the document-centric interpretation
+is structured within a specific document hierarchy,
+some applications have encountered practical limitations
+when they want to make complex data selections,
+especially if the data they require has been structured across multiple documents.
+To address such cases,
+alternative Web APIs were proposed
+in addition to the main Web API on top of the Solid Protocol.</p>
+
+        <p>One <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="http://emansour.com/research/lusail/solid_protocols.pdf">proposal</a> <span class="references">[<a href="#ref-2">2</a>]</span>
+suggests exposing a server-side <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/sparql11-protocol/">SPARQL endpoint</a> <span class="references">[<a href="#ref-14">14</a>]</span>
+over all RDF data in a pod,
+enabling fully server-side <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://www.w3.org/TR/sparql11-query/">SPARQL query</a> <span class="references">[<a href="#ref-15">15</a>]</span> processing.
+<a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Another</a> <span class="references">[<a href="#ref-16">16</a>]</span>
+suggests to expose this data through a Quad Pattern Fragments (QPF) interface,
+to speed up the client-side processing of SPARQL queries
+over the entire pod.</p>
+
+        <p>Crucially, such alternatives APIs are derived from the main API,
+which in the document-centric interpretation is equivalent to the pod.
+This concretely manifests itself
+in the choice of the data model for the SPARQL or QPF interface.
+The RDF 1.1 quads they expose are constructed
+by loading the triples from each document,
+adding as a graph component the URL of that document.
+Take for example the following quad:</p>
+
+        <ul>
+          <li>subject: <code>https:/​/​sasha.pod/people/sasha#me</code></li>
+          <li>predicate: <code>https:/​/​example.org/ontology#birthDate</code></li>
+          <li>object: <code>"1984-04-03"</code></li>
+          <li>graph: <code>https:/​/​sasha.pod/private/medical/2022/10/15.ttl</code></li>
+        </ul>
+
+        <p>Its quad components indicate that
+there exists a triple with that specific subject, predicate, and object
+in the document with URL <code>https:/​/​sasha.pod/private/medical/2022/10/15.ttl</code>.
+In other words,
+the document-centric interpretation of a pod considers
+the birthdate statements’ occurrence in this specific document on the pod
+to be an integral part of the statement itself.</p>
+
+        <h3 id="consequences">Consequences</h3>
+        <p>implicit semantics</p>
 
         <p><span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
-
-        <p><span class="todo">derived interfaces</span></p>
 
       </div>
 </section>
@@ -421,7 +521,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-12">12</a>, <a href="#ref-13">13</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-17">17</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -461,12 +561,9 @@ and reframe the interfaces as means to an end.</p>
         <p>Consequences from interpretation differences are not purely conceptual or theoretical.
 For instance,
 current implementations of alternative access APIs to pods
-are still tainted by the document-centric interpretation.
-A concrete consequence manifests itself
-in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-14">14</a>]</span>,
-meant to facilitate complex queries over a pod.
-This <em>quad-centric</em> API offers pattern-based access to RDF quads,
-whose graph component is defined as
+are still tainted by the document-centric interpretation:
+the current Quad Pattern Fragments interface
+uses for its quads’ graph components
 the URI where the <em>document-centric</em> API happens to expose them.
 Ironically,
 the server thereby imposes some of the same LDP constraints and mismatches
@@ -539,11 +636,17 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-11">[11]</dt>
   <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Bosquet, M. ed: Access Control Policy (ACP). <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a> (2022).</dd>
   <dt id="ref-12">[12]</dt>
-  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
+  <dd resource="https://solidproject.org/TR/" typeof="schema:CreativeWork">Solid Technical Reports. <a href="https://solidproject.org/TR/">https:/​/​solidproject.org/TR/</a></dd>
   <dt id="ref-13">[13]</dt>
   <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
   <dt id="ref-14">[14]</dt>
+  <dd resource="https://www.w3.org/TR/sparql11-protocol/" typeof="schema:CreativeWork">Feigenbaum, L., Williams, G.T., Clark, K.G., Torres, E.: SPARQL 1.1 Protocol. World Wide Web Consortium, <a href="https://www.w3.org/TR/sparql11-protocol/">https:/​/​www.w3.org/TR/sparql11-protocol/</a> (2013).</dd>
+  <dt id="ref-15">[15]</dt>
+  <dd resource="http://www.w3.org/TR/sparql11-query/" typeof="schema:CreativeWork">Harris, S., Seaborne, A.: SPARQL 1.1 Query Language. World Wide Web Consortium, <a href="http://www.w3.org/TR/sparql11-query/">http:/​/​www.w3.org/TR/sparql11-query/</a> (2013).</dd>
+  <dt id="ref-16">[16]</dt>
   <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
+  <dt id="ref-17">[17]</dt>
+  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
 </dl>
 </section>
 </footer>
