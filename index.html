@@ -15,7 +15,7 @@
   <meta name="citation_author" content="Pieter Colpaert" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/10/14" />
+  <meta name="citation_publication_date" content="2022/10/15" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -105,7 +105,7 @@ that supports the diverging read/write data access patterns of different use cas
 <main>
   <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
 <div datatype="rdf:HTML" property="schema:description">
-        <h2 property="schema:name">The Solid vision</h2>
+        <h2 property="schema:name">The Solid vision of data interoperability and control</h2>
         <!-- Introduction of Solid -->
         <p>Data privacy and control have lost ground on today’s Web.
 User-generated data is stored in centralized data silos,
@@ -175,12 +175,63 @@ of data and application independence under control of the user.</p>
       </div>
 </section>
 
-  <section>
+  <section id="motivating-use-cases" inlist="" rel="schema:hasPart" resource="#motivating-use-cases">
 <div datatype="rdf:HTML" property="schema:description">
-        <p><span class="todo">preliminary definitions of protocol, api, etc</span>
-<span class="todo">important concepts: resource, document, etc.</span>
-<span class="todo">preliminary definitions of Solid pod</span>
+        <h2 property="schema:name">Motivating use cases</h2>
+
+      </div>
+</section>
+
+  <section id="preliminary-definitions" inlist="" rel="schema:hasPart" resource="#preliminary-definitions">
+<div datatype="rdf:HTML" property="schema:description">
+        <h2 property="schema:name">Preliminary definitions</h2>
+
+        <p>Before describing the interpretations of a Solid pod,
+we start with a couple of definitions that we will use as building blocks
+throughout the article.</p>
+
+        <ul>
+          <li>We consider a <dfn id="dfn-protocol">protocol</dfn> to be
+a generic set of rules for data transmission between systems.
+            <ul>
+              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.rfc-editor.org/rfc/rfc9110"><dfn id="dfn-http">HyperText Transfer Protocol (HTTP)</dfn></a> <span class="references">[<a href="#ref-6">6</a>]</span>
+structures the exchange of data between a server and a client
+as resources identified by a URI.</li>
+              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/ldp/"><dfn id="dfn-ldp">Linked Data Platform</dfn></a> <span class="references">[<a href="#ref-7">7</a>]</span>
+constrains HTTP with interaction rules for containers and RDF documents.</li>
+              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2021/protocol-20211217"><dfn id="dfn-solid-protocol">Solid Protocol</dfn></a> <span class="references">[<a href="#ref-8">8</a>]</span>
+constrains HTTP with <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328">authentication</a> <span class="references">[<a href="#ref-9">9</a>]</span>
+and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">authorization</a> <span class="references">[<a href="#ref-10">10</a>, <a href="#ref-11">11</a>]</span>,
+and with interaction rules for containers and RDF documents
+(inspired by LDP).</li>
+            </ul>
+          </li>
+          <li>A <dfn id="dfn-web-api">Web API</dfn> is a specific structuring of resources
+on top of HTTP (or a specialization thereof, such as the Solid Protocol).</li>
+          <li><dfn id="dfn-authentication">Authentication</dfn>
+means identifying the agent making a request to a Web API.</li>
+          <li><dfn id="dfn-authorization">Authorization</dfn>
+means determining to what extent an agent is allowed
+to perform a certain request to a Web API.</li>
+        </ul>
+
+        <p>Let us exemplify these definitions with a concrete example.</p>
+
+      </div>
+</section>
+
+  <section id="document-centric" inlist="" rel="schema:hasPart" resource="#document-centric">
+<div datatype="rdf:HTML" property="schema:description">
+        <h2 property="schema:name">Document-centric interpretation of a Pod</h2>
+        <p><span class="todo">preliminary definitions of Solid pod</span>
 <span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
+
+      </div>
+</section>
+
+  <section id="graph-centric" inlist="" rel="schema:hasPart" resource="#graph-centric">
+<div datatype="rdf:HTML" property="schema:description">
+        <h2 property="schema:name">Graph-centric interpretation of a pod</h2>
 
       </div>
 </section>
@@ -193,7 +244,7 @@ of data and application independence under control of the user.</p>
         <p>Different interpretations of the Solid vision
 come with different abilities to support that vision.
 The dominant document-centric interpretation,
-specified by the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-6">6</a>]</span>
+specified by the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-8">8</a>]</span>
 as an LDP derivative with per-document access control,
 has the benefit of being conceptually simple
 and hence developer-friendly.
@@ -221,7 +272,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-7">7</a>, <a href="#ref-8">8</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-12">12</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -263,7 +314,7 @@ For instance,
 current implementations of alternative access APIs to pods
 are still tainted by the document-centric interpretation.
 A concrete consequence manifests itself
-in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
+in the current <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Quad Pattern Fragments API</a> <span class="references">[<a href="#ref-14">14</a>]</span>,
 meant to facilitate complex queries over a pod.
 This <em>quad-centric</em> API offers pattern-based access to RDF quads,
 whose graph component is defined as
@@ -284,7 +335,7 @@ would never use the document URL from another API as fourth quad component.</p>
 
         <p>We stress that the document-centric as well as the graph-centric interpretation
 are supported by the current Solid specifications,
-notably the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-6">6</a>]</span>,
+notably the <a property="schema:citation http://purl.org/spar/cito/citesAsSourceDocument" href="https://solidproject.org/TR/2021/protocol-20211217">Solid Protocol</a> <span class="references">[<a href="#ref-8">8</a>]</span>,
 which is a testament to both the orthogonality of the specification
 and the vision compatibility of graph-centricity.
 Specifically,
@@ -327,12 +378,22 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-5">[5]</dt>
   <dd resource="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/" typeof="schema:CreativeWork">Verborgh, R.: Reflections of knowledge. <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https:/​/​ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a> (2021).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K. eds: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
+  <dd resource="https://www.rfc-editor.org/rfc/rfc9110" typeof="schema:CreativeWork">Fielding, R.T., Nottingham, M., Reschke, J. eds: HTTP Semantics. Internet Engineering Task Force, <a href="https://www.rfc-editor.org/rfc/rfc9110">https:/​/​www.rfc-editor.org/rfc/rfc9110</a> (2022).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
+  <dd resource="https://www.w3.org/TR/ldp/" typeof="schema:CreativeWork">Speicher, S., Arwe, J., Malhotra, A. eds: Linked Data Platform 1.0. World Wide Web Consortium, <a href="https://www.w3.org/TR/ldp/">https:/​/​www.w3.org/TR/ldp/</a> (2015).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
+  <dd resource="https://solidproject.org/TR/2021/protocol-20211217" typeof="schema:CreativeWork">Capadisli, S., Berners-Lee, T., Verborgh, R., Kjernsmo, K. eds: Solid Protocol. <a href="https://solidproject.org/TR/2021/protocol-20211217">https:/​/​solidproject.org/TR/2021/protocol-20211217</a> (2021).</dd>
   <dt id="ref-9">[9]</dt>
+  <dd resource="https://solidproject.org/TR/2022/oidc-20220328" typeof="schema:CreativeWork">Coburn, A., elf Pavlik, Zagidulin, D. eds: Solid-OIDC. <a href="https://solidproject.org/TR/2022/oidc-20220328">https:/​/​solidproject.org/TR/2022/oidc-20220328</a> (2022).</dd>
+  <dt id="ref-10">[10]</dt>
+  <dd resource="https://solid.github.io/web-access-control-spec/" typeof="schema:CreativeWork">Capadisli, S. ed: Web Access Control (WAC). <a href="https://solid.github.io/web-access-control-spec/">https:/​/​solid.github.io/web-access-control-spec/</a> (2022).</dd>
+  <dt id="ref-11">[11]</dt>
+  <dd resource="https://solid.github.io/authorization-panel/acp-specification/" typeof="schema:CreativeWork">Bosquet, M. ed: Access Control Policy (ACP). <a href="https://solid.github.io/authorization-panel/acp-specification/">https:/​/​solid.github.io/authorization-panel/acp-specification/</a> (2022).</dd>
+  <dt id="ref-12">[12]</dt>
+  <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
+  <dt id="ref-13">[13]</dt>
+  <dd resource="https://solid.github.io/type-indexes/" typeof="schema:CreativeWork">Turdean, T. ed: Type Indexes. <a href="https://solid.github.io/type-indexes/">https:/​/​solid.github.io/type-indexes/</a> (2022).</dd>
+  <dt id="ref-14">[14]</dt>
   <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
 </dl>
 </section>
