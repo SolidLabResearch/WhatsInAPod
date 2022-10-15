@@ -1,4 +1,4 @@
-## Preliminary definitions
+## Preliminary definitions # {#defininitions}
 
 Before describing the interpretations of a Solid pod,
 we start with a couple of definitions that we will use as building blocks
@@ -20,8 +20,34 @@ throughout the article.
   on top of HTTP (or a specialization thereof, such as the Solid Protocol).
 - <dfn id="dfn-authentication">Authentication</dfn>
   means identifying the agent making a request to a Web API.
+  - [<dfn id="dfn-solid-oidc">Solid-OIDC</dfn>](cite:citesAsAuthority Solid_OIDC)
+    identifies agents by a URL called a WebID.
 - <dfn id="dfn-authorization">Authorization</dfn>
   means determining to what extent an agent is allowed
   to perform a certain request to a Web API.
+  - [<dfn id="dfn-wac">Web Access Control (WAC)</dfn>](cite:citesAsAuthority WAC)
+    is an Access Control List (ACL) mechanism
+    that allows assigning inheritable permissions to documents and containers
+    through so-called _ACL documents_.
+  - [<dfn id="dfn-acp">Access Control Policies (ACP)</dfn>](cite:citesAsAuthority ACP)
+    is a policy-based mechanism
+    that allows assigning inheritable permissions to documents and containers
+    through so-called _Access Control Resources (ACR)_.
 
-Let us exemplify these definitions with a concrete example.
+Let us exemplify some of these definitions through our use cases:
+
+- An HTTP interface at `https://sasha.pod/` implements the Solid Protocol
+  when its containers and documents follow the interaction rules,
+  and when it correctly authenticates users
+  using their WebID,
+  and applies authorization to each resource.
+- A Web API within `https://sasha.pod/` structures documents in containers.
+  - Contacts are stored in `https://sasha.pod/people/`
+  as individual documents:
+    - `https://sasha.pod/people/amal.ttl`
+    - `https://sasha.pod/people/lucian.ttl`
+  - Medical records are stored in `https://sasha.pod/private/acme-hospital/`
+  by date, such as:
+    - `https://sasha.pod/private/acme-hospital/2022/10/15/test-results.ttl`
+- The agent with WebID `https://sasha.pod/people/sasha#me`
+  is allowed to access all documents on `https://sasha.pod/`.

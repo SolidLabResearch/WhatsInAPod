@@ -1,4 +1,4 @@
-## Motivating use cases
+## Motivating use cases # {#use-cases}
 In order to pinpoint the concrete differences between interpretations,
 we introduce two small use cases that we will carry throughout the paper.
 

@@ -12,7 +12,11 @@ dfn {
 }
 
 li > ul {
-  margin-top: 0;
+  margin: 0;
+}
+
+span.references {
+  font-weight: normal;
 }
 
 @mixin clearfix {
