@@ -72,12 +72,9 @@ and reframe the interfaces as means to an end.
 Consequences from interpretation differences are not purely conceptual or theoretical.
 For instance,
 current implementations of alternative access APIs to pods
-are still tainted by the document-centric interpretation.
-A concrete consequence manifests itself
-in the current [Quad Pattern Fragments API](cito:citesAsEvidence solid_qpf),
-meant to facilitate complex queries over a pod.
-This _quad-centric_ API offers pattern-based access to RDF quads,
-whose graph component is defined as
+are still tainted by the document-centric interpretation:
+the current Quad Pattern Fragments interface
+uses for its quads' graph components
 the URI where the _document-centric_ API happens to expose them.
 Ironically,
 the server thereby imposes some of the same LDP constraints and mismatches

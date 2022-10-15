@@ -22,8 +22,13 @@ throughout the article.
   on top of HTTP (or a specialization thereof, such as the Solid Protocol).
 - <dfn id="dfn-authentication">Authentication</dfn>
   means identifying the agent making a request to a Web API.
+  - The [<dfn id="dfn-webid">WebID</dfn>](cite:citesAsAuthority Solid_OIDC)
+    is an HTTP URL that identifies an agent.
+    When dereferenced,
+    it leads to a <dfn id="dfn-profile-document">profile document</dfn>
+    describing various agent details.
   - [<dfn id="dfn-solid-oidc">Solid-OIDC</dfn>](cite:citesAsAuthority Solid_OIDC)
-    identifies agents by a URL called a WebID.
+    establishes some authoritative identification of an agent by a specific WebID.
 - <dfn id="dfn-authorization">Authorization</dfn>
   means determining to what extent an agent is allowed
   to perform a certain request to a Web API.
