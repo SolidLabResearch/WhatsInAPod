@@ -100,6 +100,58 @@ if no link exists to the certain kind of data,
 then a specific document is created at a hardcoded path
 and then linked from a profile or index for future usage.
 
+#### Implicit and explicit meaning of RDF document boundaries
+From the way current apps organize data in RDF documents,
+we can observe the meaning they ascribe to such a document.
+Noting that Solid typically uses RDF 1.0 documents
+(so only triples, and not quads as in RDF 1.1),
+we consider the occurrence of an RDF triple in a document
+to carry the following meanings:
+
+- _(implicit)_ **Context**:
+  the occurrence of certain triples within the same document
+  often implies that they are somehow interrelated,
+  and that those triples somehow relate to the document.
+  This latter aspect is sometimes visible within certain triples,
+  whose subject (e.g., `https://sasha.pod/people/sasha#me`)
+  defines a URL fragment (e.g., `#me`)
+  on the document identifier (e.g., `https://sasha.pod/people/sasha`).
+- _(explicit)_ **Permissions**:
+  both the [WAC](cite:citesAsAuthority WAC)
+  and the [ACP](cite:citesAsAuthority ACP) specifications
+  assign authorizations on a document level of granularity.
+  Either the document can be accessed by a given agent in its entirety or not,
+  thus resulting in all triples within a document
+  sharing the same authorization rules.
+- _(implicit)_ **Provenance**:
+  the document somehow captures the notion
+  that its triples originate from a specific source or event,
+  of which the document was a result.
+- _(implicit)_ **Trust**:
+  the document defines a single boundary of trust for all of its triples.
+  For example,
+  a user's profile document is typically fully trusted by the user
+  (because they are usually the only party with write access to it),
+  whereas inbox documents created by third parties
+  might contain triples that are not trusted.
+
+We remark that of these 4 aspects,
+only the _permissions_ are explicitly modelled on the document.
+The _context_ is assumed because triples occurring in the same place
+typically were created by the same or related write operations,
+and because those triples are necessarily read together by apps.
+The _provenance_ and _trust_ are similarly derived
+from assumptions about a shared origin,
+and the knowledge of specific permissions
+and thus agents that could have written to the document.
+Notably,
+the fact that an identifier (e.g., `https://sasha.pod/people/`)
+is contained within a certain pod root container (e.g., `https://sasha.pod/`)
+does encode some explicit provenance about the document and its triples
+(e.g., “they were found in Sasha's pod”),
+but not necessarily about its creator or level of trust
+(e.g., multiple actors might have write access to the document).
+
 #### Alternative Web APIs to the pod
 Given that data under the document-centric interpretation
 is structured within a specific document hierarchy,
