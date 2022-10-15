@@ -99,13 +99,13 @@ if no link exists to the certain kind of data,
 then a specific document is created at a hardcoded path
 and then linked from a profile or index for future usage.
 
-#### Implicit and explicit meanings of RDF document boundaries # {#document-centric-meaning}
+#### Aspects of RDF document boundaries # {#document-centric-aspects}
 From the way current apps organize data in RDF documents,
 we can observe the meaning they ascribe to such a document.
 Noting that Solid typically uses RDF 1.0 documents
 (so only triples, and not quads as in RDF 1.1),
 we consider the occurrence of an RDF triple in a document
-to carry the following meanings:
+to carry meaning with regard to the following aspects:
 
 - _(implicit)_ **Context**:
   the occurrence of certain triples within the same document
@@ -165,7 +165,7 @@ but seldom the result of actual performance measurements.
 #### Alternative Web APIs to the pod # {#document-centric-alternative-apis}
 Given that data under the document-centric interpretation
 is structured within a specific document hierarchy
-with the aforementioned explicit and implicit meanings,
+with the aforementioned explicit and implicit aspects,
 several applications encounter practical limitations
 when the data they require happens to be structured across multiple documents.
 In an attempt to address such cases,
@@ -187,7 +187,7 @@ and to adequately model _provenance_ and _trust_ in their responses.
 
 Crucially, such alternative APIs are always derived from the main API,
 because it is equivalent to the pod in the document-centric interpretation.
-The derived APIs thereby unavoidably inherit some of the explicit and implicit meanings
+The derived APIs thereby unavoidably inherit some of the explicit and implicit aspects
 from the document-based main API.
 Concretely, the direct derivation from the main API manifests itself
 in the choice of the data model for the SPARQL and QPF interfaces.
@@ -209,20 +209,20 @@ the document-centric interpretation of a pod considers
 the birthdate statements' occurrence in this specific document on the pod
 to be an integral part of the statement itself.
 
-### Consequences of the single hierarchy
+### Consequences of the single hierarchy # {#document-centric-consequences}
 In this section,
 we will examine and critique the consequences
 of the document-centric interpretation of a pod.
 Specifically,
 we study the limitations of the single hierarchy it causes ([](#document-centric-definition)),
 and the effects of the implicit semantics in its structure ([](#document-centric-api))
-and documents ([](#document-centric-meaning)).
+and documents ([](#document-centric-aspects)).
 While some consequences could in theory
 be mitigated by alternative APIs ([](#document-centric-alternative-apis)),
 the effectiveness thereof is hindered
 by the necessity of those alternatives to derive from the main API structure.
 
-#### Single-app modeling mismatches
+#### Single-app modeling mismatches # {#single-app-mismatches}
 Each app needs to define a single consistent hierarchy
 to serialize their data,
 which does not reflect the complex nature of real-world organization.
@@ -245,7 +245,7 @@ are even less explicitly defined than in the main API.
 Writing is still fully coupled to the destination documents in the main API,
 since the quad components of each triple need to contain a specific document URL.
 
-#### Cross-app modeling mismatches
+#### Cross-app modeling mismatches # {#cross-app-mismatches}
 The document-centric view of the Solid Protocol
 does not inherently provide interoperability,
 because apps are still responsible
@@ -294,7 +294,7 @@ whether medical records are organized by date
 or by measurement over time,
 depends on the specifics of a current use case.
 
-#### Permission mismatches
+#### Permission modeling mismatches # {#permission-mismatches}
 Contextual- and performance-based grouping
 are trade-offs that can be overcome with compromises,
 such as accepting that certain use cases will be slower than others.
