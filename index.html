@@ -427,6 +427,60 @@ if no link exists to the certain kind of data,
 then a specific document is created at a hardcoded path
 and then linked from a profile or index for future usage.</p>
 
+        <h4 id="implicit-and-explicit-meaning-of-rdf-document-boundaries">Implicit and explicit meaning of RDF document boundaries</h4>
+        <p>From the way current apps organize data in RDF documents,
+we can observe the meaning they ascribe to such a document.
+Noting that Solid typically uses RDF 1.0 documents
+(so only triples, and not quads as in RDF 1.1),
+we consider the occurrence of an RDF triple in a document
+to carry the following meanings:</p>
+
+        <ul>
+          <li><em>(implicit)</em> <strong>Context</strong>:
+the occurrence of certain triples within the same document
+often implies that they are somehow interrelated,
+and that those triples somehow relate to the document.
+This latter aspect is sometimes visible within certain triples,
+whose subject (e.g., <code>https:/​/​sasha.pod/people/sasha#me</code>)
+defines a URL fragment (e.g., <code>#me</code>)
+on the document identifier (e.g., <code>https:/​/​sasha.pod/people/sasha</code>).</li>
+          <li><em>(explicit)</em> <strong>Permissions</strong>:
+both the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">WAC</a> <span class="references">[<a href="#ref-10">10</a>]</span>
+and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/">ACP</a> <span class="references">[<a href="#ref-11">11</a>]</span> specifications
+assign authorizations on a document level of granularity.
+Either the document can be accessed by a given agent in its entirety or not,
+thus resulting in all triples within a document
+sharing the same authorization rules.</li>
+          <li><em>(implicit)</em> <strong>Provenance</strong>:
+the document somehow captures the notion
+that its triples originate from a specific source or event,
+of which the document was a result.</li>
+          <li><em>(implicit)</em> <strong>Trust</strong>:
+the document defines a single boundary of trust for all of its triples.
+For example,
+a user’s profile document is typically fully trusted by the user
+(because they are usually the only party with write access to it),
+whereas inbox documents created by third parties
+might contain triples that are not trusted.</li>
+        </ul>
+
+        <p>We remark that of these 4 aspects,
+only the <em>permissions</em> are explicitly modelled on the document.
+The <em>context</em> is assumed because triples occurring in the same place
+typically were created by the same or related write operations,
+and because those triples are necessarily read together by apps.
+The <em>provenance</em> and <em>trust</em> are similarly derived
+from assumptions about a shared origin,
+and the knowledge of specific permissions
+and thus agents that could have written to the document.
+Notably,
+the fact that an identifier (e.g., <code>https:/​/​sasha.pod/people/</code>)
+is contained within a certain pod root container (e.g., <code>https:/​/​sasha.pod/</code>)
+does encode some explicit provenance about the document and its triples
+(e.g., “they were found in Sasha’s pod”),
+but not necessarily about its creator or level of trust
+(e.g., multiple actors might have write access to the document).</p>
+
         <h4 id="alternative-web-apis-to-the-pod">Alternative Web APIs to the pod</h4>
         <p>Given that data under the document-centric interpretation
 is structured within a specific document hierarchy,
