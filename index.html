@@ -311,8 +311,7 @@ is allowed to access all documents on <code>https:/​/​sasha.pod/</code>.</li
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Document-centric interpretation of a pod</h2>
 
-        <h3 id="definition">Definition</h3>
-
+        <h3 id="document-centric-definition">Definition</h3>
         <p>This section discusses the currently prevalent interpretation of a pod,
 which is <em>document</em>-centric.
 As described in <a href="#definitions">Section 3</a>,
@@ -386,7 +385,7 @@ and how the resulting structure is interpreted.
 We now describe how today’s Solid apps
 fill those degrees of freedom in practice.</p>
 
-        <h4 id="structure-of-the-main-web-api">Structure of the main Web API</h4>
+        <h4 id="document-centric-api">Structure of the main Web API</h4>
         <p>Importantly,
 the current <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/">Solid technical reports</a> <span class="references">[<a href="#ref-12">12</a>]</span>
 do not impose any specific container structure onto a pod
@@ -411,7 +410,7 @@ we observe two kinds of behavior:</p>
 to certain containers (e.g., <code>/contacts/</code>)
 or documents (e.g., <code>/profile/card</code>).</li>
           <li>Some apps use <strong>link traversal</strong>,
-meaning they find the URLs of documents and containers
+which means they find the URLs of documents and containers
 by following links from the user’s WebID profile document
 and/or via <a property="schema:citation http://purl.org/spar/cito/citesAsExample" href="https://solid.github.io/type-indexes/">another index</a> <span class="references">[<a href="#ref-13">13</a>]</span>.</li>
         </ul>
@@ -427,7 +426,7 @@ if no link exists to the certain kind of data,
 then a specific document is created at a hardcoded path
 and then linked from a profile or index for future usage.</p>
 
-        <h4 id="implicit-and-explicit-meaning-of-rdf-document-boundaries">Implicit and explicit meaning of RDF document boundaries</h4>
+        <h4 id="document-centric-meaning">Implicit and explicit meanings of RDF document boundaries</h4>
         <p>From the way current apps organize data in RDF documents,
 we can observe the meaning they ascribe to such a document.
 Noting that Solid typically uses RDF 1.0 documents
@@ -462,15 +461,23 @@ a user’s profile document is typically fully trusted by the user
 (because they are usually the only party with write access to it),
 whereas inbox documents created by third parties
 might contain triples that are not trusted.</li>
+          <li><em>(implicit)</em> <strong>Performance</strong>:
+the document groups together a number of triples
+because it improves the performance of certain use cases.
+For instance,
+triples that are often used together might be in the same document,
+and triples that are less needed might be in extension documents,
+in order to optimize the number of HTTP requests and the used bandwidth.</li>
         </ul>
 
-        <p>We remark that of these 4 aspects,
-only the <em>permissions</em> are explicitly modelled on the document.
-The <em>context</em> is assumed because triples occurring in the same place
+        <p>We remark that of these 5 aspects,
+only the <em>permissions</em> on the document are modelled explicitly.
+The <em>context</em> is implicitly assumed
+because triples occurring in the same place
 typically were created by the same or related write operations,
 and because those triples are necessarily read together by apps.
 The <em>provenance</em> and <em>trust</em> are similarly derived
-from assumptions about a shared origin,
+from implicit assumptions about a shared origin,
 and the knowledge of specific permissions
 and thus agents that could have written to the document.
 Notably,
@@ -479,35 +486,44 @@ is contained within a certain pod root container (e.g., <code>https:/​/​sas
 does encode some explicit provenance about the document and its triples
 (e.g., “they were found in Sasha’s pod”),
 but not necessarily about its creator or level of trust
-(e.g., multiple actors might have write access to the document).</p>
+(e.g., multiple actors might have write access to the document).
+Finally,
+the <em>performance</em> is typically the result of educated guesses,
+but seldom the result of actual performance measurements.</p>
 
-        <h4 id="alternative-web-apis-to-the-pod">Alternative Web APIs to the pod</h4>
+        <h4 id="document-centric-alternative-apis">Alternative Web APIs to the pod</h4>
         <p>Given that data under the document-centric interpretation
-is structured within a specific document hierarchy,
-some applications have encountered practical limitations
-when they want to make complex data selections,
-especially if the data they require has been structured across multiple documents.
-To address such cases,
+is structured within a specific document hierarchy
+with the aforementioned explicit and implicit meanings,
+several applications encounter practical limitations
+when the data they require happens to be structured across multiple documents.
+In an attempt to address such cases,
 alternative Web APIs were proposed
 in addition to the main Web API on top of the Solid Protocol.</p>
 
-        <p>One <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="http://emansour.com/research/lusail/solid_protocols.pdf">proposal</a> <span class="references">[<a href="#ref-2">2</a>]</span>
+        <p><a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="http://emansour.com/research/lusail/solid_protocols.pdf">One proposal</a> <span class="references">[<a href="#ref-2">2</a>]</span>
 suggests exposing a server-side <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/sparql11-protocol/">SPARQL endpoint</a> <span class="references">[<a href="#ref-14">14</a>]</span>
 over all RDF data in a pod,
 enabling fully server-side <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://www.w3.org/TR/sparql11-query/">SPARQL query</a> <span class="references">[<a href="#ref-15">15</a>]</span> processing.
-<a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Another</a> <span class="references">[<a href="#ref-16">16</a>]</span>
-suggests to expose this data through a Quad Pattern Fragments (QPF) interface,
+<a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">Another proposal</a> <span class="references">[<a href="#ref-16">16</a>]</span>
+suggests to expose this data through a read-only Quad Pattern Fragments (QPF) interface,
 to speed up the client-side processing of SPARQL queries
-over the entire pod.</p>
+over the entire pod.
+Whereas these alternative APIs can alleviate
+part of the <em>context</em> and <em>performance</em> constraints of the main API,
+they come with challenges to implement <em>permissions</em>
+and to adequately model <em>provenance</em> and <em>trust</em> in their responses.</p>
 
-        <p>Crucially, such alternatives APIs are derived from the main API,
-which in the document-centric interpretation is equivalent to the pod.
-This concretely manifests itself
-in the choice of the data model for the SPARQL or QPF interface.
+        <p>Crucially, such alternative APIs are always derived from the main API,
+because it is equivalent to the pod in the document-centric interpretation.
+The derived APIs thereby unavoidably inherit some of the explicit and implicit meanings
+from the document-based main API.
+Concretely, the direct derivation from the main API manifests itself
+in the choice of the data model for the SPARQL and QPF interfaces.
 The RDF 1.1 quads they expose are constructed
 by loading the triples from each document,
 adding as a graph component the URL of that document.
-Take for example the following quad:</p>
+The following example quad reflects this:</p>
 
         <ul>
           <li>subject: <code>https:/​/​sasha.pod/people/sasha#me</code></li>
@@ -516,7 +532,7 @@ Take for example the following quad:</p>
           <li>graph: <code>https:/​/​sasha.pod/private/medical/2022/10/15.ttl</code></li>
         </ul>
 
-        <p>Its quad components indicate that
+        <p>Its components signify that
 there exists a triple with that specific subject, predicate, and object
 in the document with URL <code>https:/​/​sasha.pod/private/medical/2022/10/15.ttl</code>.
 In other words,
@@ -524,10 +540,152 @@ the document-centric interpretation of a pod considers
 the birthdate statements’ occurrence in this specific document on the pod
 to be an integral part of the statement itself.</p>
 
-        <h3 id="consequences">Consequences</h3>
-        <p>implicit semantics</p>
+        <h3 id="consequences-of-the-single-hierarchy">Consequences of the single hierarchy</h3>
+        <p>In this section,
+we will examine and critique the consequences
+of the document-centric interpretation of a pod.
+Specifically,
+we study the limitations of the single hierarchy it causes (<a href="#document-centric-definition">Subsection 4.1</a>),
+and the effects of the implicit semantics in its structure (<a href="#document-centric-api">Subsubsection 4.2.1</a>)
+and documents (<a href="#document-centric-meaning">Subsubsection 4.2.2</a>).
+While some consequences could in theory
+be mitigated by alternative APIs (<a href="#document-centric-alternative-apis">Subsubsection 4.2.3</a>),
+the effectiveness thereof is hindered
+by the necessity of those alternatives to derive from the main API structure.</p>
 
-        <p><span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
+        <h4 id="single-app-modeling-mismatches"> Single-app modeling mismatches</h4>
+        <p>Each app needs to define a single consistent hierarchy
+to serialize their data,
+which does not reflect the complex nature of real-world organization.
+For instance,
+the address book app could organize people in categories
+such as <code>/contacts/work/</code> and <code>/contacts/sports/</code>,
+which leads to duplication when a person’s colleague
+is also a member of their badminton team.
+A similar situation occurs when we need to decide
+to group health measurements by date (<code>/medical/2022/10/15.ttl</code>)
+or by topical evolution over time (<code>/medical/vitamine-d-levels.ttl</code>)</p>
+
+        <p>Hierarchical organizations are thus either
+constrained by their necessity to commit to a single representation of the real world,
+or in need of mechanisms to cope with the effects of data duplication or virtualization.
+An alternative API circumvents some of these limitations
+when it comes to reading,
+although the provenance and trust of the resulting responses
+are even less explicitly defined than in the main API.
+Writing is still fully coupled to the destination documents in the main API,
+since the quad components of each triple need to contain a specific document URL.</p>
+
+        <h4 id="cross-app-modeling-mismatches"> Cross-app modeling mismatches</h4>
+        <p>The document-centric view of the Solid Protocol
+does not inherently provide interoperability,
+because apps are still responsible
+for determining the specific API that defines
+the document and container structure they will access.
+To make matters worse,
+different apps and use cases can have competing interests
+that lead them to prefer one API structure over another.</p>
+
+        <p>For example,
+interoperability requires the address book and birthday apps
+to store their data in the same place,
+for instance, the <code>/people/</code> container.
+Failure to do so would result in apps not being aware of 
+the others’ data being available on the pod.
+However,
+their preferences regarding the organization of that container vary.
+The address book app,
+which lets the user edit contacts one by one,
+has a <em>context</em> and <em>performance</em> incentive to
+place all of the attributes of a contact in a single RDF document,
+leading to an organization such as:</p>
+
+        <ul>
+          <li><code>/people/work/dani.ttl</code></li>
+          <li><code>/people/work/kiran.ttl</code></li>
+          <li><code>/people/personal/kai.ttl</code></li>
+          <li><code>/people/personal/luka.ttl</code></li>
+          <li>…</li>
+        </ul>
+
+        <p>In contrast,
+the birthday app aims to quickly determine
+which celebrations are coming up,
+probably preferring a structure more like:</p>
+
+        <ul>
+          <li><code>/people/work/birthdays.ttl</code></li>
+          <li><code>/people/personal/birthdays.ttl</code></li>
+        </ul>
+
+        <p>Or possibly even:</p>
+
+        <ul>
+          <li><code>/people/birthdays/january.ttl</code></li>
+          <li><code>/people/birthdays/february.ttl</code></li>
+          <li>…</li>
+        </ul>
+
+        <p>Similarly,
+whether medical records are organized by date
+or by measurement over time,
+depends on the specifics of a current use case.</p>
+
+        <h4 id="permission-mismatches">Permission mismatches</h4>
+        <p>Contextual- and performance-based grouping
+are trade-offs that can be overcome with compromises,
+such as accepting that certain use cases will be slower than others.
+Unfortunately,
+the imposed grouping of multiple different aspects in the same document
+can also lead to more sensitive and insurmountable conflicts
+for the <em>permissions</em>, <em>provenance</em>, and <em>trust</em> aspects.</p>
+
+        <p>Since the coupling of permissions to document organization
+provides the only mechanism of control in the document-centric view,
+some use cases with conflicting requirements
+cannot effectively be realized today.
+For example, assume that the address book app
+indeed organizes contacts as one person per document:</p>
+
+        <ul>
+          <li><code>/people/dani.ttl</code></li>
+          <li><code>/people/kiran.ttl</code></li>
+          <li>…</li>
+        </ul>
+
+        <p>In that case, the birthday app would be able to read
+(and needing to parse)
+people’s personal details such as addresses and phone numbers,
+whereas the expectation is that
+it should only access names and birthdays.</p>
+
+        <p>Insurmountable conflicts become even more apparent with the medical use case.
+The results of a given blood test might be stored in a single document,
+and thus have a single permission boundary associated with it.
+If that test result contains both vitamin levels and an HIV status,
+then the document-based access control
+prevents users from only giving access to their vitamin levels.</p>
+
+        <p>The fact that conflicting requirements between aspects
+would necessitate the complexity of copies,
+flags a strong limitation of any single hierarchical API.
+One partial solution is to split these pieces of data into different documents,
+but this results in suboptimal boundaries
+for purposes of context, provenance, and trust.
+Users thus find themselves torn between giving apps too much access,
+or having to deal with overly granular control—in the extreme case causing situations
+that necessitate managing micro-documents with only one or a handful of triples.
+Whereas the degrees of freedom in the Solid Protocol
+allow for any such structures,
+the resulting API would be highly impractical for humans and machines alike.
+Another solution involves creating and maintaining
+a copy of the document with a subset of the data,
+which—in addition to the overhead of managing such copies—would also
+generate a different associated context, provenance, and trust,
+especially if writing to such derived documents is needed.
+Furthermore,
+all these aspects would necessarily be reflected in any derived APIs,
+which are tied to the main API’s document-based structure and boundaries.</p>
 
       </div>
 </section>
@@ -535,6 +693,7 @@ to be an integral part of the statement itself.</p>
   <section id="graph-centric" inlist="" rel="schema:hasPart" resource="#graph-centric">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Graph-centric interpretation of a pod</h2>
+        <p><span class="todo">2D/3D metaphor</span></p>
 
       </div>
 </section>
