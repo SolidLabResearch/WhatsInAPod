@@ -175,7 +175,7 @@ of data and application independence under control of the user.</p>
       </div>
 </section>
 
-  <section id="motivating-use-cases" inlist="" rel="schema:hasPart" resource="#motivating-use-cases">
+  <section id="use-cases" inlist="" rel="schema:hasPart" resource="#use-cases">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Motivating use cases</h2>
         <p>In order to pinpoint the concrete differences between interpretations,
@@ -219,7 +219,7 @@ captured by the user’s wearable device.</li>
       </div>
 </section>
 
-  <section id="preliminary-definitions" inlist="" rel="schema:hasPart" resource="#preliminary-definitions">
+  <section id="defininitions" inlist="" rel="schema:hasPart" resource="#defininitions">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Preliminary definitions</h2>
 
@@ -246,13 +246,56 @@ and with interaction rules for containers and RDF documents
           <li>A <dfn id="dfn-web-api">Web API</dfn> is a specific structuring of resources
 on top of HTTP (or a specialization thereof, such as the Solid Protocol).</li>
           <li><dfn id="dfn-authentication">Authentication</dfn>
-means identifying the agent making a request to a Web API.</li>
+means identifying the agent making a request to a Web API.
+            <ul>
+              <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328"><dfn id="dfn-solid-oidc">Solid-OIDC</dfn></a> <span class="references">[<a href="#ref-9">9</a>]</span>
+identifies agents by a URL called a WebID.</li>
+            </ul>
+          </li>
           <li><dfn id="dfn-authorization">Authorization</dfn>
 means determining to what extent an agent is allowed
-to perform a certain request to a Web API.</li>
+to perform a certain request to a Web API.
+            <ul>
+              <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/"><dfn id="dfn-wac">Web Access Control (WAC)</dfn></a> <span class="references">[<a href="#ref-10">10</a>]</span>
+is an Access Control List (ACL) mechanism
+that allows assigning inheritable permissions to documents and containers
+through so-called <em>ACL documents</em>.</li>
+              <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/"><dfn id="dfn-acp">Access Control Policies (ACP)</dfn></a> <span class="references">[<a href="#ref-11">11</a>]</span>
+is a policy-based mechanism
+that allows assigning inheritable permissions to documents and containers
+through so-called <em>Access Control Resources (ACR)</em>.</li>
+            </ul>
+          </li>
         </ul>
 
-        <p>Let us exemplify these definitions with a concrete example.</p>
+        <p>Let us exemplify some of these definitions through our use cases:</p>
+
+        <ul>
+          <li>An HTTP interface at <code>https:/​/​sasha.pod/</code> implements the Solid Protocol
+when its containers and documents follow the interaction rules,
+and when it correctly authenticates users
+using their WebID,
+and applies authorization to each resource.</li>
+          <li>A Web API within <code>https:/​/​sasha.pod/</code> structures documents in containers.
+            <ul>
+              <li>Contacts are stored in <code>https:/​/​sasha.pod/people/</code>
+as individual documents:
+                <ul>
+                  <li><code>https:/​/​sasha.pod/people/amal.ttl</code></li>
+                  <li><code>https:/​/​sasha.pod/people/lucian.ttl</code></li>
+                </ul>
+              </li>
+              <li>Medical records are stored in <code>https:/​/​sasha.pod/private/acme-hospital/</code>
+by date, such as:
+                <ul>
+                  <li><code>https:/​/​sasha.pod/private/acme-hospital/2022/10/15/test-results.ttl</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>The agent with WebID <code>https:/​/​sasha.pod/people/sasha#me</code>
+is allowed to access all documents on <code>https:/​/​sasha.pod/</code>.</li>
+        </ul>
 
       </div>
 </section>
