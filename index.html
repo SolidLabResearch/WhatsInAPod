@@ -178,6 +178,43 @@ of data and application independence under control of the user.</p>
   <section id="motivating-use-cases" inlist="" rel="schema:hasPart" resource="#motivating-use-cases">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Motivating use cases</h2>
+        <p>In order to pinpoint the concrete differences between interpretations,
+we introduce two small use cases that we will carry throughout the paper.</p>
+
+        <h3 id="contacts-use-case">Contacts use case</h3>
+        <p>The <em>contacts</em> use case is a rather trivial example,
+but we introduce it to show that even very simple use cases
+can expose issues in the interpretation of a Pod.
+The implication is thus that,
+if a certain interpretation cannot adequately handle the contacts case,
+then it will likely also break for more complex cases.
+The case is as follows:</p>
+
+        <ul>
+          <li>The data consists of a set of <strong>contacts</strong>,
+each of which have associated attributes such as
+name, address, email, phone number, date of birth.</li>
+          <li>An <strong>address book</strong> app provides read and write access
+to each attribute of a contact,
+and allows to create new contacts.</li>
+          <li>A <strong>birthday app</strong> shows daily reminders of contacts with upcoming birthdays,
+and it allows editing birthdays and adding new ones.</li>
+        </ul>
+
+        <h3 id="medical-use-case">Medical use case</h3>
+        <p>The <em>medical</em> use case is conceptually simple,
+but it involves highly sensitive data.
+Its purpose is to demonstrate that issues identified in the <em>contacts</em> use case
+easily generalize to more core complex data and real-world problems.
+In this use case, the user is a patient storing the following data:</p>
+
+        <ul>
+          <li>A set of medical records reflecting <strong>blood test results</strong>,
+with each record containing various vitamin levels
+as well as HIV status results.</li>
+          <li>A set of <strong>heart rate and blood pressure measurements</strong>,
+captured by the user’s wearable device.</li>
+        </ul>
 
       </div>
 </section>
