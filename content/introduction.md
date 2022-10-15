@@ -1,4 +1,4 @@
-## The Solid vision # {#introduction}
+## The Solid vision of data interoperability and control # {#introduction}
 <!-- Introduction of Solid -->
 Data privacy and control have lost ground on today's Web.
 User-generated data is stored in centralized data silos,

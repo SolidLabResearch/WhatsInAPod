@@ -7,6 +7,14 @@ header h2 {
   margin-top: 0;
 }
 
+dfn {
+  font-weight: bold;
+}
+
+li > ul {
+  margin-top: 0;
+}
+
 @mixin clearfix {
   &:after {
     content: "";
