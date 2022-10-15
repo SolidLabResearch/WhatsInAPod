@@ -219,7 +219,7 @@ captured by the user’s wearable device.</li>
       </div>
 </section>
 
-  <section id="defininitions" inlist="" rel="schema:hasPart" resource="#defininitions">
+  <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Preliminary definitions</h2>
 
@@ -234,12 +234,14 @@ a generic set of rules for data transmission between systems.
               <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.rfc-editor.org/rfc/rfc9110"><dfn id="dfn-http">HyperText Transfer Protocol (HTTP)</dfn></a> <span class="references">[<a href="#ref-6">6</a>]</span>
 structures the exchange of data between a server and a client
 as resources identified by a URI.</li>
-              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/ldp/"><dfn id="dfn-ldp">Linked Data Platform</dfn></a> <span class="references">[<a href="#ref-7">7</a>]</span>
-constrains HTTP with interaction rules for containers and RDF documents.</li>
+              <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/ldp/"><dfn id="dfn-ldp">Linked Data Platform (LDP)</dfn></a> <span class="references">[<a href="#ref-7">7</a>]</span>
+constrains HTTP with interaction rules
+for recursive containers of RDF and non-RDF documents.</li>
               <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2021/protocol-20211217"><dfn id="dfn-solid-protocol">Solid Protocol</dfn></a> <span class="references">[<a href="#ref-8">8</a>]</span>
 constrains HTTP with <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328">authentication</a> <span class="references">[<a href="#ref-9">9</a>]</span>
 and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">authorization</a> <span class="references">[<a href="#ref-10">10</a>, <a href="#ref-11">11</a>]</span>,
-and with interaction rules for containers and RDF documents
+and with interaction rules
+for recursive containers of RDF and non-RDF documents
 (inspired by LDP).</li>
             </ul>
           </li>
@@ -281,7 +283,7 @@ and applies authorization to each resource.</li>
               <li>Contacts are stored in <code>https:/​/​sasha.pod/people/</code>
 as individual documents:
                 <ul>
-                  <li><code>https:/​/​sasha.pod/people/amal.ttl</code></li>
+                  <li><code>https:/​/​sasha.pod/people/sasha.ttl</code></li>
                   <li><code>https:/​/​sasha.pod/people/lucian.ttl</code></li>
                 </ul>
               </li>
@@ -302,9 +304,76 @@ is allowed to access all documents on <code>https:/​/​sasha.pod/</code>.</li
 
   <section id="document-centric" inlist="" rel="schema:hasPart" resource="#document-centric">
 <div datatype="rdf:HTML" property="schema:description">
-        <h2 property="schema:name">Document-centric interpretation of a Pod</h2>
-        <p><span class="todo">preliminary definitions of Solid pod</span>
-<span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
+        <h2 property="schema:name">Document-centric interpretation of a pod</h2>
+
+        <h3 id="definition">Definition</h3>
+
+        <p>This section discusses the currently prevalent interpretation of a pod,
+which is <em>document</em>-centric.
+As described in <a href="#definitions">Section 3</a>,
+the Solid Protocol models interactions with data
+as recursive containers with RDF and non-RDF documents.
+When a server offers this protocol,
+clients of this server can define a Web API
+by creating containers and documents within those containers.</p>
+
+        <p>The document-centric interpretation of a Solid pod is constructed
+by assuming that the concrete Web API exposed by the Solid Protocol
+<em>is</em> the entirety of pod.
+Within this interpretation,
+the complete state of the pod is then equivalent
+to the single Web API through which it is exposed;
+the <em>ground truth</em> of the pod is solely that Web API.
+That brings us to the following definition:</p>
+
+        <p><em>In the document-centric interpretation,
+each <dfn id="dfn-document-centric">Solid pod</dfn>
+is a single specific hierarchical structure of containers and documents
+exposed through the Solid Protocol,
+where data and access control rules are stored
+in specific RDF and non-RDF documents within that hierarchy.</em></p>
+
+        <p>For example,
+a Solid pod would be fully defined
+by the following hierarchy and the contents of its documents:</p>
+
+        <ul>
+          <li>container <code>https:/​/​sasha.pod/</code>
+            <ul>
+              <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
+              <li>container <code>people/</code>
+                <ul>
+                  <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
+                  <li>RDF document <code>amal.ttl</code></li>
+                  <li>RDF document <code>lucian.ttl</code></li>
+                </ul>
+              </li>
+              <li>container <code>private/</code>
+                <ul>
+                  <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
+                  <li>container <code>medical-records/</code>
+                    <ul>
+                      <li>non-RDF document <code>2022-10-15.pdf</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>In the above example,
+the access control document <code>https:/​/​sasha.pod/private/.acl</code>
+could contain WAC rules
+such that only the agent <code>https:/​/​sasha.pod/people/sasha#me</code>
+is allowed to access the container <code>https:/​/​sasha.pod/private/</code>
+and below.</p>
+
+        <h3 id="practical-usage">Practical usage</h3>
+
+        <p><span class="todo">Clarify attributes of a document: content grouping, permission, provenance, trust</span></p>
+
+        <p><span class="todo">derived interfaces</span></p>
 
       </div>
 </section>
