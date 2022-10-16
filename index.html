@@ -15,7 +15,7 @@
   <meta name="citation_author" content="Pieter Colpaert" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/10/15" />
+  <meta name="citation_publication_date" content="2022/10/16" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -310,24 +310,25 @@ is allowed to access all documents on <code>https:/​/​sasha.pod/</code>.</li
   <section id="document-centric" inlist="" rel="schema:hasPart" resource="#document-centric">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Document-centric interpretation of a pod</h2>
+        <p>This section discusses the currently prevalent interpretation of a pod,
+which is <em>document</em>-centric.</p>
 
         <h3 id="document-centric-definition">Definition</h3>
-        <p>This section discusses the currently prevalent interpretation of a pod,
-which is <em>document</em>-centric.
-As described in <a href="#definitions">Section 3</a>,
+        <p>As described in <a href="#definitions">Section 3</a>,
 the Solid Protocol models interactions with data
 as recursive containers with RDF and non-RDF documents.
 When a server offers this protocol,
 clients of this server can define a Web API
 by creating containers and documents within those containers.</p>
 
-        <p>The document-centric interpretation of a Solid pod is constructed
-by assuming that the concrete Web API exposed by the Solid Protocol
-<em>is</em> the entirety of pod.
+        <p>The document-centric interpretation assumes
+that the structure and contents of the Web API,
+which the pod exposes through the Solid Protocol,
+<em>is</em> the pod in its entirety.
 Within this interpretation,
-the complete state of the pod is then equivalent
-to the single Web API through which it is exposed;
-the <em>ground truth</em> of the pod is solely that Web API.
+the complete state of the pod is equivalent
+to the single Web API through which it is available;
+the <em>ground truth</em> of the pod is solely that specific Web API.
 That brings us to the following definition:</p>
 
         <p><em>In the document-centric interpretation,
@@ -687,15 +688,79 @@ Furthermore,
 all these aspects would necessarily be reflected in any derived APIs,
 which are tied to the main API’s document-based structure and boundaries.</p>
 
+        <p>We conclude that the pod inherently contains
+a <em>large amount of implicit semantics</em> in its API structure,
+which hinders the realization of the data and application independence
+that is paramount to the Solid vision.
+Some of semantics that are supposed to be entangled with the data
+are in practice assumed by the API,
+the construction of which happens in an uncoordinated way over time.
+The resulting spontaneous contracts are not made explicit by a single app,
+nor shared across multiple apps,
+meaning that interoperating apps have to be coded against each other
+rather than against the data,
+creating undesired inter-application coupling.</p>
+
       </div>
 </section>
 
   <section id="graph-centric" inlist="" rel="schema:hasPart" resource="#graph-centric">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Graph-centric interpretation of a pod</h2>
+        <p>This section introduces a new interpretation of the concept of a Solid pod,
+which is <em>graph-centric</em>.</p>
+
+        <h3 id="design-considerations">Design considerations</h3>
+        <p>We start from the limitations of the document-centric pod interpretation,
+which essentially assumes the Web API exposed by a pod
+to be equivalent to the pod itself.
+On the one hand,
+we acknowledge the <em>universality</em> and <em>simplicity</em>
+of document-based APIs,
+and in particular of the Solid Protocol,
+which offers the building blocks to construct such APIs
+with the appropriate authentication and authorization.
+On the other hand,
+we showed concrete evidence in <a href="#document-centric-consequences">Subsection 4.3</a>
+that no single such hierarchy is able to
+reconcile the conflicting constraints of different use cases,
+especially given that core aspects such as permissions and provenance
+can only be applied with a document-level granularity.</p>
+
+        <p>So while we recognize the importance of document-based Web APIs,
+we also observe that the simultaneous support for multiple use cases
+clearly requires multiple perspectives into the same data,
+each satisfying the constraints of particular cases.
+While the creation of multiple views has been attempted for Solid pods
+with SPARQL and QPF interfaces,
+their direct derivation from the main API
+leads them to still inherit that API’s mismatched constraints
+on the modeling of permissions, provenance, and trust.</p>
+
+        <p>In other words,
+aiming to derive richer views from the main pod API
+is akin to using a real-world object’s <em>two-dimensional projection</em>
+to derive alternate two-dimensional projections of that same object.
+Because any two-dimensional projection
+is inherently designed to discard information of the original,
+the creation of complementary alternative projections
+actually requires the object’s underlying <em>three-dimensional reality</em> instead.
+The two-dimensional projection was only ever meant
+as a helpful approximation of the three-dimensional object.</p>
+
+        <p>Translating this dimensionality metaphor to the world of pods,
+we conclude that today’s single hierarchical API to a pod
+serves as a <em>proxy</em> for the underlying knowledge graph
+formed by the union of the pod’s interlinked RDF documents—except that
+this union cannot adequately be reproduced
+because significant parts of its semantics are being discarded by that API.
+Solid applications looking to leverage
+the potential of this Linked Data knowledge graph,
+will thus always be hindered by
+the limitations of one arbitrarily formed document API
+acting as its sole access gateway.</p>
 
         <h3 id="graph-centric-definition">Definition</h3>
-        <p><span class="todo">2D/3D metaphor</span></p>
 
         <h3 id="graph-centric-implementation">Implementation considerations</h3>
 
