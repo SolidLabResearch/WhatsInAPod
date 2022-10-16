@@ -1,8 +1,8 @@
 ## Document-centric interpretation of a pod # {#document-centric}
-
-### Definition # {#document-centric-definition}
 This section discusses the currently prevalent interpretation of a pod,
 which is _document_-centric.
+
+### Definition # {#document-centric-definition}
 As described in [](#definitions),
 the Solid Protocol models interactions with data
 as recursive containers with RDF and non-RDF documents.
@@ -10,13 +10,14 @@ When a server offers this protocol,
 clients of this server can define a Web API
 by creating containers and documents within those containers.
 
-The document-centric interpretation of a Solid pod is constructed
-by assuming that the concrete Web API exposed by the Solid Protocol
-_is_ the entirety of pod.
+The document-centric interpretation assumes
+that the structure and contents of the Web API,
+which the pod exposes through the Solid Protocol,
+_is_ the pod in its entirety.
 Within this interpretation,
-the complete state of the pod is then equivalent
-to the single Web API through which it is exposed;
-the _ground truth_ of the pod is solely that Web API.
+the complete state of the pod is equivalent
+to the single Web API through which it is available;
+the _ground truth_ of the pod is solely that specific Web API.
 That brings us to the following definition:
 
 _In the document-centric interpretation,
@@ -347,3 +348,16 @@ especially if writing to such derived documents is needed.
 Furthermore,
 all these aspects would necessarily be reflected in any derived APIs,
 which are tied to the main API's document-based structure and boundaries.
+
+We conclude that the pod inherently contains
+a _large amount of implicit semantics_ in its API structure,
+which hinders the realization of the data and application independence
+that is paramount to the Solid vision.
+Some of semantics that are supposed to be entangled with the data
+are in practice assumed by the API,
+the construction of which happens in an uncoordinated way over time.
+The resulting spontaneous contracts are not made explicit by a single app,
+nor shared across multiple apps,
+meaning that interoperating apps have to be coded against each other
+rather than against the data,
+creating undesired inter-application coupling.
