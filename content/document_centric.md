@@ -132,6 +132,10 @@ to carry meaning with regard to the following aspects:
   the document somehow captures the notion
   that its triples originate from a specific source or event,
   of which the document was a result.
+
+  {:.comment data-author="Ruben D"}
+  Di you mean with captures the notion that the users expect this to be the case? Because in practice triples in a document can originate from multiple sources (e.g. profile document), with no real way to distinguish between these sources
+
 - _(implicit)_ **Trust**:
   the document defines a single boundary of trust for all of its triples.
   For example,
@@ -190,6 +194,9 @@ Whereas these alternative APIs can alleviate
 part of the _context_ and _performance_ aspects of the main API,
 they come with challenges to implement _policy_
 and to adequately model _provenance_ and _trust_ in their responses.
+
+{:.comment data-author="Ruben D"}
+Alleviating context then meaning solving discovery issues?
 
 Crucially, such alternative APIs are always derived from the main API,
 because it is equivalent to the pod in the document-centric interpretation.

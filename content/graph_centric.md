@@ -46,6 +46,10 @@ serves as a _proxy_ for the underlying knowledge graph
 formed by the union of the pod's interlinked RDF documents—except that
 this union cannot adequately be reproduced
 because significant parts of its semantics are being discarded by that API.
+
+{:.comment data-author="Ruben D"}
+Maybe nitpicking, but its not as much discarded as just not being stored / not required, because reproducing the same information is possible without these aspects being explicitly written down.
+
 Solid applications looking to leverage
 the potential of this Linked Data knowledge graph,
 will thus always be hindered by

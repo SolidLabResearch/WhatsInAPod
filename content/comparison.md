@@ -58,6 +58,12 @@ and sending it back to the client.
 Offering alternative APIs might involve more computations,
 again depending on the underlying storage system.
 
+
+{:.comment data-author="Ruben D"}
+This next paragraph might be a bit too heavy for the end of the paper? 
+As we do not use these concepts before, nor after, 
+and they are not described in a way that makes them easy to process?
+
 The generation of API resources in the graph-centric interpretation
 involves a more complex process.
 First,

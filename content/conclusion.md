@@ -20,6 +20,10 @@ and subsequently systematic breakage when ad-hoc APIs eventually evolve.
 Furthermore, we show that the abstraction easily breaks
 when apps pursue slightly conflicting goals.
 
+
+{:.comment data-author="Ruben D"}
+Granted, but these out of band contracts are also partly necessitated by schema alignment of data, and are conversly tried to be solved within the document space by things such as the interop spec, where these contracts are done in the pod itself (although this also carries problems), so statement is maybe a tad too generic?
+
 These issues have so far largely gone unnoticed,
 because singular apps do not hit such problems,
 and different apps in a small ecosystem
@@ -41,7 +45,7 @@ seems to act as a proxy for a more fundamental concept,
 namely a hybrid, contextualized knowledge graph
 that provides flexible metadata to data as well as documents.
 Our proposed graph-centric interpretation
-put this concept at the heart of each pod,
+puts this concept at the heart of each pod,
 and considers the Solid Protocol's document interfaces
 to be specialized views of an underlying richer source of truth.
 This affords more flexibility—and hence independence—in
