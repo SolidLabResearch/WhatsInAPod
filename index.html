@@ -859,7 +859,7 @@ are equally important as the “knowledge graph” term in the definition.
 This means that off-the-shelf triplestores or quadstores
 do not qualify as implementations of a pod.
 Whereas they could possibly be used as physical storage for such a pod
-(see <a href="#comparison-storage">Subsection 6.3</a>),
+(see <a href="#comparison-storage">Subsection 6.1</a>),
 any implementation requires native support for documents and metadata.</p>
 
         <p>The ability to generate multiple Web APIs
@@ -995,23 +995,54 @@ while leaving intact the provenance and trust of the original context.</p>
   <section id="comparison" inlist="" rel="schema:hasPart" resource="#comparison">
 <div datatype="rdf:HTML" property="schema:description">
         <h2 property="schema:name">Comparative analysis</h2>
-        <p><span class="todo">intro</span></p>
+        <p>In this section,
+we compare the impact of the document- and graph-centric pod interpretations
+in terms of
+<a href="#comparison-storage">storage</a>,
+<a href="#comparison-publication">publication</a>,
+and <a href="#comparison-querying">query processing</a>.</p>
 
         <h3 id="comparison-storage">Storage</h3>
-        <div class="todo">
-          <p>document-centric:</p>
+        <p>In a document-centric interpretation,
+the underlying storage of a pod is typically managed
+as a document-based system,
+as evidenced by current Solid server implementations
+that leverage the file system or document-oriented databases.
+This preferences is explained by
+the direct match of the interface to the pod;
+in some ways,
+the document-centric view on a pod
+can be seen as a permissioned file system for the Web.
+Of course,
+quadstore-based storage can also be applied,
+in which case the fourth element of each quad
+typically indicates the document to which it belongs
+(and, hence, the associated metadata such as permissions).
+The benefit of the latter
+is that they might enable higher performance for derived APIs,
+although there is still the requirement of supporting non-RDF documents,
+such as for instance images or movies.</p>
 
-          <ul>
-            <li>likely document store</li>
-            <li>quad store, but fourth element always document</li>
-          </ul>
+        <p>The graph-centric interpretation imposes stronger requirements
+on the underlying storage.
+On the one hand,
+different metadata might have different granularities,
+so there is no longer a natural document grouping.
+On the other hand,
+different selections need to be created from the raw data,
+so there specific document organizations provide no universal benefit across APIs.
+Consequently,
+document-based storage systems are not a good technological fit.
+In the long term,
+native implementations of hybrid, contextualized will be a necessity.
+In the medium term,
+they can be emulated on top of quadstores
+and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://w3c.github.io/rdf-star/cg-spec/editors_draft.html">RDF-star stores</a> <span class="references">[<a href="#ref-18">18</a>]</span>.
+Whereas quadstores can easily associate metadata with RDF 1.0 triples,
+RDF-star stores could extend this functionality to RDF 1.1
+when Solid pods start using graphs to model data.</p>
 
-          <p>graph-centric:
-- quad store will work best
-- possibly RDF-star</p>
-        </div>
-
-        <h3 id="comparison-storage">Publication</h3>
+        <h3 id="comparison-publication">Publication</h3>
         <div class="todo">
           <p>document-centric:</p>
 
@@ -1023,7 +1054,7 @@ while leaving intact the provenance and trust of the original context.</p>
 - needs high-performance view definitions and applications</p>
         </div>
 
-        <h3 id="comparison-storage">Querying</h3>
+        <h3 id="comparison-querying">Querying</h3>
         <div class="todo">
           <p>document-centric:</p>
 
@@ -1077,7 +1108,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-18">18</a>, <a href="#ref-13">13</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-19">19</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -1204,6 +1235,8 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-17">[17]</dt>
   <dd resource="https://dx.doi.org/10.1016/j.websem.2016.03.003" typeof="schema:Article">Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016). doi:10.1016/j.websem.2016.03.003</dd>
   <dt id="ref-18">[18]</dt>
+  <dd resource="https://w3c.github.io/rdf-star/cg-spec/editors_draft.html" typeof="schema:CreativeWork">Hartig, O., Champin, P.-A., Kellogg, G., Seaborne, A. eds: HTTP Semantics. <a href="https://w3c.github.io/rdf-star/cg-spec/editors_draft.html">https:/​/​w3c.github.io/rdf-star/cg-spec/editors_draft.html</a> (2022).</dd>
+  <dt id="ref-19">[19]</dt>
   <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
 </dl>
 </section>
