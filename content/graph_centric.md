@@ -75,6 +75,7 @@ and “contextualized”
 the ability to associate each of its individual documents and statements
 with metadata such as policies, provenance, and trust._
 
+### Example
 For example,
 the pod `https://sasha.pod/` could be a hybrid knowledge graph
 consisting of:
@@ -94,21 +95,90 @@ Examples of associated metadata within this pod are:
 - We trust that the test result is unmodified and accurate,
   because it is certified by a medical professional.
 
-### Implementation considerations # {#graph-centric-implementation}
-<span class="todo"></span>
+Below is one possible Web API on top of this pod
+that conforms to the Solid Protocol:
+
+- container `https://sasha.pod/`
+  - container `contacts/work/`
+    - RDF document `.acl` _(for access control)_
+    - RDF document `amal.ttl`
+    - RDF document `lucian.ttl`
+    - …
+  - …
+
+The same pod could simultaneously offer other Web APIs through the Solid Protocol:
+
+- container `https://sasha.pod/`
+  - container `people/birthdays/`
+    - RDF document `.acr` _(for access control)_
+    - RDF document `january.ttl`
+    - RDF document `february.ttl`
+    - …
+  - …
+
+Furthermore, the pod could have SPARQL and QPF interfaces on top of its knowledge graph,
+in addition to other Web APIs.
 
 ### Aspects of RDF data in the graph # {#graph-centric-aspects}
+Importantly,
+the “hybrid” and “contexualized” qualifiers
+are equally important as the “knowledge graph” term in the definition.
+This means that off-the-shelf triplestores or quadstores
+do not qualify as implementations of a pod.
+Whereas they could possibly be used as physical storage for such a pod
+(see [](#comparison-storage)),
+any implementation requires native support for documents and metadata.
+
+The ability to generate multiple Web APIs
+that act as views on the data
+is required functionality for the pod.
+Below,
+we discuss how the aspects from [](#document-centric-aspects)
+are modeled in the pod and the resulting APIs.
 
 - **Context**:
-  <span class="todo"></span>
-- **Policies**:
-  <span class="todo"></span>
+  Each triple or document in the pod
+  can be associated with multiple contexts.
+  For instance,
+  users could assign triples to specific resources in Web APIs
+  (“this triple is in the documents `/records/2022-15-10.ttl`
+   and `/records/2022-15-10-summary.ttl`”),
+  or smaller ad-hoc groupings could be created
+  (“these triples have a topical relationship”).
+  An API can reflect this context
+  through it resource structure,
+  or by including explicit metadata in its response.
+
+- **Policy**:
+  Policies could be assigned to resources in a Web API
+  and/or to individual triples.
+  In case the policies are assigned to individual triples,
+  their inclusion in a response can be conditionally determined
+  by whether or not the requesting agent has access.
+
 - **Provenance**:
-  <span class="todo"></span>
+  Provenance can be associated with individual triples or groups of triples,
+  similar to how generic context is modeled.
+
 - **Trust**:
-  <span class="todo"></span>
+  Trust can be expressed either as a function of provenance,
+  or explicitly assigned to (groups of) triples, like context.
+
 - **Performance**:
-  <span class="todo"></span>
+  The performance is no longer a function of the pod structure itself,
+  but rather reflected in how well a specific API
+  matches the access patterns of a given use case.
+  In other words,
+  performance concerns can be addressed
+  by defining relevant APIs on top of the underlying knowledge graph.
+
+Note that, in contrast to the document-centric interpretation,
+all 5 aspects are modeled _explicitly_:
+either as metadata in the knowledge graph
+that can then be reflected in an API
+(for _context_, _policy_, _provenance_, and _trust_),
+or in the definition of a specific API
+(for _performance_).
 
 ### View-based use case modeling
 

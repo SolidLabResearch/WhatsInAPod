@@ -27,6 +27,8 @@ exposed through the Solid Protocol,
 where data and access control rules are stored
 in specific RDF and non-RDF documents within that hierarchy._
 
+### Example
+
 For example,
 a Solid pod would be fully defined
 by the following hierarchy and the contents of its documents:
@@ -114,12 +116,12 @@ to carry meaning with regard to the following aspects:
 - _(implicit)_ **Context**:
   the occurrence of certain triples within the same document
   often implies that they are somehow interrelated,
-  and that those triples somehow relate to the document.
-  This latter aspect is sometimes visible within certain triples,
+  and that these triples somehow relate to the document.
+  This topical relation is sometimes visible within certain triples,
   whose subject (e.g., `https://sasha.pod/people/sasha#me`)
   defines a URL fragment (e.g., `#me`)
   on the document identifier (e.g., `https://sasha.pod/people/sasha`).
-- _(explicit)_ **Policies**:
+- _(explicit)_ **Policy**:
   both the [WAC](cite:citesAsAuthority WAC)
   and the [ACP](cite:citesAsAuthority ACP) specifications
   assign authorizations on a document level of granularity.
@@ -146,7 +148,7 @@ to carry meaning with regard to the following aspects:
   in order to optimize the number of HTTP requests and the used bandwidth.
 
 We remark that of these 5 aspects,
-only the _policies_ on the document are modelled explicitly.
+only the _policy_ on the document is modelled explicitly.
 The _context_ is implicitly assumed
 because triples occurring in the same place
 typically were created by the same or related write operations,
@@ -185,8 +187,8 @@ suggests to expose this data through a read-only Quad Pattern Fragments (QPF) i
 to speed up the client-side processing of SPARQL queries
 over the entire pod.
 Whereas these alternative APIs can alleviate
-part of the _context_ and _performance_ constraints of the main API,
-they come with challenges to implement _policies_
+part of the _context_ and _performance_ aspects of the main API,
+they come with challenges to implement _policy_
 and to adequately model _provenance_ and _trust_ in their responses.
 
 Crucially, such alternative APIs are always derived from the main API,
@@ -305,7 +307,7 @@ such as accepting that certain use cases will be slower than others.
 Unfortunately,
 the imposed grouping of multiple different aspects in the same document
 can also lead to more sensitive and insurmountable conflicts
-for the _policies_, _provenance_, and _trust_ aspects.
+for the _policy_, _provenance_, and _trust_ aspects.
 
 Since the coupling of policies to document organization
 provides the only mechanism of control in the document-centric view,
