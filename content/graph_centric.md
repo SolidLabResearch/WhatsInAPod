@@ -16,7 +16,7 @@ On the other hand,
 we showed concrete evidence in [](#document-centric-consequences)
 that no single such hierarchy is able to
 reconcile the conflicting constraints of different use cases,
-especially given that core aspects such as permissions and provenance
+especially given that core aspects such as policies and provenance
 can only be applied with a document-level granularity.
 
 So while we recognize the importance of document-based Web APIs,
@@ -27,7 +27,7 @@ While the creation of multiple views has been attempted for Solid pods
 with SPARQL and QPF interfaces,
 their direct derivation from the main API
 leads them to still inherit that API's mismatched constraints
-on the modeling of permissions, provenance, and trust.
+on the modeling of policies, provenance, and trust.
 
 In other words,
 aiming to derive richer views from the main pod API
@@ -53,7 +53,27 @@ the limitations of one arbitrarily formed document API
 acting as its sole access gateway.
 
 ### Definition # {#graph-centric-definition}
-<span class="todo"></span>
+Given the above observations within the document-centric interpretation,
+we create a new interpretation
+that shifts the function of a pod's main API
+from being the pod itself
+to acting as _one of many_ possible interfaces
+to an underlying knowledge graph,
+which _is_ the pod.
+The _source of truth_ is a knowledge graph
+consisting of documents as well as RDF statements,
+from which multiple Web APIs can be derived.
+Hence, no particular API is more prominent than any other.
+We define it as follows:
+
+_In the graph-centric interpretation,
+each <dfn id="dfn-graph-centric">Solid pod</dfn>
+is a hybrid, contextualized knowledge graph,
+wherein “hybrid”
+indicates first-class support for both documents and RDF statements,
+and “contextualized”
+the ability to associate each of its individual documents and statements
+with metadata such as policies, provenance, and trust._
 
 ### Implementation considerations # {#graph-centric-implementation}
 <span class="todo"></span>
@@ -62,7 +82,7 @@ acting as its sole access gateway.
 
 - **Context**:
   <span class="todo"></span>
-- **Permissions**:
+- **Policies**:
   <span class="todo"></span>
 - **Provenance**:
   <span class="todo"></span>

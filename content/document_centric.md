@@ -17,7 +17,7 @@ _is_ the pod in its entirety.
 Within this interpretation,
 the complete state of the pod is equivalent
 to the single Web API through which it is available;
-the _ground truth_ of the pod is solely that specific Web API.
+the _source of truth_ is solely that specific Web API.
 That brings us to the following definition:
 
 _In the document-centric interpretation,
@@ -116,7 +116,7 @@ to carry meaning with regard to the following aspects:
   whose subject (e.g., `https://sasha.pod/people/sasha#me`)
   defines a URL fragment (e.g., `#me`)
   on the document identifier (e.g., `https://sasha.pod/people/sasha`).
-- _(explicit)_ **Permissions**:
+- _(explicit)_ **Policies**:
   both the [WAC](cite:citesAsAuthority WAC)
   and the [ACP](cite:citesAsAuthority ACP) specifications
   assign authorizations on a document level of granularity.
@@ -143,14 +143,14 @@ to carry meaning with regard to the following aspects:
   in order to optimize the number of HTTP requests and the used bandwidth.
 
 We remark that of these 5 aspects,
-only the _permissions_ on the document are modelled explicitly.
+only the _policies_ on the document are modelled explicitly.
 The _context_ is implicitly assumed
 because triples occurring in the same place
 typically were created by the same or related write operations,
 and because those triples are necessarily read together by apps.
 The _provenance_ and _trust_ are similarly derived
 from implicit assumptions about a shared origin,
-and the knowledge of specific permissions
+and the knowledge of specific policies
 and thus agents that could have written to the document.
 Notably,
 the fact that an identifier (e.g., `https://sasha.pod/people/`)
@@ -183,7 +183,7 @@ to speed up the client-side processing of SPARQL queries
 over the entire pod.
 Whereas these alternative APIs can alleviate
 part of the _context_ and _performance_ constraints of the main API,
-they come with challenges to implement _permissions_
+they come with challenges to implement _policies_
 and to adequately model _provenance_ and _trust_ in their responses.
 
 Crucially, such alternative APIs are always derived from the main API,
@@ -295,16 +295,16 @@ whether medical records are organized by date
 or by measurement over time,
 depends on the specifics of a current use case.
 
-#### Permission modeling mismatches # {#permission-mismatches}
+#### Policy modeling mismatches # {#policy-mismatches}
 Contextual- and performance-based grouping
 are trade-offs that can be overcome with compromises,
 such as accepting that certain use cases will be slower than others.
 Unfortunately,
 the imposed grouping of multiple different aspects in the same document
 can also lead to more sensitive and insurmountable conflicts
-for the _permissions_, _provenance_, and _trust_ aspects.
+for the _policies_, _provenance_, and _trust_ aspects.
 
-Since the coupling of permissions to document organization
+Since the coupling of policies to document organization
 provides the only mechanism of control in the document-centric view,
 some use cases with conflicting requirements
 cannot effectively be realized today.
@@ -323,7 +323,7 @@ it should only access names and birthdays.
 
 Insurmountable conflicts become even more apparent with the medical use case.
 The results of a given blood test might be stored in a single document,
-and thus have a single permission boundary associated with it.
+and thus have a single policy boundary associated with it.
 If that test result contains both vitamin levels and an HIV status,
 then the document-based access control
 prevents users from only giving access to their vitamin levels.
