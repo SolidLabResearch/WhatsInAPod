@@ -1003,7 +1003,7 @@ in terms of
 and <a href="#comparison-querying">query processing</a>.</p>
 
         <h3 id="comparison-storage">Storage</h3>
-        <p>In a document-centric interpretation,
+        <p>In the document-centric interpretation,
 the underlying storage of a pod is typically managed
 as a document-based system,
 as evidenced by current Solid server implementations
@@ -1080,19 +1080,50 @@ can be applied on the triple or shape level,
 rather than to documents.</p>
 
         <h3 id="comparison-querying">Querying</h3>
-        <div class="todo">
-          <p>document-centric:</p>
+        <p>In the document-centric interpretation,
+the complexity of the required query processing
+is a direct function of whether or not the data resides in a single document,
+i.e.,
+whether the concrete API of the pod
+happens to coincide with the access patterns of a specific use case.
+Any mismatch requires a multi-document selection,
+which might involve <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://dx.doi.org/10.1007/s13222-013-0122-1">traversal-based query processing</a> <span class="references">[<a href="#ref-23">23</a>]</span>,
+possibly <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1007/978-3-030-91167-6_5"><a href="https://www.bartbogaerts.eu/articles/2021/005-RuleML-GuidedLink-SubwebSpec/SubwebSpecifications.pdf">guided by the pod’s known indexes or structure</a></span> <span class="references">[<a href="#ref-24">24</a>]</span>.
+Furthermore,
+in order to arrive at a complete result set,
+all relevant data and intermediary links need to be accessible by the client,
+which might not be the case if there is a mismatch
+between the granularity of the documents and the policies on the data.</p>
 
-          <ul>
-            <li>link-traversal-based query processing</li>
-            <li>possibly aided by indexes</li>
-          </ul>
-
-          <p>graph-centric:
-- LDF with Comunica, choose most appropriate interfaces
-- automatically generate relevant interfaces
-- just a SPARQL endpoint will not be sufficient because of federated queries</p>
-        </div>
+        <p>Since the graph-centric interpretation
+allows for multiple APIs,
+client can select those APIs
+that <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1016/j.websem.2016.03.003"><a href="https://linkeddatafragments.org/publications/jws2016.pdf">best match the access patterns of their use case</a></span> <span class="references">[<a href="#ref-17">17</a>]</span>.
+<span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1007/978-3-030-00668-6_15"><a href="https://comunica.github.io/Article-ISWC2018-Resource/">Query engines for heterogeneous interfaces</a></span> <span class="references">[<a href="#ref-25">25</a>]</span>
+can identify relevant APIs,
+and over time,
+servers might analyze data usage
+to determine new API structures that might improve performance.
+This includes hierarchical Solid Protocol interfaces,
+where the partitioning in resources is largely driven by the server,
+or more expressive interfaces such as QPF and SPARQL,
+whose resources are more client-driven.
+We note that no particular interface is expected
+to become the best or ultimate choice.
+Since performance is essentially a function
+of the match between server-side API partitioning
+and client-side request patterns,
+a document-based API might outperform an expressive query-based API
+if cached documents happen to align with a client-side request.
+Furthermore,
+the needed data for any given use case
+could be located across a small or large number of different pods,
+and more expressive interfaces do not necessarily outperform
+less expressive interfaces for <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1016/j.websem.2016.03.003"><a href="https://linkeddatafragments.org/publications/jws2016.pdf">federation</a></span> <span class="references">[<a href="#ref-17">17</a>]</span>.
+Hence,
+a combination of different APIs
+will likely always be needed for high query performance,
+in addition to the other aspects favoring a graph-centric interpretation.</p>
 
       </div>
 </section>
@@ -1133,7 +1164,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-23">23</a>, <a href="#ref-13">13</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-26">26</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -1270,6 +1301,12 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-22">[22]</dt>
   <dd resource="https://dx.doi.org/10.1145/3487553.3524630" typeof="schema:Article">Debackere, L., Colpaert, P., Taelman, R., Verborgh, R.: A policy-oriented architecture for enforcing consent in Solid. In: WWW ’22 Companion, Proceedings. Association for Computing Machinery (ACM) (2022). doi:10.1145/3487553.3524630</dd>
   <dt id="ref-23">[23]</dt>
+  <dd resource="http://dx.doi.org/10.1007/s13222-013-0122-1" typeof="schema:Article">Hartig, O.: An Overview on Execution Strategies for Linked Data Queries. Datenbank-Spektrum. 13, 89–99 (2013).</dd>
+  <dt id="ref-24">[24]</dt>
+  <dd resource="https://dx.doi.org/10.1007/978-3-030-91167-6_5" typeof="schema:Article">Bogaerts, B., Ketsman, B., Zeboudj, Y., Aamer, H., Taelman, R., Verborgh, R.: Link Traversal with Distributed Subweb Specifications. In: Moschoyiannis, S., Peñaloza, R., Vanthienen, J., Soylu, A., and Roman, D. (eds.) Proceedings of the 5th International Joint Conference on Rules and Reasoning. pp. 62–79. Springer (2021). doi:10.1007/978-3-030-91167-6_5</dd>
+  <dt id="ref-25">[25]</dt>
+  <dd resource="https://dx.doi.org/10.1007/978-3-030-00668-6_15" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: a Modular SPARQL Query Engine for the Web. In: Vrandečić, D., Bontcheva, K., Suárez-Figueroa, M.C., Presutti, V., Celino, I., Sabou, M., Kaffee, L.-A., and Simperl, E. (eds.) Proceedings of the 17th International Semantic Web Conference. pp. 239–255. Springer (2018). doi:10.1007/978-3-030-00668-6_15</dd>
+  <dt id="ref-26">[26]</dt>
   <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
 </dl>
 </section>
