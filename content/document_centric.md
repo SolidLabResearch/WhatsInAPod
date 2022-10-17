@@ -66,9 +66,12 @@ Importantly,
 the current [Solid technical reports](cite:citesAsAuthority solid_technical_reports)
 do not impose any specific container structure onto a pod
 beyond the presence of a root container `/`.
+Therefore, _the_ Solid Web API does not exist;
+only the Solid Protocol to create an API for each pod.
 Some past [suggestions](https://github.com/solid/solid-spec/blob/master/recommendations-server.md)
-(such as `/profile`, `/inbox/`, and `/settings/` containers)
-are present as defaults in certain server implementations.
+are nonetheless present as defaults
+(such as `/profile/`, `/inbox/`, and `/settings/` containers)
+in certain server implementations.
 Since these are not standardized across the ecosystem,
 their presence is not enforced by the server,
 and as such cannot be relied upon.
