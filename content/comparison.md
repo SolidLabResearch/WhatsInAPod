@@ -7,7 +7,7 @@ in terms of
 and [query processing](#comparison-querying).
 
 ### Storage # {#comparison-storage}
-In a document-centric interpretation,
+In the document-centric interpretation,
 the underlying storage of a pod is typically managed
 as a document-based system,
 as evidenced by current Solid server implementations
@@ -84,14 +84,47 @@ can be applied on the triple or shape level,
 rather than to documents.
 
 ### Querying # {#comparison-querying}
-<div class="todo" markdown="1">
-document-centric:
+In the document-centric interpretation,
+the complexity of the required query processing
+is a direct function of whether or not the data resides in a single document,
+i.e.,
+whether the concrete API of the pod
+happens to coincide with the access patterns of a specific use case.
+Any mismatch requires a multi-document selection,
+which might involve [traversal-based query processing](cite:citesAsAuthority LinkedDataQueryStrategies),
+possibly [guided by the pod's known indexes or structure](cite:citesAsEvidence bogaerts_rulemlrr_2021).
+Furthermore,
+in order to arrive at a complete result set,
+all relevant data and intermediary links need to be accessible by the client,
+which might not be the case if there is a mismatch
+between the granularity of the documents and the policies on the data.
 
-- link-traversal-based query processing
-- possibly aided by indexes
-
-graph-centric:
-- LDF with Comunica, choose most appropriate interfaces
-- automatically generate relevant interfaces
-- just a SPARQL endpoint will not be sufficient because of federated queries
-</div>
+Since the graph-centric interpretation
+allows for multiple APIs,
+client can select those APIs
+that [best match the access patterns of their use case](cite:citesAsEvidence verborgh_jws_2016).
+[Query engines for heterogeneous interfaces](cite:citesAsEvidence Comunica)
+can identify relevant APIs,
+and over time,
+servers might analyze data usage
+to determine new API structures that might improve performance.
+This includes hierarchical Solid Protocol interfaces,
+where the partitioning in resources is largely driven by the server,
+or more expressive interfaces such as QPF and SPARQL,
+whose resources are more client-driven.
+We note that no particular interface is expected
+to become the best or ultimate choice.
+Since performance is essentially a function
+of the match between server-side API partitioning
+and client-side request patterns,
+a document-based API might outperform an expressive query-based API
+if cached documents happen to align with a client-side request.
+Furthermore,
+the needed data for any given use case
+could be located across a small or large number of different pods,
+and more expressive interfaces do not necessarily outperform
+less expressive interfaces for [federation](cite:citesAsEvidence verborgh_jws_2016).
+Hence,
+a combination of different APIs
+will likely always be needed for high query performance,
+in addition to the other aspects favoring a graph-centric interpretation.
