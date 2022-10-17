@@ -13,8 +13,7 @@ throughout the article.
     constrains HTTP with interaction rules
     for recursive containers of RDF and non-RDF documents.
   - The [<dfn id="dfn-solid-protocol">Solid Protocol</dfn>](cite:citesAsAuthority Solid_protocol)
-    constrains HTTP with [authentication](cite:citesAsAuthority Solid_OIDC)
-    and [authorization](cite:citesAsAuthority WAC,ACP),
+    constrains HTTP with authentication and authorization,
     and with interaction rules
     for recursive containers of RDF and non-RDF documents
     (inspired by LDP).
@@ -56,5 +55,6 @@ Let us exemplify some of these definitions through our use cases:
   - Medical records are stored in `https://sasha.pod/private/acme-hospital/`
   by date, such as:
     - `https://sasha.pod/private/acme-hospital/2022/10/15/test-results.ttl`
-- The agent with WebID `https://sasha.pod/people/sasha#me`
+- The WebID `https://sasha.pod/people/sasha#me` identifies a person named Sasha.
+- The agent identified by `https://sasha.pod/people/sasha#me`
   is allowed to access all documents on `https://sasha.pod/`.

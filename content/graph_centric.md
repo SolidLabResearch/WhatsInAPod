@@ -75,6 +75,25 @@ and “contextualized”
 the ability to associate each of its individual documents and statements
 with metadata such as policies, provenance, and trust._
 
+For example,
+the pod `https://sasha.pod/` could be a hybrid knowledge graph
+consisting of:
+
+- RDF triples expressing contact details of `https://sasha.pod/people/amal#me`
+- RDF triples expressing contact details of `https://sasha.pod/people/lucian#me`
+- a PDF document containing medical images dated 2022-09-15
+- RDF triples representing a blood test result dated 2022-10-15
+- …
+
+Examples of associated metadata within this pod are:
+
+- The RDF triples about Amal form a shared context with specific trust and provenance.
+- A policy states that professional contact names can be publicly readable.
+- A policy states that contacts' phone numbers are only visible to Sasha.
+- The provenance of Lucian's phone number is a specific email.
+- We trust that the test result is unmodified and accurate,
+  because it is certified by a medical professional.
+
 ### Implementation considerations # {#graph-centric-implementation}
 <span class="todo"></span>
 
