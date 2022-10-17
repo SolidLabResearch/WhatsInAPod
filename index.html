@@ -913,24 +913,81 @@ by defining relevant APIs on top of the underlying knowledge graph.</p>
           </li>
         </ul>
 
-        <p>Note that, in contrast to the document-centric interpretation,
-all 5 aspects are modeled <em>explicitly</em>:
-either as metadata in the knowledge graph
-that can then be reflected in an API
-(for <em>context</em>, <em>policy</em>, <em>provenance</em>, and <em>trust</em>),
-or in the definition of a specific API
-(for <em>performance</em>).</p>
+        <p>The implementation of those aspects
+differs from the document-centric interpretation
+in two crucial ways:</p>
+
+        <ol>
+          <li>All 5 aspects are <strong>modeled <em>explicitly</em></strong>:
+ either as metadata in the knowledge graph
+ that can then be reflected in an API
+ (for <em>context</em>, <em>policy</em>, <em>provenance</em>, and <em>trust</em>),
+ or in the definition of a specific API
+ (for <em>performance</em>).</li>
+          <li>Each aspect can have a <strong>different granularity</strong>.
+ For instance,
+ a certain group of triples could share the same provenance,
+ but have different policies applied to them.</li>
+        </ol>
 
         <h3 id="view-based-use-case-modeling">View-based use case modeling</h3>
+        <p>We will now revisit how the graph-centric interpretation
+addresses the mismatches of the document-centric interpretation
+(<a href="#document-centric-consequences">Subsection 4.4</a>).</p>
 
         <h4 id="single-app-modeling"> Single-app modeling</h4>
-        <p><span class="todo">compare to <a href="#single-app-mismatches">Subsubsection 4.4.1</a></span></p>
+        <p>Applications are no longer restricted to a single hierarchy
+for modeling information,
+because the view-based approach allows overlapping resources
+without requiring copies.</p>
+
+        <p>For example,
+if a person is both a colleague and a badminton player,
+their details can be available through both
+the documents <code>/contacts/work/amal.ttl</code> and <code>/contacts/sports/amal.ttl</code>,
+wherein
+the containers <code>/contacts/work/</code> and <code>/contacts/sports/</code>
+could have different policies associated with them.
+From the perspective of a consumer,
+neither document is more authoritative than the other,
+as they are generated from the same triples in the underlying knowledge graph.
+Similarly,
+medical records can be organized
+by both date (<code>/medical/2022/10/15.ttl</code>)
+and topical evolution (<code>/medical/heart-rate-2021-2022.ttl</code>),
+allowing them to have different provenance and trust.</p>
 
         <h4 id="cross-app-modeling"> Cross-app modeling</h4>
-        <p><span class="todo">compare to <a href="#cross-app-mismatches">Subsubsection 4.4.2</a></span></p>
+        <p>Every app can choose the modeling that best fit its use case,
+as the same knowledge graph can be exposed through multiple Web APIs.
+This allows applications to find the API that best matches its access patterns
+or, conversely, the pod to define APIs based on the needs of use cases.</p>
+
+        <p>For example,
+the address book app can be built using an API
+that organizes the attributes of a person in a single document,
+whereas the birthday app can group all birthdays together.
+That way, neither application downloads more data than necessary.
+Similarly,
+medical data can be grouped depending on the analyses that will be performed.
+Note that exact matches of access patterns to APIs
+will not always be possible nor desired;
+the idea is rather to offer a couple of core APIs
+that minimize overhead
+across a number of use cases <span class="references">[<a href="#ref-17">17</a>]</span>.</p>
 
         <h4 id="permission-modeling">Permission modeling</h4>
-        <p><span class="todo">compare to <a href="#permission-mismatches"></a></span></p>
+        <p>Finally,
+the granularity of resources in a given API
+can be aligned with the granularity of policies,
+since this granularity does not have to be shared with the other aspects.</p>
+
+        <p>For example,
+the birthday app could have a read/write API to the contacts
+that does not include access to their email addresses or phone numbers.
+A derived medical report could only display vitamin levels
+but leave out highly sensitive information such as HIV status,
+while leaving intact the provenance and trust of the original context.</p>
 
       </div>
 </section>
@@ -1020,7 +1077,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-17">17</a>, <a href="#ref-13">13</a>]</span>,
+Proposals typically focus on making API semantics explicit <span class="references">[<a href="#ref-18">18</a>, <a href="#ref-13">13</a>]</span>,
 yet they inevitably inherit the abstraction’s mismatches.
 This is why we instead suggest pushing the vision forward
 by separating the semantics from the API altogether.</p>
@@ -1145,6 +1202,8 @@ all depends on which view offers the best fit for a specific purpose.</p>
   <dt id="ref-16">[16]</dt>
   <dd resource="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/" typeof="schema:CreativeWork">Query (QPF). <a href="https://docs.inrupt.com/ess/latest/query/qpf-endpoint/">https:/​/​docs.inrupt.com/ess/latest/query/qpf-endpoint/</a> (2022).</dd>
   <dt id="ref-17">[17]</dt>
+  <dd resource="https://dx.doi.org/10.1016/j.websem.2016.03.003" typeof="schema:Article">Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016). doi:10.1016/j.websem.2016.03.003</dd>
+  <dt id="ref-18">[18]</dt>
   <dd resource="https://shapetrees.org/TR/specification/" typeof="schema:CreativeWork">Bingham, J., Prud’hommeaux, E. eds: Shape Trees Specification. <a href="https://shapetrees.org/TR/specification/">https:/​/​shapetrees.org/TR/specification/</a> (2021).</dd>
 </dl>
 </section>
