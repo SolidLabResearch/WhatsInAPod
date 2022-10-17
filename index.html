@@ -338,6 +338,8 @@ exposed through the Solid Protocol,
 where data and access control rules are stored
 in specific RDF and non-RDF documents within that hierarchy.</em></p>
 
+        <h3 id="example">Example</h3>
+
         <p>For example,
 a Solid pod would be fully defined
 by the following hierarchy and the contents of its documents:</p>
@@ -442,12 +444,12 @@ to carry meaning with regard to the following aspects:</p>
           <li><em>(implicit)</em> <strong>Context</strong>:
 the occurrence of certain triples within the same document
 often implies that they are somehow interrelated,
-and that those triples somehow relate to the document.
-This latter aspect is sometimes visible within certain triples,
+and that these triples somehow relate to the document.
+This topical relation is sometimes visible within certain triples,
 whose subject (e.g., <code>https:/​/​sasha.pod/people/sasha#me</code>)
 defines a URL fragment (e.g., <code>#me</code>)
 on the document identifier (e.g., <code>https:/​/​sasha.pod/people/sasha</code>).</li>
-          <li><em>(explicit)</em> <strong>Policies</strong>:
+          <li><em>(explicit)</em> <strong>Policy</strong>:
 both the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">WAC</a> <span class="references">[<a href="#ref-10">10</a>]</span>
 and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/">ACP</a> <span class="references">[<a href="#ref-11">11</a>]</span> specifications
 assign authorizations on a document level of granularity.
@@ -475,7 +477,7 @@ in order to optimize the number of HTTP requests and the used bandwidth.</li>
         </ul>
 
         <p>We remark that of these 5 aspects,
-only the <em>policies</em> on the document are modelled explicitly.
+only the <em>policy</em> on the document is modelled explicitly.
 The <em>context</em> is implicitly assumed
 because triples occurring in the same place
 typically were created by the same or related write operations,
@@ -514,8 +516,8 @@ suggests to expose this data through a read-only Quad Pattern Fragments (QPF) i
 to speed up the client-side processing of SPARQL queries
 over the entire pod.
 Whereas these alternative APIs can alleviate
-part of the <em>context</em> and <em>performance</em> constraints of the main API,
-they come with challenges to implement <em>policies</em>
+part of the <em>context</em> and <em>performance</em> aspects of the main API,
+they come with challenges to implement <em>policy</em>
 and to adequately model <em>provenance</em> and <em>trust</em> in their responses.</p>
 
         <p>Crucially, such alternative APIs are always derived from the main API,
@@ -550,10 +552,10 @@ we will examine and critique the consequences
 of the document-centric interpretation of a pod.
 Specifically,
 we study the limitations of the single hierarchy it causes (<a href="#document-centric-definition">Subsection 4.1</a>),
-and the effects of the implicit semantics in its structure (<a href="#document-centric-api">Subsubsection 4.2.1</a>)
-and documents (<a href="#document-centric-aspects">Subsubsection 4.2.2</a>).
+and the effects of the implicit semantics in its structure (<a href="#document-centric-api">Subsubsection 4.3.1</a>)
+and documents (<a href="#document-centric-aspects">Subsubsection 4.3.2</a>).
 While some consequences could in theory
-be mitigated by alternative APIs (<a href="#document-centric-alternative-apis">Subsubsection 4.2.3</a>),
+be mitigated by alternative APIs (<a href="#document-centric-alternative-apis">Subsubsection 4.3.3</a>),
 the effectiveness thereof is hindered
 by the necessity of those alternatives to derive from the main API structure.</p>
 
@@ -642,7 +644,7 @@ such as accepting that certain use cases will be slower than others.
 Unfortunately,
 the imposed grouping of multiple different aspects in the same document
 can also lead to more sensitive and insurmountable conflicts
-for the <em>policies</em>, <em>provenance</em>, and <em>trust</em> aspects.</p>
+for the <em>policy</em>, <em>provenance</em>, and <em>trust</em> aspects.</p>
 
         <p>Since the coupling of policies to document organization
 provides the only mechanism of control in the document-centric view,
@@ -724,7 +726,7 @@ and in particular of the Solid Protocol,
 which offers the building blocks to construct such APIs
 with the appropriate authentication and authorization.
 On the other hand,
-we showed concrete evidence in <a href="#document-centric-consequences">Subsection 4.3</a>
+we showed concrete evidence in <a href="#document-centric-consequences">Subsection 4.4</a>
 that no single such hierarchy is able to
 reconcile the conflicting constraints of different use cases,
 especially given that core aspects such as policies and provenance
@@ -786,6 +788,7 @@ and “contextualized”
 the ability to associate each of its individual documents and statements
 with metadata such as policies, provenance, and trust.</em></p>
 
+        <h3 id="example-1">Example</h3>
         <p>For example,
 the pod <code>https:/​/​sasha.pod/</code> could be a hybrid knowledge graph
 consisting of:</p>
@@ -809,31 +812,122 @@ consisting of:</p>
 because it is certified by a medical professional.</li>
         </ul>
 
-        <h3 id="graph-centric-implementation">Implementation considerations</h3>
-        <p><span class="todo"></span></p>
-
-        <h3 id="graph-centric-aspects">Aspects of RDF data in the graph</h3>
+        <p>Below is one possible Web API on top of this pod
+that conforms to the Solid Protocol:</p>
 
         <ul>
-          <li><strong>Context</strong>:
-<span class="todo"></span></li>
-          <li><strong>Policies</strong>:
-<span class="todo"></span></li>
-          <li><strong>Provenance</strong>:
-<span class="todo"></span></li>
-          <li><strong>Trust</strong>:
-<span class="todo"></span></li>
-          <li><strong>Performance</strong>:
-<span class="todo"></span></li>
+          <li>container <code>https:/​/​sasha.pod/</code>
+            <ul>
+              <li>container <code>contacts/work/</code>
+                <ul>
+                  <li>RDF document <code>.acl</code> <em>(for access control)</em></li>
+                  <li>RDF document <code>amal.ttl</code></li>
+                  <li>RDF document <code>lucian.ttl</code></li>
+                  <li>…</li>
+                </ul>
+              </li>
+              <li>…</li>
+            </ul>
+          </li>
         </ul>
+
+        <p>The same pod could simultaneously offer other Web APIs through the Solid Protocol:</p>
+
+        <ul>
+          <li>container <code>https:/​/​sasha.pod/</code>
+            <ul>
+              <li>container <code>people/birthdays/</code>
+                <ul>
+                  <li>RDF document <code>.acr</code> <em>(for access control)</em></li>
+                  <li>RDF document <code>january.ttl</code></li>
+                  <li>RDF document <code>february.ttl</code></li>
+                  <li>…</li>
+                </ul>
+              </li>
+              <li>…</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>Furthermore, the pod could have SPARQL and QPF interfaces on top of its knowledge graph,
+in addition to other Web APIs.</p>
+
+        <h3 id="graph-centric-aspects">Aspects of RDF data in the graph</h3>
+        <p>Importantly,
+the “hybrid” and “contexualized” qualifiers
+are equally important as the “knowledge graph” term in the definition.
+This means that off-the-shelf triplestores or quadstores
+do not qualify as implementations of a pod.
+Whereas they could possibly be used as physical storage for such a pod
+(see <a href="#comparison-storage">Subsection 6.3</a>),
+any implementation requires native support for documents and metadata.</p>
+
+        <p>The ability to generate multiple Web APIs
+that act as views on the data
+is required functionality for the pod.
+Below,
+we discuss how the aspects from <a href="#document-centric-aspects">Subsubsection 4.3.2</a>
+are modeled in the pod and the resulting APIs.</p>
+
+        <ul>
+          <li>
+            <p><strong>Context</strong>:
+Each triple or document in the pod
+can be associated with multiple contexts.
+For instance,
+users could assign triples to specific resources in Web APIs
+(“this triple is in the documents <code>/records/2022-15-10.ttl</code>
+ and <code>/records/2022-15-10-summary.ttl</code>”),
+or smaller ad-hoc groupings could be created
+(“these triples have a topical relationship”).
+An API can reflect this context
+through it resource structure,
+or by including explicit metadata in its response.</p>
+          </li>
+          <li>
+            <p><strong>Policy</strong>:
+Policies could be assigned to resources in a Web API
+and/or to individual triples.
+In case the policies are assigned to individual triples,
+their inclusion in a response can be conditionally determined
+by whether or not the requesting agent has access.</p>
+          </li>
+          <li>
+            <p><strong>Provenance</strong>:
+Provenance can be associated with individual triples or groups of triples,
+similar to how generic context is modeled.</p>
+          </li>
+          <li>
+            <p><strong>Trust</strong>:
+Trust can be expressed either as a function of provenance,
+or explicitly assigned to (groups of) triples, like context.</p>
+          </li>
+          <li>
+            <p><strong>Performance</strong>:
+The performance is no longer a function of the pod structure itself,
+but rather reflected in how well a specific API
+matches the access patterns of a given use case.
+In other words,
+performance concerns can be addressed
+by defining relevant APIs on top of the underlying knowledge graph.</p>
+          </li>
+        </ul>
+
+        <p>Note that, in contrast to the document-centric interpretation,
+all 5 aspects are modeled <em>explicitly</em>:
+either as metadata in the knowledge graph
+that can then be reflected in an API
+(for <em>context</em>, <em>policy</em>, <em>provenance</em>, and <em>trust</em>),
+or in the definition of a specific API
+(for <em>performance</em>).</p>
 
         <h3 id="view-based-use-case-modeling">View-based use case modeling</h3>
 
         <h4 id="single-app-modeling"> Single-app modeling</h4>
-        <p><span class="todo">compare to <a href="#single-app-mismatches">Subsubsection 4.3.1</a></span></p>
+        <p><span class="todo">compare to <a href="#single-app-mismatches">Subsubsection 4.4.1</a></span></p>
 
         <h4 id="cross-app-modeling"> Cross-app modeling</h4>
-        <p><span class="todo">compare to <a href="#cross-app-mismatches">Subsubsection 4.3.2</a></span></p>
+        <p><span class="todo">compare to <a href="#cross-app-mismatches">Subsubsection 4.4.2</a></span></p>
 
         <h4 id="permission-modeling">Permission modeling</h4>
         <p><span class="todo">compare to <a href="#permission-mismatches"></a></span></p>
