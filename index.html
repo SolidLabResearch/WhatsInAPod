@@ -238,8 +238,7 @@ as resources identified by a URI.</li>
 constrains HTTP with interaction rules
 for recursive containers of RDF and non-RDF documents.</li>
               <li>The <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2021/protocol-20211217"><dfn id="dfn-solid-protocol">Solid Protocol</dfn></a> <span class="references">[<a href="#ref-8">8</a>]</span>
-constrains HTTP with <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solidproject.org/TR/2022/oidc-20220328">authentication</a> <span class="references">[<a href="#ref-9">9</a>]</span>
-and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">authorization</a> <span class="references">[<a href="#ref-10">10</a>, <a href="#ref-11">11</a>]</span>,
+constrains HTTP with authentication and authorization,
 and with interaction rules
 for recursive containers of RDF and non-RDF documents
 (inspired by LDP).</li>
@@ -300,7 +299,8 @@ by date, such as:
               </li>
             </ul>
           </li>
-          <li>The agent with WebID <code>https:/​/​sasha.pod/people/sasha#me</code>
+          <li>The WebID <code>https:/​/​sasha.pod/people/sasha#me</code> identifies a person named Sasha.</li>
+          <li>The agent identified by <code>https:/​/​sasha.pod/people/sasha#me</code>
 is allowed to access all documents on <code>https:/​/​sasha.pod/</code>.</li>
         </ul>
 
@@ -328,7 +328,7 @@ which the pod exposes through the Solid Protocol,
 Within this interpretation,
 the complete state of the pod is equivalent
 to the single Web API through which it is available;
-the <em>ground truth</em> of the pod is solely that specific Web API.
+the <em>source of truth</em> is solely that specific Web API.
 That brings us to the following definition:</p>
 
         <p><em>In the document-centric interpretation,
@@ -444,7 +444,7 @@ This latter aspect is sometimes visible within certain triples,
 whose subject (e.g., <code>https:/​/​sasha.pod/people/sasha#me</code>)
 defines a URL fragment (e.g., <code>#me</code>)
 on the document identifier (e.g., <code>https:/​/​sasha.pod/people/sasha</code>).</li>
-          <li><em>(explicit)</em> <strong>Permissions</strong>:
+          <li><em>(explicit)</em> <strong>Policies</strong>:
 both the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">WAC</a> <span class="references">[<a href="#ref-10">10</a>]</span>
 and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/">ACP</a> <span class="references">[<a href="#ref-11">11</a>]</span> specifications
 assign authorizations on a document level of granularity.
@@ -472,14 +472,14 @@ in order to optimize the number of HTTP requests and the used bandwidth.</li>
         </ul>
 
         <p>We remark that of these 5 aspects,
-only the <em>permissions</em> on the document are modelled explicitly.
+only the <em>policies</em> on the document are modelled explicitly.
 The <em>context</em> is implicitly assumed
 because triples occurring in the same place
 typically were created by the same or related write operations,
 and because those triples are necessarily read together by apps.
 The <em>provenance</em> and <em>trust</em> are similarly derived
 from implicit assumptions about a shared origin,
-and the knowledge of specific permissions
+and the knowledge of specific policies
 and thus agents that could have written to the document.
 Notably,
 the fact that an identifier (e.g., <code>https:/​/​sasha.pod/people/</code>)
@@ -512,7 +512,7 @@ to speed up the client-side processing of SPARQL queries
 over the entire pod.
 Whereas these alternative APIs can alleviate
 part of the <em>context</em> and <em>performance</em> constraints of the main API,
-they come with challenges to implement <em>permissions</em>
+they come with challenges to implement <em>policies</em>
 and to adequately model <em>provenance</em> and <em>trust</em> in their responses.</p>
 
         <p>Crucially, such alternative APIs are always derived from the main API,
@@ -632,16 +632,16 @@ whether medical records are organized by date
 or by measurement over time,
 depends on the specifics of a current use case.</p>
 
-        <h4 id="permission-mismatches">Permission modeling mismatches</h4>
+        <h4 id="policy-mismatches">Policy modeling mismatches</h4>
         <p>Contextual- and performance-based grouping
 are trade-offs that can be overcome with compromises,
 such as accepting that certain use cases will be slower than others.
 Unfortunately,
 the imposed grouping of multiple different aspects in the same document
 can also lead to more sensitive and insurmountable conflicts
-for the <em>permissions</em>, <em>provenance</em>, and <em>trust</em> aspects.</p>
+for the <em>policies</em>, <em>provenance</em>, and <em>trust</em> aspects.</p>
 
-        <p>Since the coupling of permissions to document organization
+        <p>Since the coupling of policies to document organization
 provides the only mechanism of control in the document-centric view,
 some use cases with conflicting requirements
 cannot effectively be realized today.
@@ -662,7 +662,7 @@ it should only access names and birthdays.</p>
 
         <p>Insurmountable conflicts become even more apparent with the medical use case.
 The results of a given blood test might be stored in a single document,
-and thus have a single permission boundary associated with it.
+and thus have a single policy boundary associated with it.
 If that test result contains both vitamin levels and an HIV status,
 then the document-based access control
 prevents users from only giving access to their vitamin levels.</p>
@@ -724,7 +724,7 @@ On the other hand,
 we showed concrete evidence in <a href="#document-centric-consequences">Subsection 4.3</a>
 that no single such hierarchy is able to
 reconcile the conflicting constraints of different use cases,
-especially given that core aspects such as permissions and provenance
+especially given that core aspects such as policies and provenance
 can only be applied with a document-level granularity.</p>
 
         <p>So while we recognize the importance of document-based Web APIs,
@@ -735,7 +735,7 @@ While the creation of multiple views has been attempted for Solid pods
 with SPARQL and QPF interfaces,
 their direct derivation from the main API
 leads them to still inherit that API’s mismatched constraints
-on the modeling of permissions, provenance, and trust.</p>
+on the modeling of policies, provenance, and trust.</p>
 
         <p>In other words,
 aiming to derive richer views from the main pod API
@@ -761,7 +761,50 @@ the limitations of one arbitrarily formed document API
 acting as its sole access gateway.</p>
 
         <h3 id="graph-centric-definition">Definition</h3>
-        <p><span class="todo"></span></p>
+        <p>Given the above observations within the document-centric interpretation,
+we create a new interpretation
+that shifts the function of a pod’s main API
+from being the pod itself
+to acting as <em>one of many</em> possible interfaces
+to an underlying knowledge graph,
+which <em>is</em> the pod.
+The <em>source of truth</em> is a knowledge graph
+consisting of documents as well as RDF statements,
+from which multiple Web APIs can be derived.
+Hence, no particular API is more prominent than any other.
+We define it as follows:</p>
+
+        <p><em>In the graph-centric interpretation,
+each <dfn id="dfn-graph-centric">Solid pod</dfn>
+is a hybrid, contextualized knowledge graph,
+wherein “hybrid”
+indicates first-class support for both documents and RDF statements,
+and “contextualized”
+the ability to associate each of its individual documents and statements
+with metadata such as policies, provenance, and trust.</em></p>
+
+        <p>For example,
+the pod <code>https:/​/​sasha.pod/</code> could be a hybrid knowledge graph
+consisting of:</p>
+
+        <ul>
+          <li>RDF triples expressing contact details of <code>https:/​/​sasha.pod/people/amal#me</code></li>
+          <li>RDF triples expressing contact details of <code>https:/​/​sasha.pod/people/lucian#me</code></li>
+          <li>a PDF document containing medical images dated 2022-09-15</li>
+          <li>RDF triples representing a blood test result dated 2022-10-15</li>
+          <li>…</li>
+        </ul>
+
+        <p>Examples of associated metadata within this pod are:</p>
+
+        <ul>
+          <li>The RDF triples about Amal form a shared context with specific trust and provenance.</li>
+          <li>A policy states that professional contact names can be publicly readable.</li>
+          <li>A policy states that contacts’ phone numbers are only visible to Sasha.</li>
+          <li>The provenance of Lucian’s phone number is a specific email.</li>
+          <li>We trust that the test result is unmodified and accurate,
+because it is certified by a medical professional.</li>
+        </ul>
 
         <h3 id="graph-centric-implementation">Implementation considerations</h3>
         <p><span class="todo"></span></p>
@@ -771,7 +814,7 @@ acting as its sole access gateway.</p>
         <ul>
           <li><strong>Context</strong>:
 <span class="todo"></span></li>
-          <li><strong>Permissions</strong>:
+          <li><strong>Policies</strong>:
 <span class="todo"></span></li>
           <li><strong>Provenance</strong>:
 <span class="todo"></span></li>
@@ -790,7 +833,7 @@ acting as its sole access gateway.</p>
         <p><span class="todo">compare to <a href="#cross-app-mismatches">Subsubsection 4.3.2</a></span></p>
 
         <h4 id="permission-modeling">Permission modeling</h4>
-        <p><span class="todo">compare to <a href="#permission-mismatches">Subsubsection 4.3.3</a></span></p>
+        <p><span class="todo">compare to <a href="#permission-mismatches"></a></span></p>
 
       </div>
 </section>
