@@ -172,21 +172,76 @@ are modeled in the pod and the resulting APIs.
   performance concerns can be addressed
   by defining relevant APIs on top of the underlying knowledge graph.
 
-Note that, in contrast to the document-centric interpretation,
-all 5 aspects are modeled _explicitly_:
-either as metadata in the knowledge graph
-that can then be reflected in an API
-(for _context_, _policy_, _provenance_, and _trust_),
-or in the definition of a specific API
-(for _performance_).
+The implementation of those aspects
+differs from the document-centric interpretation
+in two crucial ways:
+
+1. All 5 aspects are **modeled _explicitly_**:
+    either as metadata in the knowledge graph
+    that can then be reflected in an API
+    (for _context_, _policy_, _provenance_, and _trust_),
+    or in the definition of a specific API
+    (for _performance_).
+2. Each aspect can have a **different granularity**.
+    For instance,
+    a certain group of triples could share the same provenance,
+    but have different policies applied to them.
 
 ### View-based use case modeling
+We will now revisit how the graph-centric interpretation
+addresses the mismatches of the document-centric interpretation
+([](#document-centric-consequences)).
 
 #### Single-app modeling # {#single-app-modeling}
-<span class="todo">compare to [](#single-app-mismatches)</span>
+Applications are no longer restricted to a single hierarchy
+for modeling information,
+because the view-based approach allows overlapping resources
+without requiring copies.
+
+For example,
+if a person is both a colleague and a badminton player,
+their details can be available through both
+the documents `/contacts/work/amal.ttl` and `/contacts/sports/amal.ttl`,
+wherein
+the containers `/contacts/work/` and `/contacts/sports/`
+could have different policies associated with them.
+From the perspective of a consumer,
+neither document is more authoritative than the other,
+as they are generated from the same triples in the underlying knowledge graph.
+Similarly,
+medical records can be organized
+by both date (`/medical/2022/10/15.ttl`)
+and topical evolution (`/medical/heart-rate-2021-2022.ttl`),
+allowing them to have different provenance and trust.
 
 #### Cross-app modeling # {#cross-app-modeling}
-<span class="todo">compare to [](#cross-app-mismatches)</span>
+Every app can choose the modeling that best fit its use case,
+as the same knowledge graph can be exposed through multiple Web APIs.
+This allows applications to find the API that best matches its access patterns
+or, conversely, the pod to define APIs based on the needs of use cases.
+
+For example,
+the address book app can be built using an API
+that organizes the attributes of a person in a single document,
+whereas the birthday app can group all birthdays together.
+That way, neither application downloads more data than necessary.
+Similarly,
+medical data can be grouped depending on the analyses that will be performed.
+Note that exact matches of access patterns to APIs
+will not always be possible nor desired;
+the idea is rather to offer a couple of core APIs
+that minimize overhead
+across a number of use cases [](cite:citesAsRecommendedReading verborgh_jws_2016).
 
 #### Permission modeling # {#permission-modeling}
-<span class="todo">compare to [](#permission-mismatches)</span>
+Finally,
+the granularity of resources in a given API
+can be aligned with the granularity of policies,
+since this granularity does not have to be shared with the other aspects.
+
+For example,
+the birthday app could have a read/write API to the contacts
+that does not include access to their email addresses or phone numbers.
+A derived medical report could only display vitamin levels
+but leave out highly sensitive information such as HIV status,
+while leaving intact the provenance and trust of the original context.
