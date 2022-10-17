@@ -47,14 +47,41 @@ RDF-star stores could extend this functionality to RDF 1.1
 when Solid pods start using graphs to model data.
 
 ### Publication # {#comparison-publication}
-<div class="todo" markdown="1">
-document-centric:
+The generation of API resources in the document-centric interpretation
+is relatively straightforward.
+Assuming the underlying storage system is indeed document-based,
+then each public-facing pod URL corresponds to an internal document identifier.
+Responding to an HTTP request involves looking up the internal document,
+verifying whether the document-based policies allow access,
+possibly performing a format translation,
+and sending it back to the client.
+Offering alternative APIs might involve more computations,
+again depending on the underlying storage system.
 
-- straightforward from document store
-
-graph-centric:
-- needs high-performance view definitions and applications
-</div>
+The generation of API resources in the graph-centric interpretation
+involves a more complex process.
+First,
+we need the notion of a _view definition_,
+which essentially specifies how public-facing pod URLs
+correspond to triples or documents from the underlying hybrid knowledge graph.
+Next,
+a _view application_ process is necessary
+to materialize the view definition
+to generate a response to concrete requests for resources.
+Furthermore,
+a _policy definition_ is required to express
+the allowed operations per triple,
+and a _policy application_ process
+to apply this policy to the specific request.
+For the view aspect,
+technologies such as [RDF mappings](cite:citesAsEvidence dimou_ldow_2014),
+specifically [from Web APIs to triples](cite:citesAsEvidence RML_API),
+can be extended to support the reverse direction.
+Existing work on [policies](cite:citesAsEvidence kirrane2018policies,SolidPolicies),
+as well as the existing
+[WAC](cite:citesAsAuthority WAC) and [ACP](cite:citesAsAuthority ACP) specifications,
+can be applied on the triple or shape level,
+rather than to documents.
 
 ### Querying # {#comparison-querying}
 <div class="todo" markdown="1">

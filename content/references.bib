@@ -202,7 +202,7 @@
   url         = {https://solid.github.io/type-indexes/}
 }
 
- @inproceedings{Debackere_Colpaert_Taelman_Verborgh_2022,
+ @inproceedings{SolidPolicies,
   title     = {A policy-oriented architecture for enforcing consent in {Solid}},
   rights    = {I have transferred the copyright for this publication to the publisher},
   isbn      = {978-1-4503-9130-6},
@@ -336,4 +336,39 @@ url="https://doi.org/10.1007/978-1-4614-7518-7_2"
   year = 2022,
   month = sep,
   url = {https://w3c.github.io/rdf-star/cg-spec/editors_draft.html},
+}
+
+@inproceedings{dimou_ldow_2014,
+  title = {{RML:} A Generic Language for Integrated {RDF} Mappings of Heterogeneous Data},
+  author = {Dimou, Anastasia and Vander Sande, Miel and Colpaert, Pieter and Verborgh, Ruben and Mannens, Erik and Van de Walle, Rik},
+  year = 2014,
+  month = apr,
+  series = {CEUR Workshop Proceedings},
+  volume = 1184,
+  issn = {1613-0073},
+  booktitle = {Proceedings of the 7th Workshop on Linked Data on the Web},
+  editor = {Bizer, Christian and Heath, Tom and Auer, S\"oren and Berners-Lee, Tim},
+  url = {http://ceur-ws.org/Vol-1184/ldow2014_paper_01.pdf},
+}
+
+@InProceedings{RML_API,
+author="Van Assche, Dylan
+and Haesendonck, Gerald
+and De Mulder, Gertjan
+and Delva, Thomas
+and Heyvaert, Pieter
+and De Meester, Ben
+and Dimou, Anastasia",
+editor="Brambilla, Marco
+and Chbeir, Richard
+and Frasincar, Flavius
+and Manolescu, Ioana",
+title="Leveraging Web of Things W3C Recommendations for Knowledge Graphs Generation",
+booktitle="Web Engineering",
+year="2021",
+publisher="Springer",
+pages="337--352",
+abstract="Constructing a knowledge graph with mapping languages, such as RML or SPARQL-Generate, allows seamlessly integrating heterogeneous data by defining access-specific definitions for e.g., databases or files. However, such mapping languages have limited support for describing Web APIs and no support for describing data with varying velocities, as needed for e.g., streams, neither for the input data nor for the output RDF. This hampers the smooth and reproducible generation of knowledge graphs from heterogeneous data and their continuous integration for consumption since each implementation provides its own extensions. Recently, the Web of Things (WoT) Working Group released a set of recommendations to provide a machine-readable description of metadata and network-facing interfaces for Web APIs and streams. In this paper, we investigated (i)Â how mapping languages can be aligned with the newly specified recommendations to describe and handle heterogeneous data with varying velocities and Web APIs, and (ii)Â how such descriptions can be used to indicate how the generated knowledge graph should be exported. We extended RML's Logical Source to support WoT descriptions of Web APIs and streams, and introduced RML's Logical Target to describe the generated knowledge graph reusing the same descriptions. We implemented these extensions in the RMLMapper and RMLStreamer, and validated our approach in two use cases. Mapping languages are now able to use the same descriptions to define the input data but also the output RDF. This way, our work paves the way towards more reproducible workflows for knowledge graph generation.",
+isbn="978-3-030-74296-6",
+  url = "https://link.springer.com/chapter/10.1007/978-3-030-74296-6_26",
 }

@@ -92,7 +92,7 @@ we observe two kinds of behavior:
 - Some apps use **link traversal**,
   which means they find the URLs of documents and containers
   by following links from the user's WebID profile document
-  and/or via [another index](cite:citesAsExample TypeIndexes).
+  and/or via [another index](cite:citesAsEvidence TypeIndexes).
 
 We also observe _hybrid behavior_,
 for instance where an initial path is obtained via traversal
