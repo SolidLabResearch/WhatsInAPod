@@ -60,21 +60,23 @@ we have the full three-dimensional space at our disposition
 for modeling our solutions,
 which can then be projected onto as many two-dimensional surfaces as needed.
 
-The separation of pod and views
+The graph-centric interpretation shifts the understanding
+from a data graph instantiated from a document organization,
+to a dynamically instantiated document interface over a data graph,
+paving the way for fundamentally graph-centric data management within Solid.
+The separation of pod and APIs
 allows apps to seamlessly interact
 via different read and write interfaces to a pod,
 depending on what they are optimizing for.
 It also opens the door for authorization
-with different granularities beyond the scope of
-one specific API's document structure.
-We thereby shift the understanding
-from a data graph instantiated from a document organization,
-to a dynamically instantiated document interface over a data graph,
-paving the way for fundamentally graph-centric data management within Solid.
-Through the zoomed-out perspective of the pod
-as a knowledge graph exposed over Web APIs, 
-we refocus on the data itself
-and reframe the interfaces as means to an end.
+with different granularities one specific document structure,
+or in fact for asymmetric read/write interfaces.
+This can eliminate the need for elaborate mechanisms
+that [explain where apps should write data](cite:citesAsPotentialSolution ShapeTrees):
+graph-centric writing can happen
+by posting triples or documents directly to the graph,
+since it is the responsibility of _views_
+to expose all written information into the correct place within APIs.
 
 Consequences from interpretation differences are not purely conceptual or theoretical.
 For instance,
