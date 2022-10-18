@@ -1,5 +1,6 @@
 ## Graph-centric interpretation of a pod # {#graph-centric}
-This section introduces a new interpretation of the concept of a Solid pod,
+In this section,
+we give the concept of a Solid pod a new interpretation,
 which is _graph-centric_.
 
 ### Design considerations # {#design-considerations}
@@ -17,9 +18,9 @@ we showed concrete evidence in [](#document-centric-consequences)
 that no single such hierarchy is able to
 reconcile the conflicting constraints of different use cases,
 especially given that core aspects such as policies and provenance
-can only be applied with a document-level granularity.
+can only be applied at a document-level granularity.
 
-So while we recognize the importance of document-based Web APIs,
+While we recognize the importance of document-based Web APIs,
 we also observe that the simultaneous support for multiple use cases
 clearly requires multiple perspectives into the same data,
 each satisfying the constraints of particular cases.
@@ -36,7 +37,7 @@ to derive alternate two-dimensional projections of that same object.
 Because any two-dimensional projection
 is inherently designed to discard information of the original,
 the creation of complementary alternative projections
-actually requires the object's underlying _three-dimensional reality_ instead.
+actually requires the object's underlying _three-dimensional reality_.
 The two-dimensional projection was only ever meant
 as a helpful approximation of the three-dimensional object.
 
@@ -45,9 +46,10 @@ we conclude that today's single hierarchical API to a pod
 serves as a _proxy_ for the underlying knowledge graph
 formed by the union of the pod's interlinked RDF documents—except that
 this union cannot adequately be reproduced
-because significant parts of its semantics are being discarded by that API.
+because significant parts of its semantics are being discarded
+during its exposure in a specific API.
 Solid applications looking to leverage
-the potential of this Linked Data knowledge graph,
+the potential of this larger Linked Data knowledge graph,
 will thus always be hindered by
 the limitations of one arbitrarily formed document API
 acting as its sole access gateway.
@@ -64,7 +66,7 @@ The _source of truth_ is a knowledge graph
 consisting of documents as well as RDF statements,
 from which multiple Web APIs can be derived.
 Hence, no particular API is more prominent than any other.
-We define it as follows:
+We define this as follows:
 
 _In the graph-centric interpretation,
 each <dfn id="dfn-graph-centric">Solid pod</dfn>
@@ -92,7 +94,7 @@ Examples of associated metadata within this pod are:
 - A policy states that professional contact names can be publicly readable.
 - A policy states that contacts' phone numbers are only visible to Sasha.
 - The provenance of Lucian's phone number is a specific email.
-- We trust that the test result is unmodified and accurate,
+- We trust the test result of 2022-10-15 is unmodified and accurate,
   because it is certified by a medical professional.
 
 Below is one possible Web API on top of this pod
@@ -141,18 +143,18 @@ are modeled in the pod and the resulting APIs.
   can be associated with multiple contexts.
   For instance,
   users could assign triples to specific resources in Web APIs
-  (“this triple is in the documents `/records/2022-15-10.ttl`
+  (“this triple is exposed in the documents `/records/2022-15-10.ttl`
    and `/records/2022-15-10-summary.ttl`”),
   or smaller ad-hoc groupings could be created
   (“these triples have a topical relationship”).
   An API can reflect this context
-  through it resource structure,
+  through its resource structure,
   or by including explicit metadata in its response.
 
 - **Policy**:
-  Policies could be assigned to resources in a Web API
-  and/or to individual triples.
-  In case the policies are assigned to individual triples,
+  Policies can be assigned to resources in one of the Web APIs
+  and/or to selections of triples.
+  In case policies are assigned to triples,
   their inclusion in a response can be conditionally determined
   by whether or not the requesting agent has access.
 
@@ -169,14 +171,14 @@ are modeled in the pod and the resulting APIs.
   but rather reflected in how well a specific API
   matches the access patterns of a given use case.
   In other words,
-  performance concerns can be addressed
+  performance concerns need to be addressed
   by defining relevant APIs on top of the underlying knowledge graph.
 
 The implementation of those aspects
 differs from the document-centric interpretation
 in two crucial ways:
 
-1. All 5 aspects are **modeled _explicitly_**:
+1. All 5 aspects are **modeled explicitly**:
     either as metadata in the knowledge graph
     that can then be reflected in an API
     (for _context_, _policy_, _provenance_, and _trust_),
@@ -204,7 +206,7 @@ their details can be available through both
 the documents `/contacts/work/amal.ttl` and `/contacts/sports/amal.ttl`,
 wherein
 the containers `/contacts/work/` and `/contacts/sports/`
-could have different policies associated with them.
+can have different policies associated with them.
 From the perspective of a consumer,
 neither document is more authoritative than the other,
 as they are generated from the same triples in the underlying knowledge graph.
@@ -217,7 +219,7 @@ allowing them to have different provenance and trust.
 #### Cross-app modeling # {#cross-app-modeling}
 Every app can choose the modeling that best fit its use case,
 as the same knowledge graph can be exposed through multiple Web APIs.
-This allows applications to find the API that best matches its access patterns
+This allows applications to find the APIs that best match their access patterns
 or, conversely, the pod to define APIs based on the needs of use cases.
 
 For example,
