@@ -10,14 +10,14 @@ wherein a pod is a single hierarchy of Linked Data documents,
 cannot fully realize this independence.
 Applications are left to define their own APIs
 within the Solid Protocol,
-which leads to fundamental interoperability problems
+leading to fundamental interoperability problems
 and the need for associated workarounds.
 The long-term vision for Solid is confounded
 with the concrete HTTP interface to pods today,
 leading to a narrower solution space to address core issues.
 <!-- Task         -->
 We examine the mismatch between the vision
-and the prevalent document-centric interpretation,
+and its prevalent document-centric interpretation,
 and propose a reconciliatory graph-centric interpretation
 wherein a pod is a hybrid, contextualized knowledge graph.
 <!-- Object       -->
@@ -28,7 +28,7 @@ We argue that the graph-centric interpretation
 can improve pod access through different Web APIs
 that act as views into the knowledge graph.
 <!-- Findings     -->
-We show that the latter interpretation
+We show how the latter interpretation
 provides improved opportunities for
 storage, publication, and querying of decentralized data
 in more flexible and sustainable ways.
@@ -40,4 +40,5 @@ and the resulting performance.
 <!-- Perspectives -->
 The suggested broader interpretation can guide Solid
 through its evolution into a heterogeneous yet interoperable ecosystem
-that supports the diverging read/write data access patterns of different use cases.
+that better supports the diverging read/write data access patterns
+of different use cases.
