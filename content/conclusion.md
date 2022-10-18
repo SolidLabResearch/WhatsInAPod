@@ -13,7 +13,7 @@ as they burrow their own ad-hoc APIs with implicit semantics
 into the container meta-model.
 This hinders the Solid promise of data and application independence:
 while the data itself contains explicit semantics that can be interpreted by apps,
-the organization of that data is such that it its storage and retrieval
+the organization of that data is such that its storage and retrieval
 necessitates out-of-band contracts between different applications,
 resulting in significant app-to-app coupling
 and subsequently systematic breakage when ad-hoc APIs eventually evolve.

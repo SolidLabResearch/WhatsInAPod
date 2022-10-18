@@ -169,14 +169,11 @@ the _performance_ is typically the result of educated guesses,
 but seldom the result of actual performance measurements.
 
 #### Alternative Web APIs to the pod # {#document-centric-alternative-apis}
-Given that data under the document-centric interpretation
-is structured within a specific document hierarchy
-with the aforementioned explicit and implicit aspects,
-several applications encounter practical limitations
-when the data they require happens to be structured across multiple documents.
+Many applications encounter practical limitations
+when the data they require
+happens to be structured across multiple documents in the main API.
 In an attempt to address such cases,
-alternative Web APIs were proposed
-in addition to the main Web API on top of the Solid Protocol.
+alternative Web APIs were proposed.
 
 [One proposal](cite:citesAsEvidence sambra_solid_nodate)
 suggests exposing a server-side [SPARQL endpoint](cite:citesAsAuthority SparqlProtocol)
@@ -301,7 +298,7 @@ or by measurement over time,
 depends on the specifics of a current use case.
 
 #### Policy modeling mismatches # {#policy-mismatches}
-Contextual- and performance-based grouping
+Context- and performance-based grouping
 are trade-offs that can be overcome with compromises,
 such as accepting that certain use cases will be slower than others.
 Unfortunately,
@@ -342,8 +339,8 @@ for purposes of context, provenance, and trust.
 Users thus find themselves torn between giving apps too much access,
 or having to deal with overly granular control—in the extreme case causing situations
 that necessitate managing micro-documents with only one or a handful of triples.
-Whereas the degrees of freedom in the Solid Protocol
-allow for any such structures,
+Whilst the degrees of freedom in the Solid Protocol
+allows for any such structures,
 the resulting API would be highly impractical for humans and machines alike.
 Another solution involves creating and maintaining
 a copy of the document with a subset of the data,

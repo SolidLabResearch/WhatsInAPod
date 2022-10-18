@@ -23,10 +23,10 @@ So while we recognize the importance of document-based Web APIs,
 we also observe that the simultaneous support for multiple use cases
 clearly requires multiple perspectives into the same data,
 each satisfying the constraints of particular cases.
-While the creation of multiple views has been attempted for Solid pods
+Even though the creation of multiple views has been attempted for Solid pods
 with SPARQL and QPF interfaces,
 their direct derivation from the main API
-leads them to still inherit that API's mismatched constraints
+still leads them to inherit that API's mismatched constraints
 on the modeling of policies, provenance, and trust.
 
 In other words,

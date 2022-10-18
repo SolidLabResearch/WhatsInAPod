@@ -12,7 +12,7 @@ the underlying storage of a pod is typically managed
 as a document-based system,
 as evidenced by current Solid server implementations
 that leverage the file system or document-oriented databases.
-This preferences is explained by
+This preference is explained by
 the direct match of the interface to the pod;
 in some ways,
 the document-centric view on a pod
@@ -25,7 +25,7 @@ typically indicates the document to which it belongs
 The benefit of the latter
 is that they might enable higher performance for derived APIs,
 although there is still the requirement of supporting non-RDF documents,
-such as for instance images or movies.
+such as images or movies.
 
 The graph-centric interpretation imposes stronger requirements
 on the underlying storage.
@@ -56,7 +56,7 @@ verifying whether the document-based policies allow access,
 possibly performing a format translation,
 and sending it back to the client.
 Offering alternative APIs might involve more computations,
-again depending on the underlying storage system.
+depending on the underlying storage system.
 
 The generation of API resources in the graph-centric interpretation
 involves a more complex process.

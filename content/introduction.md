@@ -22,9 +22,9 @@ after which the platform-specific API had to be integrated,
 where all the while user control is at the mercy of the platforms maintaining the data. 
 
 <!-- key for achieving requirement: capture semantics in the data -->
-A precondition to the separation of data and application
-is the capture of semantic information in the data itself,
-such that it can be reused in different contexts.
+In order to separate applications from their data,
+the semantic contents of the data must be captured
+such that they can be accurately interpreted and reused in different contexts.
 Semantics allow applications to interpret data without 
 requiring specific knowledge encoded in the API over which the data is retrieved.
 A key driver is the use of the [Resource Description Framework (RDF)](cite:cites RDF),
