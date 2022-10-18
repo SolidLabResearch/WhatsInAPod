@@ -8,19 +8,19 @@ throughout the article.
   a generic set of rules for data transmission between systems.
   - The [<dfn id="dfn-http">HyperText Transfer Protocol (HTTP)</dfn>](cite:citesAsAuthority HTTP)
     structures the exchange of data between a server and a client
-    as resources identified by a URI.
+    as _resources_ identified by a URI.
   - The [<dfn id="dfn-ldp">Linked Data Platform (LDP)</dfn>](cite:citesAsAuthority LDP)
     constrains HTTP with interaction rules
     for recursive containers of RDF and non-RDF documents.
   - The [<dfn id="dfn-solid-protocol">Solid Protocol</dfn>](cite:citesAsAuthority Solid_protocol)
-    constrains HTTP with authentication and authorization,
+    constrains HTTP with _authentication_ and _authorization_,
     and with interaction rules
     for recursive containers of RDF and non-RDF documents
     (inspired by LDP).
 - A <dfn id="dfn-web-api">Web API</dfn> is a specific structuring of resources
   on top of HTTP (or a specialization thereof, such as the Solid Protocol).
 - <dfn id="dfn-authentication">Authentication</dfn>
-  means identifying the agent making a request to a Web API.
+  means identifying the agent issuing a request to a Web API.
   - The [<dfn id="dfn-webid">WebID</dfn>](cite:citesAsAuthority Solid_OIDC)
     is an HTTP URL that identifies an agent.
     When dereferenced,
@@ -29,8 +29,8 @@ throughout the article.
   - [<dfn id="dfn-solid-oidc">Solid-OIDC</dfn>](cite:citesAsAuthority Solid_OIDC)
     establishes some authoritative identification of an agent by a specific WebID.
 - <dfn id="dfn-authorization">Authorization</dfn>
-  means determining to what extent an agent is allowed
-  to perform a certain request to a Web API.
+  means determining to what extent a server can respond
+  to a certain Web API request from a specific agent.
   - [<dfn id="dfn-wac">Web Access Control (WAC)</dfn>](cite:citesAsAuthority WAC)
     is an Access Control List (ACL) mechanism
     that allows assigning inheritable permissions to documents and containers
@@ -44,8 +44,7 @@ Let us exemplify some of these definitions through our use cases:
 
 - An HTTP interface at `https://sasha.pod/` implements the Solid Protocol
   when its containers and documents follow the interaction rules,
-  and when it correctly authenticates users
-  using their WebID,
+  and when it correctly authenticates users using their WebID
   and applies authorization to each resource.
 - A Web API within `https://sasha.pod/` structures documents in containers.
   - Contacts are stored in `https://sasha.pod/people/`
