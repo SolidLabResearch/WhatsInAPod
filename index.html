@@ -66,14 +66,14 @@ wherein a pod is a single hierarchy of Linked Data documents,
 cannot fully realize this independence.
 Applications are left to define their own APIs
 within the Solid Protocol,
-which leads to fundamental interoperability problems
+leading to fundamental interoperability problems
 and the need for associated workarounds.
 The long-term vision for Solid is confounded
 with the concrete HTTP interface to pods today,
 leading to a narrower solution space to address core issues.
 <!-- Task         -->
 We examine the mismatch between the vision
-and the prevalent document-centric interpretation,
+and its prevalent document-centric interpretation,
 and propose a reconciliatory graph-centric interpretation
 wherein a pod is a hybrid, contextualized knowledge graph.
 <!-- Object       -->
@@ -84,7 +84,7 @@ We argue that the graph-centric interpretation
 can improve pod access through different Web APIs
 that act as views into the knowledge graph.
 <!-- Findings     -->
-We show that the latter interpretation
+We show how the latter interpretation
 provides improved opportunities for
 storage, publication, and querying of decentralized data
 in more flexible and sustainable ways.
@@ -96,7 +96,8 @@ and the resulting performance.
 <!-- Perspectives -->
 The suggested broader interpretation can guide Solid
 through its evolution into a heterogeneous yet interoperable ecosystem
-that supports the diverging read/write data access patterns of different use cases.</p>
+that better supports the diverging read/write data access patterns
+of different use cases.</p>
 
     </div>
 </section>
@@ -110,34 +111,35 @@ that supports the diverging read/write data access patterns of different use cas
         <p>Data privacy and control have lost ground on today’s Web.
 User-generated data is stored in centralized data silos,
 in which people have neither the control nor the knowledge to manage how their data is being used <span class="references">[<a href="#ref-1">1</a>]</span>.
-As a response to this, the <em>Solid</em> project was created with the aim of revitalizing the Web <span class="references">[<a href="#ref-2">2</a>, <a href="#ref-3">3</a>]</span>.
+As a response, <a property="schema:citation http://purl.org/spar/cito/cites" href="http://emansour.com/research/lusail/solid_protocols.pdf">the <em>Solid</em> project</a> <span class="references">[<a href="#ref-2">2</a>, <a href="#ref-3">3</a>]</span> was created with the aim of revitalizing the Web.
 Where the current system of centralized data silos create an ecosystem of limited integration, availability and innovation,
-Solid brings a course correction for the Web.
+Solid brings a course correction for the Web.
 Based on the <em>separation of data and applications</em>,
 the vision defines an ecosystem that facilitates the integration of data in different applications, while keeping people in direct control of their data.</p>
 
         <!-- the Solid pod -->
         <p>To this end,
-Solid introduces the concept of a <em>pod</em>
+Solid introduces the concept of a <em>pod</em>
 as an online data space for an individual to control and manage their data on the Web.
-Together, these pods form a decentralized Solid ecosystem,
-from which applications can directly integrate data from a person’s Solid pod,
+Together, these pods form a decentralized Solid ecosystem,
+from which applications can directly integrate data from people’s Solid pods,
 after receiving their permission.
-This contrasts with current Web applications, where
-this data first had to be collected in a centralized location,
+This contrasts with current Web applications,
+where this data first had to be collected in a centralized location,
 after which the platform-specific API had to be integrated,
 where all the while user control is at the mercy of the platforms maintaining the data.</p>
 
         <!-- key for achieving requirement: capture semantics in the data -->
-        <p>In order to separate applications from their data,
+        <p>In order to separate data from applications,
 the semantic contents of the data must be captured
 such that they can be accurately interpreted and reused in different contexts.
 Semantics allow applications to interpret data without 
 requiring specific knowledge encoded in the API over which the data is retrieved.
 A key driver is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-4">4</a>]</span>,
-which provides an infrastructure for the capture of this semantic information.
+which provides an infrastructure for capturing this semantic information.
 This again contrasts with current Web APIs,
-where data is served in formats that require additional semantics to be captured in the documentation of the API.
+where data is served in formats that require additional semantics to be described
+in the API’s documentation.
 By shifting the focus from the API to the data,
 the Solid ecosystem aims to transition the Web
 from an ecosystem of API integration towards
@@ -149,12 +151,12 @@ current Solid apps do not succeed in API-independent reuse of data
 across use cases.
 Rather than only relying on the data and its semantics,
 apps resort to implicit knowledge
-about how this data is structured across documents in a pod’s API.
+about how this data is structured across documents in a pod’s Web API.
 Furthermore,
-different use cases impose conflicting requirements
-on that structure in order to satisfy their constraints.
+different use cases impose conflicting requirements on that structure
+in order to satisfy their own constraints.
 As such,
-application developer struggle to make sustainable decisions
+app developers struggle to make sustainable decisions
 on how to structure data for reuse,
 since their individual choices impact the interoperability of the entire ecosystem.</p>
 
@@ -163,14 +165,14 @@ since their individual choices impact the interoperability of the entire ecosyst
 we identify the root cause of this interoperability problem
 as the mismatch between Solid’s current single hierarchical API
 and the modeling requirements of real-world use cases.
-We describe the properties of this document-centric interpretation on a Pod,
+We describe the properties of this document-centric interpretation of a pod,
 and introduce a graph-centric interpretation
 that can bridge differences between use cases.
 We compare both interpretations,
 explain the consequences for concrete Solid implementations,
 and argue why we consider the graph-centric interpretation
 a more sustainable candidate to realize the Solid vision
-of data and application independence under control of the user.</p>
+of data and application independence under control of the user.</p>
 
       </div>
 </section>
