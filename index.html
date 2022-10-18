@@ -1019,7 +1019,7 @@ can be seen as a permissioned file system for the Web.
 Of course,
 quadstore-based storage can also be applied,
 in which case the fourth element of each quad
-typically indicates the document to which it belongs
+is usually necessary to indicate the document to which it belongs
 (and, hence, the associated metadata such as permissions).
 The benefit of the latter
 is that they might enable higher performance for derived APIs,
@@ -1033,7 +1033,7 @@ different metadata might have different granularities,
 so there is no longer a natural document grouping.
 On the other hand,
 different selections need to be created from the raw data,
-so there specific document organizations provide no universal benefit across APIs.
+so their specific document organizations provide no universal benefit across APIs.
 Consequently,
 document-based storage systems are not a good technological fit.
 In the long term,
@@ -1060,34 +1060,33 @@ depending on the underlying storage system.</p>
         <p>The generation of API resources in the graph-centric interpretation
 involves a more complex process,
 which harbors a significant part of future work in this area.
-We outline some main parts here.
 First,
 we need the notion of a <em>view definition</em>,
 which essentially specifies how public-facing pod URLs
 correspond to triples or documents from the underlying hybrid knowledge graph.
 Next,
 a <em>view application</em> process is necessary
-to materialize the view definition
-to generate a response to concrete requests for resources.
+for materializing such view definitions
+to generate responses to concrete API requests.
 Furthermore,
 a <em>policy definition</em> is required to express
 the allowed operations per triple,
 and a <em>policy application</em> process
-to apply this policy to the specific request.
-For the view aspect,
+to apply this policy to a specific request.
+To realize views,
 technologies such as <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="http://ceur-ws.org/Vol-1184/ldow2014_paper_01.pdf">RDF mappings</a> <span class="references">[<a href="#ref-20">20</a>]</span>,
 specifically <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://link.springer.com/chapter/10.1007/978-3-030-74296-6_26">from Web APIs to triples</a> <span class="references">[<a href="#ref-21">21</a>]</span>,
 can be extended to support the reverse direction.
 Existing work on <a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="https://content.iospress.com/download/semantic-web/sw289?id=semantic-web%2Fsw289">policies</a> <span class="references">[<a href="#ref-22">22</a>, <a href="#ref-23">23</a>]</span>,
-as well as the existing
-<a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">WAC</a> <span class="references">[<a href="#ref-10">10</a>]</span> and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/">ACP</a> <span class="references">[<a href="#ref-11">11</a>]</span> specifications,
+as well as the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/web-access-control-spec/">WAC</a> <span class="references">[<a href="#ref-10">10</a>]</span>
+and <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://solid.github.io/authorization-panel/acp-specification/">ACP</a> <span class="references">[<a href="#ref-11">11</a>]</span> specifications,
 can be applied on the triple or shape level
 rather than to documents.</p>
 
         <h3 id="comparison-querying">Querying</h3>
         <p>In the document-centric interpretation,
 the complexity of the required query processing
-is a direct function of whether or not the data resides in a single document,
+is mainly impacted by whether or not the data resides in a single document,
 i.e.,
 whether the concrete API of the pod
 happens to coincide with the access patterns of a specific use case.
@@ -1095,7 +1094,7 @@ Any mismatch requires a multi-document selection,
 which might involve <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://dx.doi.org/10.1007/s13222-013-0122-1">traversal-based query processing</a> <span class="references">[<a href="#ref-24">24</a>]</span>,
 possibly <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1007/978-3-030-91167-6_5"><a href="https://www.bartbogaerts.eu/articles/2021/005-RuleML-GuidedLink-SubwebSpec/SubwebSpecifications.pdf">guided by the pod’s known indexes or structure</a></span> <span class="references">[<a href="#ref-25">25</a>]</span>.
 Furthermore,
-in order to arrive at a complete result set,
+in order to achieve result set completeness,
 all relevant data and intermediary links need to be accessible by the client,
 which might not be the case if there is a mismatch
 between the granularity of the documents and the policies on the data.</p>
@@ -1105,9 +1104,9 @@ allows for multiple APIs,
 client can select those APIs
 that <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1016/j.websem.2016.03.003"><a href="https://linkeddatafragments.org/publications/jws2016.pdf">best match the access patterns of their use case</a></span> <span class="references">[<a href="#ref-18">18</a>]</span>.
 Further work on <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1007/978-3-030-00668-6_15"><a href="https://comunica.github.io/Article-ISWC2018-Resource/">query engines for heterogeneous interfaces</a></span> <span class="references">[<a href="#ref-26">26</a>, <a href="#ref-27">27</a>]</span>
-will help identifying the most relevant APIs,
-and over time,
-servers might analyze data usage
+will help identifying the most relevant APIs
+and, over time,
+servers could analyze data usage
 to determine new API structures that might improve performance.
 This includes hierarchical Solid Protocol interfaces,
 where the partitioning in resources is largely driven by the server,
@@ -1119,16 +1118,16 @@ Since performance is essentially a function
 of the match between server-side API partitioning
 and client-side request patterns,
 a document-based API might outperform an expressive query-based API
-if cached documents happen to align with a client-side request.
+if cached documents happen to align with client-side requests.
 Furthermore,
 the needed data for any given use case
 could be located across a small or large number of different pods,
 and more expressive interfaces do not necessarily outperform
 less expressive interfaces for <span property="schema:citation http://purl.org/spar/cito/citesAsEvidence" resource="https://dx.doi.org/10.1016/j.websem.2016.03.003"><a href="https://linkeddatafragments.org/publications/jws2016.pdf">federation</a></span> <span class="references">[<a href="#ref-18">18</a>]</span>.
 Hence,
-a combination of different APIs
-will likely always be needed for high query performance,
-in addition to the other aspects favoring a graph-centric interpretation.</p>
+achieving high query performance is another reason
+why the multi-API aspect of the graph-centric interpretation
+is important for Solid.</p>
 
       </div>
 </section>
