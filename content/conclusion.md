@@ -30,7 +30,7 @@ has increased the frequency of such conflicts.
 Stopgaps that are being created to address them
 unfortunately only prolong unsustainable practices,
 as many issues are simply inherent to the implicit semantics within ad-hoc APIs.
-Proposals typically focus on making API semantics explicit [](cite:citesAsPotentialSolution TypeIndexes,ShapeTrees),
+Proposals typically focus on [making API semantics explicit](cite:citesAsPotentialSolution TypeIndexes,ShapeTrees),
 yet they inevitably inherit the abstraction's mismatches
 when it comes to aspects such as trust and provenance.
 This is why we instead suggest pushing the vision forward

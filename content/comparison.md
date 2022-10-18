@@ -5,6 +5,9 @@ in terms of
 [storage](#comparison-storage),
 [publication](#comparison-publication),
 and [query processing](#comparison-querying).
+We highlight open research problems
+that need to be tackled
+for efficient graph-centric pod support.
 
 ### Storage # {#comparison-storage}
 In the document-centric interpretation,
@@ -59,7 +62,9 @@ Offering alternative APIs might involve more computations,
 depending on the underlying storage system.
 
 The generation of API resources in the graph-centric interpretation
-involves a more complex process.
+involves a more complex process,
+which harbors a significant part of future work in this area.
+We outline some main parts here.
 First,
 we need the notion of a _view definition_,
 which essentially specifies how public-facing pod URLs
@@ -80,7 +85,7 @@ can be extended to support the reverse direction.
 Existing work on [policies](cite:citesAsEvidence kirrane2018policies,SolidPolicies),
 as well as the existing
 [WAC](cite:citesAsAuthority WAC) and [ACP](cite:citesAsAuthority ACP) specifications,
-can be applied on the triple or shape level,
+can be applied on the triple or shape level
 rather than to documents.
 
 ### Querying # {#comparison-querying}
@@ -103,8 +108,8 @@ Since the graph-centric interpretation
 allows for multiple APIs,
 client can select those APIs
 that [best match the access patterns of their use case](cite:citesAsEvidence verborgh_jws_2016).
-[Query engines for heterogeneous interfaces](cite:citesAsEvidence Comunica)
-can identify relevant APIs,
+Further work on [query engines for heterogeneous interfaces](cite:citesAsEvidence Comunica,10.1145/3485447.3511947)
+will help identifying the most relevant APIs,
 and over time,
 servers might analyze data usage
 to determine new API structures that might improve performance.
