@@ -15,7 +15,7 @@
   <meta name="citation_author" content="Pieter Colpaert" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/10/17" />
+  <meta name="citation_publication_date" content="2022/10/18" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -62,26 +62,26 @@ which detail how to publish and consume permissioned data
 across multiple autonomous locations called <q>pods</q>.
 <!-- Need         -->
 The current document-centric interpretation of Solid,
-wherein a pod is solely a hierarchy of Linked Data documents,
-cannot fully realize this envisaged independence.
+wherein a pod is a single hierarchy of Linked Data documents,
+cannot fully realize this independence.
 Applications are left to define their own APIs
 within the Solid Protocol,
 which leads to fundamental interoperability problems
 and the need for associated workarounds.
-The broader longterm vision for Solid is confounded
+The long-term vision for Solid is confounded
 with the concrete HTTP interface to pods today,
-leading to a narrower solution space to address these core issues.
+leading to a narrower solution space to address core issues.
 <!-- Task         -->
 We examine the mismatch between the vision
 and the prevalent document-centric interpretation,
 and propose a reconciliatory graph-centric interpretation
-wherein a pod is fundamentally a knowledge graph.
+wherein a pod is a hybrid, contextualized knowledge graph.
 <!-- Object       -->
 In this article,
 we contrast the existing and proposed interpretations
 in terms of how they support the Solid vision.
 We argue that the graph-centric interpretation
-can improve pod access through different Web APIs
+can improve pod access through different Web APIs
 that act as views into the knowledge graph.
 <!-- Findings     -->
 We show that the latter interpretation
@@ -94,7 +94,7 @@ the dependency of Solid apps on implicit API semantics
 and local assumptions about the shape and organization of data
 and the resulting performance.
 <!-- Perspectives -->
-The suggested broader interpretation can guide Solid
+The suggested broader interpretation can guide Solid
 through its evolution into a heterogeneous yet interoperable ecosystem
 that supports the diverging read/write data access patterns of different use cases.</p>
 
@@ -129,9 +129,9 @@ after which the platform-specific API had to be integrated,
 where all the while user control is at the mercy of the platforms maintaining the data.</p>
 
         <!-- key for achieving requirement: capture semantics in the data -->
-        <p>A precondition to the separation of data and application
-is the capture of semantic information in the data itself,
-such that it can be reused in different contexts.
+        <p>In order to separate applications from their data,
+the semantic contents of the data must be captured
+such that they can be accurately interpreted and reused in different contexts.
 Semantics allow applications to interpret data without 
 requiring specific knowledge encoded in the API over which the data is retrieved.
 A key driver is the use of the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">Resource Description Framework (RDF)</a> <span class="references">[<a href="#ref-4">4</a>]</span>,
@@ -456,14 +456,10 @@ assign authorizations on a document level of granularity.
 Either the document can be accessed by a given agent in its entirety or not,
 thus resulting in all triples within a document
 sharing the same authorization rules.</li>
-          <li>
-            <p><em>(implicit)</em> <strong>Provenance</strong>:
+          <li><em>(implicit)</em> <strong>Provenance</strong>:
 the document somehow captures the notion
 that its triples originate from a specific source or event,
-of which the document was a result.</p>
-
-            <p class="comment" data-author="Ruben D">Di you mean with captures the notion that the users expect this to be the case? Because in practice triples in a document can originate from multiple sources (e.g. profile document), with no real way to distinguish between these sources</p>
-          </li>
+of which the document was a result.</li>
           <li><em>(implicit)</em> <strong>Trust</strong>:
 the document defines a single boundary of trust for all of its triples.
 For example,
@@ -502,14 +498,11 @@ the <em>performance</em> is typically the result of educated guesses,
 but seldom the result of actual performance measurements.</p>
 
         <h4 id="document-centric-alternative-apis">Alternative Web APIs to the pod</h4>
-        <p>Given that data under the document-centric interpretation
-is structured within a specific document hierarchy
-with the aforementioned explicit and implicit aspects,
-several applications encounter practical limitations
-when the data they require happens to be structured across multiple documents.
+        <p>Many applications encounter practical limitations
+when the data they require
+happens to be structured across multiple documents in the main API.
 In an attempt to address such cases,
-alternative Web APIs were proposed
-in addition to the main Web API on top of the Solid Protocol.</p>
+alternative Web APIs were proposed.</p>
 
         <p><a property="schema:citation http://purl.org/spar/cito/citesAsEvidence" href="http://emansour.com/research/lusail/solid_protocols.pdf">One proposal</a> <span class="references">[<a href="#ref-2">2</a>]</span>
 suggests exposing a server-side <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/sparql11-protocol/">SPARQL endpoint</a> <span class="references">[<a href="#ref-14">14</a>]</span>
@@ -523,8 +516,6 @@ Whereas these alternative APIs can alleviate
 part of the <em>context</em> and <em>performance</em> aspects of the main API,
 they come with challenges to implement <em>policy</em>
 and to adequately model <em>provenance</em> and <em>trust</em> in their responses.</p>
-
-        <p class="comment" data-author="Ruben D">Alleviating context then meaning solving discovery issues?</p>
 
         <p>Crucially, such alternative APIs are always derived from the main API,
 because it is equivalent to the pod in the document-centric interpretation.
@@ -644,7 +635,7 @@ or by measurement over time,
 depends on the specifics of a current use case.</p>
 
         <h4 id="policy-mismatches">Policy modeling mismatches</h4>
-        <p>Contextual- and performance-based grouping
+        <p>Context- and performance-based grouping
 are trade-offs that can be overcome with compromises,
 such as accepting that certain use cases will be slower than others.
 Unfortunately,
@@ -687,8 +678,8 @@ for purposes of context, provenance, and trust.
 Users thus find themselves torn between giving apps too much access,
 or having to deal with overly granular control—in the extreme case causing situations
 that necessitate managing micro-documents with only one or a handful of triples.
-Whereas the degrees of freedom in the Solid Protocol
-allow for any such structures,
+Whilst the degrees of freedom in the Solid Protocol
+allows for any such structures,
 the resulting API would be highly impractical for humans and machines alike.
 Another solution involves creating and maintaining
 a copy of the document with a subset of the data,
@@ -742,10 +733,10 @@ can only be applied with a document-level granularity.</p>
 we also observe that the simultaneous support for multiple use cases
 clearly requires multiple perspectives into the same data,
 each satisfying the constraints of particular cases.
-While the creation of multiple views has been attempted for Solid pods
+Even though the creation of multiple views has been attempted for Solid pods
 with SPARQL and QPF interfaces,
 their direct derivation from the main API
-leads them to still inherit that API’s mismatched constraints
+still leads them to inherit that API’s mismatched constraints
 on the modeling of policies, provenance, and trust.</p>
 
         <p>In other words,
@@ -764,11 +755,8 @@ we conclude that today’s single hierarchical API to a pod
 serves as a <em>proxy</em> for the underlying knowledge graph
 formed by the union of the pod’s interlinked RDF documents—except that
 this union cannot adequately be reproduced
-because significant parts of its semantics are being discarded by that API.</p>
-
-        <p class="comment" data-author="Ruben D">Maybe nitpicking, but its not as much discarded as just not being stored / not required, because reproducing the same information is possible without these aspects being explicitly written down.</p>
-
-        <p>Solid applications looking to leverage
+because significant parts of its semantics are being discarded by that API.
+Solid applications looking to leverage
 the potential of this Linked Data knowledge graph,
 will thus always be hindered by
 the limitations of one arbitrarily formed document API
@@ -1017,7 +1005,7 @@ the underlying storage of a pod is typically managed
 as a document-based system,
 as evidenced by current Solid server implementations
 that leverage the file system or document-oriented databases.
-This preferences is explained by
+This preference is explained by
 the direct match of the interface to the pod;
 in some ways,
 the document-centric view on a pod
@@ -1030,7 +1018,7 @@ typically indicates the document to which it belongs
 The benefit of the latter
 is that they might enable higher performance for derived APIs,
 although there is still the requirement of supporting non-RDF documents,
-such as for instance images or movies.</p>
+such as images or movies.</p>
 
         <p>The graph-centric interpretation imposes stronger requirements
 on the underlying storage.
@@ -1061,11 +1049,7 @@ verifying whether the document-based policies allow access,
 possibly performing a format translation,
 and sending it back to the client.
 Offering alternative APIs might involve more computations,
-again depending on the underlying storage system.</p>
-
-        <p class="comment" data-author="Ruben D">This next paragraph might be a bit too heavy for the end of the paper? 
-As we do not use these concepts before, nor after, 
-and they are not described in a way that makes them easy to process?</p>
+depending on the underlying storage system.</p>
 
         <p>The generation of API resources in the graph-centric interpretation
 involves a more complex process.
@@ -1158,14 +1142,12 @@ as they burrow their own ad-hoc APIs with implicit semantics
 into the container meta-model.
 This hinders the Solid promise of data and application independence:
 while the data itself contains explicit semantics that can be interpreted by apps,
-the organization of that data is such that it its storage and retrieval
+the organization of that data is such that its storage and retrieval
 necessitates out-of-band contracts between different applications,
 resulting in significant app-to-app coupling
 and subsequently systematic breakage when ad-hoc APIs eventually evolve.
 Furthermore, we show that the abstraction easily breaks
 when apps pursue slightly conflicting goals.</p>
-
-        <p class="comment" data-author="Ruben D">Granted, but these out of band contracts are also partly necessitated by schema alignment of data, and are conversly tried to be solved within the document space by things such as the interop spec, where these contracts are done in the pod itself (although this also carries problems), so statement is maybe a tad too generic?</p>
 
         <p>These issues have so far largely gone unnoticed,
 because singular apps do not hit such problems,
@@ -1188,7 +1170,7 @@ seems to act as a proxy for a more fundamental concept,
 namely a hybrid, contextualized knowledge graph
 that provides flexible metadata to data as well as documents.
 Our proposed graph-centric interpretation
-puts this concept at the heart of each pod,
+put this concept at the heart of each pod,
 and considers the Solid Protocol’s document interfaces
 to be specialized views of an underlying richer source of truth.
 This affords more flexibility—and hence independence—in
@@ -1254,6 +1236,7 @@ for which APIs act as a vessel.
 Thereby,
 what is in a pod is essentially in the eye of the beholder:
 all depends on which view offers the best fit for a specific purpose.</p>
+
       </div>
 </section>
 
