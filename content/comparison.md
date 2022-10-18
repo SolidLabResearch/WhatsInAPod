@@ -23,7 +23,7 @@ can be seen as a permissioned file system for the Web.
 Of course,
 quadstore-based storage can also be applied,
 in which case the fourth element of each quad
-typically indicates the document to which it belongs
+is usually necessary to indicate the document to which it belongs
 (and, hence, the associated metadata such as permissions).
 The benefit of the latter
 is that they might enable higher performance for derived APIs,
@@ -37,7 +37,7 @@ different metadata might have different granularities,
 so there is no longer a natural document grouping.
 On the other hand,
 different selections need to be created from the raw data,
-so there specific document organizations provide no universal benefit across APIs.
+so their specific document organizations provide no universal benefit across APIs.
 Consequently,
 document-based storage systems are not a good technological fit.
 In the long term,
@@ -64,34 +64,33 @@ depending on the underlying storage system.
 The generation of API resources in the graph-centric interpretation
 involves a more complex process,
 which harbors a significant part of future work in this area.
-We outline some main parts here.
 First,
 we need the notion of a _view definition_,
 which essentially specifies how public-facing pod URLs
 correspond to triples or documents from the underlying hybrid knowledge graph.
 Next,
 a _view application_ process is necessary
-to materialize the view definition
-to generate a response to concrete requests for resources.
+for materializing such view definitions
+to generate responses to concrete API requests.
 Furthermore,
 a _policy definition_ is required to express
 the allowed operations per triple,
 and a _policy application_ process
-to apply this policy to the specific request.
-For the view aspect,
+to apply this policy to a specific request.
+To realize views,
 technologies such as [RDF mappings](cite:citesAsEvidence dimou_ldow_2014),
 specifically [from Web APIs to triples](cite:citesAsEvidence RML_API),
 can be extended to support the reverse direction.
 Existing work on [policies](cite:citesAsEvidence kirrane2018policies,SolidPolicies),
-as well as the existing
-[WAC](cite:citesAsAuthority WAC) and [ACP](cite:citesAsAuthority ACP) specifications,
+as well as the [WAC](cite:citesAsAuthority WAC)
+and [ACP](cite:citesAsAuthority ACP) specifications,
 can be applied on the triple or shape level
 rather than to documents.
 
 ### Querying # {#comparison-querying}
 In the document-centric interpretation,
 the complexity of the required query processing
-is a direct function of whether or not the data resides in a single document,
+is mainly impacted by whether or not the data resides in a single document,
 i.e.,
 whether the concrete API of the pod
 happens to coincide with the access patterns of a specific use case.
@@ -99,7 +98,7 @@ Any mismatch requires a multi-document selection,
 which might involve [traversal-based query processing](cite:citesAsAuthority LinkedDataQueryStrategies),
 possibly [guided by the pod's known indexes or structure](cite:citesAsEvidence bogaerts_rulemlrr_2021).
 Furthermore,
-in order to arrive at a complete result set,
+in order to achieve result set completeness,
 all relevant data and intermediary links need to be accessible by the client,
 which might not be the case if there is a mismatch
 between the granularity of the documents and the policies on the data.
@@ -109,9 +108,9 @@ allows for multiple APIs,
 client can select those APIs
 that [best match the access patterns of their use case](cite:citesAsEvidence verborgh_jws_2016).
 Further work on [query engines for heterogeneous interfaces](cite:citesAsEvidence Comunica,10.1145/3485447.3511947)
-will help identifying the most relevant APIs,
-and over time,
-servers might analyze data usage
+will help identifying the most relevant APIs
+and, over time,
+servers could analyze data usage
 to determine new API structures that might improve performance.
 This includes hierarchical Solid Protocol interfaces,
 where the partitioning in resources is largely driven by the server,
@@ -123,13 +122,13 @@ Since performance is essentially a function
 of the match between server-side API partitioning
 and client-side request patterns,
 a document-based API might outperform an expressive query-based API
-if cached documents happen to align with a client-side request.
+if cached documents happen to align with client-side requests.
 Furthermore,
 the needed data for any given use case
 could be located across a small or large number of different pods,
 and more expressive interfaces do not necessarily outperform
 less expressive interfaces for [federation](cite:citesAsEvidence verborgh_jws_2016).
 Hence,
-a combination of different APIs
-will likely always be needed for high query performance,
-in addition to the other aspects favoring a graph-centric interpretation.
+achieving high query performance is another reason
+why the multi-API aspect of the graph-centric interpretation
+is important.
