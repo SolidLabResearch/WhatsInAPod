@@ -7,15 +7,15 @@ As described in [](#definitions),
 the Solid Protocol models interactions with data
 as recursive containers with RDF and non-RDF documents.
 When a server offers this protocol,
-clients of this server can define a Web API
-by creating containers and documents within those containers.
+clients of this server can iteratively define a Web API
+by creating containers and documents.
 
 The document-centric interpretation assumes
 that the structure and contents of the Web API,
-which the pod exposes through the Solid Protocol,
-_is_ the pod in its entirety.
+which a pod exposes through the Solid Protocol,
+_is_ that pod in its entirety.
 Within this interpretation,
-the complete state of the pod is equivalent
+the complete state of the pod is thus equivalent
 to the single Web API through which it is available;
 the _source of truth_ is solely that specific Web API.
 That brings us to the following definition:
@@ -61,7 +61,7 @@ leaves several degrees of freedom
 as to how the pod is structured
 and how the resulting structure is interpreted.
 We now describe how today's Solid apps
-fill those degrees of freedom in practice.
+handle those degrees of freedom in practice.
 
 #### Structure of the main Web API # {#document-centric-api}
 Importantly,
@@ -71,20 +71,18 @@ beyond the presence of a root container `/`.
 Therefore, _the_ Solid Web API does not exist;
 only the Solid Protocol to create an API for each pod.
 Some past [suggestions](https://github.com/solid/solid-spec/blob/master/recommendations-server.md)
-are nonetheless present as defaults
-(such as `/profile/`, `/inbox/`, and `/settings/` containers)
-in certain server implementations.
+are nonetheless present in certain server implementations as defaults
+(such as `/profile/`, `/inbox/`, and `/settings/` containers).
 Since these are not standardized across the ecosystem,
-their presence is not enforced by the server,
+their presence is not server-enforced,
 and as such cannot be relied upon.
 
 As a consequence,
-client-side applications have to define their own (sub-)API
-within the URL space available through the Solid Protocol,
+client-side applications have to invent their own (sub-)API
+within the pod's URL space available through the Solid Protocol,
 by defining a certain container structure
 and data distribution across documents within this structure.
-Regarding container structure,
-we observe two kinds of behavior:
+We observe two kinds of behavior:
 
 - Some apps use **hard-coded paths**
   to certain containers (e.g., `/contacts/`)
@@ -97,10 +95,10 @@ we observe two kinds of behavior:
 We also observe _hybrid behavior_,
 for instance where an initial path is obtained via traversal
 (e.g., `/private/medical/`),
-and deeper relative paths are hardcoded
+but deeper relative paths are hardcoded
 (e.g., `/private/medical/2022/10/`).
 In particular,
-link traversal is bootstrapped via hardcoded paths:
+link traversal is _bootstrapped_ via hardcoded paths:
 if no link exists to the certain kind of data,
 then a specific document is created at a hardcoded path
 and then linked from a profile or index for future usage.
@@ -110,8 +108,9 @@ From the way current apps organize data in RDF documents,
 we can observe the meaning they ascribe to such a document.
 Noting that Solid typically uses RDF 1.0 documents
 (so only triples, and not quads as in RDF 1.1),
-we consider the occurrence of an RDF triple in a document
-to carry meaning with regard to the following aspects:
+the occurrence of an RDF triple in a document
+seems to carry various degree of meaning
+with regard to the following aspects:
 
 - _(implicit)_ **Context**:
   the occurrence of certain triples within the same document
@@ -124,8 +123,9 @@ to carry meaning with regard to the following aspects:
 - _(explicit)_ **Policy**:
   both the [WAC](cite:citesAsAuthority WAC)
   and the [ACP](cite:citesAsAuthority ACP) specifications
-  assign authorizations on a document level of granularity.
-  Either the document can be accessed by a given agent in its entirety or not,
+  assign authorizations on a _document_ level of granularity.
+  Either the document can be accessed by a given agent in its entirety
+  or not at all,
   thus resulting in all triples within a document
   sharing the same authorization rules.
 - _(implicit)_ **Provenance**:
@@ -151,7 +151,7 @@ We remark that of these 5 aspects,
 only the _policy_ on the document is modelled explicitly.
 The _context_ is implicitly assumed
 because triples occurring in the same place
-typically were created by the same or related write operations,
+were usually created by the same or related write operations,
 and because those triples are necessarily read together by apps.
 The _provenance_ and _trust_ are similarly derived
 from implicit assumptions about a shared origin,
@@ -165,7 +165,7 @@ does encode some explicit provenance about the document and its triples
 but not necessarily about its creator or level of trust
 (e.g., multiple actors might have write access to the document).
 Finally,
-the _performance_ is typically the result of educated guesses,
+the _performance_ is typically based on educated guesses,
 but seldom the result of actual performance measurements.
 
 #### Alternative Web APIs to the pod # {#document-centric-alternative-apis}
@@ -180,7 +180,8 @@ suggests exposing a server-side [SPARQL endpoint](cite:citesAsAuthority SparqlP
 over all RDF data in a pod,
 enabling fully server-side [SPARQL query](cite:citesAsAuthority SparqlLanguage) processing.
 [Another proposal](cite:citesAsEvidence solid_qpf)
-suggests to expose this data through a read-only Quad Pattern Fragments (QPF) interface,
+suggests to expose this data through
+a read-only [Quad Pattern Fragments (QPF)](cite:citesAsAuthority QPF) interface,
 to speed up the client-side processing of SPARQL queries
 over the entire pod.
 Whereas these alternative APIs can alleviate
@@ -189,8 +190,9 @@ they come with challenges to implement _policy_
 and to adequately model _provenance_ and _trust_ in their responses.
 
 Crucially, such alternative APIs are always derived from the main API,
-because it is equivalent to the pod in the document-centric interpretation.
-The derived APIs thereby unavoidably inherit some of the explicit and implicit aspects
+which is equivalent to the pod in the document-centric interpretation.
+The derived APIs thereby unavoidably inherit
+some of the explicit and implicit modeling aspects
 from the document-based main API.
 Concretely, the direct derivation from the main API manifests itself
 in the choice of the data model for the SPARQL and QPF interfaces.
@@ -226,8 +228,7 @@ the effectiveness thereof is hindered
 by the necessity of those alternatives to derive from the main API structure.
 
 #### Single-app modeling mismatches # {#single-app-mismatches}
-Each app needs to define a single consistent hierarchy
-to serialize their data,
+Each app needs to have a single consistent hierarchy to serialize its data,
 which does not reflect the complex nature of real-world organization.
 For instance,
 the address book app could organize people in categories
@@ -235,7 +236,7 @@ such as `/contacts/work/` and `/contacts/sports/`,
 which leads to duplication when a person's colleague
 is also a member of their badminton team.
 A similar situation occurs when we need to decide
-to group health measurements by date (`/medical/2022/10/15.ttl`)
+whether to group health measurements by date (`/medical/2022/10/15.ttl`)
 or by topical evolution over time (`/medical/vitamine-d-levels.ttl`)
 
 Hierarchical organizations are thus either
@@ -260,16 +261,15 @@ that lead them to prefer one API structure over another.
 
 For example,
 interoperability requires the address book and birthday apps
-to store their data in the same place,
-for instance, the `/people/` container.
-Failure to do so would result in apps not being aware of 
-the others' data being available on the pod.
+to use the same data,
+and hence to store it in the same place,
+such as the `/people/` container.
 However,
 their preferences regarding the organization of that container vary.
 The address book app,
 which lets the user edit contacts one by one,
 has a _context_ and _performance_ incentive to
-place all of the attributes of a contact in a single RDF document,
+place all contact attributes in a single RDF document per contact,
 leading to an organization such as:
 
 - `/people/work/dani.ttl`
@@ -293,8 +293,8 @@ Or possibly even:
 - …
 
 Similarly,
-whether medical records are organized by date
-or by measurement over time,
+whether heart rate and blood pressure measurements are organized by date
+or by evolution over time,
 depends on the specifics of a current use case.
 
 #### Policy modeling mismatches # {#policy-mismatches}
@@ -345,17 +345,17 @@ the resulting API would be highly impractical for humans and machines alike.
 Another solution involves creating and maintaining
 a copy of the document with a subset of the data,
 which—in addition to the overhead of managing such copies—would also
-generate a different associated context, provenance, and trust,
-especially if writing to such derived documents is needed.
+generate a different associated context, provenance, and trust—especially
+if writing to such derived documents is needed.
 Furthermore,
 all these aspects would necessarily be reflected in any derived APIs,
 which are tied to the main API's document-based structure and boundaries.
 
-We conclude that the pod inherently contains
-a _large amount of implicit semantics_ in its API structure,
-which hinders the realization of the data and application independence
+We conclude that document-centric pods inherently contain
+a _large amount of implicit semantics_ in their API structure,
+hindering the realization of the data and application independence
 that is paramount to the Solid vision.
-Some of semantics that are supposed to be entangled with the data
+Some semantics that are supposed to be entangled with the data
 are in practice assumed by the API,
 the construction of which happens in an uncoordinated way over time.
 The resulting spontaneous contracts are not made explicit by a single app,
