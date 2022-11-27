@@ -35,7 +35,7 @@ throughout the article.
     is an Access Control List (ACL) mechanism
     that allows assigning inheritable permissions to documents and containers
     through so-called _ACL documents_.
-  - [<dfn id="dfn-acp">Access Control Policies (ACP)</dfn>](cite:citesAsAuthority ACP)
+  - [<dfn id="dfn-acp">Access Control Policy (ACP)</dfn>](cite:citesAsAuthority ACP)
     is a policy-based mechanism
     that allows assigning inheritable permissions to documents and containers
     through so-called _Access Control Resources (ACR)_.
